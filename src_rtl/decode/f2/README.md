@@ -56,3 +56,42 @@ and [HBM example](https://github.com/aws/aws-fpga/blob/f2/hdk/cl/examples/cl_dra
 describe Small Shell integration and the 32-port AXI3 interface. The pinned
 burst200 sources provide concrete implementation examples, while the new RTL
 and its numerical model remain separately versioned in this repository.
+
+## Implemented 32-port read frontend
+
+`rtl/decode_hbm_read32.sv` instantiates 32 independent
+`decode_hbm_read_port` frontends. Every frontend has 64 unique six-bit AXI IDs,
+64 destination tags, explicit allocated/issued state, and a registered AR
+channel. Requests and responses never arbitrate through a single shared port.
+The 2,048 aggregate slots include accepted requests awaiting AR handshake.
+
+All signals in this component use the HBM AXI clock domain. Each request reads
+one 32-byte aligned line (`ARLEN=0`, `ARSIZE=5`, `ARBURST=INCR`). Port p accesses
+its 512-MiB aperture at `(p << 29) | (local_line << 5)`. An upstream address
+mapper and host loader must use this same physical layout. This component does
+not apply the simulator's Ramulator-specific permutation.
+
+Return data is delivered with the original destination tag, even when IDs
+return out of order. Backpressure propagates independently to each R channel.
+A response error, missing RLAST or unknown ID sets a sticky fault only on that
+port. New requests stop on the faulted port; outstanding valid responses can
+still drain. Reset must reset/drain the connected AXI fabric too, so old
+responses cannot be confused with reused IDs. HBM calibration gates acceptance
+through `enable`; deasserting it does not cancel an already presented AR.
+
+Tag storage plus allocation/issued bitmaps consumes 8.5 KiB across the 32 ports,
+with additional small AR/control registers. This is bookkeeping storage beyond
+the simulator's staging-SRAM budget. Core/HBM CDC FIFOs and write channels still
+need integration; this frontend alone is not a complete memory subsystem.
+
+```sh
+env -u PYTHONPATH src_rtl/build/decode_venv/bin/python src_rtl/decode/tests/run_hbm_read32.py
+```
+
+The Verilator/cocotb test checks 13,312 reads. It exercises all 32 ports
+simultaneously for 256 consecutive response cycles against an ideal AXI target,
+fills all 2,048 slots under stalled returns, then checks random AR/consumer
+stalls, out-of-order IDs, aperture-end addresses and fault isolation. The
+retained `hbm_read_verification.json` binds the tested source hashes.
+The ideal-target result establishes frontend issue/return capacity, not actual
+HBM bandwidth, PHY behavior, clock closure or CDC throughput.

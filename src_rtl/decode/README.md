@@ -39,6 +39,8 @@ for F2, separate from staging SRAM. The simulator also budgets 7 KiB of streamin
 vector pipeline registers. Those FP32 vector registers and operators are not
 instantiated by this compute wrapper.
 
+The [32-port HBM read frontend](f2/README.md#implemented-32-port-read-frontend) is separately verified for simultaneous traffic, 2,048 credits and reordered responses.
+
 ## Core protocol
 
 A command is accepted on `cmd_valid && cmd_ready`. It must satisfy `1 ≤ M ≤ 4`,
@@ -108,7 +110,7 @@ records test versions and hashes of the tested sources.
 ## Remaining system integration
 
 The complete transformer accelerator still needs synchronous SRAM adapters and
-arbitration, the multi-outstanding HBM DMA/CDC subsystem, the FP32 vector/SFU
+arbitration, the HBM write path, core/HBM CDC and integration of the multi-outstanding read frontends, the FP32 vector/SFU
 pipeline with the original rounding semantics, and the full operator sequencer.
 The generated manifests list these boundaries explicitly. There is no
 full-transformer RTL equivalence result or FPGA bitstream yet. In particular,

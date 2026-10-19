@@ -12,17 +12,21 @@
     "src_rtl/decode/requirements.txt": "15b99f20e7355a630201566237d1bfc673059faa1f0fa0c38588fecd84de1bf5",
     "src_rtl/decode/rtl/decode_bank_lifetimes.sv": "190bace1ef5f25651a49a85e985953afd5e98a4692dbee94775a7d0e1cf31003",
     "src_rtl/decode/rtl/decode_hbm_map.sv": "e1d8fdb4d9d9bacbf17fee4cc5682b7e156c4d4d63d3c107500b4d8927c5ad98",
+    "src_rtl/decode/rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+    "src_rtl/decode/rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
     "src_rtl/decode/rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
     "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
+    "src_rtl/decode/tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d",
     "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
     "src_rtl/decode/tests/run_synthesis.py": "a1ee0ef2bfc5d3b0087eb80692db078984d23723c2b7a2b9965064a40b24d98d",
     "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
     "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
+    "src_rtl/decode/tests/test_hbm_read32.py": "7cfe04f6d82bc204ff84055c28b661e52aaa513a97bc7d16fe6457c62fd067cd",
     "src_rtl/decode/tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
     "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
-    "src_rtl/decode/verify.py": "e85a33f7a7ae9b1a4bdb8e2806912755d2339cbe91bd0712379dfeb97c445f70"
+    "src_rtl/decode/verify.py": "f0b6c552f4cc0e4188352b76997dad72e4e4d908e035fe34db707b3b0a66313b"
   },
   "tools": {
     "cocotb": "2.1.0",
@@ -183,6 +187,31 @@
       }
     }
   ],
+  "hbm_read_frontends": {
+    "status": "passed",
+    "scope": "HBM-clock-domain read frontends, behavioral AXI target, no PHY/CDC or FPGA timing validation",
+    "ports": 32,
+    "ids_per_port": 64,
+    "total_request_capacity": 2048,
+    "verified_reads": 13312,
+    "source_sha256": {
+      "rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+      "rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+      "tests/test_hbm_read32.py": "7cfe04f6d82bc204ff84055c28b661e52aaa513a97bc7d16fe6457c62fd067cd",
+      "tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d"
+    },
+    "cocotb": "2.1.0",
+    "checks": [
+      "all 32 ports transfer simultaneously",
+      "256 consecutive full-rate response cycles",
+      "all 2048 credits occupied",
+      "random AR and output stalls",
+      "out-of-order response IDs",
+      "per-port fault isolation",
+      "RRESP and RLAST errors",
+      "reset recovery"
+    ]
+  },
   "generated_target_lint": [
     "decode_asic_compute",
     "decode_f2_compute"

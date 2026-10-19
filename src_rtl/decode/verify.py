@@ -32,11 +32,15 @@ def collect(before):
     synthesis=json.loads((HERE/'build/synthesis/summary.json').read_text())
     assert switchboard['status']=='passed' and switchboard['cases']==24
     assert len(synthesis)==4 and all(s['status']=='passed' for s in synthesis)
+    hbm=json.loads((HERE/'hbm_read_verification.json').read_text())
+    assert hbm['status']=='passed'
+    for name,digest in hbm['source_sha256'].items():
+        assert hashlib.sha256((HERE/name).read_bytes()).hexdigest()==digest
     report={'status':'passed','scope':'Compute core and standalone memory/control blocks; not full-transformer RTL or physical FPGA validation',
         'sources_sha256':before,'tools':{p:version(p) for p in ('cocotb','switchboard-hw','numpy','tqdm')},
         'verilator':subprocess.check_output(['verilator','--version'],text=True).strip(),
         'yosys':subprocess.check_output(['yosys','-V'],text=True).strip(),
-        'cocotb_configurations':cases,'cocotb_tests':xml,'switchboard':switchboard,'generic_synthesis':synthesis,
+        'cocotb_configurations':cases,'cocotb_tests':xml,'switchboard':switchboard,'generic_synthesis':synthesis,'hbm_read_frontends':hbm,
         'generated_target_lint':['decode_asic_compute','decode_f2_compute']}
     (HERE/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PASS decode RTL verification; evidence saved to verification.json')
@@ -47,7 +51,7 @@ def main():
     for target in ('asic','f2'):
         top=f'decode_{target}_compute'
         subprocess.run(['verilator','--lint-only','-Wall','--top-module',top,str(HERE/'rtl/decode_os_core.sv'),str(HERE/'generated'/f'{top}.sv')],check=True)
-    for script,args in [('run_cocotb.py',['--full']),('run_switchboard.py',[]),('run_synthesis.py',[])]:
+    for script,args in [('run_cocotb.py',['--full']),('run_switchboard.py',[]),('run_synthesis.py',[]),('run_hbm_read32.py',[])]:
         subprocess.run([sys.executable,str(HERE/'tests'/script),*args],check=True)
     collect(before)
 
