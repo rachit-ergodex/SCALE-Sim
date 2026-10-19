@@ -139,3 +139,40 @@ async def integer_datapath_and_protocol(d):
         await edge(d);d.cmd_valid.value=0
         assert int(d.command_error.value) and not int(d.busy.value)
     await run(d,a,b,True)
+
+@cocotb.test()
+async def every_partition_layout_and_wave_base(d):
+    """Exhaust the command decoder's constant layouts and row-base advances.
+
+    The main test checks complete native/NumPy traces. This directed test
+    covers every possible column-partition count, including both ragged and
+    exact boundaries, and every resulting wave for four rows.
+    """
+    await reset(d)
+    for parts in range(1,P+1):
+        for n in sorted({(parts-1)*C+1,parts*C}):
+            for parallel in (False,True):
+                m=4;k=1
+                workers=min(m,P//parts) if parallel else 1
+                d.cmd_m.value=m;d.cmd_k.value=k;d.cmd_n.value=n
+                d.cmd_parallel_rows.value=parallel;d.cmd_accumulate.value=0
+                d.cmd_valid.value=1;d.cycle_ready.value=1
+                await edge(d);d.cmd_valid.value=0
+                assert int(d.busy.value) and not int(d.command_error.value)
+                for wave in range(math.ceil(m/workers)):
+                    aa=words(d.a_address,P,32);ba=words(d.b_address,P*C,32)
+                    ca=words(d.c_address,P*C,32)
+                    av=int(d.a_valid.value);bv=int(d.b_valid.value)
+                    for p in range(P):
+                        row=wave*workers+p//parts
+                        active=p//parts<workers and row<m
+                        assert bool(av>>p&1)==active,(parts,n,parallel,wave,p)
+                        if active:
+                            assert aa[p]==row
+                            assert ba[p*C]==(p%parts)*C
+                            for c in range(C):
+                                assert ca[p*C+c]==row*n+(p%parts)*C+c
+                        assert bool(bv>>(p*C)&1)==active
+                    for _ in range(C):await edge(d)
+                assert not int(d.busy.value) and int(d.done.value)
+                assert int(d.logical_cycles.value)==math.ceil(m/workers)*C

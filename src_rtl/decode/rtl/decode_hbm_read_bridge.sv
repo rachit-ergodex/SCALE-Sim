@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: MIT
-// Core -> HBM descriptor CDC and HBM -> core two-response packet CDC.
+// Core -> HBM descriptor CDC and HBM -> core response packet CDC.
 // A descriptor expands to 1..16 consecutive 32-byte reads. Two return records
-// per core cycle allow 512 GB/s across 32 ports at 250 MHz, ahead of HBM's
-// nominal 460.8 GB/s at 450 MHz. Physical CDC timing constraints are required.
+// provide 512 GB/s at 250 MHz across 32 ports; three provide 614.4 GB/s at
+// 200 MHz, ahead of nominal 460.8 GB/s HBM. These are interface capacities,
+// not measured memory bandwidth. Physical CDC timing constraints are required.
 module decode_hbm_read_bridge #(
     parameter integer PORT=0,
     parameter integer TAG_WIDTH=32,
     parameter integer FIFO_DEPTH=16,
+    parameter integer RETURN_RECORDS=2,
     parameter integer RECORD_WIDTH=257+TAG_WIDTH
 )(
     input wire core_clk, core_rst, hbm_clk, hbm_rst, hbm_enable,
@@ -17,10 +19,10 @@ module decode_hbm_read_bridge #(
     input wire [TAG_WIDTH-1:0] desc_tag,
     output wire return_valid,
     input wire return_ready,
-    output wire [1:0] return_mask,
-    output wire [2*256-1:0] return_data,
-    output wire [2*TAG_WIDTH-1:0] return_tag,
-    output wire [1:0] return_error,
+    output wire [RETURN_RECORDS-1:0] return_mask,
+    output wire [RETURN_RECORDS*256-1:0] return_data,
+    output wire [RETURN_RECORDS*TAG_WIDTH-1:0] return_tag,
+    output wire [RETURN_RECORDS-1:0] return_error,
     output wire fault_core,
     output wire [6:0] outstanding,
     output wire [33:0] m_araddr,
@@ -73,33 +75,53 @@ module decode_hbm_read_bridge #(
         .rsp_valid(rsp_valid),.rsp_ready(rsp_ready),.rsp_data(rsp_data),.rsp_tag(rsp_tag),.rsp_error(rsp_error),
         .fault(port_fault),.outstanding(outstanding),.m_araddr(m_araddr),.m_arid(m_arid),.m_arvalid(m_arvalid),.m_arready(m_arready),
         .m_rdata(m_rdata),.m_rid(m_rid),.m_rresp(m_rresp),.m_rlast(m_rlast),.m_rvalid(m_rvalid),.m_rready(m_rready));
-    // Register the complete output packet before presenting it to the FIFO;
-    // both payload and mask remain stable while the FIFO is full.
-    reg first_valid,packet_valid;
-    reg [RECORD_WIDTH-1:0] first_record;
-    reg [2*RECORD_WIDTH+1:0] packet;
+    // Accumulate RETURN_RECORDS responses, flushing a partial packet on an
+    // idle response cycle. The output packet is registered independently so
+    // data/mask remain stable while the FIFO is full. The collector can accept
+    // RETURN_RECORDS-1 more responses while an earlier packet is blocked.
+    localparam integer COUNT_WIDTH=$clog2(RETURN_RECORDS+1);
+    localparam integer PACKET_WIDTH=RETURN_RECORDS*(RECORD_WIDTH+1);
+    reg [COUNT_WIDTH-1:0] collected;
+    reg [RETURN_RECORDS*RECORD_WIDTH-1:0] records;
+    reg packet_valid;
+    reg [PACKET_WIDTH-1:0] packet;
     wire packet_ready;
     wire slot_free=!packet_valid || packet_ready;
     wire [RECORD_WIDTH-1:0] record_value={rsp_error,rsp_tag,rsp_data};
-    assign rsp_ready=!first_valid || slot_free;
+    reg [RETURN_RECORDS*RECORD_WIDTH-1:0] complete_records;
+    reg [RETURN_RECORDS-1:0] partial_mask;
+    assign rsp_ready=(collected<COUNT_WIDTH'(RETURN_RECORDS-1)) || slot_free;
+    always @* begin
+        complete_records=records;
+        partial_mask=0;
+        for(integer lane=0;lane<RETURN_RECORDS;lane=lane+1) begin
+            if(collected==COUNT_WIDTH'(lane))
+                complete_records[lane*RECORD_WIDTH +: RECORD_WIDTH]=record_value;
+            if(collected>COUNT_WIDTH'(lane)) partial_mask[lane]=1'b1;
+        end
+    end
     always @(posedge hbm_clk) begin
-        if(hbm_rst) begin first_valid<=0;packet_valid<=0;first_record<=0;packet<=0;end
+        if(hbm_rst) begin collected<=0;packet_valid<=0;records<=0;packet<=0;end
         else begin
             if(packet_valid && packet_ready) packet_valid<=0;
             if(rsp_valid && rsp_ready) begin
-                if(first_valid) begin packet<={2'b11,record_value,first_record};packet_valid<=1;first_valid<=0;end
-                else begin first_record<=record_value;first_valid<=1;end
-            end else if(first_valid && !rsp_valid && slot_free) begin
-                packet<={2'b01,{RECORD_WIDTH{1'b0}},first_record};packet_valid<=1;first_valid<=0;
+                if(collected==COUNT_WIDTH'(RETURN_RECORDS-1)) begin
+                    packet<={{RETURN_RECORDS{1'b1}},complete_records};
+                    packet_valid<=1;collected<=0;records<=0;
+                end else begin
+                    records<=complete_records;collected<=collected+1'b1;
+                end
+            end else if(collected!=0 && !rsp_valid && slot_free) begin
+                packet<={partial_mask,records};packet_valid<=1;collected<=0;records<=0;
             end
         end
     end
-    wire [2*RECORD_WIDTH+1:0] return_packet;
-    decode_async_fifo #(.WIDTH(2*RECORD_WIDTH+2),.DEPTH(FIFO_DEPTH)) responses(
+    wire [PACKET_WIDTH-1:0] return_packet;
+    decode_async_fifo #(.WIDTH(PACKET_WIDTH),.DEPTH(FIFO_DEPTH)) responses(
         .wr_clk(hbm_clk),.wr_rst(hbm_rst),.wr_valid(packet_valid),.wr_ready(packet_ready),.wr_data(packet),
         .rd_clk(core_clk),.rd_rst(core_rst),.rd_valid(return_valid),.rd_ready(return_ready),.rd_data(return_packet));
-    assign return_mask=return_packet[2*RECORD_WIDTH +: 2];
-    for(genvar lane=0;lane<2;lane=lane+1) begin:unpack_return
+    assign return_mask=return_packet[RETURN_RECORDS*RECORD_WIDTH +: RETURN_RECORDS];
+    for(genvar lane=0;lane<RETURN_RECORDS;lane=lane+1) begin:unpack_return
         assign return_data[lane*256 +: 256]=return_packet[lane*RECORD_WIDTH +: 256];
         assign return_tag[lane*TAG_WIDTH +: TAG_WIDTH]=return_packet[lane*RECORD_WIDTH+256 +: TAG_WIDTH];
         assign return_error[lane]=return_packet[lane*RECORD_WIDTH+RECORD_WIDTH-1];

@@ -14,30 +14,30 @@
     "src_rtl/decode/rtl/decode_bank_lifetimes.sv": "190bace1ef5f25651a49a85e985953afd5e98a4692dbee94775a7d0e1cf31003",
     "src_rtl/decode/rtl/decode_hbm_map.sv": "e1d8fdb4d9d9bacbf17fee4cc5682b7e156c4d4d63d3c107500b4d8927c5ad98",
     "src_rtl/decode/rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
-    "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
-    "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
     "src_rtl/decode/rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
-    "src_rtl/decode/rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
+    "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
     "src_rtl/decode/tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b",
     "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
-    "src_rtl/decode/tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee",
-    "src_rtl/decode/tests/run_hbm_directed.py": "9cbad8f2e95b30577a3cd6628cfd898b021cd3ff1ee572f69511741b149eb60e",
+    "src_rtl/decode/tests/run_hbm_bridge.py": "6f0b55f9011a9c2b7955effd19a009fcccc319a3e3b3a0535cbc18f10f76f5da",
+    "src_rtl/decode/tests/run_hbm_directed.py": "b66bd19bf4e5b2f784bfac19010cdb670dbe7a6431ec77e3423e73b300b3d4f6",
     "src_rtl/decode/tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d",
     "src_rtl/decode/tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
     "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
-    "src_rtl/decode/tests/run_synthesis.py": "fd53d17f7047ace9e6da12306ae944cfc2a5d95c07f8c4b49ac263044242c84a",
+    "src_rtl/decode/tests/run_synthesis.py": "675e2a4a7788a8ed644a9578eceaf21725c8c86dedaab1e231c8a3b6bfebd706",
     "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
-    "src_rtl/decode/tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
-    "src_rtl/decode/tests/test_hbm_directed_bridge.py": "270dc9ea65ac19bfbf3490a1bbba8e6d50729a7f9fb748e796bcf62bc03d5ed7",
+    "src_rtl/decode/tests/test_hbm_bridge.py": "606861b0ce125f8c750715da24820e6fcb1e1abe40195bbd835e397550ee2d63",
+    "src_rtl/decode/tests/test_hbm_directed_bridge.py": "d8275a1f28eef4992e9a468a87960f771e9379448e30ab491c42618296039757",
     "src_rtl/decode/tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
     "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
     "src_rtl/decode/tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
     "src_rtl/decode/tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
-    "src_rtl/decode/tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
+    "src_rtl/decode/tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
     "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
-    "src_rtl/decode/verify.py": "dc877951497f5448b297b0b7cf65d8591d6a7dd817a5ba068956e99168620a63"
+    "src_rtl/decode/verify.py": "c8c5e710714892fec1d0583c61d437a34ceb0f1fff67e8edb97867430f2935a8"
   },
   "tools": {
     "cocotb": "2.1.0",
@@ -108,12 +108,27 @@
       "simulation_ns": null
     },
     {
-      "name": "integer_datapath_and_protocol",
+      "name": "every_partition_layout_and_wave_base",
       "module": "test_os_core",
       "simulation_ns": null
     },
     {
       "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "every_partition_layout_and_wave_base",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "every_partition_layout_and_wave_base",
       "module": "test_os_core",
       "simulation_ns": null
     },
@@ -136,27 +151,27 @@
       "status": "passed",
       "cells": {
         "$add": 181,
-        "$sdffe": 67,
-        "$sdff": 7,
-        "$reduce_bool": 2,
+        "$sdffe": 75,
+        "$sdff": 27,
+        "$reduce_bool": 1,
         "$ne": 1,
         "$reduce_and": 35,
         "$reduce_or": 2,
         "$not": 5,
-        "$div": 5,
-        "$eq": 16,
-        "$logic_not": 7,
+        "$eq": 32,
+        "$logic_not": 6,
         "$ge": 9,
         "$gt": 3,
-        "$logic_and": 84,
+        "$logic_and": 83,
         "$logic_or": 5,
-        "$lt": 49,
-        "$mod": 4,
-        "$mul": 50,
-        "$mux": 461,
-        "$sub": 10
+        "$lt": 51,
+        "$mul": 34,
+        "$mux": 632,
+        "$sub": 3
       },
-      "signed_int8_multipliers": 32
+      "signed_int8_multipliers": 32,
+      "variable_dividers_or_modulo": 0,
+      "variable_non_mac_multipliers": 0
     },
     {
       "top": "decode_scratchpad",
@@ -222,40 +237,85 @@
       "top": "decode_hbm_read_bridge32",
       "status": "passed",
       "cells": {
-        "$paramod$080f12c360e5140211e48569ce7dcc6ae0e234bd\\decode_hbm_read_bridge": 1,
-        "$paramod$2c2ec79a57cd7b7e9c04036a42555386bd688712\\decode_hbm_read_bridge": 1,
-        "$paramod$e7f44ee07823c32871517bce3b521c839b7f6295\\decode_hbm_read_bridge": 1,
-        "$paramod$f903373ce96baffdb107a51885a8377a3ed7df3c\\decode_hbm_read_bridge": 1,
-        "$paramod$ad4837098b448914962ac435f9cc81b331bcfd87\\decode_hbm_read_bridge": 1,
-        "$paramod$22b96e8d6e6e823722e9c9d38bfa48f058665186\\decode_hbm_read_bridge": 1,
-        "$paramod$7f3b506068bd438ed528a995acce99c7c1f8ea51\\decode_hbm_read_bridge": 1,
-        "$paramod$edb4951bb81aa5424457a2a064218f27fbd7790e\\decode_hbm_read_bridge": 1,
-        "$paramod$4caa58cdaa27a106323bf464d74950aac4404374\\decode_hbm_read_bridge": 1,
-        "$paramod$ca9a542cd75c296c226149536d7c089054294e0f\\decode_hbm_read_bridge": 1,
-        "$paramod$e9977c5b04e5c33a3c160f8691bdd39aebe8bd47\\decode_hbm_read_bridge": 1,
-        "$paramod$0ebe438252d9c362c49f4305c38ea3a82a8a7943\\decode_hbm_read_bridge": 1,
-        "$paramod$6cb5237763bb9881a16f0d93491dab69da056002\\decode_hbm_read_bridge": 1,
-        "$paramod$d5c40ec3d484b4ecade5d2f37432278e6fcfa5e6\\decode_hbm_read_bridge": 1,
-        "$paramod$16991c0343446c323ee5907d3cfea225edeb1c2b\\decode_hbm_read_bridge": 1,
-        "$paramod$3c780370ad7ab534ddf952b0fd8cc7a2e0d15f4c\\decode_hbm_read_bridge": 1,
-        "$paramod$1da4727e44ba925d09b322116425e0c83e036375\\decode_hbm_read_bridge": 1,
-        "$paramod$700fa83e02f1aa87b50e7cced53ce84ad406eb0d\\decode_hbm_read_bridge": 1,
-        "$paramod$2f07c40ddae9bc846e8b82df047a6a10350d41a0\\decode_hbm_read_bridge": 1,
-        "$paramod$2c0a1527ece1c57536a47850b6d8fb12e250f5d0\\decode_hbm_read_bridge": 1,
-        "$paramod$b13ae894d3346cc47fde9f2c411994fbd78abb8e\\decode_hbm_read_bridge": 1,
-        "$paramod$eedef130b6a5930cede9cd2fb70554001a47f5bc\\decode_hbm_read_bridge": 1,
-        "$paramod$b35a80fb3c733c09a613bde7bd53962e0a0fbcab\\decode_hbm_read_bridge": 1,
-        "$paramod$87b9e873a0f617560dfe7ddac506b30d8b1347a4\\decode_hbm_read_bridge": 1,
-        "$paramod$24061ed47ef45bd17e3d6c274b1a24c5a39120c5\\decode_hbm_read_bridge": 1,
-        "$paramod$14d27d1d10a6f091aa8d9ddd1f9f60e5c9f9dee7\\decode_hbm_read_bridge": 1,
-        "$paramod$c4770ac6b6c92e9b918feba9a0a5c955efecec4b\\decode_hbm_read_bridge": 1,
-        "$paramod$e75eea68bf5a9793fde83e145d02cc8efa9085c2\\decode_hbm_read_bridge": 1,
-        "$paramod$a796e7ab1cef42762b3c1193984feb20b3010b0e\\decode_hbm_read_bridge": 1,
-        "$paramod$350725a649b0291c78314fc66b7a4fd6d0fea00a\\decode_hbm_read_bridge": 1,
-        "$paramod$2ccab424199fbf0c46c8b06f0529a0d1d72ee87a\\decode_hbm_read_bridge": 1,
-        "$paramod$954e2aeb8599c538d7c6005128f80305d3407d0a\\decode_hbm_read_bridge": 1
+        "$paramod$8307450884e12b7811925b27a28b4a95d9f665a9\\decode_hbm_read_bridge": 1,
+        "$paramod$5da5b1f84252ef611387fa5b0e3f28c1d918d2d7\\decode_hbm_read_bridge": 1,
+        "$paramod$0aff9dad0a3ea95e992db39fce9b9eb41a1d0910\\decode_hbm_read_bridge": 1,
+        "$paramod$9b1fa51ede6ef0ae4b2a046811e3833717d81313\\decode_hbm_read_bridge": 1,
+        "$paramod$4aeb9e9957c289ffcf77edd42c50f3d5bb83d0dc\\decode_hbm_read_bridge": 1,
+        "$paramod$8d15d43020bb0d0ad872406b7dd409da11b6b6b7\\decode_hbm_read_bridge": 1,
+        "$paramod$3b033defbdd2c0bb8102feae7fec9bd404907320\\decode_hbm_read_bridge": 1,
+        "$paramod$54d04760459d8e2a7dc8bd3d75dfac28552c78c6\\decode_hbm_read_bridge": 1,
+        "$paramod$8d4b3b884042c34c0b68b60e041a614f9d8c41af\\decode_hbm_read_bridge": 1,
+        "$paramod$498f4c0a19ccf985482794f1296fa557e1d5a4b2\\decode_hbm_read_bridge": 1,
+        "$paramod$4b4efd970f79943d8fe623565e48f1508aefe33b\\decode_hbm_read_bridge": 1,
+        "$paramod$dd7ee52228e294653860f541db7530695a300274\\decode_hbm_read_bridge": 1,
+        "$paramod$3e701affa73f119f61f406fe785e31b8306ee949\\decode_hbm_read_bridge": 1,
+        "$paramod$c3a17886b2095c5f9e776880cfe7771e6f6de3ca\\decode_hbm_read_bridge": 1,
+        "$paramod$3fb063d5d93f85b05c53feeef99a27773abbd4ec\\decode_hbm_read_bridge": 1,
+        "$paramod$62595d5639f2fe2e1a3e66c34b61df15e14f5d46\\decode_hbm_read_bridge": 1,
+        "$paramod$5820187f87280d60e0d2b99d415cba3e6defe22f\\decode_hbm_read_bridge": 1,
+        "$paramod$b25c3bbf6b43182d3969c57734190a8563a65c8b\\decode_hbm_read_bridge": 1,
+        "$paramod$838d10978e6064f27993a25ce77e7676ae3ae7c0\\decode_hbm_read_bridge": 1,
+        "$paramod$3d13fcb7e2e2037e52523590f838bcdc5a67ad35\\decode_hbm_read_bridge": 1,
+        "$paramod$ef41ae02f98855743e8617c308bb7021cbf29f89\\decode_hbm_read_bridge": 1,
+        "$paramod$693b61dedd6f245e3e379f2ee986f0dd22af641e\\decode_hbm_read_bridge": 1,
+        "$paramod$b860db0ce6501769a11e1d5c4c061afd2134060f\\decode_hbm_read_bridge": 1,
+        "$paramod$5ea195ef7b2436468620a826dadc5fb5112a995b\\decode_hbm_read_bridge": 1,
+        "$paramod$fdd4b89157aec1c377e9d514462d7305633cc5ef\\decode_hbm_read_bridge": 1,
+        "$paramod$f927b38b7a11b9b17bcccebe3fe0bbedc7c622af\\decode_hbm_read_bridge": 1,
+        "$paramod$d2452f69cac8d7e1150119fb8df698975a5b7ecf\\decode_hbm_read_bridge": 1,
+        "$paramod$c478e3ec78f6dc9edcf917357da9cc20ec429292\\decode_hbm_read_bridge": 1,
+        "$paramod$3dffa3a58391cda21cc4761ad5167aac88148ef2\\decode_hbm_read_bridge": 1,
+        "$paramod$e3fa5c215fc0f7c8b75af8137d74d50a687bd4c0\\decode_hbm_read_bridge": 1,
+        "$paramod$9a9bd430397cd388e89b9cf7bd13b36bd9fd22b6\\decode_hbm_read_bridge": 1,
+        "$paramod$b02854905b72db40d4e037503c226c9cb55c1c3e\\decode_hbm_read_bridge": 1
       },
       "independent_port_bridges": 32,
+      "return_records_per_port": 2,
+      "axi_rready_combinational_input_paths": 0
+    },
+    {
+      "top": "decode_hbm_read_bridge32",
+      "status": "passed",
+      "cells": {
+        "$paramod$027bd9b9c6b9a3a1ab9b840a3c4fa540bd1e67bf\\decode_hbm_read_bridge": 1,
+        "$paramod$919abc8e52aeecacfa06194791c18bf83fe419c6\\decode_hbm_read_bridge": 1,
+        "$paramod$3253bb7033fe8994ba508a4535a7bb14bcb4ddeb\\decode_hbm_read_bridge": 1,
+        "$paramod$f3106e962245a56f8359b07e8edec2ff15654196\\decode_hbm_read_bridge": 1,
+        "$paramod$af6703bec49c6d56e505b4e1f8ca265e612b9b34\\decode_hbm_read_bridge": 1,
+        "$paramod$6efb6d3c22bee60f7964ab1b67f6a4bf2d33fead\\decode_hbm_read_bridge": 1,
+        "$paramod$aff12ba3f086eeb8756dd022eca0fdcd81c8d633\\decode_hbm_read_bridge": 1,
+        "$paramod$95d04bc2755daf329ea7ba9bd96591b24e3e03ed\\decode_hbm_read_bridge": 1,
+        "$paramod$bd0971b988c24958cbcfb777bd750558ef7acf65\\decode_hbm_read_bridge": 1,
+        "$paramod$84d87876b93862e4fd8869ac0eeb22ad6d0748cb\\decode_hbm_read_bridge": 1,
+        "$paramod$3188a910cd6fd7bab8f19a5cab11a6c650136a44\\decode_hbm_read_bridge": 1,
+        "$paramod$2826913fa84df0406660dd3b2ece08d966d2c8de\\decode_hbm_read_bridge": 1,
+        "$paramod$98c667aeee3fbcf5a017420914f6173312c7e849\\decode_hbm_read_bridge": 1,
+        "$paramod$9c7c01be1c7d8e638a748b05fed04696d707ad31\\decode_hbm_read_bridge": 1,
+        "$paramod$d13a16ccd81836a31e6673763388bfa2f33b9947\\decode_hbm_read_bridge": 1,
+        "$paramod$7a9f7eda479bb90c61762d44fc8ccafcb3f7b487\\decode_hbm_read_bridge": 1,
+        "$paramod$151e1012e664fdeb5a7e11f409973407c1090844\\decode_hbm_read_bridge": 1,
+        "$paramod$330d09ff85fd523ad190b99437e48a893317a93c\\decode_hbm_read_bridge": 1,
+        "$paramod$10b2ce8aad2ed06117fe749cd04f4b22a19b2932\\decode_hbm_read_bridge": 1,
+        "$paramod$6e97971e78c258c2b70bc83332c81c027b739011\\decode_hbm_read_bridge": 1,
+        "$paramod$def6fa362edc763dd14d2df800537f81e4fbae3d\\decode_hbm_read_bridge": 1,
+        "$paramod$3f6352f31176ccacbf377059338b1fd5586737bf\\decode_hbm_read_bridge": 1,
+        "$paramod$7a070ca76fd118c0f592dd571ba9bedbb7b1d7c7\\decode_hbm_read_bridge": 1,
+        "$paramod$f76017ecb91cdb5071e874a8fd9a2ce35a844827\\decode_hbm_read_bridge": 1,
+        "$paramod$bc08db9241727363adcf4d33217026fcf470aa48\\decode_hbm_read_bridge": 1,
+        "$paramod$6e5c29770854a5aa57aea74a2d0d830e1300850e\\decode_hbm_read_bridge": 1,
+        "$paramod$60e7142784f4070546abfb7a4d95cf0888b80e03\\decode_hbm_read_bridge": 1,
+        "$paramod$7345ece53ab0433427f3c897e58120bc782af7fc\\decode_hbm_read_bridge": 1,
+        "$paramod$25b98a2ab21e688708559d20dad7330fef11a642\\decode_hbm_read_bridge": 1,
+        "$paramod$087e907ba4ae29f1c6b0ce18967fa800b2258de5\\decode_hbm_read_bridge": 1,
+        "$paramod$05c658725dfbe2fd44f53185a8920ebb7cc58c21\\decode_hbm_read_bridge": 1,
+        "$paramod$d77a3bd7cedb4c9c44c7895472702bcf9a004654\\decode_hbm_read_bridge": 1
+      },
+      "parameters": {
+        "RETURN_RECORDS": 3
+      },
+      "independent_port_bridges": 32,
+      "return_records_per_port": 3,
       "axi_rready_combinational_input_paths": 0
     }
   ],
@@ -287,32 +347,1702 @@
   "hbm_read_clock_crossings": {
     "status": "passed",
     "scope": "Digital CDC behavior only; no metastability, vendor PHY or physical timing claim",
-    "core_period_ps": 4000,
-    "hbm_period_ps": 2222,
     "cases": [
       {
         "ports": 1,
         "parameters": {
           "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 2,
           "PORT": 31
         },
-        "status": "passed"
+        "core_period_ps": 4000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2048
+            ],
+            "response_utilization": [
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              373
+            ],
+            "response_utilization": [
+              0.45576407506702415
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 76,
+                "1": 18
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              372
+            ],
+            "response_utilization": [
+              0.45698924731182794
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 78,
+                "1": 14
+              }
+            ]
+          }
+        }
       },
       {
         "ports": 32,
         "parameters": {
-          "FIFO_DEPTH": 16
+          "FIFO_DEPTH": 16,
+          "RETURN_RECORDS": 2
         },
-        "status": "passed"
+        "core_period_ps": 4000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_span_cycles": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_utilization": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              382,
+              385,
+              354,
+              351,
+              481,
+              394,
+              423,
+              365,
+              385,
+              408,
+              426,
+              383,
+              413,
+              376,
+              418,
+              442,
+              400,
+              443,
+              399,
+              400,
+              350,
+              427,
+              392,
+              361,
+              486,
+              414,
+              417,
+              389,
+              395,
+              359,
+              427,
+              428
+            ],
+            "response_utilization": [
+              0.44502617801047123,
+              0.4779220779220779,
+              0.5141242937853108,
+              0.5242165242165242,
+              0.4781704781704782,
+              0.4543147208121827,
+              0.5035460992907801,
+              0.4821917808219178,
+              0.509090909090909,
+              0.5073529411764706,
+              0.4859154929577465,
+              0.4908616187989556,
+              0.5278450363196125,
+              0.5132978723404256,
+              0.4880382775119617,
+              0.5361990950226244,
+              0.485,
+              0.5395033860045146,
+              0.48120300751879697,
+              0.49,
+              0.48857142857142855,
+              0.49414519906323184,
+              0.48214285714285715,
+              0.4930747922437673,
+              0.5061728395061729,
+              0.5193236714975845,
+              0.5299760191846523,
+              0.4910025706940874,
+              0.5088607594936709,
+              0.4986072423398329,
+              0.4918032786885246,
+              0.48130841121495327
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 74,
+                "1": 22
+              },
+              {
+                "3": 81,
+                "1": 22
+              },
+              {
+                "3": 87,
+                "1": 8
+              },
+              {
+                "3": 83,
+                "1": 18
+              },
+              {
+                "3": 106,
+                "1": 18
+              },
+              {
+                "1": 25,
+                "3": 77
+              },
+              {
+                "3": 99,
+                "1": 15
+              },
+              {
+                "1": 18,
+                "3": 79
+              },
+              {
+                "1": 22,
+                "3": 87
+              },
+              {
+                "3": 98,
+                "1": 11
+              },
+              {
+                "1": 9,
+                "3": 99
+              },
+              {
+                "1": 14,
+                "3": 87
+              },
+              {
+                "3": 103,
+                "1": 12
+              },
+              {
+                "3": 88,
+                "1": 17
+              },
+              {
+                "1": 26,
+                "3": 89
+              },
+              {
+                "3": 103,
+                "1": 31
+              },
+              {
+                "1": 18,
+                "3": 88
+              },
+              {
+                "3": 113,
+                "1": 13
+              },
+              {
+                "3": 87,
+                "1": 18
+              },
+              {
+                "1": 22,
+                "3": 87
+              },
+              {
+                "3": 76,
+                "1": 19
+              },
+              {
+                "1": 25,
+                "3": 93
+              },
+              {
+                "1": 23,
+                "3": 83
+              },
+              {
+                "3": 82,
+                "1": 14
+              },
+              {
+                "1": 24,
+                "3": 111
+              },
+              {
+                "3": 97,
+                "1": 21
+              },
+              {
+                "3": 107,
+                "1": 7
+              },
+              {
+                "1": 23,
+                "3": 84
+              },
+              {
+                "3": 94,
+                "1": 13
+              },
+              {
+                "1": 29,
+                "3": 75
+              },
+              {
+                "3": 95,
+                "1": 20
+              },
+              {
+                "3": 93,
+                "1": 20
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              383,
+              357,
+              375,
+              366,
+              422,
+              343,
+              451,
+              378,
+              376,
+              402,
+              423,
+              389,
+              430,
+              385,
+              427,
+              462,
+              395,
+              458,
+              375,
+              389,
+              342,
+              406,
+              375,
+              348,
+              433,
+              405,
+              436,
+              408,
+              420,
+              377,
+              430,
+              436
+            ],
+            "response_utilization": [
+              0.44386422976501305,
+              0.5154061624649859,
+              0.48533333333333334,
+              0.5027322404371585,
+              0.5450236966824644,
+              0.521865889212828,
+              0.4722838137472284,
+              0.4656084656084656,
+              0.5212765957446809,
+              0.5149253731343284,
+              0.48936170212765956,
+              0.4832904884318766,
+              0.5069767441860465,
+              0.5012987012987012,
+              0.477751756440281,
+              0.512987012987013,
+              0.4911392405063291,
+              0.5218340611353712,
+              0.512,
+              0.5038560411311054,
+              0.5,
+              0.5197044334975369,
+              0.504,
+              0.5114942528735632,
+              0.5681293302540416,
+              0.5308641975308642,
+              0.5068807339449541,
+              0.4681372549019608,
+              0.4785714285714286,
+              0.47480106100795755,
+              0.4883720930232558,
+              0.4724770642201835
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 74,
+                "1": 22
+              },
+              {
+                "3": 84,
+                "1": 16
+              },
+              {
+                "3": 81,
+                "1": 20
+              },
+              {
+                "1": 16,
+                "3": 84
+              },
+              {
+                "3": 109,
+                "1": 12
+              },
+              {
+                "1": 15,
+                "3": 82
+              },
+              {
+                "3": 102,
+                "1": 9
+              },
+              {
+                "1": 24,
+                "3": 76
+              },
+              {
+                "1": 20,
+                "3": 88
+              },
+              {
+                "3": 94,
+                "1": 19
+              },
+              {
+                "1": 11,
+                "3": 98
+              },
+              {
+                "1": 24,
+                "3": 82
+              },
+              {
+                "3": 96,
+                "1": 26
+              },
+              {
+                "3": 92,
+                "1": 9
+              },
+              {
+                "1": 22,
+                "3": 91
+              },
+              {
+                "3": 105,
+                "1": 27
+              },
+              {
+                "1": 20,
+                "3": 87
+              },
+              {
+                "3": 108,
+                "1": 23
+              },
+              {
+                "3": 88,
+                "1": 16
+              },
+              {
+                "1": 18,
+                "3": 89
+              },
+              {
+                "3": 78,
+                "1": 15
+              },
+              {
+                "3": 99,
+                "1": 13
+              },
+              {
+                "1": 13,
+                "3": 88
+              },
+              {
+                "3": 76,
+                "1": 26
+              },
+              {
+                "3": 117,
+                "1": 12
+              },
+              {
+                "1": 17,
+                "3": 99
+              },
+              {
+                "3": 99,
+                "1": 23
+              },
+              {
+                "1": 19,
+                "3": 86
+              },
+              {
+                "3": 91,
+                "1": 19
+              },
+              {
+                "1": 15,
+                "3": 82
+              },
+              {
+                "1": 12,
+                "3": 99
+              },
+              {
+                "3": 96,
+                "1": 14
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 3,
+          "PORT": 31
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2048
+            ],
+            "response_utilization": [
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 682,
+                "3": 1
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              359
+            ],
+            "response_utilization": [
+              0.4735376044568245
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 10,
+                "3": 11,
+                "7": 46
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              361
+            ],
+            "response_utilization": [
+              0.4709141274238227
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 6,
+                "3": 10,
+                "7": 48
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 32,
+        "parameters": {
+          "FIFO_DEPTH": 16,
+          "RETURN_RECORDS": 3
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_span_cycles": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_utilization": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              312,
+              326,
+              324,
+              326,
+              403,
+              311,
+              374,
+              321,
+              398,
+              361,
+              365,
+              352,
+              380,
+              339,
+              359,
+              422,
+              357,
+              420,
+              334,
+              349,
+              343,
+              375,
+              344,
+              328,
+              400,
+              374,
+              384,
+              368,
+              353,
+              319,
+              389,
+              345
+            ],
+            "response_utilization": [
+              0.5448717948717948,
+              0.5644171779141104,
+              0.5617283950617284,
+              0.5644171779141104,
+              0.5707196029776674,
+              0.5755627009646302,
+              0.56951871657754,
+              0.5482866043613707,
+              0.49246231155778897,
+              0.5734072022160664,
+              0.5671232876712329,
+              0.5340909090909091,
+              0.5736842105263158,
+              0.5693215339233039,
+              0.5682451253481894,
+              0.5616113744075829,
+              0.5434173669467787,
+              0.569047619047619,
+              0.5748502994011976,
+              0.5616045845272206,
+              0.49854227405247814,
+              0.5626666666666666,
+              0.5494186046511628,
+              0.5426829268292683,
+              0.615,
+              0.5748663101604278,
+              0.5755208333333334,
+              0.5190217391304348,
+              0.5694050991501416,
+              0.5611285266457681,
+              0.5398457583547558,
+              0.5971014492753624
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 47,
+                "1": 11,
+                "3": 9
+              },
+              {
+                "7": 50,
+                "3": 10,
+                "1": 14
+              },
+              {
+                "7": 52,
+                "3": 7,
+                "1": 12
+              },
+              {
+                "7": 51,
+                "3": 9,
+                "1": 13
+              },
+              {
+                "1": 14,
+                "7": 66,
+                "3": 9
+              },
+              {
+                "7": 53,
+                "3": 4,
+                "1": 12
+              },
+              {
+                "1": 13,
+                "7": 58,
+                "3": 13
+              },
+              {
+                "1": 10,
+                "7": 52,
+                "3": 5
+              },
+              {
+                "1": 16,
+                "3": 15,
+                "7": 50
+              },
+              {
+                "7": 56,
+                "1": 15,
+                "3": 12
+              },
+              {
+                "7": 56,
+                "3": 14,
+                "1": 11
+              },
+              {
+                "7": 51,
+                "1": 15,
+                "3": 10
+              },
+              {
+                "7": 60,
+                "3": 14,
+                "1": 10
+              },
+              {
+                "7": 50,
+                "3": 12,
+                "1": 19
+              },
+              {
+                "1": 15,
+                "7": 51,
+                "3": 18
+              },
+              {
+                "1": 10,
+                "7": 65,
+                "3": 16
+              },
+              {
+                "1": 11,
+                "7": 55,
+                "3": 9
+              },
+              {
+                "3": 15,
+                "1": 17,
+                "7": 64
+              },
+              {
+                "1": 9,
+                "7": 51,
+                "3": 15
+              },
+              {
+                "7": 59,
+                "1": 13,
+                "3": 3
+              },
+              {
+                "1": 16,
+                "7": 47,
+                "3": 7
+              },
+              {
+                "1": 12,
+                "7": 59,
+                "3": 11
+              },
+              {
+                "7": 51,
+                "3": 11,
+                "1": 14
+              },
+              {
+                "7": 47,
+                "1": 15,
+                "3": 11
+              },
+              {
+                "1": 21,
+                "7": 67,
+                "3": 12
+              },
+              {
+                "7": 56,
+                "3": 15,
+                "1": 17
+              },
+              {
+                "3": 12,
+                "1": 14,
+                "7": 61
+              },
+              {
+                "1": 13,
+                "7": 52,
+                "3": 11
+              },
+              {
+                "1": 15,
+                "7": 54,
+                "3": 12
+              },
+              {
+                "1": 10,
+                "7": 53,
+                "3": 5
+              },
+              {
+                "7": 54,
+                "3": 19,
+                "1": 10
+              },
+              {
+                "3": 7,
+                "1": 12,
+                "7": 60
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              308,
+              364,
+              340,
+              362,
+              366,
+              329,
+              366,
+              323,
+              380,
+              355,
+              358,
+              340,
+              379,
+              331,
+              359,
+              399,
+              323,
+              409,
+              350,
+              378,
+              315,
+              389,
+              326,
+              345,
+              424,
+              394,
+              372,
+              350,
+              358,
+              323,
+              393,
+              375
+            ],
+            "response_utilization": [
+              0.551948051948052,
+              0.5054945054945055,
+              0.5352941176470588,
+              0.5082872928176796,
+              0.6284153005464481,
+              0.5440729483282675,
+              0.5819672131147541,
+              0.544891640866873,
+              0.5157894736842106,
+              0.5830985915492958,
+              0.5782122905027933,
+              0.5529411764705883,
+              0.575197889182058,
+              0.5830815709969789,
+              0.5682451253481894,
+              0.5939849624060151,
+              0.6006191950464397,
+              0.5843520782396088,
+              0.5485714285714286,
+              0.5185185185185185,
+              0.5428571428571428,
+              0.5424164524421594,
+              0.5797546012269938,
+              0.5159420289855072,
+              0.5801886792452831,
+              0.5456852791878173,
+              0.5940860215053764,
+              0.5457142857142857,
+              0.5614525139664804,
+              0.5541795665634675,
+              0.5343511450381679,
+              0.5493333333333333
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 47,
+                "3": 10,
+                "1": 9
+              },
+              {
+                "1": 13,
+                "7": 49,
+                "3": 12
+              },
+              {
+                "3": 13,
+                "1": 12,
+                "7": 48
+              },
+              {
+                "1": 19,
+                "7": 51,
+                "3": 6
+              },
+              {
+                "7": 66,
+                "1": 14,
+                "3": 9
+              },
+              {
+                "1": 10,
+                "3": 11,
+                "7": 49
+              },
+              {
+                "7": 55,
+                "3": 15,
+                "1": 18
+              },
+              {
+                "7": 49,
+                "1": 13,
+                "3": 8
+              },
+              {
+                "1": 15,
+                "7": 55,
+                "3": 8
+              },
+              {
+                "1": 10,
+                "7": 57,
+                "3": 13
+              },
+              {
+                "7": 58,
+                "1": 21,
+                "3": 6
+              },
+              {
+                "1": 9,
+                "3": 13,
+                "7": 51
+              },
+              {
+                "7": 58,
+                "1": 16,
+                "3": 14
+              },
+              {
+                "1": 16,
+                "7": 49,
+                "3": 15
+              },
+              {
+                "1": 17,
+                "3": 8,
+                "7": 57
+              },
+              {
+                "3": 16,
+                "7": 63,
+                "1": 16
+              },
+              {
+                "1": 12,
+                "7": 52,
+                "3": 13
+              },
+              {
+                "7": 61,
+                "3": 21,
+                "1": 14
+              },
+              {
+                "7": 54,
+                "1": 8,
+                "3": 11
+              },
+              {
+                "7": 53,
+                "1": 13,
+                "3": 12
+              },
+              {
+                "7": 42,
+                "1": 13,
+                "3": 16
+              },
+              {
+                "1": 18,
+                "3": 11,
+                "7": 57
+              },
+              {
+                "7": 51,
+                "1": 10,
+                "3": 13
+              },
+              {
+                "7": 49,
+                "1": 15,
+                "3": 8
+              },
+              {
+                "7": 73,
+                "1": 15,
+                "3": 6
+              },
+              {
+                "1": 14,
+                "3": 15,
+                "7": 57
+              },
+              {
+                "7": 63,
+                "1": 12,
+                "3": 10
+              },
+              {
+                "1": 14,
+                "7": 49,
+                "3": 15
+              },
+              {
+                "7": 52,
+                "3": 13,
+                "1": 19
+              },
+              {
+                "1": 22,
+                "7": 45,
+                "3": 11
+              },
+              {
+                "1": 15,
+                "7": 57,
+                "3": 12
+              },
+              {
+                "3": 17,
+                "7": 53,
+                "1": 13
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 2,
+          "PORT": 31
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": true,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2302
+            ],
+            "response_utilization": [
+              0.889661164205039
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              425
+            ],
+            "response_utilization": [
+              0.4
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 12,
+                "3": 79
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              440
+            ],
+            "response_utilization": [
+              0.38636363636363635
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 12,
+                "3": 79
+              }
+            ]
+          }
+        }
       }
     ],
     "source_sha256": {
       "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
       "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
-      "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
-      "rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
-      "tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
-      "tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee"
+      "rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
+      "rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
+      "tests/test_hbm_bridge.py": "606861b0ce125f8c750715da24820e6fcb1e1abe40195bbd835e397550ee2d63",
+      "tests/run_hbm_bridge.py": "6f0b55f9011a9c2b7955effd19a009fcccc319a3e3b3a0535cbc18f10f76f5da"
     }
   },
   "hbm_directed": {
@@ -324,6 +2054,7 @@
         "parameters": {
           "PORT": 31
         },
+        "core_period_ps": 4000,
         "status": "passed",
         "tests": [
           "same_cycle_ar_and_r_with_next_request",
@@ -340,22 +2071,41 @@
           "PORT": 31,
           "FIFO_DEPTH": 4
         },
+        "core_period_ps": 4000,
         "status": "passed",
         "tests": [
           "aperture_end_and_wrapped_tags",
           "descriptor_overflow_faults_without_partial_reads",
           "response_errors_cross_clocks_and_other_reads_drain",
-          "isolated_single_returns_flush"
+          "isolated_single_returns_flush",
+          "partial_packet_flushes_without_extra_responses"
+        ]
+      },
+      {
+        "top": "decode_hbm_read_bridge",
+        "parameters": {
+          "PORT": 31,
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 3
+        },
+        "core_period_ps": 5000,
+        "status": "passed",
+        "tests": [
+          "aperture_end_and_wrapped_tags",
+          "descriptor_overflow_faults_without_partial_reads",
+          "response_errors_cross_clocks_and_other_reads_drain",
+          "isolated_single_returns_flush",
+          "partial_packet_flushes_without_extra_responses"
         ]
       }
     ],
     "source_sha256": {
       "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
       "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
-      "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+      "rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
       "tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
-      "tests/test_hbm_directed_bridge.py": "270dc9ea65ac19bfbf3490a1bbba8e6d50729a7f9fb748e796bcf62bc03d5ed7",
-      "tests/run_hbm_directed.py": "9cbad8f2e95b30577a3cd6628cfd898b021cd3ff1ee572f69511741b149eb60e"
+      "tests/test_hbm_directed_bridge.py": "d8275a1f28eef4992e9a468a87960f771e9379448e30ab491c42618296039757",
+      "tests/run_hbm_directed.py": "b66bd19bf4e5b2f784bfac19010cdb670dbe7a6431ec77e3423e73b300b3d4f6"
     }
   },
   "compute_boundaries": {
@@ -379,8 +2129,8 @@
       "cocotb": "2.1.0"
     },
     "source_sha256": {
-      "rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
-      "tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
+      "rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
       "tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
       "tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
       "tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b"

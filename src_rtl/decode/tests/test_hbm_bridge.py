@@ -1,6 +1,8 @@
 """Independent clock domains, descriptor expansion and lossless return packing."""
 from collections import deque
 import hashlib
+import json
+from pathlib import Path
 import os
 import random
 import struct
@@ -8,6 +10,10 @@ import cocotb
 from cocotb.triggers import Timer
 
 PORTS=int(os.environ.get('HBM_PORTS','1'))
+RECORDS=int(os.environ.get('RETURN_RECORDS','2'))
+CORE_PERIOD=int(os.environ.get('CORE_PERIOD_PS','4000'))
+HBM_PERIOD=int(os.environ.get('HBM_PERIOD_PS','2222'))
+EXPECT_SATURATION=os.environ.get('EXPECT_SATURATION','0')=='1'
 
 def pack(values,width):return sum(int(x)<<(i*width) for i,x in enumerate(values))
 def unpack(signal,width):
@@ -19,7 +25,7 @@ async def scenario(d,stress,phase,abort=False):
     rng=random.Random(211+stress);descriptors=[];expected=[];total=[]
     for p in range(PORTS):
         desc=[];gold={}
-        for i in range(24):
+        for i in range(24 if stress else 128):
             length=int(rng.randrange(1,17)) if stress else 16
             line=i*32;tag=(p<<20)+i*32
             desc.append((line,length-1,tag))
@@ -27,10 +33,11 @@ async def scenario(d,stress,phase,abort=False):
         descriptors.append(deque(desc));expected.append(gold);total.append(len(gold))
     offered=[None]*PORTS;accepted=[{} for _ in range(PORTS)];active=[{} for _ in range(PORTS)];held=[None]*PORTS
     returned=[set() for _ in range(PORTS)];issued=[[] for _ in range(PORTS)]
+    responses=[[] for _ in range(PORTS)];packet_counts=[{} for _ in range(PORTS)]
     d.core_clk.value=0;d.hbm_clk.value=0;d.core_rst.value=1;d.hbm_rst.value=1;d.hbm_enable.value=0
     for name in ('desc_valid','desc_line','desc_len','desc_tag','return_ready','m_arready','m_rdata','m_rid','m_rresp','m_rlast','m_rvalid'):
         getattr(d,name).value=0
-    now=0;next_core=2000;next_hbm=1111+phase;core_level=hbm_level=0;running=False;hbm_cycle=0
+    now=0;next_core=CORE_PERIOD//2;next_hbm=HBM_PERIOD//2+phase;core_level=hbm_level=0;running=False;hbm_cycle=0
     core_stalled=[None]*PORTS;ar_stalled=[None]*PORTS
     for step in range(50000):
         when=min(next_core,next_hbm)
@@ -44,7 +51,7 @@ async def scenario(d,stress,phase,abort=False):
         if core_event and not core_level and running:
             dv=int(d.desc_valid.value);dr=int(d.desc_ready.value)
             rv=int(d.return_valid.value);rr=int(d.return_ready.value)
-            masks=unpack(d.return_mask,2);datas=unpack(d.return_data,512);tags=unpack(d.return_tag,64);errors=unpack(d.return_error,2)
+            masks=unpack(d.return_mask,RECORDS);datas=unpack(d.return_data,RECORDS*256);tags=unpack(d.return_tag,RECORDS*32);errors=unpack(d.return_error,RECORDS)
             assert int(d.fault_core.value)==0
             for p in range(PORTS):
                 snapshot=(masks[p],datas[p],tags[p],errors[p])
@@ -55,8 +62,9 @@ async def scenario(d,stress,phase,abort=False):
                     for j in range(length+1):accepted[p][line+j]=tag+j
                     offered[p]=None
                 if rv>>p&1 and rr>>p&1:
-                    assert masks[p] in (1,3)
-                    for lane in range(2):
+                    assert masks[p] in [(1<<count)-1 for count in range(1,RECORDS+1)]
+                    packet_counts[p][masks[p]]=packet_counts[p].get(masks[p],0)+1
+                    for lane in range(RECORDS):
                         if masks[p]>>lane&1:
                             tag=(tags[p]>>(32*lane))&((1<<32)-1)
                             value=(datas[p]>>(256*lane))&((1<<256)-1)
@@ -70,7 +78,7 @@ async def scenario(d,stress,phase,abort=False):
                 if ar_stalled[p] is not None:assert av>>p&1 and (addresses[p],ids[p])==ar_stalled[p]
                 ar_stalled[p]=(addresses[p],ids[p]) if av>>p&1 and not ar>>p&1 else None
                 if rv>>p&1 and rr>>p&1:
-                    ident=held[p][0];active[p].pop(ident);held[p]=None
+                    ident=held[p][0];active[p].pop(ident);held[p]=None;responses[p].append(hbm_cycle)
                 if av>>p&1 and ar>>p&1:
                     physical_port=p if PORTS==32 else 31
                     assert addresses[p]>>29==physical_port and addresses[p]&31==0
@@ -96,23 +104,35 @@ async def scenario(d,stress,phase,abort=False):
             d.m_rvalid.value=rvalid;d.m_rlast.value=rvalid
             d.m_rid.value=pack([x[0] if x else 0 for x in held],6)
             d.m_rdata.value=pack([x[1] if x else 0 for x in held],256)
-        if core_event:core_level^=1;d.core_clk.value=core_level;next_core+=2000
-        if hbm_event:hbm_level^=1;d.hbm_clk.value=hbm_level;next_hbm+=1111
+        if core_event:core_level^=1;d.core_clk.value=core_level;next_core+=CORE_PERIOD//2
+        if hbm_event:hbm_level^=1;d.hbm_clk.value=hbm_level;next_hbm+=HBM_PERIOD//2
         await Timer(1,unit='ps');now+=1
         if abort and hbm_cycle>=150:
             assert any(len(returned[p])<total[p] for p in range(PORTS))
             return
         if all(len(returned[p])==total[p] for p in range(PORTS)):
             assert all(not x for x in active) and all(not x for x in accepted)
+            spans=[times[-1]-times[0]+1 for times in responses]
             if not stress:
-                for times in issued:assert times[-1]-times[0]+1==len(times),'Descriptor CDC starved the HBM port'
+                if EXPECT_SATURATION:
+                    assert all(span>len(times) for span,times in zip(spans,responses)), 'Negative control did not saturate'
+                else:
+                    for times in issued:assert times[-1]-times[0]+1==len(times),'Descriptor CDC starved the HBM port'
+                    for span,times in zip(spans,responses):
+                        assert span==len(times),'Return CDC throttled a continuous HBM response stream'
+                    assert all((1<<RECORDS)-1 in masks for masks in packet_counts),'Full packets were not exercised'
             d._log.info('PASS %d ports, stress=%s, phase=%d ps, %d returned reads',PORTS,stress,phase,sum(total))
-            return
+            return dict(stress=stress,phase_ps=phase,reads_per_port=total,
+                        response_span_cycles=spans,
+                        response_utilization=[len(times)/span for times,span in zip(responses,spans)],
+                        packet_mask_counts=packet_counts)
     raise AssertionError('CDC bridge timeout')
 
 @cocotb.test()
 async def clocks_descriptors_and_returns(d):
-    await scenario(d,False,137)
-    await scenario(d,True,811)
+    ideal=await scenario(d,False,137)
+    stress=await scenario(d,True,811)
     await scenario(d,True,0,abort=True)
-    await scenario(d,True,0)
+    reset=await scenario(d,True,0)
+    metrics=os.environ.get('HBM_METRICS_PATH')
+    if metrics:Path(metrics).write_text(json.dumps(dict(ideal=ideal,stress=stress,after_reset=reset),indent=2)+'\n')

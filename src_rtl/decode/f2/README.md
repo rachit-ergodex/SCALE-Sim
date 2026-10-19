@@ -118,19 +118,21 @@ rejects descriptors that cross the port's 512-MiB aperture. Tag arithmetic wraps
 at `TAG_WIDTH`; the issuer must avoid ambiguous live destination tags.
 Wire `ARLEN=0`, `ARSIZE=5`, `ARBURST=INCR` at the platform boundary.
 
-Each return carries up to two independent tagged 256-bit records with a valid
-mask (`01` or `11`). This permits 64 bytes per port per 250 MHz core cycle:
-**512 GB/s aggregate interface capacity**, above the **460.8 GB/s** aggregate
-32-byte × 32-port × 450 MHz HBM interface capacity. Data placement must sustain
-this rate in the downstream SRAM banks. Descriptor expansion avoids a new
-core-domain request for every HBM cycle. Sparse single returns flush without
-waiting indefinitely for a second record.
+Return packing is configurable with `RETURN_RECORDS`. The default of two tagged
+256-bit records preserves the 250 MHz interface: **512 GB/s aggregate capacity**.
+For the **200 MHz target, set `RETURN_RECORDS=3`**. This permits 96 bytes per
+port per core cycle, or **614.4 GB/s aggregate capacity**, above the **460.8 GB/s**
+32-byte × 32-port × 450 MHz HBM interface peak. Two records at 200 MHz would cap
+returns at 409.6 GB/s. Each packet has one validity bit per record; partial
+packets flush when the HBM input becomes idle. Downstream SRAM banks must accept
+the resulting packets to sustain this rate.
 
 `decode_async_fifo.sv` uses Gray pointers, two-stage synchronizers marked
-`ASYNC_REG`, dual-clock memory, and a registered read-prefetch slot. The default
-16-entry descriptor/return FIFO memories total **40 KiB across 32 ports**, plus
-read-prefetch, packet and pointer registers. This is in addition to the read
-frontends' 8.5 KiB of tag/ID bookkeeping and the compute staging SRAM.
+`ASYNC_REG`, dual-clock memory, and a registered read-prefetch slot. With depth
+16, descriptor/return FIFO memories total **40 KiB** across 32 ports for two
+records or **58.125 KiB** for three, plus read-prefetch, packet and pointer
+registers. This is in addition to the frontends' 8.5 KiB of tag/ID bookkeeping
+and the compute staging SRAM.
 Both clock domains and the external AXI fabric must reset together; synchronize
 reset deassertion separately in each domain. `outstanding` remains in the HBM
 clock domain; use synchronized snapshots for core-side telemetry. Sticky faults
@@ -140,8 +142,10 @@ are synchronized to the core and require coordinated reset for recovery.
 env -u PYTHONPATH src_rtl/build/decode_venv/bin/python src_rtl/decode/tests/run_hbm_bridge.py
 ```
 
-Verilator/cocotb tests use a 4,000 ps core period and a 2,222 ps HBM period with
-multiple relative phases. They check descriptor expansion, continuous ideal
+Verilator/cocotb tests use 4,000 ps and 5,000 ps core periods with a 2,222 ps
+HBM period and multiple relative phases. The 200 MHz three-record test checks
+65,536 reads across 32 ports with 2,048 consecutive HBM response cycles; a
+two-record negative control at 200 MHz exposes the expected return bottleneck. They check descriptor expansion, continuous ideal
 AR issue across descriptor boundaries, out-of-order returns, tag/data integrity,
 backpressure stability, prolonged stalls, and reset during active traffic for
 both a single port and all 32 ports. Generic synthesis retains the asynchronous
@@ -154,3 +158,17 @@ measured HBM bandwidth result or a complete inference RTL implementation.
 
 See [SYNTHESIS_READINESS.md](SYNTHESIS_READINESS.md) for the current functional
 verification gate and the distinction between component and full-board synthesis.
+
+## 200 MHz physical implementation
+
+The [Vivado component flow](scripts/README.md) targets the full 4,096-MAC compute
+core at 200 MHz and saves synthesis, placement and routing checkpoints. The
+historical 250 MHz simulator profile and TPS evidence retain their original
+clock. The 200 MHz target is a new physical experiment, not a relabeling of that
+performance result.
+
+Alex's burst200 source is used for separate compute/HBM clocks, reproducible
+checkpointing and routed timing reports. Its two-port native return limit also
+motivates the three-record change above. Its 16-beat AXI bursts demonstrate a
+further opportunity: our current read descriptors still expand to single-beat
+transactions, so interface capacity is not a measurement of real HBM bandwidth.

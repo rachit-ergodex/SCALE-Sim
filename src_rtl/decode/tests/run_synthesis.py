@@ -29,23 +29,40 @@ def input_cone(module, signal):
 def main():
     build=HERE/'build'/'synthesis';build.mkdir(parents=True,exist_ok=True)
     reports=[]
-    for top in ('decode_os_core','decode_scratchpad','decode_bank_lifetimes','decode_hbm_map','decode_async_fifo','decode_hbm_read_bridge32'):
-        out=build/f'{top}.json';log=build/f'{top}.log'
+    cases=[(top,{}) for top in ('decode_os_core','decode_scratchpad','decode_bank_lifetimes',
+                               'decode_hbm_map','decode_async_fifo','decode_hbm_read_bridge32')]
+    cases.append(('decode_hbm_read_bridge32',{'RETURN_RECORDS':3}))
+    for top,parameters in cases:
+        tag=top+''.join(f'_{key}{value}' for key,value in parameters.items())
+        out=build/f'{tag}.json';log=build/f'{tag}.log'
         sources=[HERE/'rtl'/f'{top}.sv']
         if top=='decode_hbm_read_bridge32':
             sources += [HERE/'rtl'/f'{name}.sv' for name in ('decode_async_fifo','decode_hbm_read_port','decode_hbm_read_bridge')]
-        script=(f"read_verilog -sv {' '.join(str(p) for p in sources)}; hierarchy -check -top {top}; "
+        configure=''.join(f'chparam -set {key} {value} {top}; ' for key,value in parameters.items())
+        script=(f"read_verilog -sv {' '.join(str(p) for p in sources)}; {configure}hierarchy -check -top {top}; "
                 f'proc; opt; wreduce; opt; memory_dff; memory_collect; opt_clean; check -assert; stat; write_json {out}')
         with log.open('w') as stream:subprocess.run(['yosys','-Q','-p',script],check=True,stdout=stream,stderr=subprocess.STDOUT)
         modules=json.loads(out.read_text())['modules'];module=modules[top];cells=list(module['cells'].values())
         assert not any('latch' in cell['type'] for mod in modules.values() for cell in mod['cells'].values()),top
         row={'top':top,'status':'passed','cells':dict(Counter(cell['type'] for cell in cells))}
+        if parameters:row['parameters']=parameters
         if top=='decode_os_core':
             macs=[cell for cell in cells if cell['type']=='$mul' and
                 int(cell['parameters']['A_WIDTH'],2)==8 and int(cell['parameters']['B_WIDTH'],2)==8]
             assert len(macs)==4*8
             assert all(int(cell['parameters']['A_SIGNED'],2) and int(cell['parameters']['B_SIGNED'],2) for cell in macs)
             row['signed_int8_multipliers']=len(macs)
+            # Runtime address arithmetic must not reintroduce the original
+            # 32-bit variable dividers/modulo or products. Constant command
+            # stride products are allowed; the running datapath uses adders.
+            divmods=[cell for cell in cells if cell['type'] in ('$div','$mod')]
+            assert not divmods, 'variable partition layout arithmetic returned'
+            variable_products=[cell for cell in cells if cell['type']=='$mul' and
+                not any(all(bit in ('0','1') for bit in cell['connections'][port])
+                        for port in ('A','B'))]
+            assert len(variable_products)==len(macs), 'non-MAC variable multiplier returned'
+            row['variable_dividers_or_modulo']=len(divmods)
+            row['variable_non_mac_multipliers']=len(variable_products)-len(macs)
         if top=='decode_scratchpad':
             memories=[cell for cell in cells if cell['type']=='$mem_v2'];assert len(memories)==1
             params=memories[0]['parameters']
@@ -66,6 +83,10 @@ def main():
             assert len(cells)==32
             assert all('decode_hbm_read_bridge' in cell['type'] for cell in cells)
             row['independent_port_bridges']=32
+            return_records=parameters.get('RETURN_RECORDS',2)
+            assert len(module['ports']['return_data']['bits'])==32*return_records*256
+            assert len(module['ports']['return_mask']['bits'])==32*return_records
+            row['return_records_per_port']=return_records
             frontends=[mod for name,mod in modules.items() if 'decode_hbm_read_port' in name]
             assert len(frontends)==32
             for frontend in frontends:
@@ -75,6 +96,6 @@ def main():
             row['axi_rready_combinational_input_paths']=0
         reports.append(row)
     (build/'summary.json').write_text(json.dumps(reports,indent=2)+'\n')
-    print('PASS six generic synthesis checks; signed INT8 MACs, SRAM, async FIFO and 32 independent bridges')
+    print('PASS seven generic synthesis checks; signed INT8 MACs, SRAM, async FIFO and 32 independent bridges')
 
 if __name__=='__main__':main()

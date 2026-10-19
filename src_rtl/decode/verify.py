@@ -27,11 +27,11 @@ def collect(before):
         assert not root.findall('.//failure') and not root.findall('.//error')
         xml += [{'name':test.get('name'),'module':test.get('classname'),'simulation_ns':test.get('sim_time_ns')}
                 for test in root.findall('.//testcase')]
-    assert len(xml)==6
+    assert len(xml)==9
     switchboard=json.loads((HERE/'build/switchboard/summary.json').read_text())
     synthesis=json.loads((HERE/'build/synthesis/summary.json').read_text())
     assert switchboard['status']=='passed' and switchboard['cases']==24
-    assert len(synthesis)==6 and all(s['status']=='passed' for s in synthesis)
+    assert len(synthesis)==7 and all(s['status']=='passed' for s in synthesis)
     hbm=json.loads((HERE/'hbm_read_verification.json').read_text())
     assert hbm['status']=='passed'
     for name,digest in hbm['source_sha256'].items():

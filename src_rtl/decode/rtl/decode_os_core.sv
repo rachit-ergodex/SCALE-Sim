@@ -28,19 +28,67 @@ module decode_os_core #(
     output reg [PARTITIONS*COLS*32-1:0] c_data,
     output reg [63:0] logical_cycles, elapsed_cycles, stall_cycles
 );
-    reg [31:0] m_reg, k_reg, n_reg, column_parts, workers, wave, phase;
+    reg [31:0] m_reg, k_reg, n_reg, workers, wave_row, phase;
     reg accumulate;
     reg signed [7:0] a_pipe [0:PARTITIONS-1][0:COLS-1];
     reg signed [31:0] accumulator [0:PARTITIONS-1][0:COLS-1];
+    reg [31:0] row_index [0:PARTITIONS-1];
+    reg [31:0] a_row_base [0:PARTITIONS-1];
+    reg [31:0] c_row_base [0:PARTITIONS-1];
+    reg [31:0] column_base [0:PARTITIONS-1];
+    reg [PARTITIONS-1:0] partition_used;
+    reg [31:0] b_row_base [0:COLS-1];
+    reg [31:0] a_wave_stride, c_wave_stride;
     wire [31:0] requested_parts=(cmd_n+32'(COLS)-1)/32'(COLS);
-    wire [31:0] available_workers=32'(PARTITIONS)/((requested_parts==0)?32'd1:requested_parts);
-    wire [31:0] requested_workers=cmd_parallel_rows ? ((cmd_m<available_workers)?cmd_m:available_workers) : 32'd1;
+    reg [31:0] requested_workers;
+    reg [31:0] requested_row [0:PARTITIONS-1];
+    reg [31:0] requested_column [0:PARTITIONS-1];
+    reg [31:0] requested_a_base [0:PARTITIONS-1];
+    reg [31:0] requested_c_base [0:PARTITIONS-1];
+    reg [31:0] requested_a_stride, requested_c_stride;
     assign cmd_ready=!rst && !busy;
     initial begin
         if (PARTITIONS<1 || COLS<1 || MAX_M<1 || MAX_K<1) $fatal(1,"Invalid array geometry");
     end
-    // Constant partition/column loop bounds describe actual physical MACs.
-    // Runtime division is in address/control logic, not the MAC datapath.
+    // Decode the finite set of partition layouts only at command acceptance.
+    // Every divide/modulo below has constant operands at elaboration; none is
+    // a variable divider in the running address path. Constant row products
+    // are shared by synthesis and selected by the decoded row number.
+    always @* begin
+        requested_workers=1;
+        for(integer p=0;p<PARTITIONS;p=p+1) begin
+            requested_row[p]=0;requested_column[p]=0;
+        end
+        for(integer parts=1;parts<=PARTITIONS;parts=parts+1) begin
+            if(requested_parts==32'(parts)) begin
+                if(cmd_parallel_rows)
+                    requested_workers=(cmd_m<32'(PARTITIONS/parts))?cmd_m:32'(PARTITIONS/parts);
+                for(integer p=0;p<PARTITIONS;p=p+1) begin
+                    requested_row[p]=32'(p/parts);
+                    requested_column[p]=32'((p%parts)*COLS);
+                end
+            end
+        end
+        requested_a_stride=cmd_k;requested_c_stride=cmd_n;
+        for(integer rows=2;rows<=MAX_M && rows<=PARTITIONS;rows=rows+1) begin
+            if(requested_workers==32'(rows)) begin
+                requested_a_stride=32'(rows)*cmd_k;
+                requested_c_stride=32'(rows)*cmd_n;
+            end
+        end
+        for(integer p=0;p<PARTITIONS;p=p+1) begin
+            requested_a_base[p]=0;requested_c_base[p]=0;
+            for(integer row=1;row<MAX_M && row<PARTITIONS;row=row+1) begin
+                if(requested_row[p]==32'(row)) begin
+                    requested_a_base[p]=32'(row)*cmd_k;
+                    requested_c_base[p]=32'(row)*cmd_n;
+                end
+            end
+        end
+    end
+    // Running address generation uses registered row bases and additions.
+    // Shared B row counters advance with the same global commit as the MACs,
+    // preserving both the native OS schedule and address stability on stalls.
     always @* begin
         a_valid='0; a_address='0; b_valid='0;
         seed_valid='0; c_valid='0;
@@ -48,19 +96,15 @@ module decode_os_core #(
             b_address[lane*32 +: 32]=0;c_address[lane*32 +: 32]=0;c_data[lane*32 +: 32]=0;
         end
         for (integer p=0;p<PARTITIONS;p=p+1) begin
-            if (busy && !rst && column_parts!=0 &&
-                (32'(p)/column_parts)<workers &&
-                (wave*workers+32'(p)/column_parts)<m_reg) begin
-                a_address[p*32 +: 32]=(wave*workers+32'(p)/column_parts)*k_reg+phase;
+            if (busy && !rst && partition_used[p] && row_index[p]<m_reg) begin
+                a_address[p*32 +: 32]=a_row_base[p]+phase;
                 a_valid[p]=phase<k_reg;
                 for (integer c=0;c<COLS;c=c+1) begin
-                    c_address[(p*COLS+c)*32 +: 32]=(wave*workers+32'(p)/column_parts)*n_reg+
-                        (32'(p)%column_parts)*32'(COLS)+32'(c);
-                    if ((32'(p)%column_parts)*32'(COLS)+32'(c)<n_reg &&
+                    c_address[(p*COLS+c)*32 +: 32]=c_row_base[p]+column_base[p]+32'(c);
+                    if (column_base[p]+32'(c)<n_reg &&
                         phase>=32'(c) && phase<k_reg+32'(c)) begin
                         b_valid[p*COLS+c]=1;
-                        b_address[(p*COLS+c)*32 +: 32]=(phase-32'(c))*n_reg+
-                            (32'(p)%column_parts)*32'(COLS)+32'(c);
+                        b_address[(p*COLS+c)*32 +: 32]=b_row_base[c]+column_base[p]+32'(c);
                         seed_valid[p*COLS+c]=accumulate && phase==32'(c);
                         c_valid[p*COLS+c]=phase==k_reg-1+32'(c);
                         c_data[(p*COLS+c)*32 +: 32]=
@@ -75,10 +119,14 @@ module decode_os_core #(
     always @(posedge clk) begin
         if (rst) begin
             busy<=0;done<=0;command_error<=0;
-            m_reg<=0;k_reg<=0;n_reg<=0;column_parts<=1;workers<=1;wave<=0;phase<=0;accumulate<=0;
+            m_reg<=0;k_reg<=0;n_reg<=0;workers<=1;wave_row<=0;phase<=0;accumulate<=0;
+            a_wave_stride<=0;c_wave_stride<=0;partition_used<='0;
             logical_cycles<=0;elapsed_cycles<=0;stall_cycles<=0;
-            for(integer p=0;p<PARTITIONS;p=p+1)
+            for(integer c=0;c<COLS;c=c+1) b_row_base[c]<=0;
+            for(integer p=0;p<PARTITIONS;p=p+1) begin
+                row_index[p]<=0;a_row_base[p]<=0;c_row_base[p]<=0;column_base[p]<=0;
                 for(integer c=0;c<COLS;c=c+1) begin a_pipe[p][c]<=0;accumulator[p][c]<=0;end
+            end
         end else begin
             done<=0;command_error<=0;
             if(cmd_valid && cmd_ready) begin
@@ -86,9 +134,17 @@ module decode_os_core #(
                    cmd_n==0 || cmd_n>32'(PARTITIONS*COLS)) command_error<=1;
                 else begin
                     busy<=1;m_reg<=cmd_m;k_reg<=cmd_k;n_reg<=cmd_n;
-                    column_parts<=requested_parts;workers<=requested_workers;
-                    accumulate<=cmd_accumulate;wave<=0;phase<=0;
+                    workers<=requested_workers;
+                    a_wave_stride<=requested_a_stride;c_wave_stride<=requested_c_stride;
+                    accumulate<=cmd_accumulate;wave_row<=0;phase<=0;
                     logical_cycles<=0;elapsed_cycles<=0;stall_cycles<=0;
+                    for(integer c=0;c<COLS;c=c+1) b_row_base[c]<=0;
+                    for(integer p=0;p<PARTITIONS;p=p+1) begin
+                        row_index[p]<=requested_row[p];
+                        a_row_base[p]<=requested_a_base[p];c_row_base[p]<=requested_c_base[p];
+                        column_base[p]<=requested_column[p];
+                        partition_used[p]<=requested_row[p]<requested_workers;
+                    end
                 end
             end
             if(busy) begin
@@ -104,9 +160,21 @@ module decode_os_core #(
                     end
                     if(phase==k_reg+32'(COLS)-2) begin
                         phase<=0;
-                        if((wave+1)*workers>=m_reg) begin busy<=0;done<=1;end
-                        else wave<=wave+1;
-                    end else phase<=phase+1;
+                        for(integer c=0;c<COLS;c=c+1) b_row_base[c]<=0;
+                        if(wave_row+workers>=m_reg) begin busy<=0;done<=1;end
+                        else begin
+                            wave_row<=wave_row+workers;
+                            for(integer p=0;p<PARTITIONS;p=p+1) begin
+                                row_index[p]<=row_index[p]+workers;
+                                a_row_base[p]<=a_row_base[p]+a_wave_stride;
+                                c_row_base[p]<=c_row_base[p]+c_wave_stride;
+                            end
+                        end
+                    end else begin
+                        phase<=phase+1;
+                        for(integer c=0;c<COLS;c=c+1)
+                            if(phase>=32'(c)) b_row_base[c]<=b_row_base[c]+n_reg;
+                    end
                 end
             end
         end

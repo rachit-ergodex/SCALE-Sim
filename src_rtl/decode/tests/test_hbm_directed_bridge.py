@@ -1,12 +1,15 @@
 """Descriptor boundaries, wrapped tags and fault delivery across both clocks."""
 from collections import deque
 import hashlib
+import os
 import struct
 
 import cocotb
 from cocotb.triggers import Timer
 
 MASK32=(1<<32)-1
+RECORDS=int(os.environ.get('RETURN_RECORDS','2'))
+CORE_PERIOD=int(os.environ.get('CORE_PERIOD_PS','4000'))
 
 def payload(line,tag):
     return int.from_bytes(hashlib.sha256(struct.pack('<II',line,tag)).digest(),'little')
@@ -14,7 +17,7 @@ def payload(line,tag):
 class Clocks:
     """Sample handshakes before either active edge, including coincident edges."""
     def __init__(self,d):
-        self.d=d;self.now=0;self.next_core=2000;self.next_hbm=1111
+        self.d=d;self.now=0;self.next_core=CORE_PERIOD//2;self.next_hbm=1111
         self.core_level=0;self.hbm_level=0
         d.core_clk.value=0;d.hbm_clk.value=0
 
@@ -32,13 +35,13 @@ class Clocks:
             result['hbm']={name:int(getattr(self.d,name).value) for name in (
                 'm_arvalid','m_arready','m_araddr','m_arid','m_rvalid','m_rready','outstanding')}
         if core:
-            self.core_level^=1;self.d.core_clk.value=self.core_level;self.next_core+=2000
+            self.core_level^=1;self.d.core_clk.value=self.core_level;self.next_core+=CORE_PERIOD//2
         if hbm:
             self.hbm_level^=1;self.d.hbm_clk.value=self.hbm_level;self.next_hbm+=1111
         await Timer(1,unit='ps');self.now+=1
         return result
 
-async def scenario(d,descriptors,*,overflow=False,error=None,sparse=False,stall=False):
+async def scenario(d,descriptors,*,overflow=False,error=None,sparse=False,stall=False,expected_mask=None):
     """Lengths are numbers of lines; error is (tag, RRESP, RLAST)."""
     clocks=Clocks(d)
     d.core_rst.value=1;d.hbm_rst.value=1;d.hbm_enable.value=0
@@ -48,7 +51,7 @@ async def scenario(d,descriptors,*,overflow=False,error=None,sparse=False,stall=
     while clocks.now<30000:await clocks.step()
     d.core_rst.value=0;d.hbm_rst.value=0;d.hbm_enable.value=1
     pending=deque(descriptors);offered=None;accepted={};active={};held=None
-    expected={};received=set();hbm_cycle=0;issued_count=0;fault_seen=False;paired=False;single=False
+    expected={};received=set();hbm_cycle=0;issued_count=0;fault_seen=False;packet_masks=set()
     for line,length,tag in descriptors:
         if line+length-1>0xffffff:continue
         for offset in range(length):
@@ -82,9 +85,9 @@ async def scenario(d,descriptors,*,overflow=False,error=None,sparse=False,stall=
                     for offset in range(length):accepted[line+offset]=(tag+offset)&MASK32
                 offered=None
             if c['return_valid'] and c['return_ready']:
-                assert c['return_mask'] in (1,3)
-                paired|=c['return_mask']==3;single|=c['return_mask']==1
-                for lane in range(2):
+                assert c['return_mask'] in [(1<<count)-1 for count in range(1,RECORDS+1)]
+                packet_masks.add(c['return_mask'])
+                for lane in range(RECORDS):
                     if c['return_mask']>>lane&1:
                         tag=(c['return_tag']>>(32*lane))&MASK32
                         value=(c['return_data']>>(256*lane))&((1<<256)-1)
@@ -108,7 +111,8 @@ async def scenario(d,descriptors,*,overflow=False,error=None,sparse=False,stall=
             if hbm_cycle<150:continue
             assert not active and not accepted and issued_count==len(expected)
             assert int(d.outstanding.value)==0
-            if sparse:assert single
+            if sparse:assert 1 in packet_masks
+            if expected_mask is not None:assert expected_mask in packet_masks
             return
     raise AssertionError(f'Bridge timeout: returned {len(received)}/{len(expected)}, fault={fault_seen}')
 
@@ -128,3 +132,7 @@ async def response_errors_cross_clocks_and_other_reads_drain(d):
 @cocotb.test()
 async def isolated_single_returns_flush(d):
     await scenario(d,[(0,1,1),(4,1,2),(8,1,3)],sparse=True)
+
+@cocotb.test()
+async def partial_packet_flushes_without_extra_responses(d):
+    await scenario(d,[(0,RECORDS-1,1)],expected_mask=(1<<(RECORDS-1))-1)

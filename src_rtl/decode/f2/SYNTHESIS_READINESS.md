@@ -11,7 +11,7 @@ A fresh baseline suite passed, followed by targeted reruns of all HBM and
 synthesis checks after the AXI correction. Unchanged compute tests were not
 substituted for tests of modified HBM RTL. `../verification.json` records the
 final source hashes and component results; `../hbm_directed_verification.json`
-records the ten directed HBM cases.
+records the sixteen directed HBM cases.
 
 | Check | Result and scope |
 | --- | --- |
@@ -21,9 +21,9 @@ records the ten directed HBM cases.
 | Queue integration | 24 Switchboard/Verilator GEMMs passed |
 | Memory primitives | Byte writes, read-first collisions, invalid addresses, stalled responses, reset preservation and bank ownership passed |
 | All-port HBM reads | 13,312 reads passed; 32 simultaneous responses for 256 consecutive ideal-target cycles; all 2,048 request slots exercised |
-| Clock crossings | Single-port and all-32-port tests passed at 4,000 ps core / 2,222 ps HBM periods with varied phase, reordering, stalls and coordinated reset |
-| Directed HBM protocols | Ten tests passed: legal same-cycle AR/R, disable under stalled AR, error/drain behavior, aperture end/overflow, tag wrap, sparse returns, and malformed-response isolation |
-| Structural checks | Six generic Yosys checks passed; no latches, compact signed INT8 multipliers and memory retained, 32 independent bridges, and no AXI input-to-RREADY combinational cone |
+| Clock crossings | Single-port and all-32-port tests passed at 4,000/5,000 ps core / 2,222 ps HBM periods with varied phase, reordering, stalls and coordinated reset |
+| Directed HBM protocols | Sixteen tests passed, including partial-packet flushing: legal same-cycle AR/R, disable under stalled AR, error/drain behavior, aperture end/overflow, tag wrap, sparse returns, and malformed-response isolation |
+| Structural checks | Seven generic Yosys checks passed; no latches, compact signed INT8 multipliers and memory retained, 32 independent bridges, and no AXI input-to-RREADY combinational cone |
 | Target lint | Generated ASIC and F2 compute wrappers passed Verilator lint |
 
 The numerical results above verify the implemented integer compute block.
@@ -67,18 +67,36 @@ Before a full F2 implementation, the following remain:
 - Physical CDC constraints and review: Gray-bus skew/max-delay, synchronizer
   placement, and coordinated reset with per-domain synchronized deassertion.
 - Vendor HBM simulation, DSP/BRAM/URAM mapping, resource fit, and timing closure
-  at 250 MHz core / 450 MHz HBM. No Vivado installation was available locally.
+  at the new **200 MHz core / 450 MHz HBM** target. Vivado 2025.2 is available
+  on the existing `opentpu-f2` host; the component flow is described below.
 
 An exploratory full 64×64 Yosys run reached process conversion but was stopped
 after its five-minute budget (317 seconds including termination). It did not
 complete optimization or the final structural check, so full-size generic
-synthesis is **inconclusive** and is not included in the six passing checks.
+synthesis is **inconclusive** and is not included in the seven passing checks.
 Full-size component area/resource characterization remains a Vivado task.
 
-The compute address/control path still uses runtime 32-bit division/modulo and
-multiplication. Functional tests do not establish that this logic meets 250 MHz;
-inspect its area and critical paths during component synthesis before proceeding
-to placement. Generic memory retention does not establish BRAM/URAM mapping.
+The compute address/control path now decodes constant partition layouts at
+command acceptance and advances registered row bases with additions. Generic
+synthesis checks reject variable divide/modulo and non-MAC variable multipliers.
+This preserves the native simulator's accepted-cycle addresses and arithmetic;
+physical timing still needs Vivado measurement. Generic memory retention does
+not establish BRAM/URAM mapping.
+
+## 200 MHz synthesis experiment
+
+Use the [reproducible Vivado flow](scripts/README.md) for the full 64×64 compute
+component on `xcvu47p-fsvh2892-2-e`. It snapshots functionally verified RTL,
+constrains the clock to 5 ns, and retains native timing, utilization and DRC
+reports. Its 1 ns boundary budgets are provisional SRAM-adapter contracts.
+Even a successful routed component result does not establish legal AWS CL-region
+fit or full-system closure: the experiment does not include the static shell.
+
+For the separate HBM bridge, use `RETURN_RECORDS=3` at 200 MHz. The default of
+two records would limit aggregate returns to 409.6 GB/s. Three records provide
+614.4 GB/s interface capacity; a digital all-port test sustains 65,536 returns
+at one per port per HBM cycle. This is functional throughput evidence, not
+physical HBM timing or measured memory bandwidth.
 
 ## Reproduce
 
