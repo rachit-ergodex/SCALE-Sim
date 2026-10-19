@@ -1,0 +1,190 @@
+{
+  "status": "passed",
+  "scope": "Compute core and standalone memory/control blocks; not full-transformer RTL or physical FPGA validation",
+  "sources_sha256": {
+    "scalesim/compute/systolic_compute_os.py": "63124a2b0ee7d6c646388de324fc2652cd6fa6c9e7b108d35faf4fac0009efe0",
+    "scalesim/scale_config.py": "631a1995b27a9f318b7eabf30fc7e7400fbd474ead03bd6ff7de2562346b8291",
+    "src_rtl/decode/generate.py": "0f7838c7ff56ea2b0bb84605a2a81f7171aa9a902a0a1bef1bf560d7d29219ce",
+    "src_rtl/decode/generated/decode_asic_compute.json": "cdc53861652a64fdd8736220b75b5878c54894251ced8107c9bdce15c7f13962",
+    "src_rtl/decode/generated/decode_asic_compute.sv": "67d8baaf97ac4b3a46326bdbb1bc4afa67d2697aa1722bb4089c544ef712ef85",
+    "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+    "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+    "src_rtl/decode/requirements.txt": "15b99f20e7355a630201566237d1bfc673059faa1f0fa0c38588fecd84de1bf5",
+    "src_rtl/decode/rtl/decode_bank_lifetimes.sv": "190bace1ef5f25651a49a85e985953afd5e98a4692dbee94775a7d0e1cf31003",
+    "src_rtl/decode/rtl/decode_hbm_map.sv": "e1d8fdb4d9d9bacbf17fee4cc5682b7e156c4d4d63d3c107500b4d8927c5ad98",
+    "src_rtl/decode/rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
+    "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
+    "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
+    "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
+    "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
+    "src_rtl/decode/tests/run_synthesis.py": "a1ee0ef2bfc5d3b0087eb80692db078984d23723c2b7a2b9965064a40b24d98d",
+    "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
+    "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
+    "src_rtl/decode/tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
+    "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
+    "src_rtl/decode/verify.py": "e85a33f7a7ae9b1a4bdb8e2806912755d2339cbe91bd0712379dfeb97c445f70"
+  },
+  "tools": {
+    "cocotb": "2.1.0",
+    "switchboard-hw": "0.3.4",
+    "numpy": "2.5.4",
+    "tqdm": "4.70.1"
+  },
+  "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+  "yosys": "Yosys 0.64 (git sha1 d8dab5b32666564eca8e18f412973853ce006e61, clang++ 16.0.0 -fPIC -O3)",
+  "cocotb_configurations": [
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 4,
+        "COLS": 8
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 32,
+        "COLS": 64
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 64,
+        "COLS": 64
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_scratchpad",
+      "parameters": {
+        "DATA_WIDTH": 256,
+        "DEPTH": 13
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_bank_lifetimes",
+      "parameters": {},
+      "status": "passed"
+    },
+    {
+      "top": "decode_hbm_map",
+      "parameters": {},
+      "status": "passed"
+    }
+  ],
+  "cocotb_tests": [
+    {
+      "name": "ownership_and_illegal_completions",
+      "module": "test_bank_lifetimes",
+      "simulation_ns": null
+    },
+    {
+      "name": "complete_bank_column_bijection",
+      "module": "test_hbm_map",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "byte_writes_stalls_and_collisions",
+      "module": "test_scratchpad",
+      "simulation_ns": null
+    }
+  ],
+  "switchboard": {
+    "status": "passed",
+    "cases": 24,
+    "transport": "Switchboard shared-memory queues",
+    "simulator": "Verilator",
+    "reference": "independent NumPy INT64, explicit INT32 wrap"
+  },
+  "generic_synthesis": [
+    {
+      "top": "decode_os_core",
+      "status": "passed",
+      "cells": {
+        "$add": 181,
+        "$sdffe": 67,
+        "$sdff": 7,
+        "$reduce_bool": 2,
+        "$ne": 1,
+        "$reduce_and": 35,
+        "$reduce_or": 2,
+        "$not": 5,
+        "$div": 5,
+        "$eq": 16,
+        "$logic_not": 7,
+        "$ge": 9,
+        "$gt": 3,
+        "$logic_and": 84,
+        "$logic_or": 5,
+        "$lt": 49,
+        "$mod": 4,
+        "$mul": 50,
+        "$mux": 461,
+        "$sub": 10
+      },
+      "signed_int8_multipliers": 32
+    },
+    {
+      "top": "decode_scratchpad",
+      "status": "passed",
+      "cells": {
+        "$sdff": 1,
+        "$sdffe": 2,
+        "$reduce_bool": 1,
+        "$reduce_or": 1,
+        "$not": 1,
+        "$ge": 2,
+        "$logic_and": 4,
+        "$logic_not": 2,
+        "$logic_or": 1,
+        "$lt": 1,
+        "$mux": 386,
+        "$mem_v2": 1
+      },
+      "memory_bits": 1048576
+    },
+    {
+      "top": "decode_bank_lifetimes",
+      "status": "passed",
+      "cells": {
+        "$sdff": 1,
+        "$logic_not": 2,
+        "$eq": 3,
+        "$logic_and": 8,
+        "$ne": 1,
+        "$mux": 17,
+        "$mem_v2": 1
+      }
+    },
+    {
+      "top": "decode_hbm_map",
+      "status": "passed",
+      "cells": {
+        "$mux": 1
+      }
+    }
+  ],
+  "generated_target_lint": [
+    "decode_asic_compute",
+    "decode_f2_compute"
+  ]
+}
