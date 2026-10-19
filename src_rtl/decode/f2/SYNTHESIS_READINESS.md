@@ -117,3 +117,18 @@ the exact source hashes, host, run directory and command. At that observation,
 synthesis was running; no completed synthesis, routed timing or resource-fit
 result is claimed. Inspect the remote run's `manifest.json`, `console.log`,
 `audit.json` and native reports for its eventual result.
+
+
+The initial run was subsequently **stopped before PnR** because managed XDC
+rejected its input-port collection command, omitting the input delay budgets.
+Its logs and snapshot are retained; it does not count as a timing result.
+The fix uses unmanaged OOC Tcl, 4,096-bit delay chunks, critical-warning errors
+and a timing-coverage gate before placement. An actual Vivado 2025.2 regression
+passed with 4,098 input and 4,097 output bits, zero missing/partial timing budgets,
+and the intended clock and uncertainty values; see
+[constraint regression](constraint_smoke_verification.json).
+
+The corrected full-size **run-002** was launched from commit `0834501`;
+[its launch observation](compute_200_run002.json) records the new inputs and
+remote directory. At that observation synthesis was running, PnR had not started,
+and no area/timing closure result was available.
