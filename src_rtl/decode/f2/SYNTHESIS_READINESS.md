@@ -109,3 +109,10 @@ env -u PYTHONPATH src_rtl/build/decode_venv/bin/python src_rtl/decode/verify.py
 This runs generated-target checks, all compute/memory tests, Switchboard,
 generic synthesis, all-port and directed HBM tests, maximum-K tests and Icarus.
 Only proceed on the exact source snapshot whose verification manifest passes.
+
+The first Vivado 2025.2 run was launched on the existing `opentpu-f2` host using
+verified commit `cca6fb1`. [Launch observation](compute_200_launch.json) records
+the exact source hashes, host, run directory and command. At that observation,
+synthesis was running; no completed synthesis, routed timing or resource-fit
+result is claimed. Inspect the remote run's `manifest.json`, `console.log`,
+`audit.json` and native reports for its eventual result.
