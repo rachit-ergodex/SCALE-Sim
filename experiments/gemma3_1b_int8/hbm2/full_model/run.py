@@ -5,7 +5,7 @@ Numerical execution is run_numerical.py. This command requires its successful
 report and emits a finite-buffer accelerator model with optional two-bank DMA overlap.
 It is not stock SCALE-Sim memory policy or full-transformer RTL equivalence.
 """
-import argparse,csv,hashlib,json,platform,subprocess,sys,time
+import argparse,csv,hashlib,io,json,platform,subprocess,sys,time
 from collections import defaultdict
 from dataclasses import replace
 from pathlib import Path
@@ -14,6 +14,7 @@ ROOT=HERE.parents[3]
 sys.path.insert(0,str(ROOT))
 from workload import Graph
 from config import Architecture
+from intermediate_sram import plan_residency
 from experiments.gemma3_1b_int8.hbm2.f2_config import make_f2_config,RAMULATOR_PIN,VENDOR
 
 
@@ -81,7 +82,7 @@ def summarize(folder,manifest,numerical,architecture,profile,validation):
                            memory_wait_cycles=t['total_cycles']-t['compute_cycles'],
                            dram_transaction_bytes=(t['reads']+t['writes'])*32,
                            input_token_id=numerical['decode_input_token_ids'][index],output_token_id=numerical['decode_output_token_ids'][index]))
-    sources=[HERE/'address_map.h',HERE/'runner.cpp',HERE/'workload.py',HERE/'config.py',HERE/'fused_value_cache.py',Path(__file__),ROOT/'src_rtl/cosim/native_bridge.cpp']
+    sources=[HERE/'intermediate_sram.py',HERE/'address_map.h',HERE/'runner.cpp',HERE/'workload.py',HERE/'config.py',HERE/'fused_value_cache.py',Path(__file__),ROOT/'src_rtl/cosim/native_bridge.cpp']
     report=dict(status='passed',classification='Real numerical W8A8+KV8 decode paired with dependency-ordered native Ramulator2 memory timing and explicit compute models',
                 assumed_core_clock_hz=hz,decode_steps=len(tokens),mean_decode_tps=len(tokens)*hz/end,
                 mean_decode_ms=end/len(tokens)/hz*1000,tokens=result,total_cycles=end,operator_coverage=validation,
@@ -151,14 +152,18 @@ def main():
         (args.out/'numerical_result.json').write_text(json.dumps(numerical,indent=2))
         (args.out/'numerical_operator_trace.json').write_text(json.dumps(events,indent=2))
         (args.out/'configuration.json').write_text(json.dumps(architecture.to_dict(),indent=2)+'\n')
-        with (args.out/'commands.txt').open('w') as stream:
-            manifest=Graph(stream,steps=numerical['decode_steps'],context=numerical['first_decode_context'],
-                           input_ids=numerical['decode_input_token_ids'],architecture=architecture).run()
+        stream=io.StringIO()
+        manifest=Graph(stream,steps=numerical['decode_steps'],context=numerical['first_decode_context'],
+                       input_ids=numerical['decode_input_token_ids'],architecture=architecture).run()
+        commands,residency=plan_residency(stream.getvalue(),manifest,architecture.intermediate_sram_bytes,architecture.vector_lanes*4)
+        (args.out/'commands.txt').write_text(commands)
+        (args.out/'residency.json').write_text(json.dumps(residency,indent=2)+'\n')
+        manifest['intermediate_sram']=dict(capacity_bytes=residency['capacity_bytes'],peak_live_bytes=residency['peak_live_bytes'],avoided_logical_HBM_bytes=residency['avoided_logical_HBM_bytes'])
         validation=verify_trace(numerical,manifest,events)
         (args.out/'manifest.json').write_text(json.dumps(manifest,indent=2));(args.out/'hbm2.json').write_text(json.dumps(profile_config))
         execution=dict(status='prepared',configuration=architecture.to_dict(),inputs_sha256={
             name:hashlib.sha256((args.out/name).read_bytes()).hexdigest() for name in
-            ('configuration.json','manifest.json','commands.txt','hbm2.json','numerical_result.json','numerical_operator_trace.json')})
+            ('configuration.json','manifest.json','commands.txt','hbm2.json','numerical_result.json','numerical_operator_trace.json','residency.json')})
         (args.out/'execution.json').write_text(json.dumps(execution,indent=2)+'\n')
         print('Prepared',len(manifest['ops']),'operators;',sum(o['commands'] for o in manifest['ops']),'commands',flush=True)
         if args.prepare_only:return

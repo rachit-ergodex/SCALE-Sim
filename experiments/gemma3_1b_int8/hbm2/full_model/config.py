@@ -18,6 +18,9 @@ class Architecture:
     hbm_read_queue: int = 32
     hbm_write_queue: int = 32
     hbm_address_mapping: str = 'linear'
+    intermediate_sram_bytes: int = 0
+    parallel_head_rows: bool = False
+    stream_value_cache: bool = False
     dataflow: str = 'ws'
     balance_k_tiles: bool = False
     gemm_prefetch: bool = False
@@ -25,17 +28,23 @@ class Architecture:
 
     def __post_init__(self):
         for name, value in asdict(self).items():
-            if name in ('hbm_address_mapping', 'dataflow', 'balance_k_tiles', 'gemm_prefetch', 'fuse_value_cache'):
+            if name in ('hbm_address_mapping', 'intermediate_sram_bytes', 'parallel_head_rows', 'stream_value_cache', 'dataflow', 'balance_k_tiles', 'gemm_prefetch', 'fuse_value_cache'):
                 continue
             if type(value) is not int or value <= 0:
                 raise ValueError(f'{name} must be a positive integer')
+        if type(self.intermediate_sram_bytes) is not int or self.intermediate_sram_bytes<0 or self.intermediate_sram_bytes%32:
+            raise ValueError('Intermediate SRAM must be a nonnegative multiple of 32 bytes')
+        if self.parallel_head_rows and self.dataflow!='os':
+            raise ValueError('Parallel head rows require OS')
+        if self.stream_value_cache and not self.fuse_value_cache:
+            raise ValueError('Streaming V conversion requires fused V cache')
         if self.hbm_address_mapping not in ('linear','pc_bankgroup'):
             raise ValueError('Unknown HBM address mapping')
         if self.array_partitions>1 and self.dataflow!='os':
             raise ValueError('Array partitioning requires OS')
         if self.dataflow not in ('ws', 'os'):
             raise ValueError('dataflow must be ws or os')
-        for name in ('balance_k_tiles', 'gemm_prefetch', 'fuse_value_cache'):
+        for name in ('parallel_head_rows', 'stream_value_cache', 'balance_k_tiles', 'gemm_prefetch', 'fuse_value_cache'):
             if type(getattr(self, name)) is not bool:
                 raise ValueError(f'{name} must be a boolean')
         if self.gemm_prefetch and self.dataflow != 'os':
@@ -76,6 +85,9 @@ class Architecture:
     def demand_cycles(self, m, n, k):
         from math import ceil
         if self.dataflow == 'os':
+            if self.parallel_head_rows:
+                return sum(ceil(ceil(m/self.array_rows)/max(1,self.array_partitions//ceil(min(self.output_tile_cols,n-start)/self.array_cols)))
+                           for start in range(0,n,self.output_tile_cols))*(k+self.array_rows+self.array_cols-2)
             return ceil(m/self.array_rows)*ceil(n/self.output_tile_cols)*(k+self.array_rows+self.array_cols-2)
         return ceil(k/self.array_rows)*ceil(n/self.array_cols)*(m+2*self.array_rows+self.array_cols-2)
 
@@ -89,7 +101,10 @@ class Architecture:
             sfu_latency_cycles=dict(exp=12, tanh=12, sin_cos=16, rsqrt=16, reciprocal=8),
             descriptor_cycles=4, operand_staging_bytes_each=self.operand_staging_bytes,
             vector_staging_bytes=self.vector_staging_bytes, gemm_k_chunk=self.k_chunk,
-            total_staging_bytes=2*self.operand_staging_bytes+self.vector_staging_bytes,
+            total_staging_bytes=2*self.operand_staging_bytes+self.vector_staging_bytes+self.intermediate_sram_bytes,
+            intermediate_sram_bytes=self.intermediate_sram_bytes, intermediate_sram_bytes_per_cycle=self.vector_lanes*4,
+            parallel_head_rows=self.parallel_head_rows, stream_value_cache=self.stream_value_cache,
+            stream_pipeline_register_bytes=(self.vector_lanes*5+self.sfu_lanes*8)*4 if self.stream_value_cache else 0,
             operand_banks=('Two ping-pong B banks; A and INT32 partials share vector scratch.' if self.gemm_prefetch else 'Separate A and B banks.'),
             sram_bytes_per_cycle=self.vector_lanes*4,
             operand_bank_read_bytes_per_core_cycle=self.output_tile_cols,

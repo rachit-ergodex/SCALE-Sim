@@ -205,10 +205,16 @@ class Graph:
                 # resource: one shared 4-byte port per lane, including temp
                 # stores/loads and FP32 maxima/scales. No free SRAM traffic.
                 alu=3 if phase==0 else 4
-                scratch_bytes=elements*(21 if phase==0 else 22)+rows*4
+                # Streaming mode retains feature maxima/scales and arithmetic
+                # intermediates in pipeline registers instead of round-tripping
+                # each FP32 intermediate through shared scratch. ALU and exact
+                # division throughput remain charged; input/output SRAM copies
+                # and pipeline fill are not free.
+                scratch_bytes=elements*((1 if phase==0 else 2) if self.architecture.stream_value_cache else (21 if phase==0 else 22))+rows*4
                 self.compute(max(math.ceil(elements/self.lanes)*alu,
                                  math.ceil(scratch_bytes/(self.lanes*4)),
                                  math.ceil(elements/self.sfu_lanes)+8 if phase==1 else 0))
+                if self.architecture.stream_value_cache:self.compute(5) # pipeline fill/drain
                 if phase==1:self.bulk(out.view(row*256,elements),True)
             if phase==0:
                 self.compute(math.ceil(256/self.lanes)*2+math.ceil(256/self.sfu_lanes)+8)

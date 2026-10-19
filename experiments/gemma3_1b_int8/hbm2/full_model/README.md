@@ -7,6 +7,86 @@ The numerical and timing runs are separate: numerical outputs establish the
 workload, while dependent memory callbacks determine its simulated schedule.
 This is not a full-transformer RTL implementation or a hardware benchmark.
 
+## Intermediate SRAM, parallel attention heads and streaming vectors
+
+This revision targets over 325 TPS at 1 GHz and over 200 TPS at 250 MHz with
+the same W8A8/KV8 numerical operations and unchanged HBM clocks/timings.
+
+Measured native Ramulator2 results for three batch-one decode steps at contexts 513–515:
+
+| Profile | TPS | Compute ms/token | Exposed memory wait ms/token | Average HBM GB/s |
+| --- | ---: | ---: | ---: | ---: |
+| `decode_asic_resident` | 304.835 | 1.274 | 2.007 | 312.42 |
+| `decode_asic_stream` | 321.391 | 1.106 | 2.005 | 329.39 |
+| `decode_asic_small_tiles` | 319.024 | 1.224 | 1.911 | 326.96 |
+| `decode_asic_stream256` | 338.316 | 0.954 | 2.002 | 346.73 |
+| `decode_f2_resident` | 178.925 | 4.237 | 1.352 | 183.38 |
+| `decode_f2_stream` | 202.736 | 3.561 | 1.372 | 207.78 |
+| `decode_f2_small_tiles` | 201.604 | 3.905 | 1.055 | 206.62 |
+| `decode_f2_stream256` | 232.270 | 2.950 | 1.355 | 238.05 |
+
+The selected `stream256` profiles reach **338.316 TPS on the 1 GHz ASIC** and **232.270 TPS on 250 MHz F2**. Every measured token exceeds its target. They use 4.625 MiB and 8.625 MiB of staging SRAM respectively, plus 7 KiB of modeled pipeline registers. HBM remains 16 GiB with a nominal 460.8 GB/s interface.
+
+Verification passed 21 regression tests and 142 native timing checks across eight configurations. For each selected profile, the real checkpoint validator checked 1,173 GEMMs and 104 cache conversions, with all 262,144 logits matching exactly at each of three decode steps. The retained [optimized study](optimized_decode_study.json) includes configuration, source/input hashes, numerical evidence and per-stage timings. These are architectural simulation results; RTL integration and physical timing closure are separate work.
+
+The optimization profiles add three independently configurable mechanisms:
+
+- `intermediate_sram_bytes`: a separate, bounded 128 KiB SRAM retains short
+  intermediate tensors. A static lifetime allocator selects initialized
+  tensors no larger than 32 KiB and reuses slots only after their last access.
+  Parameters, KV, tensors read by asynchronous operand DMA, large tensors and
+  the externally visible selected token remain in HBM. Every local read/write
+  pays a copy cost at `vector_lanes * 4` bytes/core cycle; there is no free
+  inter-operator transfer or implicit unlimited cache. `residency.json` records
+  allocations and every relocated logical access.
+- `parallel_head_rows`: otherwise idle output-array partitions process separate
+  attention rows. Each worker receives its activation row and a broadcast of
+  the common weight/cache tile. The critical path is the maximum of the
+  independent native array schedules. The MAC count is unchanged.
+- `stream_value_cache`: FP32 multiply, absolute value/max, divide, round and
+  clamp intermediates stay in pipeline registers. Only incoming INT8 values,
+  token scales and outgoing INT8 values use the scratch port. Arithmetic issue
+  costs, exact division throughput and pipeline fill/drain remain charged.
+  Feature maxima/scales use a dedicated 2 KiB state bank within the existing
+  vector-storage budget; pipeline registers are additional. Every FP32 operation must preserve its
+  original rounding; fused multiply-add or approximate reciprocals are not
+  assumed. The numerical transformation remains the original two-pass algorithm.
+
+The `resident` profiles enable only intermediate SRAM. `stream` adds the
+head-row and register-pipeline changes. `small_tiles` also quarters each weight
+bank to test the transfer-size tradeoff. `stream256` keeps the original weight
+bank capacity and expands from 128 vector/32 SFU lanes to 256 vector/64 SFU
+lanes. This is an explicit hardware resource increase; neither MAC count nor
+core/HBM frequency increases. Register storage is reported separately from
+staging SRAM. FPGA synthesis and timing closure remain outstanding.
+
+### Optimized verification and reproduction
+
+`test_decode_optimizations.py` replays every relocated access in the three-step
+F2 graph using arbitrary byte values, checking each read against independent
+logical storage. It also checks uninitialized/DMA users are excluded, verifies
+native parallel-head schedules for ragged rows/columns, and checks streaming
+resource costs. The numerical validator checks the complete real model for each
+selected profile; the allocator changes only storage, with its separate byte
+preservation checks applying to arbitrary numerical values.
+
+```sh
+HERE=experiments/gemma3_1b_int8/hbm2/full_model
+env -u PYTHONPATH .venv/bin/python "$HERE/run_partition_study.py" decode_asic_resident decode_asic_stream decode_asic_small_tiles decode_asic_stream256 decode_f2_resident decode_f2_stream decode_f2_small_tiles decode_f2_stream256 --workers 3
+for profile in decode_asic_resident decode_asic_stream decode_asic_small_tiles decode_asic_stream256 decode_f2_resident decode_f2_stream decode_f2_small_tiles decode_f2_stream256
+do
+  env -u PYTHONPATH .venv/bin/python "$HERE/test_timing.py" --run-dir "$HERE/build/$profile"
+done
+env -u PYTHONPATH .venv/bin/python "$HERE/validate_decode_fusion.py" --config "$HERE/configs/decode_asic_stream256.json" --out "$HERE/build/optimized_asic_validation.json"
+env -u PYTHONPATH .venv/bin/python "$HERE/validate_decode_fusion.py" --config "$HERE/configs/decode_f2_stream256.json" --out "$HERE/build/optimized_f2_validation.json"
+env -u PYTHONPATH .venv/bin/python "$HERE/summarize_optimization_study.py"
+```
+
+The final verifier checks run inputs, native timing output, source/binary hashes,
+SRAM capacity, numerical evidence for the selected configurations, and that every
+measured token clears its platform's target. It retains `optimized_decode_study.json`.
+Earlier sections below document the preceding revisions and their measurements.
+
 ## Parallel arrays for ASIC and F2 inference
 
 The partition study adds independent output-stationary arrays that consume
