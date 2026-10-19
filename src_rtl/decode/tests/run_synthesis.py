@@ -6,6 +6,26 @@ import subprocess
 
 HERE=Path(__file__).resolve().parents[1]
 
+def input_cone(module, signal):
+    """Input bits that combinationally influence a signal in generic Yosys RTL."""
+    drivers={}
+    for cell in module['cells'].values():
+        for name,direction in cell['port_directions'].items():
+            if direction=='output':
+                for bit in cell['connections'][name]:drivers[bit]=cell
+    pending=list(module['ports'][signal]['bits']);seen=set()
+    while pending:
+        bit=pending.pop()
+        if not isinstance(bit,int) or bit in seen:continue
+        seen.add(bit);cell=drivers.get(bit)
+        if cell is None:continue
+        # State outputs are a combinational boundary. No memories are expected
+        # in RREADY's cone; an unexpected memory conservatively traverses all inputs.
+        if any(kind in cell['type'] for kind in ('dff','latch')):continue
+        for name,direction in cell['port_directions'].items():
+            if direction=='input':pending.extend(cell['connections'][name])
+    return seen
+
 def main():
     build=HERE/'build'/'synthesis';build.mkdir(parents=True,exist_ok=True)
     reports=[]
@@ -46,6 +66,13 @@ def main():
             assert len(cells)==32
             assert all('decode_hbm_read_bridge' in cell['type'] for cell in cells)
             row['independent_port_bridges']=32
+            frontends=[mod for name,mod in modules.items() if 'decode_hbm_read_port' in name]
+            assert len(frontends)==32
+            for frontend in frontends:
+                axi_inputs={bit for name,port in frontend['ports'].items()
+                            if name.startswith('m_') and port['direction']=='input' for bit in port['bits']}
+                assert not axi_inputs.intersection(input_cone(frontend,'m_rready')), 'AXI input-to-RREADY combinational path'
+            row['axi_rready_combinational_input_paths']=0
         reports.append(row)
     (build/'summary.json').write_text(json.dumps(reports,indent=2)+'\n')
     print('PASS six generic synthesis checks; signed INT8 MACs, SRAM, async FIFO and 32 independent bridges')

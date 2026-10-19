@@ -40,11 +40,17 @@ def collect(before):
     assert bridge['status']=='passed'
     for name,digest in bridge['source_sha256'].items():
         assert hashlib.sha256((HERE/name).read_bytes()).hexdigest()==digest
+    directed=json.loads((HERE/'hbm_directed_verification.json').read_text())
+    boundaries=json.loads((HERE/'build/os_boundaries/summary.json').read_text())
+    for extra in (directed,boundaries):
+        assert extra['status']=='passed'
+        for name,digest in extra['source_sha256'].items():
+            assert hashlib.sha256((HERE/name).read_bytes()).hexdigest()==digest
     report={'status':'passed','scope':'Compute core and standalone memory/control blocks; not full-transformer RTL or physical FPGA validation',
         'sources_sha256':before,'tools':{p:version(p) for p in ('cocotb','switchboard-hw','numpy','tqdm')},
         'verilator':subprocess.check_output(['verilator','--version'],text=True).strip(),
         'yosys':subprocess.check_output(['yosys','-V'],text=True).strip(),
-        'cocotb_configurations':cases,'cocotb_tests':xml,'switchboard':switchboard,'generic_synthesis':synthesis,'hbm_read_frontends':hbm,'hbm_read_clock_crossings':bridge,
+        'cocotb_configurations':cases,'cocotb_tests':xml,'switchboard':switchboard,'generic_synthesis':synthesis,'hbm_read_frontends':hbm,'hbm_read_clock_crossings':bridge,'hbm_directed':directed,'compute_boundaries':boundaries,
         'generated_target_lint':['decode_asic_compute','decode_f2_compute']}
     (HERE/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PASS decode RTL verification; evidence saved to verification.json')
@@ -55,7 +61,7 @@ def main():
     for target in ('asic','f2'):
         top=f'decode_{target}_compute'
         subprocess.run(['verilator','--lint-only','-Wall','--top-module',top,str(HERE/'rtl/decode_os_core.sv'),str(HERE/'generated'/f'{top}.sv')],check=True)
-    for script,args in [('run_cocotb.py',['--full']),('run_switchboard.py',[]),('run_synthesis.py',[]),('run_hbm_read32.py',[]),('run_hbm_bridge.py',[])]:
+    for script,args in [('run_cocotb.py',['--full']),('run_switchboard.py',[]),('run_synthesis.py',[]),('run_hbm_read32.py',[]),('run_hbm_bridge.py',[]),('run_hbm_directed.py',[]),('run_os_boundaries.py',[])]:
         subprocess.run([sys.executable,str(HERE/'tests'/script),*args],check=True)
     collect(before)
 

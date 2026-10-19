@@ -90,7 +90,7 @@ async def all_ports_and_faults(d):
     await workload(d,256,False)
     await workload(d,160,True)
     # A stray response must be drained, flagged, and never delivered as valid data.
-    await reset(d);d.m_rvalid.value=1<<7;d.m_rlast.value=1<<7
+    await reset(d);d.rsp_ready.value=ALL;d.m_rvalid.value=1<<7;d.m_rlast.value=1<<7
     await Timer(1,unit='ns');assert int(d.rsp_valid.value)==0 and int(d.m_rready.value)&(1<<7)
     await edge(d);assert int(d.fault.value)==1<<7
     d.m_rvalid.value=0;await Timer(1,unit='ns')

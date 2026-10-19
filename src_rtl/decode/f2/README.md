@@ -73,8 +73,12 @@ not apply the simulator's Ramulator-specific permutation.
 
 Return data is delivered with the original destination tag, even when IDs
 return out of order. Backpressure propagates independently to each R channel.
-A response error, missing RLAST or unknown ID sets a sticky fault only on that
-port. New requests stop on the faulted port; outstanding valid responses can
+A consumed response error, missing RLAST or unknown ID sets a sticky fault only
+on that port. RREADY depends only on reset and downstream capacity, with no
+combinational path from AXI input signals. An unknown response waits for
+capacity before being discarded; new ID allocation stops while it is pending.
+A response sampled as unknown stays quarantined until consumed, even if its
+AR later handshakes. It never retires a legitimate request. New requests stop on the faulted port; outstanding valid responses can
 still drain. Reset must reset/drain the connected AXI fabric too, so old
 responses cannot be confused with reused IDs. HBM calibration gates acceptance
 through `enable`; deasserting it does not cancel an already presented AR.
@@ -139,3 +143,6 @@ These are digital functional checks. Board-specific Gray-bus skew/max-delay
 constraints, synchronizer placement, reset checks, vendor HBM simulation and
 full-shell timing closure remain required before hardware use. This is not a
 measured HBM bandwidth result or a complete inference RTL implementation.
+
+See [SYNTHESIS_READINESS.md](SYNTHESIS_READINESS.md) for the current functional
+verification gate and the distinction between component and full-board synthesis.

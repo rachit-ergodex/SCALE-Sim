@@ -1,0 +1,89 @@
+# F2 RTL synthesis readiness — 2026-10-20
+
+**Functional gate: PASS for the implemented components.** The compute core and
+32-port HBM read subsystem can proceed to **out-of-context component synthesis**.
+This is not approval for a complete F2 accelerator image: a connected board top
+and several inference blocks do not yet exist in this implementation.
+
+## Verified behavior
+
+A fresh baseline suite passed, followed by targeted reruns of all HBM and
+synthesis checks after the AXI correction. Unchanged compute tests were not
+substituted for tests of modified HBM RTL. `../verification.json` records the
+final source hashes and component results; `../hbm_directed_verification.json`
+records the ten directed HBM cases.
+
+| Check | Result and scope |
+| --- | --- |
+| Full-size compute | Verilator/cocotb passed at 4×8, 32×64 and **64×64 / 4,096 MACs**; independent integer golden results and native SCALE-Sim demand addresses |
+| Compute limits | K=8191/8192, both INT32 wrap directions, signed INT8 corners, unsigned invalid command fields, held-valid and successive commands passed |
+| Four-state simulation | Standalone Icarus passed three command scenarios with unused operands/seeds set to X, including stalls and reset |
+| Queue integration | 24 Switchboard/Verilator GEMMs passed |
+| Memory primitives | Byte writes, read-first collisions, invalid addresses, stalled responses, reset preservation and bank ownership passed |
+| All-port HBM reads | 13,312 reads passed; 32 simultaneous responses for 256 consecutive ideal-target cycles; all 2,048 request slots exercised |
+| Clock crossings | Single-port and all-32-port tests passed at 4,000 ps core / 2,222 ps HBM periods with varied phase, reordering, stalls and coordinated reset |
+| Directed HBM protocols | Ten tests passed: legal same-cycle AR/R, disable under stalled AR, error/drain behavior, aperture end/overflow, tag wrap, sparse returns, and malformed-response isolation |
+| Structural checks | Six generic Yosys checks passed; no latches, compact signed INT8 multipliers and memory retained, 32 independent bridges, and no AXI input-to-RREADY combinational cone |
+| Target lint | Generated ASIC and F2 compute wrappers passed Verilator lint |
+
+The numerical results above verify the implemented integer compute block.
+They do not verify a complete transformer RTL run or an FP32 vector/SFU pipeline.
+The simulator's 232.270 F2 TPS remains a modeled result, not measured RTL/FPGA TPS.
+
+## AXI correction made during this audit
+
+The old read frontend allowed RID and ARREADY to influence RREADY through its
+response classification. RREADY now depends only on reset and downstream
+capacity. This removes the AXI input-to-output combinational path required to
+be absent by the [Arm AXI specification](https://developer.arm.com/documentation/ihi0022/c/).
+
+Unknown responses wait for downstream capacity before being discarded. While
+one is pending, new ID allocation stops. A response observed as unknown remains
+quarantined until consumed, so a later AR handshake cannot reclassify malformed
+data as a legitimate result. It never retires the legitimate request. Faults
+latch on consumption, and valid outstanding responses can still drain.
+Directed failing-before/passing-after cases and a structural cone check cover
+these invariants. The normal all-port throughput tests continue to pass.
+
+## Synthesis boundaries
+
+`generated/decode_f2_compute.sv` is a **compute-only** top with large internal
+operand, address and result buses. Use it for out-of-context synthesis; do not
+map those internal buses to package pins. The read bridges and scratchpad are
+separate components, not a connected board-level accelerator.
+
+Before a full F2 implementation, the following remain:
+
+- A Small Shell top, HBM IP wiring, calibration/reset integration, host interface
+  and a verified logical-to-physical HBM layout/loader.
+- Banked SRAM adapters and arbitration connecting the compute core to the HBM
+  read subsystem; the model requires 4,096 operand bytes/core cycle and 8.625 MiB
+  staging SRAM. A standalone single-read-port scratchpad does not prove that banking.
+- HBM writes, the operator sequencer and the FP32 vector/SFU arithmetic contract.
+- Physical CDC constraints and review: Gray-bus skew/max-delay, synchronizer
+  placement, and coordinated reset with per-domain synchronized deassertion.
+- Vendor HBM simulation, DSP/BRAM/URAM mapping, resource fit, and timing closure
+  at 250 MHz core / 450 MHz HBM. No Vivado installation was available locally.
+
+An exploratory full 64×64 Yosys run reached process conversion but was stopped
+after its five-minute budget (317 seconds including termination). It did not
+complete optimization or the final structural check, so full-size generic
+synthesis is **inconclusive** and is not included in the six passing checks.
+Full-size component area/resource characterization remains a Vivado task.
+
+The compute address/control path still uses runtime 32-bit division/modulo and
+multiplication. Functional tests do not establish that this logic meets 250 MHz;
+inspect its area and critical paths during component synthesis before proceeding
+to placement. Generic memory retention does not establish BRAM/URAM mapping.
+
+## Reproduce
+
+From the repository root, using the environment described in `../README.md`:
+
+```sh
+env -u PYTHONPATH src_rtl/build/decode_venv/bin/python src_rtl/decode/verify.py
+```
+
+This runs generated-target checks, all compute/memory tests, Switchboard,
+generic synthesis, all-port and directed HBM tests, maximum-K tests and Icarus.
+Only proceed on the exact source snapshot whose verification manifest passes.

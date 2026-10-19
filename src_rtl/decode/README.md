@@ -16,6 +16,8 @@ the SRAM blocks below are separately verified integration components. The
 simulator's 338.316/232.270 TPS results do not yet describe an end-to-end RTL run.
 
 The F2 integration [reference notes](f2/README.md) pin and audit Alex's burst200 source while preserving this design's target architecture.
+Read the [synthesis readiness assessment](f2/SYNTHESIS_READINESS.md) before
+starting a board build; the generated F2 top is a compute component.
 
 ## Implemented blocks
 
@@ -76,7 +78,7 @@ A/B/C address and valid mask against native SCALE-Sim demand matrices.
 
 ## Verification
 
-Use Python 3.12+, Verilator, a C++ compiler and Yosys. From the repository root:
+Use Python 3.12+, Verilator, Icarus Verilog, a C++ compiler and Yosys. From the repository root:
 
 ```sh
 python3 -m venv src_rtl/build/decode_venv
@@ -88,6 +90,8 @@ env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_switchboard.py
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_synthesis.py
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_hbm_read32.py
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_hbm_bridge.py
+env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_hbm_directed.py
+env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_os_boundaries.py
 ```
 
 Cocotb drives Verilator at compact and full 32×64/64×64 geometries. Independent
@@ -95,6 +99,10 @@ NumPy INT64 multiplication checks signed extremes, INT32 wrap, ragged dimensions
 parallel heads, three-way partial K accumulation, randomized stalls, aborted
 commands and reset recovery. Separate tests exercise byte write enables,
 read/write collisions, response backpressure, bank hazards and HBM mapping.
+Directed compact-core tests additionally exercise K=8191/8192, both INT32 wrap
+directions, upper-bit command rejection and held-valid commands. A standalone
+Icarus bench drives unused operand lanes and seeds to X, verifying that valid
+outputs, stalls and reset remain correct with four-state simulation.
 
 The Switchboard test uses **real shared-memory queues** between Python and a
 standalone Verilated executable. It sends input matrices, partial sums and
@@ -110,7 +118,11 @@ wrappers are also lintable with `verilator --lint-only -Wall --top-module
 <top> src_rtl/decode/rtl/decode_os_core.sv src_rtl/decode/generated/<top>.sv`.
 `python src_rtl/decode/verify.py` runs all checks above, including generated-target lint.
 Machine-readable results live under `build/`; a retained verification manifest
-records test versions and hashes of the tested sources.
+records test versions and hashes of the tested sources. HBM directed tests
+cover legal same-cycle AR/R, disable during stalled AR, descriptor bounds, tag
+wrap, fault draining, sparse returns and malformed-response quarantine.
+Synthesis checks also reject AXI input-to-RREADY combinational paths in all
+32 frontend instances.
 
 ## Remaining system integration
 

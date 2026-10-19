@@ -29,11 +29,14 @@ module decode_hbm_read_port #(
     output wire m_rready
 );
     reg [63:0] allocated, issued;
+    // Once sampled as unknown, a stalled beat cannot become a valid response
+    // because of a later AR handshake or ID allocation.
+    reg stalled_unknown;
     reg [TAG_WIDTH-1:0] tags [0:63];
     reg free_found;
     reg [5:0] free_id;
     wire ar_fire=m_arvalid && m_arready;
-    wire known=allocated[m_rid] && (issued[m_rid] || (ar_fire && m_arid==m_rid));
+    wire known=allocated[m_rid] && (issued[m_rid] || (ar_fire && m_arid==m_rid)) && !stalled_unknown;
     wire retire=m_rvalid && m_rready && known;
     wire accept=req_valid && req_ready;
     initial if(PORT<0 || PORT>31 || TAG_WIDTH<1) $fatal(1,"Invalid HBM port geometry");
@@ -42,17 +45,21 @@ module decode_hbm_read_port #(
         for(integer i=0;i<64;i=i+1)
             if(!allocated[i] && !free_found) begin free_found=1;free_id=6'(i);end
     end
-    assign req_ready=!rst && enable && !fault && free_found && (!m_arvalid || m_arready);
+    assign req_ready=!rst && enable && !fault && !(m_rvalid && !known) && free_found && (!m_arvalid || m_arready);
     assign rsp_valid=!rst && m_rvalid && known;
     assign rsp_data=m_rdata;
     assign rsp_tag=tags[m_rid];
     assign rsp_error=(m_rresp!=0) || !m_rlast;
-    assign m_rready=!rst && (rsp_ready || !known);
+    // AXI inputs (RID, ARREADY, etc.) must not feed RREADY combinationally.
+    // Unknown responses are discarded when the downstream consumer is ready.
+    assign m_rready=!rst && rsp_ready;
     always @(posedge clk) begin
         if(rst) begin
-            allocated<=0;issued<=0;fault<=0;outstanding<=0;
+            allocated<=0;issued<=0;fault<=0;outstanding<=0;stalled_unknown<=0;
             m_arvalid<=0;m_araddr<=0;m_arid<=0;
         end else begin
+            if(m_rvalid && m_rready) stalled_unknown<=0;
+            else if(m_rvalid && !known) stalled_unknown<=1;
             if(ar_fire) begin m_arvalid<=0;issued[m_arid]<=1;end
             if(accept) begin
                 allocated[free_id]<=1;tags[free_id]<=req_tag;

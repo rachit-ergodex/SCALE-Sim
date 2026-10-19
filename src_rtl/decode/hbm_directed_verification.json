@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "scope": "Directed digital HBM protocol and CDC checks; no physical timing or vendor PHY claim",
+  "cases": [
+    {
+      "top": "decode_hbm_read_port",
+      "parameters": {
+        "PORT": 31
+      },
+      "status": "passed",
+      "tests": [
+        "same_cycle_ar_and_r_with_next_request",
+        "disable_preserves_stalled_ar_and_drains_response",
+        "faults_drain_pending_transactions_without_id_reuse",
+        "axi_inputs_do_not_bypass_response_backpressure",
+        "stalled_unknown_rid_cannot_alias_a_new_request",
+        "premature_response_stays_unknown_after_ar_handshake"
+      ]
+    },
+    {
+      "top": "decode_hbm_read_bridge",
+      "parameters": {
+        "PORT": 31,
+        "FIFO_DEPTH": 4
+      },
+      "status": "passed",
+      "tests": [
+        "aperture_end_and_wrapped_tags",
+        "descriptor_overflow_faults_without_partial_reads",
+        "response_errors_cross_clocks_and_other_reads_drain",
+        "isolated_single_returns_flush"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+    "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+    "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+    "tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
+    "tests/test_hbm_directed_bridge.py": "270dc9ea65ac19bfbf3490a1bbba8e6d50729a7f9fb748e796bcf62bc03d5ed7",
+    "tests/run_hbm_directed.py": "9cbad8f2e95b30577a3cd6628cfd898b021cd3ff1ee572f69511741b149eb60e"
+  }
+}

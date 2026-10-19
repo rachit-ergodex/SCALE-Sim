@@ -16,22 +16,28 @@
     "src_rtl/decode/rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
     "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
     "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
-    "src_rtl/decode/rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+    "src_rtl/decode/rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
     "src_rtl/decode/rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
+    "src_rtl/decode/tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b",
     "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
     "src_rtl/decode/tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee",
+    "src_rtl/decode/tests/run_hbm_directed.py": "9cbad8f2e95b30577a3cd6628cfd898b021cd3ff1ee572f69511741b149eb60e",
     "src_rtl/decode/tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d",
+    "src_rtl/decode/tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
     "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
-    "src_rtl/decode/tests/run_synthesis.py": "fe32455928e4f31e0bce0e4de677497287b926b973f600988d97eeb574d1b940",
+    "src_rtl/decode/tests/run_synthesis.py": "fd53d17f7047ace9e6da12306ae944cfc2a5d95c07f8c4b49ac263044242c84a",
     "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
     "src_rtl/decode/tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
+    "src_rtl/decode/tests/test_hbm_directed_bridge.py": "270dc9ea65ac19bfbf3490a1bbba8e6d50729a7f9fb748e796bcf62bc03d5ed7",
+    "src_rtl/decode/tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
     "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
-    "src_rtl/decode/tests/test_hbm_read32.py": "7cfe04f6d82bc204ff84055c28b661e52aaa513a97bc7d16fe6457c62fd067cd",
+    "src_rtl/decode/tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
+    "src_rtl/decode/tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
     "src_rtl/decode/tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
     "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
-    "src_rtl/decode/verify.py": "bfcad7013cad373293d55f3964dd026b931769b45bfbe76d343d0a2930506743"
+    "src_rtl/decode/verify.py": "dc877951497f5448b297b0b7cf65d8591d6a7dd817a5ba068956e99168620a63"
   },
   "tools": {
     "cocotb": "2.1.0",
@@ -249,7 +255,8 @@
         "$paramod$2ccab424199fbf0c46c8b06f0529a0d1d72ee87a\\decode_hbm_read_bridge": 1,
         "$paramod$954e2aeb8599c538d7c6005128f80305d3407d0a\\decode_hbm_read_bridge": 1
       },
-      "independent_port_bridges": 32
+      "independent_port_bridges": 32,
+      "axi_rready_combinational_input_paths": 0
     }
   ],
   "hbm_read_frontends": {
@@ -260,9 +267,9 @@
     "total_request_capacity": 2048,
     "verified_reads": 13312,
     "source_sha256": {
-      "rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
       "rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
-      "tests/test_hbm_read32.py": "7cfe04f6d82bc204ff84055c28b661e52aaa513a97bc7d16fe6457c62fd067cd",
+      "tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
       "tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d"
     },
     "cocotb": "2.1.0",
@@ -301,11 +308,82 @@
     ],
     "source_sha256": {
       "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
-      "rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
       "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
       "rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
       "tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
       "tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee"
+    }
+  },
+  "hbm_directed": {
+    "status": "passed",
+    "scope": "Directed digital HBM protocol and CDC checks; no physical timing or vendor PHY claim",
+    "cases": [
+      {
+        "top": "decode_hbm_read_port",
+        "parameters": {
+          "PORT": 31
+        },
+        "status": "passed",
+        "tests": [
+          "same_cycle_ar_and_r_with_next_request",
+          "disable_preserves_stalled_ar_and_drains_response",
+          "faults_drain_pending_transactions_without_id_reuse",
+          "axi_inputs_do_not_bypass_response_backpressure",
+          "stalled_unknown_rid_cannot_alias_a_new_request",
+          "premature_response_stays_unknown_after_ar_handshake"
+        ]
+      },
+      {
+        "top": "decode_hbm_read_bridge",
+        "parameters": {
+          "PORT": 31,
+          "FIFO_DEPTH": 4
+        },
+        "status": "passed",
+        "tests": [
+          "aperture_end_and_wrapped_tags",
+          "descriptor_overflow_faults_without_partial_reads",
+          "response_errors_cross_clocks_and_other_reads_drain",
+          "isolated_single_returns_flush"
+        ]
+      }
+    ],
+    "source_sha256": {
+      "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+      "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+      "tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
+      "tests/test_hbm_directed_bridge.py": "270dc9ea65ac19bfbf3490a1bbba8e6d50729a7f9fb748e796bcf62bc03d5ed7",
+      "tests/run_hbm_directed.py": "9cbad8f2e95b30577a3cd6628cfd898b021cd3ff1ee572f69511741b149eb60e"
+    }
+  },
+  "compute_boundaries": {
+    "status": "passed",
+    "reports": [
+      {
+        "simulator": "verilator",
+        "tests": 2,
+        "status": "passed"
+      },
+      {
+        "simulator": "icarus",
+        "tests": 3,
+        "status": "passed",
+        "checks": "X on unused lanes/seeds, result arithmetic, stalls and reset"
+      }
+    ],
+    "tools": {
+      "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+      "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+      "cocotb": "2.1.0"
+    },
+    "source_sha256": {
+      "rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
+      "tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
+      "tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
+      "tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
+      "tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b"
     }
   },
   "generated_target_lint": [
