@@ -15,7 +15,9 @@ set part xcvu47p-fsvh2892-2-e
 create_project -in_memory -part $part
 read_verilog -sv $root/src_rtl/decode/rtl/decode_os_core.sv
 read_verilog -sv $root/src_rtl/decode/generated/decode_f2_compute.sv
-read_xdc $root/src_rtl/decode/f2/constraints/compute_200mhz.xdc
+# Missing constraints must stop the run, rather than silently reaching P&R.
+set_msg_config -severity {CRITICAL WARNING} -new_severity ERROR
+read_xdc -unmanaged -mode out_of_context $root/src_rtl/decode/f2/constraints/compute_200mhz.tcl
 synth_design -mode out_of_context -top decode_f2_compute -part $part \
     -flatten_hierarchy rebuilt -keep_equivalent_registers
 
@@ -28,6 +30,20 @@ proc reports {run name} {
 }
 write_checkpoint -force $run/post_synth.dcp
 reports $run synth
+# Fail before placement if any boundary budget or clock constraint was lost.
+if {[llength [get_ports -filter {DIRECTION == IN && NAME != clk}]] != 164453 ||
+    [llength [get_ports -filter {DIRECTION == OUT}]] != 407812} {
+    error "Unexpected full 64x64 compute boundary width"
+}
+set coverage_file [open $run/synth_check_timing.rpt r]
+set coverage [read $coverage_file]
+close $coverage_file
+foreach check {no_clock constant_clock multiple_clock loops no_input_delay no_output_delay partial_input_delay partial_output_delay unconstrained_internal_endpoints} {
+    set pattern [format {checking\s+%s\s+\(([0-9]+)\)} $check]
+    if {![regexp -nocase $pattern $coverage ignored count] || $count != 0} {
+        error "Pre-placement timing coverage failed or missing: $check"
+    }
+}
 if {$stage eq "route"} {
     opt_design
     write_checkpoint -force $run/post_opt.dcp

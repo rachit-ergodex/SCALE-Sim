@@ -14,7 +14,9 @@ ROOT = Path(__file__).resolve().parents[4]
 BASE = Path("src_rtl/decode")
 RTL = (BASE / "rtl/decode_os_core.sv", BASE / "generated/decode_f2_compute.sv")
 INPUTS = (*RTL, BASE / "generated/decode_f2_compute.json", BASE / "verification.json",
-          BASE / "f2/constraints/compute_200mhz.xdc",
+          BASE / "f2/constraints/compute_200mhz.tcl",
+          BASE / "f2/constraint_smoke_verification.json",
+          BASE / "f2/scripts/constraint_smoke.tcl", BASE / "f2/scripts/constraint_smoke.sv",
           BASE / "f2/scripts/compute_ooc.tcl", BASE / "f2/scripts/run_compute_ooc.py",
           BASE / "f2/scripts/audit_compute_ooc.py")
 
@@ -42,6 +44,12 @@ def main():
     for path in RTL:
         if sha(ROOT / path) != verification["sources_sha256"].get(str(path)):
             parser.error(f"Functional verification is stale for {path}; rerun compute verification")
+    smoke = json.loads((ROOT / BASE / "f2/constraint_smoke_verification.json").read_text())
+    if smoke.get("status") != "passed":
+        parser.error("Constraint smoke verification does not pass")
+    for name, digest in smoke["source_sha256"].items():
+        if sha(ROOT / name) != digest:
+            parser.error(f"Constraint smoke verification is stale for {name}")
     hashes = {str(path): sha(ROOT / path) for path in INPUTS}
     source = output / "source"
     vivado = shutil.which(args.vivado)

@@ -26,11 +26,13 @@ python3 -m unittest discover -s src_rtl/decode/f2/scripts -p 'test_*.py'
 ```
 
 The target is `xcvu47p-fsvh2892-2-e`, matching the pinned Alex burst200
-reference. `compute_200mhz.xdc` sets a 5 ns clock, 0.25 ns setup uncertainty and
+reference. `compute_200mhz.tcl` sets a 5 ns clock, 0.25 ns setup uncertainty and
 0.1 ns hold uncertainty. Every data/control boundary, including synchronous
 reset, has explicit min/max delays. The provisional 1 ns input and output
 budgets must be replaced or substantiated when the banked SRAM adapter exists.
-No timing paths are waived. The giant operand/address buses are internal
+The boundary file uses unmanaged Tcl, applies delays in chunks of at most 4,096
+bits, and includes reset. Critical warnings stop synthesis; timing coverage and
+full-interface bit counts are checked before placement. No timing paths are waived. The giant operand/address buses are internal
 component boundaries, not package I/O pins.
 
 The audit requires nonnegative setup, hold and pulse-width slack, zero total
@@ -66,3 +68,22 @@ not estimate 200 MHz TPS or verify full inference. HBM IP, all-port integration,
 memory banking, CDC constraints, host loading, vector/SFU blocks and the
 sequencer must be present before full-board timing or FPGA inference can be
 claimed. The separate memory path must still sustain all 32 ports at 450 MHz.
+
+## Constraint regression
+
+The first run exposed that managed XDC rejects `remove_from_collection`, losing
+input delay budgets. It was stopped and marked invalid; its snapshot and logs
+remain intact. The corrected file is loaded as unmanaged OOC Tcl and was tested
+with Vivado 2025.2 on 4,098 input / 4,097 output bits, forcing two chunks on both
+boundaries. All timing-coverage checks were zero and resolved min/max delays and
+clock uncertainty matched the intended budgets. Evidence is retained in
+`../constraint_smoke_verification.json`; the driver checks its source hashes.
+
+To reproduce the regression with the current sources:
+
+```sh
+vivado -mode batch -source src_rtl/decode/f2/scripts/constraint_smoke.tcl \
+  -tclargs "$PWD" /path/to/new/constraint-smoke
+```
+
+A smoke pass validates constraint application, not full-compute timing closure.

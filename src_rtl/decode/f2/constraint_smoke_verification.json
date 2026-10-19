@@ -1,0 +1,45 @@
+{
+  "observed_utc": "2026-10-19T22:41:21.842779+00:00",
+  "passed": true,
+  "passed.txt": "PASS unmanaged Tcl constraints, two chunks per boundary, all coverage checks zero\n",
+  "check_timing.rpt": "Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.\n--------------------------------------------------------------------------------------------------------------------------------------------------\n| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025\n| Date              : Mon Oct 19 22:41:05 2026\n| Host              : ip-172-31-35-32 running 64-bit Ubuntu 24.04.1 LTS\n| Command           : check_timing -verbose -file check_timing.rpt\n| Design            : decode_constraint_smoke\n| Device            : xcvu47p-fsvh2892\n| Speed File        : -2  PRODUCTION 1.30 05-01-2022\n| Design State      : Synthesized\n| Temperature Grade : E\n--------------------------------------------------------------------------------------------------------------------------------------------------\n\n\ncheck_timing report\n\nTable of Contents\n-----------------\n1. checking no_clock (0)\n2. checking constant_clock (0)\n3. checking pulse_width_clock (0)\n4. checking unconstrained_internal_endpoints (0)\n5. checking no_input_delay (0)\n6. checking no_output_delay (0)\n7. checking multiple_clock (0)\n8. checking generated_clocks (0)\n9. checking loops (0)\n10. checking partial_input_delay (0)\n11. checking partial_output_delay (0)\n12. checking latch_loops (0)\n\n1. checking no_clock (0)\n------------------------\n There are 0 register/latch pins with no clock.\n\n\n2. checking constant_clock (0)\n------------------------------\n There are 0 register/latch pins with constant_clock.\n\n\n3. checking pulse_width_clock (0)\n---------------------------------\n There are 0 register/latch pins which need pulse_width check\n\n\n4. checking unconstrained_internal_endpoints (0)\n------------------------------------------------\n There are 0 pins that are not constrained for maximum delay.\n\n There are 0 pins that are not constrained for maximum delay due to constant clock.\n\n\n5. checking no_input_delay (0)\n------------------------------\n There are 0 input ports with no input delay specified.\n\n There are 0 input ports with no input delay but user has a false path constraint.\n\n\n6. checking no_output_delay (0)\n-------------------------------\n There are 0 ports with no output delay specified.\n\n There are 0 ports with no output delay but user has a false path constraint\n\n There are 0 ports with no output delay but with a timing clock defined on it or propagating through it\n\n\n7. checking multiple_clock (0)\n------------------------------\n There are 0 register/latch pins with multiple clocks.\n\n\n8. checking generated_clocks (0)\n--------------------------------\n There are 0 generated clocks that are not connected to a clock source.\n\n\n9. checking loops (0)\n---------------------\n There are 0 combinational loops in the design.\n\n\n10. checking partial_input_delay (0)\n------------------------------------\n There are 0 input ports with partial input delay specified.\n\n\n11. checking partial_output_delay (0)\n-------------------------------------\n There are 0 ports with partial output delay specified.\n\n\n12. checking latch_loops (0)\n----------------------------\n There are 0 combinational latch loops in the design through latch input\n\n\n",
+  "diagnostics": [
+    "SCALESIM_BOUNDARY_INPUT_BITS=4098 OUTPUT_BITS=4097",
+    "SCALESIM_BOUNDARY_INPUT_BITS=4098 OUTPUT_BITS=4097",
+    "synth_design completed successfully",
+    "INFO: [Common 17-206] Exiting Vivado at Mon Oct 19 22:41:06 2026..."
+  ],
+  "log_tail": [
+    "# report_timing_summary -delay_type min_max -report_unconstrained -file timing.rpt",
+    "INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: E, Delay Type: min_max.",
+    "# write_xdc -force resolved.xdc",
+    "# set fp [open passed.txt w]",
+    "# puts $fp \"PASS unmanaged Tcl constraints, two chunks per boundary, all coverage checks zero\"",
+    "# close $fp",
+    "# exit",
+    "INFO: [Common 17-206] Exiting Vivado at Mon Oct 19 22:41:06 2026..."
+  ],
+  "resolved_xdc_sha256": "8f9abece9216fca56cb8363085ec7558a756ae46e75b0f4f47fc00bc7a064508",
+  "constraint_values": [
+    "create_clock -period 5.000 -name decode_core [get_ports clk]",
+    "set_clock_uncertainty -hold 0.100 [get_clocks decode_core]",
+    "set_clock_uncertainty -setup 0.250 [get_clocks decode_core]",
+    "set_input_delay -clock decode_core -max 1.000 $_xlnx_shared_i0",
+    "set_input_delay -clock decode_core -max 1.000 [get_ports [list {din[9]} rst]]",
+    "set_input_delay -clock decode_core -min 0.000 $_xlnx_shared_i0",
+    "set_input_delay -clock decode_core -min 0.000 [get_ports [list {din[9]} rst]]",
+    "set_output_delay -clock decode_core -max 1.000 $_xlnx_shared_i1",
+    "set_output_delay -clock decode_core -max 1.000 [get_ports {dout[9]}]",
+    "set_output_delay -clock decode_core -min 0.000 $_xlnx_shared_i1",
+    "set_output_delay -clock decode_core -min 0.000 [get_ports {dout[9]}]"
+  ],
+  "source_sha256": {
+    "src_rtl/decode/f2/scripts/constraint_smoke.tcl": "cc03aae60e4709b427840aa283668156cc1f3df7bb3a0aa29cc174845a140485",
+    "src_rtl/decode/f2/scripts/constraint_smoke.sv": "1c7ef154d8d5b09858263245e3047ec34f41ec4dfca959fe9fc4fbcda5864558",
+    "src_rtl/decode/f2/constraints/compute_200mhz.tcl": "87573006e262b4befda91fb6e73f4f4b423917a9e82a18b7661d671892b20b11"
+  },
+  "status": "passed",
+  "scope": "Vivado 2025.2 constraint syntax, multi-chunk boundary coverage and resolved budgets; not compute timing closure",
+  "remote_run_directory": "/home/ubuntu/rachit/scalesim-200-20261020/xdc-smoke-002",
+  "ssm_observation_command": "9793e8a0-0168-4d96-92b4-f5941292dcb1"
+}
