@@ -28,7 +28,7 @@ class Graph:
         self.architecture=architecture or Architecture()
         self.stream=stream;self.steps=steps;self.context=context
         self.lanes=self.architecture.vector_lanes;self.sfu_lanes=self.architecture.sfu_lanes
-        self.rows=self.architecture.array_rows;self.cols=self.architecture.array_cols
+        self.rows=self.architecture.array_rows;self.cols=self.architecture.output_tile_cols
         self.operand_bytes=self.architecture.operand_staging_bytes
         self.vector_bytes=self.architecture.vector_staging_bytes
         self.input_ids=input_ids or list(range(1,steps+1))
@@ -177,7 +177,11 @@ class Graph:
             self.compute(duration)
             if arch.gemm_prefetch:self.command('F',i%2)
             if k0+kt==k:
-                self.memory(Tensor(c.address+n0*4,nt,4,c.name),True,count=m,stride=n*4)
+                if nt==n:
+                    # Adjacent ragged rows can share a 32-byte line. Submit
+                    # their contiguous output once, with combined byte enables.
+                    self.memory(c,True)
+                else:self.memory(Tensor(c.address+n0*4,nt,4,c.name),True,count=m,stride=n*4)
         return c
 
     def fused_value_cache(self,name,vc,vs,length):

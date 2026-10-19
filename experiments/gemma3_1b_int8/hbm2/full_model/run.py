@@ -81,7 +81,7 @@ def summarize(folder,manifest,numerical,architecture,profile,validation):
                            memory_wait_cycles=t['total_cycles']-t['compute_cycles'],
                            dram_transaction_bytes=(t['reads']+t['writes'])*32,
                            input_token_id=numerical['decode_input_token_ids'][index],output_token_id=numerical['decode_output_token_ids'][index]))
-    sources=[HERE/'runner.cpp',HERE/'workload.py',HERE/'config.py',HERE/'fused_value_cache.py',Path(__file__),ROOT/'src_rtl/cosim/native_bridge.cpp']
+    sources=[HERE/'address_map.h',HERE/'runner.cpp',HERE/'workload.py',HERE/'config.py',HERE/'fused_value_cache.py',Path(__file__),ROOT/'src_rtl/cosim/native_bridge.cpp']
     report=dict(status='passed',classification='Real numerical W8A8+KV8 decode paired with dependency-ordered native Ramulator2 memory timing and explicit compute models',
                 assumed_core_clock_hz=hz,decode_steps=len(tokens),mean_decode_tps=len(tokens)*hz/end,
                 mean_decode_ms=end/len(tokens)/hz*1000,tokens=result,total_cycles=end,operator_coverage=validation,
@@ -135,9 +135,16 @@ def main():
     numerical=json.loads(args.numerical.read_text());assert numerical['status']=='passed' and numerical['all_logits_finite']
     events=json.loads((args.out/'numerical_operator_trace.json' if args.summarize_only else args.numerical.parent/'operator_trace.json').read_text())
     profile_config,profile=make_f2_config(16)
+    for controller in profile_config['memory_system']['controllers']:
+        controller['read_buffer_size']=architecture.hbm_read_queue
+        controller['write_buffer_size']=architecture.hbm_write_queue
+    profile['address_mapping']=architecture.hbm_address_mapping
+    profile['assumptions']['controller']=f'HBM12 with FRFCFS, open-page, all-bank refresh; {architecture.hbm_read_queue}-entry read and {architecture.hbm_write_queue}-entry write buffers'
+    profile['assumptions']['address_layout']+=f'; frontend bijective mapping: {architecture.hbm_address_mapping}'
+    profile['controller_queue_entries']=dict(read=architecture.hbm_read_queue,write=architecture.hbm_write_queue)
     # This harness supplies dependency/finite-buffer timing absent from offline replay.
     profile['unmodeled']=['AMD proprietary controller, crossbar, physical mapping and CDC','ECC and PHY/calibration']
-    profile['frontend']='Aggregate model: up to 16 native 32B admissions/DRAM tick, max 512 outstanding, callback-gated dependencies and optional two-bank read prefetch'
+    profile['frontend']=f'Aggregate model: up to 16 native 32B admissions/DRAM tick, max {architecture.max_inflight_requests} outstanding, callback-gated dependencies and optional two-bank read prefetch'
     validation={}
     if not args.summarize_only:
         (args.out/'result.json').unlink(missing_ok=True)
@@ -158,7 +165,7 @@ def main():
         binary=build();t=time.monotonic()
         with (args.out/'ramulator.log').open('w') as log:
             result=subprocess.run([str(binary),str(args.out/'hbm2.json'),str(args.out/'commands.txt'),str(args.out/'timing.csv'),
-                                   str(architecture.core_hz),'16','10000000'],stdout=log,stderr=subprocess.STDOUT)
+                                   str(architecture.core_hz),'16','10000000',str(architecture.max_inflight_requests),str(int(architecture.hbm_address_mapping=='pc_bankgroup'))],stdout=log,stderr=subprocess.STDOUT)
         if result.returncode:raise RuntimeError(f'Native simulation failed: {args.out}/ramulator.log')
         execution.update(status='completed',timing_sha256=hashlib.sha256((args.out/'timing.csv').read_bytes()).hexdigest())
         (args.out/'execution.json').write_text(json.dumps(execution,indent=2)+'\n')

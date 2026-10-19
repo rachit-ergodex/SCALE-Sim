@@ -17,8 +17,8 @@ def execute_tiled(a,b,architecture,layout='packed'):
     tc=graph.gemm('oracle',ta,m,k,n,tb,layout)
     source=b.numpy()
     if layout=='packed':
-        storage=np.concatenate([source[:,start:start+architecture.array_cols].ravel()
-                                for start in range(0,n,architecture.array_cols)])
+        storage=np.concatenate([source[:,start:start+architecture.output_tile_cols].ravel()
+                                for start in range(0,n,architecture.output_tile_cols)])
     elif layout=='key_transpose':storage=source.T.copy().ravel()
     elif layout=='row_major':storage=source.copy().ravel()
     else:raise ValueError(layout)
@@ -40,8 +40,8 @@ def execute_tiled(a,b,architecture,layout='packed'):
                 coverage[start:start+size//4]+=1
     assert np.all(coverage==1) and np.all(activation_coverage==1)
     result=torch.zeros((m,n),dtype=torch.int32);index=0
-    for n0 in range(0,n,architecture.array_cols):
-        nt=min(architecture.array_cols,n-n0)
+    for n0 in range(0,n,architecture.output_tile_cols):
+        nt=min(architecture.output_tile_cols,n-n0)
         for k0,kt in architecture.k_tiles(k):
             payload=payloads[index];index+=1
             tile=(payload.reshape(nt,kt).T.copy() if layout=='key_transpose'

@@ -1,4 +1,5 @@
 """Execute the bounded fusion on real KV caches and compare saved logits exactly."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -13,6 +14,10 @@ from config import Architecture
 HERE=Path(__file__).resolve().parent
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--config',type=Path,default=HERE/'configs/decode_100tps.json')
+    parser.add_argument('--out',type=Path,default=HERE/'build/decode_fusion_validation.json')
+    args=parser.parse_args()
     torch.set_num_threads(4)
     folder=HERE/'build/numerical_512'
     baseline=json.loads((folder/'result.json').read_text())
@@ -21,7 +26,7 @@ def main():
     assert digest==baseline['checkpoint_sha256']
     original_quantize=numerical.quantize
     checks=[];matrix_checks=[]
-    arch=Architecture.read(HERE/'configs/decode_100tps.json')
+    arch=Architecture.read(args.config)
     original_gemm=numerical.int_gemm
     class FusedDecoder(Decoder):
         def attention(self,p,q,k,v,positions,layer):
@@ -68,7 +73,7 @@ def main():
                 tiled_gemm_checks=matrix_checks,configuration=arch.to_dict(),
                 sources={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in
                          (HERE/'numerical.py',HERE/'fused_value_cache.py',HERE/'tiled_gemm_reference.py',HERE/'workload.py',HERE/'config.py',Path(__file__))})
-    (HERE/'build/decode_fusion_validation.json').write_text(json.dumps(output,indent=2)+'\n')
+    args.out.write_text(json.dumps(output,indent=2)+'\n')
     print('PASS real-checkpoint fused numerical execution',flush=True)
 
 if __name__=='__main__':main()

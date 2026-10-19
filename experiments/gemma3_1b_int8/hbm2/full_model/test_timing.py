@@ -1,4 +1,4 @@
-"""Check native WS tile schedules, numerical-to-timing coverage, and HBM timing."""
+"""Check native array/group schedules, numerical-to-timing coverage, and HBM timing."""
 import argparse,csv,json,subprocess,sys
 from pathlib import Path
 import numpy as np
@@ -19,19 +19,30 @@ def main():
     args=parser.parse_args();folder=args.run_dir
     manifest=json.loads((folder/'manifest.json').read_text())
     architecture=Architecture(**manifest.get('configuration',{}))
-    shapes=set()
+    shapes=set();groups=set()
     for op in manifest['ops']:
         if op['kind']!='gemm':continue
-        for n0 in range(0,op['n'],architecture.array_cols):
+        for n0 in range(0,op['n'],architecture.output_tile_cols):
+            nt=min(architecture.output_tile_cols,op['n']-n0)
             for k0,kt in architecture.k_tiles(op['k']):
-                shapes.add((op['m'],kt,min(architecture.array_cols,op['n']-n0)))
-    checks=[]
+                groups.add((op['m'],kt,nt))
+                for part in range(0,nt,architecture.array_cols):
+                    shapes.add((op['m'],kt,min(architecture.array_cols,nt-part)))
+    checks=[];native_cycles={}
     for m,k,n in sorted(shapes):
         cfg=scale_config();cfg.valid_conf_flag=True;cfg.array_rows=architecture.array_rows;cfg.array_cols=architecture.array_cols
         engine=(systolic_compute_os() if architecture.dataflow=='os' else systolic_compute_ws());engine.set_params(config_obj=cfg,ifmap_op_mat=np.arange(m*k).reshape(m,k),
                      filter_op_mat=np.arange(k*n).reshape(k,n),ofmap_op_mat=np.arange(m*n).reshape(m,n))
-        assert all(len(mat)==architecture.demand_cycles(m,n,k) for mat in engine.get_demand_matrices())
+        durations=[len(mat) for mat in engine.get_demand_matrices()]
+        assert all(value==architecture.demand_cycles(m,n,k) for value in durations)
+        native_cycles[m,k,n]=durations[0]
         checks.append(dict(check='native_'+architecture.dataflow.upper()+'_tile',m=m,k=k,n=n,array=[cfg.array_rows,cfg.array_cols]))
+    for m,k,n in sorted(groups):
+        critical=max(native_cycles[m,k,min(architecture.array_cols,n-offset)]
+                     for offset in range(0,n,architecture.array_cols))
+        assert critical==architecture.demand_cycles(m,n,k)
+    checks.append(dict(check='parallel_group_critical_paths_match_native_arrays',groups=len(groups)))
+    native_options=[str(architecture.max_inflight_requests),str(int(architecture.hbm_address_mapping=='pc_bankgroup'))]
     validation=verify_trace(json.loads((folder/'numerical_result.json').read_text()),manifest,
                             json.loads((folder/'numerical_operator_trace.json').read_text()))
     checks.append(dict(check='executed_numerical_matrix_shapes_match_every_timing_GEMM',**validation))
@@ -50,13 +61,13 @@ def main():
         finally:bridge.close()
         commands=check_folder/f'check_{kind}.txt';output=check_folder/f'check_{kind}.csv'
         commands.write_text(f'0 0 memory {kind} 0 32 1 0\n')
-        subprocess.run([str(native),str(cfg),str(commands),str(output),str(hz),'16','100'],check=True,stdout=subprocess.DEVNULL)
+        subprocess.run([str(native),str(cfg),str(commands),str(output),str(hz),'16','100',*native_options],check=True,stdout=subprocess.DEVNULL)
         with output.open() as f:row=next(csv.DictReader(f))
         assert int(row['end_core'])==cycle,(kind,row,cycle)
         checks.append(dict(check='native_completion_matches_live_bridge',kind=kind,core_cycles=cycle))
     commands=check_folder/'check_compute.txt';output=check_folder/'check_compute.csv'
     commands.write_text('0 0 vector C 17 0 0 0\n0 0 vector C 23 0 0 0\n')
-    subprocess.run([str(native),str(cfg),str(commands),str(output),str(hz),'16','100'],check=True,stdout=subprocess.DEVNULL)
+    subprocess.run([str(native),str(cfg),str(commands),str(output),str(hz),'16','100',*native_options],check=True,stdout=subprocess.DEVNULL)
     with output.open() as f:row=next(csv.DictReader(f))
     dram_ticks=40*10**12//(hz*1111)
     assert int(row['end_core'])==40 and int(row['end_dram'])==dram_ticks and int(row['reads'])==int(row['writes'])==0

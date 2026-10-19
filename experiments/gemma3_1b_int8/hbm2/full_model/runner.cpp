@@ -5,12 +5,17 @@
 #include <sstream>
 #include <chrono>
 #include <algorithm>
+#include "address_map.h"
 
 struct Simulator {
     HBM h;
     U core_hz, core=0, reads=0, writes=0, retries=0, last_write_ready=0, admitted=0;
-    U pending=0, callbacks=0, injection;
-    explicit Simulator(const char* config,U hz,U cap):h(config),core_hz(hz),injection(cap){}
+    U pending=0, callbacks=0, injection, max_inflight;
+    bool interleave;
+    explicit Simulator(const char* config,U hz,U cap,U window=512,bool mapped=false):h(config),core_hz(hz),injection(cap),max_inflight(window),interleave(mapped){
+        if(!window)throw std::runtime_error("Empty request window");
+        if(mapped&&h.capacity!=16ULL*1024*1024*1024)throw std::runtime_error("Interleaving requires the 16-channel 16-GiB profile");
+    }
     U core_to_tick(U c)const{return U((__uint128_t(c)*1000000000000ULL)/(core_hz*h.spec->get_timing_value("tCK_ps")));}
     U tick_to_core(U tick)const{return U((__uint128_t(tick)*core_hz*h.spec->get_timing_value("tCK_ps")+999999999999ULL)/1000000000000ULL);}
     // Stable slots are captured by callbacks; a slot cannot be reused until
@@ -34,9 +39,9 @@ struct Simulator {
         // admission budget and 512-request window (not one window per bank).
         for(int bank:{2,0,1}){
             auto& j=jobs[bank];
-            while(j.occupied&&j.row<j.count&&pending<512&&budget){
+            while(j.occupied&&j.row<j.count&&pending<max_inflight&&budget){
                 if(j.cur>h.capacity-32)throw std::runtime_error("Address exceeds HBM capacity");
-                Ramulator::Request request(long(j.cur),j.write?Ramulator::Request::Type::Write:Ramulator::Request::Type::Read,0,
+                Ramulator::Request request(long(hbm_physical_address(j.cur,interleave)),j.write?Ramulator::Request::Type::Write:Ramulator::Request::Type::Read,0,
                     [this,bank](Ramulator::Request& r){
                         auto& job=jobs[bank];
                         if(!pending||!job.pending)throw std::runtime_error("Duplicate DMA completion");
@@ -80,9 +85,9 @@ struct Simulator {
         auto advance=[&](){cur+=32;if(cur==end){++row;if(row<count){U a=address+row*stride;cur=a&~U(31);end=(a+bytes+31)&~U(31);}}};
         while(row<count||pending||h.tick<last_write_ready){
             U budget=injection;
-            while(row<count && pending<512 && budget){
+            while(row<count && pending<max_inflight && budget){
                 U a=cur;if(a>h.capacity-32)throw std::runtime_error("Address exceeds HBM capacity");
-                Ramulator::Request request(long(a),write?Ramulator::Request::Type::Write:Ramulator::Request::Type::Read,0,
+                Ramulator::Request request(long(hbm_physical_address(a,interleave)),write?Ramulator::Request::Type::Write:Ramulator::Request::Type::Read,0,
                     [this,write](Ramulator::Request& r){
                         if(!pending)throw std::runtime_error("Duplicate completion");--pending;++callbacks;
                         if(write){if(r.command<0)throw std::runtime_error("Unexpected write merging");last_write_ready=std::max(last_write_ready,h.tick+h.guard);}
@@ -99,8 +104,11 @@ struct Simulator {
     }
 };
 int main(int argc,char**argv){try{
-    if(argc!=7)throw std::runtime_error("runner CONFIG COMMANDS OUT CORE_HZ INJECTION MAX_COMMANDS");
-    Simulator sim(argv[1],std::stoull(argv[4]),std::stoull(argv[5]));
+    if(argc==3&&std::string(argv[1])=="--map-address"){
+        std::cout<<hbm_physical_address(std::stoull(argv[2]),true)<<std::endl;return 0;
+    }
+    if(argc<7||argc>9)throw std::runtime_error("runner CONFIG COMMANDS OUT CORE_HZ INJECTION MAX_COMMANDS [MAX_INFLIGHT] [INTERLEAVE]");
+    Simulator sim(argv[1],std::stoull(argv[4]),std::stoull(argv[5]),argc>7?std::stoull(argv[7]):512,argc>8?std::stoull(argv[8])!=0:false);
     if(!sim.core_hz||!sim.injection||sim.injection>16)throw std::runtime_error("Invalid clock/injection");
     std::ifstream input(argv[2]);std::ofstream output(argv[3]);if(!input||!output)throw std::runtime_error("Cannot open command/report path");
     output<<"token,op,kind,start_core,end_core,start_dram,end_dram,reads,writes,retries,commands\n";

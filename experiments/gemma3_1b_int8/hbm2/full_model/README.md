@@ -7,6 +7,142 @@ The numerical and timing runs are separate: numerical outputs establish the
 workload, while dependent memory callbacks determine its simulated schedule.
 This is not a full-transformer RTL implementation or a hardware benchmark.
 
+## Parallel arrays for ASIC and F2 inference
+
+The partition study adds independent output-stationary arrays that consume
+separate output-column slices of the same activation. `array_cols` is the
+physical width of each array; `array_partitions` multiplies the number of arrays.
+The group completes at the maximum of its constituent native SCALE-Sim schedules.
+It does not pay the fill/drain latency of one equally wide systolic array.
+Partial INT32 sums persist across balanced K tiles. Prepacked weights and tied
+embedding gathers use the aggregate output width.
+
+Two finite weight banks overlap native HBM reads with array work. The optimized
+profiles use 128 FP32 vector lanes, 32 SFU lanes, 512 KiB shared activation/partial
+sum/vector scratch, a shared 2,048-request window, and 128-read/64-write controller
+queues. All requests still share the original 16-admissions-per-DRAM-tick limit.
+The new bijective address layout interleaves pseudochannels and bank groups ahead
+of column addresses, preserving every data byte and the full memory capacity.
+These changes apply to the architectural simulator; they do not create an FPGA
+bitstream or modify the separate sample RTL datapath.
+
+Completed native Ramulator2 measurements for batch-one Gemma3-1B decode at
+contexts 513–515 (three tokens, same numerical trace):
+
+| Profile | Core | Arrays | MACs | SRAM MiB | TPS | Average HBM GB/s |
+| --- | ---: | --- | ---: | ---: | ---: | ---: |
+| `decode_4arrays_only` | 1000 MHz | 4 × 1×256 | 1,024 | 2.125 | **120.82** | 126.09 |
+| `decode_asic_4arrays` | 1000 MHz | 4 × 1×256 | 1,024 | 2.5 | **260.37** | 271.72 |
+| `decode_asic_8arrays` | 1000 MHz | 8 × 1×256 | 2,048 | 4.5 | **276.77** | 288.83 |
+| `decode_asic_32x64` | 1000 MHz | 32 × 1×64 | 2,048 | 4.5 | **284.32** | 296.71 |
+| `decode_f2_4arrays` | 250 MHz | 4 × 1×256 | 1,024 | 2.5 | **104.74** | 109.30 |
+| `decode_f2_8arrays` | 250 MHz | 8 × 1×256 | 2,048 | 4.5 | **149.53** | 156.04 |
+| `decode_f2_16arrays` | 250 MHz | 16 × 1×256 | 4,096 | 8.5 | **160.35** | 167.33 |
+| `decode_f2_64x64` | 250 MHz | 64 × 1×64 | 4,096 | 8.5 | **173.55** | 181.12 |
+
+The arrays-only case retains the original vector/SFU resources and memory
+mapping/window, while increasing weight-bank capacity to feed four arrays.
+The other profiles include the memory and vector changes described above.
+Smaller 64-column arrays improve the ASIC result from 276.77 to 284.32 TPS
+at 2,048 MACs and improve the F2 result from 160.35 to 173.55 TPS at 4,096
+MACs. **Neither target reaches 400 TPS.**
+
+`decode_asic_32x64` spends 1.235 ms/token in modeled compute and 2.282 ms/token in exposed memory waits. Its GEMMs take 2.828 ms and V-cache conversion takes 0.330 ms.
+
+`decode_f2_64x64` spends 4.081 ms/token in modeled compute and 1.681 ms/token in exposed memory waits. Its GEMMs take 3.933 ms and V-cache conversion takes 1.195 ms.
+
+The retained [study evidence](partitioned_decode_study.json) includes all eight
+configurations, stage timings, physical traffic, verified run hashes and both
+real-checkpoint correctness reports. All 16 architecture/configuration tests
+and 154 native timing checks passed. Each real-checkpoint layout check passed
+1,173 GEMM comparisons, 104 cache checks, and every logit for all three decode
+steps, plus prefill.
+
+
+### What remains for 400 tokens/s
+
+400 TPS allows 2.5 ms per token. The unchanged W8A8/KV8 graph moves about
+1.0436 GB per token, requiring 417.4 GB/s averaged over the entire decode.
+The completed streaming transport benchmark sustains 412.1 GB/s with the new
+layout and request window, versus 195.6 GB/s with the original mapping. This is
+89.4% of nominal peak for a long read stream; it is neither a model-decode result
+nor a universal bandwidth ceiling. Short transfers, writes and dependent work
+lower the full-model average further.
+
+Further work should first retain vector intermediates in SRAM and fuse producer/
+consumer operations, then prefetch the next independent weight tile across
+operator boundaries with explicit buffer ownership. The F2 profile also needs
+more effective attention/vector throughput: idle partitions could process
+separate attention heads, and the V-cache conversion needs a faster verified
+FP32 pipeline. None of those improvements is included in the measured results.
+If traffic still exceeds the usable bandwidth budget, measure lossless INT8
+weight compression or use more memory bandwidth. INT4 would change the numerical
+baseline and require a new accuracy evaluation. Multi-request batching could
+increase aggregate TPS but would not establish 400 TPS for one sequence.
+
+### F2 clock and memory contract
+
+The F2 profiles run arrays, vector operations and dispatch at **250 MHz**. The
+HBM AXI interface remains **450 MHz**, with the pinned F2-derived 900 MHz DRAM
+clock / 1,800 Mbps data rate. These are distinct clock domains. AWS documents
+this combination and all 32 HBM interfaces in its
+[CL_MEM_PERF reference](https://github.com/aws/aws-fpga/blob/f2/hdk/cl/examples/cl_mem_perf/README.md).
+The resulting nominal aggregate peak is **460.8 GB/s**. The simulator does not
+scale the HBM bandwidth down when reducing the core clock to 250 MHz.
+
+The 64-array F2 candidate contains 64 independent 1x64 INT8 arrays, or 4,096 MACs.
+Its two 4 MiB weight banks plus 512 KiB scratch total **8.5 MiB staging SRAM**.
+It assumes banked operand reads of 4,096 bytes/core cycle in aggregate; the
+vector scratch budget is 512 bytes/core cycle. At 250 MHz these correspond to
+1,024 GB/s and 128 GB/s of local bandwidth respectively. The three-step graph
+allocates 1,050,053,188 bytes of HBM address space, including parameters, KV,
+scales and intermediates, within the 16 GiB modeled capacity. This is the
+allocator footprint for this workload, not a long-context memory estimate.
+
+For an actual F2 implementation, each array needs local SRAM banking, activation
+broadcast and INT32 accumulation; a multiport DMA must fill those banks through
+clock-domain crossings from the HBM interfaces. The current aggregate frontend
+assumes those resources. The 128 FP32 lanes and 32 pipelined SFU lanes also need
+resource accounting. Synthesis, placement, routing and hardware HBM measurements
+are required before claiming these profiles fit or meet 250/450 MHz. Host I/O,
+accelerator prefill/TTFT and end-to-end serving latency remain outside this study.
+
+### Correctness and reproduction
+
+`test_array_partitions.py` compares parallel-group durations with native array
+schedules, checks all three packed/attention layouts against independent INT64
+products, verifies the compiled address permutation is reversible, and tests
+ragged four-row attention stores. Contiguous outputs that share a 32-byte line
+are coalesced before submission, retaining the native write-recovery guard.
+`test_timing.py` checks every workload tile shape, group critical path and both
+clock domains for each measured configuration.
+
+`validate_decode_fusion.py` runs the real checkpoint through the generated tile
+addresses. Both the 32x64 ASIC layout and 64x64 F2 layout must preserve every
+INT32 GEMM and all saved logits exactly against the existing W8A8/KV8 numerical
+baseline. This does not claim equivalence to unquantized FP32 model outputs.
+The numerical and timing executions remain separate matched graphs.
+
+From the repository root, after the existing numerical checkpoint run:
+
+```sh
+HERE=experiments/gemma3_1b_int8/hbm2/full_model
+env -u PYTHONPATH .venv/bin/python "$HERE/run_partition_study.py" --workers 3
+for profile in decode_4arrays_only decode_asic_4arrays decode_asic_8arrays decode_asic_32x64 decode_f2_4arrays decode_f2_8arrays decode_f2_16arrays decode_f2_64x64
+do
+  env -u PYTHONPATH .venv/bin/python "$HERE/test_timing.py" --run-dir "$HERE/build/$profile"
+done
+env -u PYTHONPATH .venv/bin/python "$HERE/test_array_partitions.py"
+env -u PYTHONPATH .venv/bin/python "$HERE/benchmark_bandwidth.py" --skip-build
+env -u PYTHONPATH .venv/bin/python "$HERE/validate_decode_fusion.py" --config "$HERE/configs/decode_asic_32x64.json" --out "$HERE/build/partitioned_numerical_validation.json"
+env -u PYTHONPATH .venv/bin/python "$HERE/validate_decode_fusion.py" --config "$HERE/configs/decode_f2_64x64.json" --out "$HERE/build/f2_partitioned_numerical_validation.json"
+env -u PYTHONPATH .venv/bin/python "$HERE/summarize_partition_study.py"
+```
+
+The summary verifies completed-run input, timing and current source hashes before
+retaining `partitioned_decode_study.json`. Earlier 112-TPS reports below remain
+historical measurements of the preceding architecture revision.
+
 ## Decode-focused architecture: 112.38 simulated tokens/s
 
 `configs/decode_100tps.json` reaches **112.3817 decode tokens/s**, averaging
