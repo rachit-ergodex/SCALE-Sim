@@ -5,7 +5,15 @@ The implementation target remains the simulator's `decode_f2_stream256` profile:
 450 MHz, and 16 GiB of HBM. Alex's burst200 source is a reference for platform
 integration; it does not replace these architecture parameters.
 
-## Verified reference
+## Official AWS F2 reference
+
+The requested AWS `cl_dram_hbm_dma` source and the all-port `cl_mem_perf`
+reference are pinned and audited in [AWS_HBM_INTEGRATION.md](AWS_HBM_INTEGRATION.md)
+and [aws_reference.json](aws_reference.json). Use the performance example
+`cl_mem_hbm_wrapper` for our 32-port datapath; its port mapping and clock/reset
+contract differ from the DMA example wrapper.
+
+## Verified OpenTPU reference
 
 The supplied archive is
 `s3://ergodex-bonsai-on-chip-438374459156-us-east-1/opentpu-alex/alex-burst200-branch.tar`.

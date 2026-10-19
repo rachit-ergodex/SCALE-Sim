@@ -52,6 +52,10 @@ operand, address and result buses. Use it for out-of-context synthesis; do not
 map those internal buses to package pins. The read bridges and scratchpad are
 separate components, not a connected board-level accelerator.
 
+The [official AWS source audit](AWS_HBM_INTEGRATION.md) identifies the matching
+32-port wrapper and records the required shell/reset/address contracts. It does
+not implement those connections or change this functional-verification scope.
+
 Before a full F2 implementation, the following remain:
 
 - A Small Shell top, HBM IP wiring, calibration/reset integration, host interface
