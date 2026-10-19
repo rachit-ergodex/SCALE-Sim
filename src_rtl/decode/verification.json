@@ -10,23 +10,28 @@
     "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
     "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
     "src_rtl/decode/requirements.txt": "15b99f20e7355a630201566237d1bfc673059faa1f0fa0c38588fecd84de1bf5",
+    "src_rtl/decode/rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
     "src_rtl/decode/rtl/decode_bank_lifetimes.sv": "190bace1ef5f25651a49a85e985953afd5e98a4692dbee94775a7d0e1cf31003",
     "src_rtl/decode/rtl/decode_hbm_map.sv": "e1d8fdb4d9d9bacbf17fee4cc5682b7e156c4d4d63d3c107500b4d8927c5ad98",
     "src_rtl/decode/rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
     "src_rtl/decode/rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
     "src_rtl/decode/rtl/decode_os_core.sv": "2cfb9d0d5d2644e027d58206bef0f5bdd40e023d68f155e03f2a1423a4454a5a",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
     "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
+    "src_rtl/decode/tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee",
     "src_rtl/decode/tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d",
     "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
-    "src_rtl/decode/tests/run_synthesis.py": "a1ee0ef2bfc5d3b0087eb80692db078984d23723c2b7a2b9965064a40b24d98d",
+    "src_rtl/decode/tests/run_synthesis.py": "fe32455928e4f31e0bce0e4de677497287b926b973f600988d97eeb574d1b940",
     "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
+    "src_rtl/decode/tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
     "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
     "src_rtl/decode/tests/test_hbm_read32.py": "7cfe04f6d82bc204ff84055c28b661e52aaa513a97bc7d16fe6457c62fd067cd",
     "src_rtl/decode/tests/test_os_core.py": "4a78daa58f90b850156910d8605ae6f8cf6eb2562d9862a4f7a12f2b77b6b16b",
     "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
-    "src_rtl/decode/verify.py": "f0b6c552f4cc0e4188352b76997dad72e4e4d908e035fe34db707b3b0a66313b"
+    "src_rtl/decode/verify.py": "bfcad7013cad373293d55f3964dd026b931769b45bfbe76d343d0a2930506743"
   },
   "tools": {
     "cocotb": "2.1.0",
@@ -185,6 +190,66 @@
       "cells": {
         "$mux": 1
       }
+    },
+    {
+      "top": "decode_async_fifo",
+      "status": "passed",
+      "cells": {
+        "$add": 2,
+        "$sdff": 4,
+        "$sdffe": 5,
+        "$reduce_bool": 1,
+        "$eq": 1,
+        "$logic_and": 3,
+        "$logic_not": 3,
+        "$logic_or": 1,
+        "$ne": 1,
+        "$not": 1,
+        "$mux": 8,
+        "$xor": 2,
+        "$mem_v2": 1
+      },
+      "memory_bits": 1024,
+      "gray_synchronizer_registers": 4
+    },
+    {
+      "top": "decode_hbm_read_bridge32",
+      "status": "passed",
+      "cells": {
+        "$paramod$080f12c360e5140211e48569ce7dcc6ae0e234bd\\decode_hbm_read_bridge": 1,
+        "$paramod$2c2ec79a57cd7b7e9c04036a42555386bd688712\\decode_hbm_read_bridge": 1,
+        "$paramod$e7f44ee07823c32871517bce3b521c839b7f6295\\decode_hbm_read_bridge": 1,
+        "$paramod$f903373ce96baffdb107a51885a8377a3ed7df3c\\decode_hbm_read_bridge": 1,
+        "$paramod$ad4837098b448914962ac435f9cc81b331bcfd87\\decode_hbm_read_bridge": 1,
+        "$paramod$22b96e8d6e6e823722e9c9d38bfa48f058665186\\decode_hbm_read_bridge": 1,
+        "$paramod$7f3b506068bd438ed528a995acce99c7c1f8ea51\\decode_hbm_read_bridge": 1,
+        "$paramod$edb4951bb81aa5424457a2a064218f27fbd7790e\\decode_hbm_read_bridge": 1,
+        "$paramod$4caa58cdaa27a106323bf464d74950aac4404374\\decode_hbm_read_bridge": 1,
+        "$paramod$ca9a542cd75c296c226149536d7c089054294e0f\\decode_hbm_read_bridge": 1,
+        "$paramod$e9977c5b04e5c33a3c160f8691bdd39aebe8bd47\\decode_hbm_read_bridge": 1,
+        "$paramod$0ebe438252d9c362c49f4305c38ea3a82a8a7943\\decode_hbm_read_bridge": 1,
+        "$paramod$6cb5237763bb9881a16f0d93491dab69da056002\\decode_hbm_read_bridge": 1,
+        "$paramod$d5c40ec3d484b4ecade5d2f37432278e6fcfa5e6\\decode_hbm_read_bridge": 1,
+        "$paramod$16991c0343446c323ee5907d3cfea225edeb1c2b\\decode_hbm_read_bridge": 1,
+        "$paramod$3c780370ad7ab534ddf952b0fd8cc7a2e0d15f4c\\decode_hbm_read_bridge": 1,
+        "$paramod$1da4727e44ba925d09b322116425e0c83e036375\\decode_hbm_read_bridge": 1,
+        "$paramod$700fa83e02f1aa87b50e7cced53ce84ad406eb0d\\decode_hbm_read_bridge": 1,
+        "$paramod$2f07c40ddae9bc846e8b82df047a6a10350d41a0\\decode_hbm_read_bridge": 1,
+        "$paramod$2c0a1527ece1c57536a47850b6d8fb12e250f5d0\\decode_hbm_read_bridge": 1,
+        "$paramod$b13ae894d3346cc47fde9f2c411994fbd78abb8e\\decode_hbm_read_bridge": 1,
+        "$paramod$eedef130b6a5930cede9cd2fb70554001a47f5bc\\decode_hbm_read_bridge": 1,
+        "$paramod$b35a80fb3c733c09a613bde7bd53962e0a0fbcab\\decode_hbm_read_bridge": 1,
+        "$paramod$87b9e873a0f617560dfe7ddac506b30d8b1347a4\\decode_hbm_read_bridge": 1,
+        "$paramod$24061ed47ef45bd17e3d6c274b1a24c5a39120c5\\decode_hbm_read_bridge": 1,
+        "$paramod$14d27d1d10a6f091aa8d9ddd1f9f60e5c9f9dee7\\decode_hbm_read_bridge": 1,
+        "$paramod$c4770ac6b6c92e9b918feba9a0a5c955efecec4b\\decode_hbm_read_bridge": 1,
+        "$paramod$e75eea68bf5a9793fde83e145d02cc8efa9085c2\\decode_hbm_read_bridge": 1,
+        "$paramod$a796e7ab1cef42762b3c1193984feb20b3010b0e\\decode_hbm_read_bridge": 1,
+        "$paramod$350725a649b0291c78314fc66b7a4fd6d0fea00a\\decode_hbm_read_bridge": 1,
+        "$paramod$2ccab424199fbf0c46c8b06f0529a0d1d72ee87a\\decode_hbm_read_bridge": 1,
+        "$paramod$954e2aeb8599c538d7c6005128f80305d3407d0a\\decode_hbm_read_bridge": 1
+      },
+      "independent_port_bridges": 32
     }
   ],
   "hbm_read_frontends": {
@@ -211,6 +276,37 @@
       "RRESP and RLAST errors",
       "reset recovery"
     ]
+  },
+  "hbm_read_clock_crossings": {
+    "status": "passed",
+    "scope": "Digital CDC behavior only; no metastability, vendor PHY or physical timing claim",
+    "core_period_ps": 4000,
+    "hbm_period_ps": 2222,
+    "cases": [
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "PORT": 31
+        },
+        "status": "passed"
+      },
+      {
+        "ports": 32,
+        "parameters": {
+          "FIFO_DEPTH": 16
+        },
+        "status": "passed"
+      }
+    ],
+    "source_sha256": {
+      "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+      "rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+      "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+      "rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
+      "tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
+      "tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee"
+    }
   },
   "generated_target_lint": [
     "decode_asic_compute",

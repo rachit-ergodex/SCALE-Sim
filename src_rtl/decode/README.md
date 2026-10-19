@@ -40,6 +40,9 @@ vector pipeline registers. Those FP32 vector registers and operators are not
 instantiated by this compute wrapper.
 
 The [32-port HBM read frontend](f2/README.md#implemented-32-port-read-frontend) is separately verified for simultaneous traffic, 2,048 credits and reordered responses.
+The [read clock bridges](f2/README.md#implemented-corehbm-read-clock-crossings)
+connect all 32 ports to the 250 MHz core through independent descriptor and
+paired-response FIFOs.
 
 ## Core protocol
 
@@ -83,6 +86,8 @@ env -u PYTHONPATH "$PY" src_rtl/decode/generate.py --check
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_cocotb.py --full
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_switchboard.py
 env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_synthesis.py
+env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_hbm_read32.py
+env -u PYTHONPATH "$PY" src_rtl/decode/tests/run_hbm_bridge.py
 ```
 
 Cocotb drives Verilator at compact and full 32×64/64×64 geometries. Independent
@@ -110,7 +115,8 @@ records test versions and hashes of the tested sources.
 ## Remaining system integration
 
 The complete transformer accelerator still needs synchronous SRAM adapters and
-arbitration, the HBM write path, core/HBM CDC and integration of the multi-outstanding read frontends, the FP32 vector/SFU
+arbitration, the HBM write path, integration and physical CDC qualification of
+the 32-port read bridges, the FP32 vector/SFU
 pipeline with the original rounding semantics, and the full operator sequencer.
 The generated manifests list these boundaries explicitly. There is no
 full-transformer RTL equivalence result or FPGA bitstream yet. In particular,

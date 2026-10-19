@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "scope": "Digital CDC behavior only; no metastability, vendor PHY or physical timing claim",
+  "core_period_ps": 4000,
+  "hbm_period_ps": 2222,
+  "cases": [
+    {
+      "ports": 1,
+      "parameters": {
+        "FIFO_DEPTH": 4,
+        "PORT": 31
+      },
+      "status": "passed"
+    },
+    {
+      "ports": 32,
+      "parameters": {
+        "FIFO_DEPTH": 16
+      },
+      "status": "passed"
+    }
+  ],
+  "source_sha256": {
+    "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+    "rtl/decode_hbm_read_port.sv": "a7174afc4f672438e7d06127ecedbc0ed9bba5293f24fcd57e1e2d7d564c87fa",
+    "rtl/decode_hbm_read_bridge.sv": "2c56ee4a4f71ab41bb6390db310b9769ff9c85a7c4afbabf0decb2ede0561aa4",
+    "rtl/decode_hbm_read_bridge32.sv": "086ba90f679ff5956fccac1a817211c95efcc11a7b6f8f10903346d8d40a48ad",
+    "tests/test_hbm_bridge.py": "3b9e556ca855954ca39237591af1a006588db60083d47b4514de35cff5c01944",
+    "tests/run_hbm_bridge.py": "84a60e2c4288f67bee18fbba947081107e30d3f3c1c94f2d1dac1de3abb71aee"
+  }
+}
