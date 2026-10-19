@@ -64,5 +64,29 @@
     "run": "run-001",
     "reason": "Managed XDC rejected input-port collection command; input delay budgets were absent. Stopped before PnR; no valid timing result."
   },
-  "constraint_regression": "constraint_smoke_verification.json"
+  "constraint_regression": "constraint_smoke_verification.json",
+  "subsequent_status": {
+    "status": "superseded",
+    "evidence": {
+      "superseded_utc": "2026-10-19T23:05:08.192522+00:00",
+      "reason": "Moved the same verified source hashes to the user-requested m7a.8xlarge build host",
+      "replacement_instance": "i-04fc91f9015037a6c",
+      "replacement_run": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+      "signaled_pids": [
+        2398994
+      ],
+      "timing_closed": false,
+      "source_and_logs_preserved": true,
+      "instance_id": "i-0c78de2253f66519d",
+      "run_directory": "/home/ubuntu/rachit/scalesim-200-20261020/run-002",
+      "post_stop_observation": {
+        "observed_utc": "2026-10-19T23:06:10.727540+00:00",
+        "ssm_command": "30471bea-7516-4b9b-a111-633c18d1b071",
+        "matching_compute_processes": [],
+        "driver_status": "vivado_failed",
+        "checkpoint_or_report_artifacts": []
+      }
+    },
+    "replacement_record": "compute_200_m7a8_run001.json"
+  }
 }

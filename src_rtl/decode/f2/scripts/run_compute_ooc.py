@@ -33,8 +33,8 @@ def main():
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--dry-run", action="store_true", help="Check sources and print plan; no build")
     args = parser.parse_args()
-    if not 1 <= args.threads <= 32:
-        parser.error("--threads must be between 1 and 32")
+    if not 1 <= args.threads <= 8:
+        parser.error("--threads must be between 1 and 8 (Vivado limit)")
     output = args.output.resolve()
     if output.exists():
         parser.error("--output must not already exist; preserve previous experiments")

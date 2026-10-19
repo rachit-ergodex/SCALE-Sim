@@ -1,0 +1,140 @@
+{
+  "record_type": "launch observation, not completed synthesis or timing signoff",
+  "observed_utc": "2026-10-19T23:04:48.856662+00:00",
+  "git_commit": "4f0783d49fb3cc14e907e200130cb4080633fca3",
+  "host": "scalesim-f2-build-m7a8-20261020",
+  "instance_id": "i-04fc91f9015037a6c",
+  "instance_type": "m7a.8xlarge",
+  "region": "us-east-1",
+  "availability_zone": "us-east-1d",
+  "vcpu": 32,
+  "memory_gib": 128,
+  "image_id": "ami-07c259dae738189ec",
+  "image_name": "FPGA Developer AMI (Ubuntu) - 1.19.1-prod-rhng4b6alkhdq",
+  "vivado_version": "2025.2",
+  "vivado_sw_build": "6299465",
+  "storage": {
+    "root_gib": 300,
+    "secondary_gib": 10,
+    "type": "gp3",
+    "encrypted": true
+  },
+  "access": "SSM; no inbound security group rules; IMDSv2 required",
+  "ssm_registration": "Added ssm:UpdateInstanceInformation permission scoped to this instance in us-east-1",
+  "run_directory": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+  "launch_ssm_command": "e1aca463-01fd-42b2-9125-959870c52779",
+  "observation_ssm_command": "b8076800-c253-4eda-9845-7cb72b501ed7",
+  "archive_sha256": "6ec6e87fc7b9498d491acd542ac77cb3dbc0ac6b12633260aa66c935d85ef87d",
+  "status": "running",
+  "phase_lines": [
+    "Starting synth_design",
+    "Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3225.375 ; gain = 331.688 ; free physical = 121380 ; free virtual = 133261"
+  ],
+  "threads": 8,
+  "threading_reference": "https://docs.amd.com/r/2025.2-English/ug904-vivado-implementation/Multithreading-with-the-Vivado-Tools",
+  "resource_capture": "/usr/bin/time -v writes final elapsed time and peak RSS to launcher-001.log",
+  "memory_observation_mib": "               total        used        free      shared  buff/cache   available\nMem:          126082        4185      121227           2        1749      121897\nSwap:          10239           0       10239\n",
+  "manifest": {
+    "status": "running",
+    "created_utc": "2026-10-19T23:04:31.987794+00:00",
+    "part": "xcvu47p-fsvh2892-2-e",
+    "compute_mhz": 200,
+    "macs": 4096,
+    "stage": "route",
+    "source_hashes": {
+      "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+      "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+      "src_rtl/decode/verification.json": "ab03cbdfe0a651692e99ec7a4c871a25efe3a5bf54033b2cb9507263ffd9d3d6",
+      "src_rtl/decode/f2/constraints/compute_200mhz.tcl": "87573006e262b4befda91fb6e73f4f4b423917a9e82a18b7661d671892b20b11",
+      "src_rtl/decode/f2/constraint_smoke_verification.json": "bbd638fade45094d483aeb552fb70c73cfa5a31c5e21675b3fd631abd09c4779",
+      "src_rtl/decode/f2/scripts/constraint_smoke.tcl": "cc03aae60e4709b427840aa283668156cc1f3df7bb3a0aa29cc174845a140485",
+      "src_rtl/decode/f2/scripts/constraint_smoke.sv": "1c7ef154d8d5b09858263245e3047ec34f41ec4dfca959fe9fc4fbcda5864558",
+      "src_rtl/decode/f2/scripts/compute_ooc.tcl": "fc11c8b85fb5873ece39f41aeb37e8c65c6bf6e3f3ace1559e7ff48476eb04dd",
+      "src_rtl/decode/f2/scripts/run_compute_ooc.py": "9141a17996a6c6c6d640f260e34fccf5710c3ca91beb563d2578882385854bd8",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "f40d105390dd0b946d74a0c026109afb44325f66b71e8213f64f0afeaae9c964"
+    },
+    "command": [
+      "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+      "-mode",
+      "batch",
+      "-nojournal",
+      "-log",
+      "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001/vivado.log",
+      "-source",
+      "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001/source/src_rtl/decode/f2/scripts/compute_ooc.tcl",
+      "-tclargs",
+      "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001/source",
+      "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+      "route",
+      "8"
+    ],
+    "scope": "Compute-only OOC; full-device placement, no AWS shell, HBM or SRAM adapter",
+    "boundary_budget_ns": {
+      "input_max": 1,
+      "output_max": 1,
+      "input_min": 0,
+      "output_min": 0,
+      "setup_uncertainty": 0.25,
+      "hold_uncertainty": 0.1
+    },
+    "historical_simulator_profile_mhz": 250,
+    "f2_shell_timing_closed": false
+  },
+  "constraint_preflight": {
+    "status": "passed",
+    "observed_utc": "2026-10-19T23:04:13.715798+00:00",
+    "run_directory": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/constraint-smoke",
+    "ssm_command": "5854a88a-a144-4da2-b990-346fb782a5d6",
+    "checks": {
+      "no_clock": 0,
+      "constant_clock": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0,
+      "no_input_delay": 0,
+      "no_output_delay": 0,
+      "multiple_clock": 0,
+      "generated_clocks": 0,
+      "loops": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "latch_loops": 0
+    },
+    "report_sha256": {
+      "resolved.xdc": "8f9abece9216fca56cb8363085ec7558a756ae46e75b0f4f47fc00bc7a064508",
+      "timing.rpt": "de1009dcb8c03a5abc75dae3a3366c03b298e3eb42d820bc2cc7c4e50b6d9f2a",
+      "check_timing.rpt": "2aa3b980a3d034d0734d5364d3cdd7dd6622a06541ea4fae4c50fe178e8ecce7"
+    },
+    "license_and_completion": [
+      "Attempting to get a license for feature 'Synthesis' and/or device 'xcvu47p'",
+      "INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcvu47p'",
+      "INFO: [Common 17-83] Releasing license: Synthesis",
+      "synth_design completed successfully",
+      "INFO: [Common 17-206] Exiting Vivado at Mon Oct 19 23:04:05 2026..."
+    ],
+    "resolved_constraints_match_f2_preflight": true
+  },
+  "supersedes": {
+    "superseded_utc": "2026-10-19T23:05:08.192522+00:00",
+    "reason": "Moved the same verified source hashes to the user-requested m7a.8xlarge build host",
+    "replacement_instance": "i-04fc91f9015037a6c",
+    "replacement_run": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+    "signaled_pids": [
+      2398994
+    ],
+    "timing_closed": false,
+    "source_and_logs_preserved": true,
+    "instance_id": "i-0c78de2253f66519d",
+    "run_directory": "/home/ubuntu/rachit/scalesim-200-20261020/run-002",
+    "post_stop_observation": {
+      "observed_utc": "2026-10-19T23:06:10.727540+00:00",
+      "ssm_command": "30471bea-7516-4b9b-a111-633c18d1b071",
+      "matching_compute_processes": [],
+      "driver_status": "vivado_failed",
+      "checkpoint_or_report_artifacts": []
+    }
+  },
+  "timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "limitations": "Compute-only OOC; full-device placement without AWS shell, HBM or SRAM adapter. Synthesis and PnR are not yet complete."
+}

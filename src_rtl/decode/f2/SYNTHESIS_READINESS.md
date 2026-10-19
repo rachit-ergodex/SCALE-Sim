@@ -132,3 +132,15 @@ The corrected full-size **run-002** was launched from commit `0834501`;
 [its launch observation](compute_200_run002.json) records the new inputs and
 remote directory. At that observation synthesis was running, PnR had not started,
 and no area/timing closure result was available.
+
+
+The build was then moved to the requested **m7a.8xlarge** (32 CPU cores,
+128 GiB RAM) using the same FPGA Developer AMI and Vivado 2025.2. The M7a
+constraint regression passed, including the VU47P synthesis license checkout;
+its resolved constraints are byte-for-byte identical to the validated F2
+regression. [M7a launch evidence](compute_200_m7a8_run001.json) binds the source
+hashes, instance, tool build, preflight checks and command. The full 4,096-MAC
+compute build started with eight threads and was observed in RTL elaboration.
+The F2 run-002 process was stopped after its M7a replacement was running; its
+source and logs are preserved. No completed synthesis or routed timing result
+is claimed by this launch record.

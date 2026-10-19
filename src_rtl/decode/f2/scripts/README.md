@@ -87,3 +87,20 @@ vivado -mode batch -source src_rtl/decode/f2/scripts/constraint_smoke.tcl \
 ```
 
 A smoke pass validates constraint application, not full-compute timing closure.
+
+
+## M7a build host and thread limit
+
+The current dedicated build host is `m7a.8xlarge`: 32 CPU cores and 128 GiB RAM,
+with the FPGA Developer AMI, Vivado 2025.2, and encrypted gp3 storage. Access is
+through SSM. See [the launch record](../compute_200_m7a8_run001.json) for the
+instance and source provenance. Use `--threads 8` for the maximum supported
+per-run setting. The earlier F2 run used four threads; the M7a run uses eight.
+
+Vivado's documented `general.maxThreads` range is **1–8**, including placement,
+routing, physical optimization and timing analysis. More CPU cores do not
+increase this per-run limit. Independent component builds or implementation
+strategies can run in parallel, subject to their combined memory requirements;
+they do not make one RTL elaboration use 32 threads. This first full-size run
+records peak RSS with `/usr/bin/time -v` before choosing a safe concurrency.
+See [AMD's Vivado 2025.2 threading documentation](https://docs.amd.com/r/2025.2-English/ug904-vivado-implementation/Multithreading-with-the-Vivado-Tools).

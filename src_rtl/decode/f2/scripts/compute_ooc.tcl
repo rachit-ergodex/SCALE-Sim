@@ -5,8 +5,8 @@ set run [file normalize [lindex $argv 1]]
 set stage [lindex $argv 2]
 set threads [lindex $argv 3]
 if {$stage ni {synth route}} {error "Invalid stage: $stage"}
-if {![string is integer -strict $threads] || $threads < 1 || $threads > 32} {
-    error "Threads must be between 1 and 32"
+if {![string is integer -strict $threads] || $threads < 1 || $threads > 8} {
+    error "Threads must be between 1 and 8 (Vivado limit)"
 }
 file mkdir $run
 cd $run
