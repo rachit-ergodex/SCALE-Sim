@@ -16,6 +16,7 @@ records the sixteen directed HBM cases.
 | Check | Result and scope |
 | --- | --- |
 | Full-size compute | Verilator/cocotb passed at 4×8, 32×64 and **64×64 / 4,096 MACs**; independent integer golden results and native SCALE-Sim demand addresses |
+| Production-sized compute | Four additional 64×64 tests, 14 commands and 29,584 outputs checked against NumPy; FFN/attention tiles, carried partials, 200 MHz cycle accounting and backpressure |
 | Compute limits | K=8191/8192, both INT32 wrap directions, signed INT8 corners, unsigned invalid command fields, held-valid and successive commands passed |
 | Four-state simulation | Standalone Icarus passed three command scenarios with unused operands/seeds set to X, including stalls and reset |
 | Queue integration | 24 Switchboard/Verilator GEMMs passed |

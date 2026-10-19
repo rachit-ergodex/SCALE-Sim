@@ -57,7 +57,7 @@
     "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
     "rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
     "tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
-    "tests/test_hbm_directed_bridge.py": "d8275a1f28eef4992e9a468a87960f771e9379448e30ab491c42618296039757",
+    "tests/test_hbm_directed_bridge.py": "5e307568b0784200141b5f343404056c00b6dec08b0e5156565ce8a154eb8e90",
     "tests/run_hbm_directed.py": "b66bd19bf4e5b2f784bfac19010cdb670dbe7a6431ec77e3423e73b300b3d4f6"
   }
 }

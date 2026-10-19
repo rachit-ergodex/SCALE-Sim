@@ -7,6 +7,42 @@ The numerical and timing runs are separate: numerical outputs establish the
 workload, while dependent memory callbacks determine its simulated schedule.
 This is not a full-transformer RTL implementation or a hardware benchmark.
 
+## F2 200 MHz estimate
+
+A fresh native timing run with `decode_f2_stream256_200mhz` gives **205.849 TPS**
+(**4.857932 ms/token**) for three batch-one Gemma3-1B W8A8/KV8 decode steps at
+contexts 513–515. Compute and modeled vector/SFU clocks are 200 MHz; HBM remains
+450 MHz on all 32 AXI ports. The only architecture-config change from the
+250 MHz profile is `core_hz`.
+
+| Target | TPS | Compute ms/token | Exposed memory wait ms/token |
+| --- | ---: | ---: | ---: |
+| F2, 200 MHz | 205.849 | 3.687625 | 1.170307 |
+| F2, 250 MHz (historical) | 232.270 | 2.950100 | 1.355229 |
+| ASIC, 1 GHz (historical) | 338.316 | 0.953505 | 2.002308 |
+
+The 200 MHz result uses approximately 1.025 GB of physical HBM transactions per
+token and 210.970 GB/s average HBM bandwidth. All 17 schedule/memory-timing checks
+pass. [Retained estimate](f2_200mhz_estimate.json) includes input/source hashes,
+per-token results, timing checks, and limitations. Clock scaling changes DMA /
+compute overlap, so TPS is not simply the 250 MHz result multiplied by 0.8.
+
+This is the dependency-ordered Ramulator2 model with explicit compute timing.
+There is no LPN model or complete token-loop Verilator measurement in this tree.
+Verilator checks the compute and HBM components; the new production-dimension
+arithmetic suite is documented in `src_rtl/decode/README.md`. The 200 MHz model
+still assumes the configured SRAM/vector/SFU resources and HBM behavior; full
+RTL integration and physical timing closure are separate requirements.
+
+```sh
+HERE=experiments/gemma3_1b_int8/hbm2/full_model
+env -u PYTHONPATH .venv/bin/python "$HERE/run.py" \
+  --config "$HERE/configs/decode_f2_stream256_200mhz.json" \
+  --out "$HERE/build/decode_f2_stream256_200mhz"
+env -u PYTHONPATH .venv/bin/python "$HERE/test_timing.py" \
+  --run-dir "$HERE/build/decode_f2_stream256_200mhz"
+```
+
 ## Intermediate SRAM, parallel attention heads and streaming vectors
 
 This revision targets over 325 TPS at 1 GHz and over 200 TPS at 250 MHz with

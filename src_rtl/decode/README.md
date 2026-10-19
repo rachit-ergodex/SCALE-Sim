@@ -134,3 +134,26 @@ The generated manifests list these boundaries explicitly. There is no
 full-transformer RTL equivalence result or FPGA bitstream yet. In particular,
 clock closure, HBM bandwidth under these adapters, and exact FP32 division/SFU
 throughput must be measured before projecting the simulator TPS onto hardware.
+
+## Production-dimension RTL arithmetic tests
+
+`tests/run_real_decode_tiles.py` tests the full 64×64 compute RTL with a 5 ns
+simulation clock. Four tests issue 14 commands and check 29,584 accepted outputs
+against independent NumPy INT64 products with explicit INT32 wrap. They cover
+Gemma FFN-up (K=1152, N=6912), FFN-down (K=6912, N=1152), attention QK/AV,
+column/K tiling, carried partial sums, parallel rows, ragged tiles, multiple
+waves, signed extremes, poisoned unused inputs and output backpressure. The
+operands are synthetic; these tests use production dimensions, not model weights.
+
+`real_decode_tiles_verification.json` retains exact sources and cycle counts.
+The suite runs in `verify.py`; it can also be run independently:
+
+```sh
+env -u PYTHONPATH src_rtl/build/decode_venv/bin/python src_rtl/decode/tests/run_real_decode_tiles.py
+```
+
+The directed HBM suite additionally fills all 64 transaction IDs before
+reordered returns, injects response faults, forces return-FIFO backpressure and
+checks exact-once data/tag/error delivery, partial packets and reset recovery.
+It passes for two-record 250 MHz and three-record 200 MHz return interfaces.
+These component tests do not establish physical timing or end-to-end token TPS.
