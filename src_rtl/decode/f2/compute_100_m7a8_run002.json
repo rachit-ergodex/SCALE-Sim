@@ -1,0 +1,101 @@
+{
+  "record_type": "launch observation, not completed placement/routing or timing signoff",
+  "status": "running",
+  "observed_utc": "2026-10-20T12:08:09.904579+00:00",
+  "flow_git_commit": "733a1aec562852175ad30fb466077b16fe2d7e69",
+  "instance_id": "i-04fc91f9015037a6c",
+  "instance_type": "m7a.8xlarge",
+  "region": "us-east-1",
+  "run_directory": "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002",
+  "launch_ssm_command": "a7796134-d335-4d89-82bd-e88dd392c141",
+  "observation_ssm_command": "8caa2043-7d67-4bd4-af09-8441e6108b0e",
+  "archive_sha256": "0ecfd55cdc748901310fb5f8afa2c56cc2c6ef1963019aceeb02156ae712d184",
+  "manifest": {
+    "status": "running",
+    "created_utc": "2026-10-20T12:06:06.621690+00:00",
+    "part": "xcvu47p-fsvh2892-2-e",
+    "macs": 4096,
+    "compute_mhz": 100.0,
+    "clock_period_ns": 10.0,
+    "stage": "route",
+    "threads": 8,
+    "command": [
+      "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+      "-mode",
+      "batch",
+      "-nojournal",
+      "-log",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/vivado.log",
+      "-source",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/flow_source/src_rtl/decode/f2/scripts/compute_retarget.tcl",
+      "-tclargs",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/baseline/post_synth.dcp",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002",
+      "10",
+      "route",
+      "8"
+    ],
+    "flow_source_hashes": {
+      "src_rtl/decode/f2/scripts/run_compute_retarget.py": "118d03545a87120bb1ee9e002b84d9cef8de869b06a984154e3a660e1fcec206",
+      "src_rtl/decode/f2/scripts/compute_retarget.tcl": "8e72d17ea5540898a58bb3e1290f82ade3073be57748c0525ddeb9653430c565",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "77d763d0131d6ab9992571e1238a84bd36eaa2738d633405ea019a3dbef18c52"
+    },
+    "source_hashes": {
+      "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+      "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+      "src_rtl/decode/verification.json": "ab03cbdfe0a651692e99ec7a4c871a25efe3a5bf54033b2cb9507263ffd9d3d6",
+      "src_rtl/decode/f2/constraints/compute_200mhz.tcl": "87573006e262b4befda91fb6e73f4f4b423917a9e82a18b7661d671892b20b11",
+      "src_rtl/decode/f2/constraint_smoke_verification.json": "bbd638fade45094d483aeb552fb70c73cfa5a31c5e21675b3fd631abd09c4779",
+      "src_rtl/decode/f2/scripts/constraint_smoke.tcl": "cc03aae60e4709b427840aa283668156cc1f3df7bb3a0aa29cc174845a140485",
+      "src_rtl/decode/f2/scripts/constraint_smoke.sv": "1c7ef154d8d5b09858263245e3047ec34f41ec4dfca959fe9fc4fbcda5864558",
+      "src_rtl/decode/f2/scripts/compute_ooc.tcl": "fc11c8b85fb5873ece39f41aeb37e8c65c6bf6e3f3ace1559e7ff48476eb04dd",
+      "src_rtl/decode/f2/scripts/run_compute_ooc.py": "9141a17996a6c6c6d640f260e34fccf5710c3ca91beb563d2578882385854bd8",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "f40d105390dd0b946d74a0c026109afb44325f66b71e8213f64f0afeaae9c964"
+    },
+    "baseline": {
+      "directory": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+      "manifest_sha256": "47ba5a5a0e3b8b0226fa87688c4462231b91c78c2a1129e1791e59ebd7b8e27d",
+      "checkpoint": "post_synth.dcp",
+      "checkpoint_sha256": "a06f3e39778c8133ea788c7961e101c694e4f88e1568dd8dde4c6ac55eef2020",
+      "compute_mhz": 200,
+      "source_git_label": "4f0783d49fb3cc14e907e200130cb4080633fca3"
+    },
+    "boundary_budget_ns": {
+      "input_max": 1,
+      "input_min": 0,
+      "output_max": 1,
+      "output_min": 0,
+      "setup_uncertainty": 0.25,
+      "hold_uncertainty": 0.1
+    },
+    "scope": "Compute-only OOC checkpoint retarget; full-device placement without AWS shell, HBM or SRAM adapter",
+    "synthesis_rerun": false,
+    "f2_shell_timing_closed": false,
+    "component_routed_timing_pass": false
+  },
+  "phase_lines": [
+    "Starting open_checkpoint Task",
+    "Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 1548.488 ; gain = 0.000 ; free physical = 121037 ; free virtual = 135142",
+    "Netlist sorting complete. Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 4476.680 ; gain = 75.102 ; free physical = 118162 ; free virtual = 132267",
+    "Read ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 5115.500 ; gain = 167.195 ; free physical = 117545 ; free virtual = 131650",
+    "Netlist sorting complete. Time (s): cpu = 00:00:00.21 ; elapsed = 00:00:00.21 . Memory (MB): peak = 7872.637 ; gain = 0.000 ; free physical = 114867 ; free virtual = 128972",
+    "open_checkpoint: Time (s): cpu = 00:01:48 ; elapsed = 00:01:42 . Memory (MB): peak = 7872.672 ; gain = 6390.230 ; free physical = 114868 ; free virtual = 128973"
+  ],
+  "resolved_clock_commands": [
+    "create_clock -period 5.000 -name decode_core [get_ports clk]",
+    "set_clock_uncertainty -setup 0.250 [get_clocks decode_core]",
+    "set_clock_uncertainty -hold 0.100 [get_clocks decode_core]",
+    "create_clock -period 10.000 -name decode_core [get_ports clk]",
+    "set_clock_uncertainty -setup 0.250 [get_clocks decode_core]",
+    "set_clock_uncertainty -hold 0.100 [get_clocks decode_core]"
+  ],
+  "constraint_observation": "The one-clock/10ns guard completed and post_retarget.dcp was being saved. Resolved XDC retains the original create_clock command followed by the 10ns replacement; exactly one effective clock was checked. Full pre-placement report/coverage checks were still pending.",
+  "preflight_passed": false,
+  "local_tests_passed": 19,
+  "supersedes": "compute_100_m7a8_run001.json",
+  "baseline_result": "compute_200_m7a8_result.json",
+  "timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "scope": "Full4096MAC compute-only OOC. No AWS shell, HBM or SRAM adapter; no FPGA inference throughput claim."
+}

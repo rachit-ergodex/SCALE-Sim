@@ -116,5 +116,6 @@
     "design_top": "decode_f2_compute",
     "core_reference": "decode_os_core",
     "fix": "Compare current_design TOP to decode_f2_compute, retaining the exact part, boundary-width, clock and source/checkpoint checks."
-  }
+  },
+  "superseded_by": "compute_100_m7a8_run002.json"
 }

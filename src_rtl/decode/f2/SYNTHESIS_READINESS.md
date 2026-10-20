@@ -155,3 +155,17 @@ image was produced. [Failure evidence](compute_200_m7a8_result.json) and the
 retained native reports supersede the earlier launch observation. The saved
 synthesis checkpoint is the basis for a separate 100 MHz implementation
 experiment; lowering the clock does not by itself remove routing congestion.
+
+
+A separate **100 MHz** attempt now reuses the immutable synthesis checkpoint.
+The first launch stopped before retargeting because its identity guard compared
+Vivado's internal design alias with the HDL top. An actual checkpoint probe
+identified `NAME=checkpoint_post_synth`, `TOP=decode_f2_compute`; the corrected
+guard checks TOP and the exact FPGA part. The corrected
+[100 MHz run-002](compute_100_m7a8_run002.json) was observed passing identity,
+clock and interface checks and applying one effective 10 ns clock with unchanged
+boundary budgets. It was saving the retargeted checkpoint; full coverage reports,
+placement, routing and timing signoff were still pending at that observation.
+All 19 local flow/audit/provenance tests pass, and the unchanged RTL remains bound
+to the original numerical verification hashes. No 100 MHz timing or TPS result
+is claimed yet.
