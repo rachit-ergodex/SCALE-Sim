@@ -1,0 +1,1 @@
+Native Vivado reports are retained byte-for-byte for provenance. Their hashes are recorded in the corresponding result JSON. Tool-generated spacing and trailing blank lines are intentionally preserved.

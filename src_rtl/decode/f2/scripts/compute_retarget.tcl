@@ -1,4 +1,17 @@
 # Reuse a preserved 200 MHz full-compute synthesis checkpoint at a lower clock.
+proc assert_checkpoint_identity {design} {
+    set part [get_property PART $design]
+    set top [get_property TOP $design]
+    set name [get_property NAME $design]
+    # NAME is an in-memory alias (e.g. checkpoint_post_synth), not the RTL top.
+    puts "SCALESIM_CHECKPOINT_IDENTITY part=$part top=$top design_name=$name"
+    if {$part ne "xcvu47p-fsvh2892-2-e"} {
+        error "Unexpected checkpoint part: $part"
+    }
+    if {$top ne "decode_f2_compute"} {
+        error "Unexpected checkpoint top: $top (design alias: $name)"
+    }
+}
 # Arguments: checkpoint new-output target-period-ns preflight|route threads
 if {[llength $argv] != 5} {error "Expected checkpoint output period preflight|route threads"}
 set checkpoint [file normalize [lindex $argv 0]]
@@ -18,10 +31,7 @@ cd $run
 set_param general.maxThreads $threads
 set_msg_config -severity {CRITICAL WARNING} -new_severity ERROR
 open_checkpoint $checkpoint
-if {[get_property PART [current_design]] ne "xcvu47p-fsvh2892-2-e" ||
-    [get_property NAME [current_design]] ne "decode_f2_compute"} {
-    error "Expected the full VU47P decode_f2_compute checkpoint"
-}
+assert_checkpoint_identity [current_design]
 if {[llength [get_clocks]] != 1 || [llength [get_clocks decode_core]] != 1 ||
     abs([get_property PERIOD [get_clocks decode_core]] - 5.0) > 0.001} {
     error "Baseline must have exactly one 200 MHz decode_core clock"

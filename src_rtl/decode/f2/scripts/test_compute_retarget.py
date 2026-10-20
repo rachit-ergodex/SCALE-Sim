@@ -108,6 +108,30 @@ class RetargetTest(unittest.TestCase):
                 self.assertEqual(self.invoke(*args).returncode, 2)
                 self.assertFalse(self.output.exists())
 
+    def test_tcl_identity_uses_top_property_not_checkpoint_alias(self):
+        # Execute the exact production Tcl guard with probed Vivado properties.
+        # This is a guard regression, not a substitute for opening a real DCP.
+        script = SCRIPT.with_name('compute_retarget.tcl').read_text()
+        guard = script.split('# Arguments:', 1)[0]
+        fixture = r"""
+proc get_property {key design} {global properties; return [dict get $properties $key]}
+foreach {part top name should_fail} {
+    xcvu47p-fsvh2892-2-e decode_f2_compute checkpoint_post_synth 0
+    xcvu47p-fsvh2892-2-e decode_f2_compute unrelated_session_alias 0
+    xcvu47p-fsvh2892-2-e wrong_top decode_f2_compute 1
+    xcvu47p-fsvh2892-2-e {} checkpoint_post_synth 1
+    wrong_part decode_f2_compute checkpoint_post_synth 1
+} {
+    set properties [dict create PART $part TOP $top NAME $name]
+    set failed [catch {assert_checkpoint_identity design_object} message]
+    if {$failed != $should_fail} {puts stderr "Identity guard mismatch: $properties $message"; exit 1}
+}
+puts "PASS checkpoint identity guard"
+"""
+        result = subprocess.run(['tclsh'], input=guard + fixture, text=True, capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('PASS checkpoint identity guard', result.stdout)
+
     def test_run_cannot_be_nested_under_baseline(self):
         self.output = self.baseline / 'new-run'
         result = self.invoke()
