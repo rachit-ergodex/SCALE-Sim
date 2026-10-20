@@ -144,3 +144,14 @@ compute build started with eight threads and was observed in RTL elaboration.
 The F2 run-002 process was stopped after its M7a replacement was running; its
 source and logs are preserved. No completed synthesis or routed timing result
 is claimed by this launch record.
+
+
+The M7a 200 MHz run subsequently **failed routing** after 9 h 28 min 38 s.
+Synthesis, placement and physical optimization completed and their checkpoints
+are preserved. Routing reported global congestion level 7. Placement used
+1,023,322 LUTs, 175,661 flip-flops and zero DSP blocks; its setup WNS was
+−5.213 ns and hold WHS was −0.180 ns. Neither timing closure nor a runnable
+image was produced. [Failure evidence](compute_200_m7a8_result.json) and the
+retained native reports supersede the earlier launch observation. The saved
+synthesis checkpoint is the basis for a separate 100 MHz implementation
+experiment; lowering the clock does not by itself remove routing congestion.

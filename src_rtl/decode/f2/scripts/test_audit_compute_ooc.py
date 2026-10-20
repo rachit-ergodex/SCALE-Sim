@@ -47,6 +47,25 @@ class AuditTest(unittest.TestCase):
         self.assertTrue(result["component_routed_timing_pass"])
         self.assertFalse(result["f2_shell_timing_closed"])
 
+    def test_100mhz_pass_requires_explicit_matching_target(self):
+        self.metrics["clock_period_ns"] = "10.000"
+        self.write_metrics()
+        self.assertEqual(MODULE.audit(self.run)["status"], "failed")
+        result = MODULE.audit(self.run, expected_period_ns=10.0)
+        self.assertEqual(result["status"], "passed")
+        self.assertEqual(result["expected_clock_period_ns"], 10.0)
+        self.assertFalse(result["f2_shell_timing_closed"])
+        self.write_timing(tns="-0.100")
+        self.assertEqual(MODULE.audit(self.run, expected_period_ns=10.0)["status"], "failed")
+
+    def test_old_clock_does_not_pass_retargeted_audit(self):
+        self.assertEqual(MODULE.audit(self.run, expected_period_ns=10.0)["status"], "failed")
+
+    def test_invalid_expected_period_is_rejected(self):
+        for period in (0, -1, float("nan"), float("inf")):
+            with self.subTest(period=period), self.assertRaises(ValueError):
+                MODULE.audit(self.run, expected_period_ns=period)
+
     def test_missing_timing_coverage_fails(self):
         self.checks.remove("unconstrained_internal_endpoints")
         self.write_checks()

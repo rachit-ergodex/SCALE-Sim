@@ -1,0 +1,282 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Tue Oct 20 06:12:32 2026
+| Host         : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command      : report_drc -file /home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001/place_drc.rpt
+| Design       : decode_f2_compute
+| Device       : xcvu47p-fsvh2892-2-e
+| Speed File   : -2
+| Design State : Partially Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: decode_f2_compute
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max checks: <unlimited>
+             Checks found: 49
++-----------+------------------+-------------------------+--------+
+| Rule      | Severity         | Description             | Checks |
++-----------+------------------+-------------------------+--------+
+| RTSTAT-13 | Critical Warning | Insufficient Routing    | 1      |
+| CHECK-2   | Advisory         | Report rule not checked | 48     |
++-----------+------------------+-------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+RTSTAT-13#1 Critical Warning
+Insufficient Routing  
+A signficant portion of the design is not routed. Routed nets status (RTSTAT-*) DRC checks will not be run.  For routing information, run report_route_status.  Please run implementation on your design.
+Related violations: <none>
+
+CHECK-2#1 Advisory
+Report rule not checked  
+BGIVC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#2 Advisory
+Report rule not checked  
+BIIVRC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#3 Advisory
+Report rule not checked  
+BISLIM-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#4 Advisory
+Report rule not checked  
+BIVB-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#5 Advisory
+Report rule not checked  
+BIVC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#6 Advisory
+Report rule not checked  
+BIVR-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#7 Advisory
+Report rule not checked  
+BIVRU-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#8 Advisory
+Report rule not checked  
+BIVT-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#9 Advisory
+Report rule not checked  
+CFGM-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#10 Advisory
+Report rule not checked  
+DCIC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#11 Advisory
+Report rule not checked  
+DCIC-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#12 Advisory
+Report rule not checked  
+DCIC-3 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#13 Advisory
+Report rule not checked  
+DCICIOSTD-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#14 Advisory
+Report rule not checked  
+DCICIOSTD-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#15 Advisory
+Report rule not checked  
+DCICIOSTD-3 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#16 Advisory
+Report rule not checked  
+DCICPC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#17 Advisory
+Report rule not checked  
+DCIP-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#18 Advisory
+Report rule not checked  
+DCIP-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#19 Advisory
+Report rule not checked  
+DIFFISTD-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#20 Advisory
+Report rule not checked  
+DIFFISTDDrv-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#21 Advisory
+Report rule not checked  
+DIFFISTDSlew-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#22 Advisory
+Report rule not checked  
+DIFFSTDLIMIT-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#23 Advisory
+Report rule not checked  
+IOBUSSLRC-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#24 Advisory
+Report rule not checked  
+IOCNT-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#25 Advisory
+Report rule not checked  
+IOCNT-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#26 Advisory
+Report rule not checked  
+IOCTMGT-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#27 Advisory
+Report rule not checked  
+IODIR-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#28 Advisory
+Report rule not checked  
+IOPCBUFG-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#29 Advisory
+Report rule not checked  
+IOPCMGT-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#30 Advisory
+Report rule not checked  
+IOPCMGT-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#31 Advisory
+Report rule not checked  
+IOPCPR-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#32 Advisory
+Report rule not checked  
+IOPCPR-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#33 Advisory
+Report rule not checked  
+IOPCSLR-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#34 Advisory
+Report rule not checked  
+IOPCSLR-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#35 Advisory
+Report rule not checked  
+IOPL-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#36 Advisory
+Report rule not checked  
+IOPL-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#37 Advisory
+Report rule not checked  
+IOPL-3 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#38 Advisory
+Report rule not checked  
+IOPL-4 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#39 Advisory
+Report rule not checked  
+IOPL-5 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#40 Advisory
+Report rule not checked  
+IOPL-6 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#41 Advisory
+Report rule not checked  
+IOPL-7 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#42 Advisory
+Report rule not checked  
+LVDS-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#43 Advisory
+Report rule not checked  
+PORTPROP-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#44 Advisory
+Report rule not checked  
+PORTPROP-3 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#45 Advisory
+Report rule not checked  
+PORTPROP-4 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#46 Advisory
+Report rule not checked  
+PORTPROP-5 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#47 Advisory
+Report rule not checked  
+VCCAUX1-1 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+CHECK-2#48 Advisory
+Report rule not checked  
+VCCAUX1-2 rule not checked: Design has more than 100000 ports (572266).
+Related violations: <none>
+
+

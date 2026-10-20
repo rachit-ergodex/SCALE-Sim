@@ -1,0 +1,129 @@
+{
+  "record_type": "completed failed physical implementation attempt",
+  "status": "route_failed",
+  "observed_utc": "2026-10-20T11:52:02.417625+00:00",
+  "finished_utc": "2026-10-20T08:33:10.777928+00:00",
+  "instance_id": "i-04fc91f9015037a6c",
+  "instance_type": "m7a.8xlarge",
+  "run_directory": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+  "source_git_commit": "4f0783d49fb3cc14e907e200130cb4080633fca3",
+  "launch_record": "compute_200_m7a8_run001.json",
+  "elapsed_hms": "9:28:38",
+  "peak_rss_kib": 60569408,
+  "swaps": 0,
+  "threads": 8,
+  "compute_mhz": 200,
+  "macs": 4096,
+  "failed_stage": "route_design",
+  "reason": "Route 35-3: Design is not routable as its global congestion level is 7",
+  "route_errors": [
+    "ERROR: [Route 35-3] Design is not routable as its global congestion level is 7.",
+    "ERROR: [Route 35-4445] route_design is terminated due to errors/critical warnings issued before and during initial routing. The issues reported cannot be resolved later in route_design.",
+    "ERROR: [Common 17-39] 'route_design' failed due to earlier errors."
+  ],
+  "synthesis": {
+    "lut": 1101713,
+    "ff": 174685,
+    "dsp": 0,
+    "setup_wns_ns": 0.571,
+    "hold_whs_ns": -0.175
+  },
+  "placement": {
+    "lut": 1023322,
+    "ff": 175661,
+    "dsp": 0,
+    "setup_wns_ns": -5.213,
+    "setup_tns_ns": -1432948.5,
+    "setup_failing_endpoints": 710463,
+    "hold_whs_ns": -0.18,
+    "hold_tns_ns": -18840.287,
+    "hold_failing_endpoints": 206512
+  },
+  "checkpoint": {
+    "checkpoint": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001/post_synth.dcp",
+    "checkpoint_sha256": "a06f3e39778c8133ea788c7961e101c694e4f88e1568dd8dde4c6ac55eef2020"
+  },
+  "artifacts": [
+    {
+      "name": "place_check_timing.rpt",
+      "bytes": 3256,
+      "modified_utc": "2026-10-20T06:10:24.241508+00:00"
+    },
+    {
+      "name": "place_congestion.rpt",
+      "bytes": 5160,
+      "modified_utc": "2026-10-20T06:13:46.800221+00:00"
+    },
+    {
+      "name": "place_drc.rpt",
+      "bytes": 8853,
+      "modified_utc": "2026-10-20T06:12:34.339606+00:00"
+    },
+    {
+      "name": "place_timing.rpt",
+      "bytes": 18869,
+      "modified_utc": "2026-10-20T06:07:08.037847+00:00"
+    },
+    {
+      "name": "place_utilization.rpt",
+      "bytes": 1908,
+      "modified_utc": "2026-10-20T06:10:42.838665+00:00"
+    },
+    {
+      "name": "post_opt.dcp",
+      "bytes": 206116088,
+      "modified_utc": "2026-10-20T04:23:03.061528+00:00"
+    },
+    {
+      "name": "post_phys_opt.dcp",
+      "bytes": 334118024,
+      "modified_utc": "2026-10-20T07:59:38.156882+00:00"
+    },
+    {
+      "name": "post_place.dcp",
+      "bytes": 340118832,
+      "modified_utc": "2026-10-20T06:02:18.519386+00:00"
+    },
+    {
+      "name": "post_synth.dcp",
+      "bytes": 222533409,
+      "modified_utc": "2026-10-20T04:08:01.106153+00:00"
+    },
+    {
+      "name": "synth_check_timing.rpt",
+      "bytes": 3255,
+      "modified_utc": "2026-10-20T04:16:04.518095+00:00"
+    },
+    {
+      "name": "synth_drc.rpt",
+      "bytes": 8448,
+      "modified_utc": "2026-10-20T04:17:25.082768+00:00"
+    },
+    {
+      "name": "synth_timing.rpt",
+      "bytes": 18571,
+      "modified_utc": "2026-10-20T04:12:58.397578+00:00"
+    },
+    {
+      "name": "synth_utilization.rpt",
+      "bytes": 1945,
+      "modified_utc": "2026-10-20T04:16:12.149157+00:00"
+    }
+  ],
+  "reports_sha256": {
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/synth_utilization.rpt": "16242aedf746095e4e10ff0be3baff13a1dc9ff718d555bdf5e2bf26187c6cf2",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/place_utilization.rpt": "3480f9134813feb054a05a046b6f87eb8ab3d04c45a1a0ac669c8f5c8ea12166",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/place_congestion.rpt": "be49f269f57a37a40954aa883f8bd96b2a916fbdc98dbe136b106716f7e2f248",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/place_check_timing.rpt": "79870ff4c50b1675c781c146176748e2a3baf8b8f61d641e16bad1178b7dc1d4",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/place_timing.rpt": "914f806ff439c41b197e4771cdfb79375eee27ba249fe221ff700b795035f16a",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/place_drc.rpt": "e5ce3e4d41594fb9521a34a7f30e754c8bcba76a78ad14d8d589093ea6b525f1",
+    "src_rtl/decode/f2/reports/compute_200_m7a8_run001/synth_timing.rpt": "e8b6a578de0cf300316fb9d9db400f79efcebeb7cfdd0131aaa4b2bdfd730398"
+  },
+  "timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "notes": [
+    "Synthesis, placement and physical optimization completed; no post_route.dcp exists.",
+    "The stored synthesis checkpoint permits a separate 100 MHz placement/routing experiment.",
+    "This compute-only OOC run does not establish AWS shell fit or FPGA inference throughput."
+  ]
+}

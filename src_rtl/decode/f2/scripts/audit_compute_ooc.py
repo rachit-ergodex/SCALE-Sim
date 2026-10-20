@@ -7,7 +7,9 @@ from pathlib import Path
 import re
 
 
-def audit(run: Path) -> dict:
+def audit(run: Path, expected_period_ns: float = 5.0) -> dict:
+    if not math.isfinite(expected_period_ns) or expected_period_ns <= 0:
+        raise ValueError("Expected clock period must be finite and positive")
     problems = []
     metrics = dict(line.split("\t", 1) for line in
                    (run / "metrics.tsv").read_text().splitlines())
@@ -24,8 +26,8 @@ def audit(run: Path) -> dict:
 
     if metrics["part"] != "xcvu47p-fsvh2892-2-e":
         problems.append("Unexpected FPGA part")
-    if number("clock_count") != 1 or abs(number("clock_period_ns") - 5) > 0.001:
-        problems.append("Expected exactly one 200 MHz clock")
+    if number("clock_count") != 1 or abs(number("clock_period_ns") - expected_period_ns) > 0.001:
+        problems.append(f"Expected exactly one clock with period {expected_period_ns:g} ns")
     for kind in ("setup", "hold"):
         if number(f"{kind}_path_count") < 1:
             problems.append(f"No {kind} timing paths")
@@ -87,6 +89,7 @@ def audit(run: Path) -> dict:
         "scope": "Compute-only OOC on the full VU47P; no AWS shell or HBM integration",
         "component_routed_timing_pass": stage == "route" and not problems,
         "f2_shell_timing_closed": False,
+        "expected_clock_period_ns": expected_period_ns,
         "metrics": metrics,
         "timing_checks": checks,
         "timing_summary_values": timing_values,
@@ -97,9 +100,11 @@ def audit(run: Path) -> dict:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("run", type=Path)
+    parser.add_argument("--expected-period-ns", type=float, default=5.0,
+                        help="Required clock period; defaults to the original 200 MHz target")
     args = parser.parse_args()
     try:
-        result = audit(args.run)
+        result = audit(args.run, expected_period_ns=args.expected_period_ns)
     except (OSError, ValueError, KeyError) as exc:
         result = {"status": "failed", "f2_shell_timing_closed": False,
                   "problems": [f"Incomplete or unrecognized reports: {exc}"]}

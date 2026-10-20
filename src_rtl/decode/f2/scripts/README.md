@@ -104,3 +104,38 @@ strategies can run in parallel, subject to their combined memory requirements;
 they do not make one RTL elaboration use 32 threads. This first full-size run
 records peak RSS with `/usr/bin/time -v` before choosing a safe concurrency.
 See [AMD's Vivado 2025.2 threading documentation](https://docs.amd.com/r/2025.2-English/ug904-vivado-implementation/Multithreading-with-the-Vivado-Tools).
+
+
+## 100 MHz checkpoint retarget
+
+The first 200 MHz M7a attempt completed synthesis and placement, but routing
+failed with congestion level 7 after 9 h 28 min. Preserve that experiment and
+reuse its verified `post_synth.dcp` for a distinct 100 MHz placement/routing run:
+
+```sh
+python3 src_rtl/decode/f2/scripts/run_compute_retarget.py \
+  --baseline /path/to/compute-200-run \
+  --output /path/to/new/compute-100-run \
+  --compute-mhz 100 --threads 8
+```
+
+`--dry-run` validates the baseline source hashes and checkpoint provenance
+without creating an output directory. `--stage preflight` performs only the
+actual Vivado checkpoint and constraint checks. The default route stage runs
+those checks before optimization, placement, physical optimization and routing.
+The new directory contains hash-checked copies of the synthesis checkpoint,
+baseline sources/manifest and the new flow sources; the original run is preserved.
+
+The retarget keeps all 4,096 MACs and changes the sole `decode_core` clock to
+10 ns. It explicitly reapplies the original 1/0 ns maximum/minimum input and
+output delays and 0.25/0.1 ns setup/hold uncertainty. It checks full boundary
+widths, rejects timing exceptions and requires complete timing coverage before
+placement. The final audit is called with `--expected-period-ns 10`; omitting
+this option still selects the original 5 ns requirement. A 100 MHz result
+cannot pass the default 200 MHz audit, and a stale 5 ns clock cannot pass the
+100 MHz audit.
+
+Checkpoint reuse skips the original five-hour synthesis stage. It does not
+remap LUT arithmetic into DSPs or reduce interface/control routing demand, so
+this lower-frequency experiment can still fail congestion or timing. It remains
+a compute-only OOC experiment, without the AWS shell, HBM or SRAM adapters.

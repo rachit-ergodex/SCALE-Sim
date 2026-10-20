@@ -136,5 +136,10 @@
   },
   "timing_closed": false,
   "f2_shell_timing_closed": false,
-  "limitations": "Compute-only OOC; full-device placement without AWS shell, HBM or SRAM adapter. Synthesis and PnR are not yet complete."
+  "limitations": "Compute-only OOC; full-device placement without AWS shell, HBM or SRAM adapter. Synthesis and PnR are not yet complete.",
+  "subsequent_status": {
+    "status": "route_failed",
+    "finished_utc": "2026-10-20T08:33:10.777928+00:00",
+    "result_record": "compute_200_m7a8_result.json"
+  }
 }
