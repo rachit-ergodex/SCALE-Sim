@@ -169,3 +169,20 @@ placement, routing and timing signoff were still pending at that observation.
 All 19 local flow/audit/provenance tests pass, and the unchanged RTL remains bound
 to the original numerical verification hashes. No 100 MHz timing or TPS result
 is claimed yet.
+
+
+A **50 MHz / 20 ns** trial now runs concurrently with 100 MHz on the same M7a
+host, using the same verified 4,096-MAC synthesis checkpoint and unchanged
+retarget flow. Each run uses eight threads and its own source snapshot and output
+directory. [50 MHz launch evidence](compute_50_m7a8_run001.json) records the
+checkpoint/flow hashes, command, host and simultaneous process observations.
+At the recorded observation, 50 MHz has applied one effective 20 ns clock and is saving/reporting the retargeted checkpoint.
+The 100 MHz run had passed timing-coverage preflight and entered placement.
+
+The new 50 MHz service has a 60 GiB memory limit and 4 GiB swap limit; the
+previous 200 MHz build peaked at 57.8 GiB RSS, so concurrent peak memory headroom
+on this host is limited. Memory-limit termination would not be a physical timing
+failure. The 100 MHz run was left unchanged. Both experiments preserve the same
+1/0 ns boundary budgets, 0.25/0.1 ns uncertainties and numerical-verification
+binding. Neither experiment currently establishes routed timing closure, F2
+shell fit or inference TPS.
