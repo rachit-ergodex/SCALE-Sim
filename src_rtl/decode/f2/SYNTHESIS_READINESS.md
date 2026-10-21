@@ -1,9 +1,17 @@
-# F2 RTL synthesis readiness — 2026-10-20
+# F2 RTL synthesis readiness — 2026-10-21
 
 **Functional gate: PASS for the implemented components.** The compute core and
 32-port HBM read subsystem can proceed to **out-of-context component synthesis**.
 This is not approval for a complete F2 accelerator image: a connected board top
 and several inference blocks do not yet exist in this implementation.
+
+
+**Latest physical result:** both 50 and 100 MHz full-size runs finished and failed
+timing. The 50 MHz terminal summary had setup +0.738 ns / hold −0.180 ns; 100 MHz
+had setup −0.147 ns / hold −0.180 ns. The registered row-activity RTL fix passed
+the complete functional suite, and a separate physical-boundary harness passed
+eight functional tests. Physical timing closure remains pending. See
+[timing causes, exact locations and repairs](TIMING_VIOLATIONS.md).
 
 ## Verified behavior
 
@@ -157,32 +165,17 @@ synthesis checkpoint is the basis for a separate 100 MHz implementation
 experiment; lowering the clock does not by itself remove routing congestion.
 
 
-A separate **100 MHz** attempt now reuses the immutable synthesis checkpoint.
-The first launch stopped before retargeting because its identity guard compared
-Vivado's internal design alias with the HDL top. An actual checkpoint probe
-identified `NAME=checkpoint_post_synth`, `TOP=decode_f2_compute`; the corrected
-guard checks TOP and the exact FPGA part. The corrected
-[100 MHz run-002](compute_100_m7a8_run002.json) was observed passing identity,
-clock and interface checks and applying one effective 10 ns clock with unchanged
-boundary budgets. It was saving the retargeted checkpoint; full coverage reports,
-placement, routing and timing signoff were still pending at that observation.
-All 19 local flow/audit/provenance tests pass, and the unchanged RTL remains bound
-to the original numerical verification hashes. No 100 MHz timing or TPS result
-is claimed yet.
+The subsequent **100 MHz run-002** and **50 MHz run-001** both completed with
+`Route 35-39` timing failures. Their final observations supersede the earlier
+running launch records: [100 MHz result](compute_100_m7a8_result.json) and
+[50 MHz result](compute_50_m7a8_result.json). Both retained zero router-counted
+unrouted nets, but the unlocated OOC boundary and negative hold slack prevent
+signoff. Neither failure was an out-of-memory termination.
 
-
-A **50 MHz / 20 ns** trial now runs concurrently with 100 MHz on the same M7a
-host, using the same verified 4,096-MAC synthesis checkpoint and unchanged
-retarget flow. Each run uses eight threads and its own source snapshot and output
-directory. [50 MHz launch evidence](compute_50_m7a8_run001.json) records the
-checkpoint/flow hashes, command, host and simultaneous process observations.
-At the recorded observation, 50 MHz has applied one effective 20 ns clock and is saving/reporting the retargeted checkpoint.
-The 100 MHz run had passed timing-coverage preflight and entered placement.
-
-The new 50 MHz service has a 60 GiB memory limit and 4 GiB swap limit; the
-previous 200 MHz build peaked at 57.8 GiB RSS, so concurrent peak memory headroom
-on this host is limited. Memory-limit termination would not be a physical timing
-failure. The 100 MHz run was left unchanged. Both experiments preserve the same
-1/0 ns boundary budgets, 0.25/0.1 ns uncertainties and numerical-verification
-binding. Neither experiment currently establishes routed timing closure, F2
-shell fit or inference TPS.
+The [repair analysis](TIMING_VIOLATIONS.md) explains the global row-control setup
+path, command-boundary hold paths and short internal A-data shift paths. The
+updated core passes the complete functional suite with a fresh source-bound
+manifest. A [registered timing harness](harness/README.md) provides physical
+launch/capture points and a BUFG for the next implementation experiment; it
+requires small-scale physical validation and a full-size resource gate before
+long P&R. It does not replace the missing production SRAM/HBM/shell integration.

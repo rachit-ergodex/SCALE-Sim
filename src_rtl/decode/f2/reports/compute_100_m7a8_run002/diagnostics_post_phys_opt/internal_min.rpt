@@ -1,0 +1,2518 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Wed Oct 21 10:15:07 2026
+| Host              : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command           : report_timing -delay_type min -from [all_registers] -to [all_registers] -max_paths 50 -nworst 1 -path_type full_clock_expanded -file ./internal_min.rpt
+| Design            : decode_f2_compute
+| Device            : xcvu47p-fsvh2892
+| Speed File        : -2  PRODUCTION 1.30 05-01-2022
+| Design State      : Physopt postPlace
+| Temperature Grade : E
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.079ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[43][0][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[43][1][2]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.074ns  (logic 0.039ns (52.703%)  route 0.035ns (47.297%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][0][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X223Y120       FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[43][0][2]__0/Q
+                         net (fo=2, estimated)        0.035     0.086    core/a_pipe_reg[43][0][2]__0_n_0
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][2]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][2]__0/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X223Y120       FDRE (Hold_BFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[43][1][2]__0
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.086    
+  -------------------------------------------------------------------
+                         slack                                 -0.079    
+
+Slack (VIOLATED) :        -0.074ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[34][1][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[34][2][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.079ns  (logic 0.038ns (48.101%)  route 0.041ns (51.899%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y300       FDRE                                         r  core/a_pipe_reg[34][1][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y300       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[34][1][3]__0/Q
+                         net (fo=1, estimated)        0.041     0.092    core/a_pipe_reg[34][1][3]__0_n_0
+    SLICE_X229Y300       FDRE                                         r  core/a_pipe_reg[34][2][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y300       FDRE                                         r  core/a_pipe_reg[34][2][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y300       FDRE (Hold_BFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[34][2][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.092    
+  -------------------------------------------------------------------
+                         slack                                 -0.074    
+
+Slack (VIOLATED) :        -0.072ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[43][1][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[43][2][4]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.080ns  (logic 0.039ns (48.750%)  route 0.041ns (51.250%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X223Y120       FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[43][1][4]__0/Q
+                         net (fo=1, estimated)        0.041     0.092    core/a_pipe_reg[43][1][4]__0_n_0
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][2][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][2][4]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X223Y120       FDRE (Hold_DFF_SLICEL_C_D)
+                                                      0.046     0.164    core/a_pipe_reg[43][2][4]
+  -------------------------------------------------------------------
+                         required time                         -0.164    
+                         arrival time                           0.092    
+  -------------------------------------------------------------------
+                         slack                                 -0.072    
+
+Slack (VIOLATED) :        -0.070ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[36][0][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[36][1][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.083ns  (logic 0.038ns (45.783%)  route 0.045ns (54.217%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][0][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y277       FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[36][0][3]__0/Q
+                         net (fo=2, estimated)        0.045     0.096    core/a_pipe_reg[36][0][3]__0_n_0
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][1][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][1][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y277       FDRE (Hold_GFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[36][1][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.096    
+  -------------------------------------------------------------------
+                         slack                                 -0.070    
+
+Slack (VIOLATED) :        -0.059ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[44][1][6]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[44][2][6]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.094ns  (logic 0.039ns (41.489%)  route 0.055ns (58.511%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X200Y100       FDRE                                         r  core/a_pipe_reg[44][1][6]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X200Y100       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[44][1][6]__0/Q
+                         net (fo=1, estimated)        0.055     0.107    core/a_pipe_reg[44][1][6]__0_n_0
+    SLICE_X199Y100       FDRE                                         r  core/a_pipe_reg[44][2][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X199Y100       FDRE                                         r  core/a_pipe_reg[44][2][6]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X199Y100       FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[44][2][6]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.059    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[50][27][0]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[50][28][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.095ns  (logic 0.039ns (41.053%)  route 0.056ns (58.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X174Y93        FDRE                                         r  core/a_pipe_reg[50][27][0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X174Y93        FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[50][27][0]/Q
+                         net (fo=14, estimated)       0.056     0.108    core/a_pipe_reg_n_0_[50][27][0]
+    SLICE_X174Y93        FDRE                                         r  core/a_pipe_reg[50][28][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X174Y93        FDRE                                         r  core/a_pipe_reg[50][28][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X174Y93        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[50][28][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.108    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[59][49][0]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[59][50][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.095ns  (logic 0.039ns (41.053%)  route 0.056ns (58.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X23Y404        FDRE                                         r  core/a_pipe_reg[59][49][0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y404        FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[59][49][0]/Q
+                         net (fo=14, estimated)       0.056     0.108    core/a_pipe_reg_n_0_[59][49][0]
+    SLICE_X23Y404        FDRE                                         r  core/a_pipe_reg[59][50][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X23Y404        FDRE                                         r  core/a_pipe_reg[59][50][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X23Y404        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[59][50][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.108    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[22][1][6]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[22][2][6]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.094ns  (logic 0.038ns (40.426%)  route 0.056ns (59.574%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X137Y535       FDRE                                         r  core/a_pipe_reg[22][1][6]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X137Y535       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[22][1][6]__0/Q
+                         net (fo=1, estimated)        0.056     0.107    core/a_pipe_reg[22][1][6]__0_n_0
+    SLICE_X137Y535       FDRE                                         r  core/a_pipe_reg[22][2][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X137Y535       FDRE                                         r  core/a_pipe_reg[22][2][6]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X137Y535       FDRE (Hold_FFF_SLICEM_C_D)
+                                                      0.046     0.165    core/a_pipe_reg[22][2][6]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[47][0][5]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[47][1][5]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.094ns  (logic 0.038ns (40.426%)  route 0.056ns (59.574%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X197Y93        FDRE                                         r  core/a_pipe_reg[47][0][5]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X197Y93        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[47][0][5]__0/Q
+                         net (fo=2, estimated)        0.056     0.107    core/a_pipe_reg[47][0][5]__0_n_0
+    SLICE_X197Y93        FDRE                                         r  core/a_pipe_reg[47][1][5]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X197Y93        FDRE                                         r  core/a_pipe_reg[47][1][5]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X197Y93        FDRE (Hold_FFF_SLICEM_C_D)
+                                                      0.046     0.165    core/a_pipe_reg[47][1][5]__0
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[43][0][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[43][1][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.095ns  (logic 0.039ns (41.053%)  route 0.056ns (58.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][0][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X223Y120       FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[43][0][2]__0/Q
+                         net (fo=2, estimated)        0.056     0.107    core/a_pipe_reg[43][0][2]__0_n_0
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][2]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X223Y120       FDRE (Hold_AFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[43][1][2]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[45][0][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[45][1][4]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.095ns  (logic 0.039ns (41.053%)  route 0.056ns (58.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][0][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X195Y97        FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[45][0][4]__0/Q
+                         net (fo=2, estimated)        0.056     0.107    core/a_pipe_reg[45][0][4]__0_n_0
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][1][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][1][4]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X195Y97        FDRE (Hold_AFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[45][1][4]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[5][0][5]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[5][1][5]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.095ns  (logic 0.039ns (41.053%)  route 0.056ns (58.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][0][5]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X138Y530       FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[5][0][5]__0/Q
+                         net (fo=2, estimated)        0.056     0.107    core/a_pipe_reg[5][0][5]__0_n_0
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][1][5]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][1][5]__0/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X138Y530       FDRE (Hold_AFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[5][1][5]__0
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.107    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.057ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[15][0][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[15][1][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.041ns (42.268%)  route 0.056ns (57.732%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.007ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X165Y542       FDRE                                         r  core/a_pipe_reg[15][0][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X165Y542       FDRE (Prop_DFF2_SLICEL_C_Q)
+                                                      0.041     0.053 r  core/a_pipe_reg[15][0][3]__0/Q
+                         net (fo=2, estimated)        0.056     0.109    core/a_pipe_reg[15][0][3]__0_n_0
+    SLICE_X164Y542       FDRE                                         r  core/a_pipe_reg[15][1][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X164Y542       FDRE                                         r  core/a_pipe_reg[15][1][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X164Y542       FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[15][1][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.109    
+  -------------------------------------------------------------------
+                         slack                                 -0.057    
+
+Slack (VIOLATED) :        -0.057ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[59][27][2]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[59][28][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.096ns  (logic 0.039ns (40.625%)  route 0.057ns (59.375%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X135Y420       FDRE                                         r  core/a_pipe_reg[59][27][2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X135Y420       FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[59][27][2]/Q
+                         net (fo=17, estimated)       0.057     0.108    core/a_pipe_reg_n_0_[59][27][2]
+    SLICE_X135Y420       FDRE                                         r  core/a_pipe_reg[59][28][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X135Y420       FDRE                                         r  core/a_pipe_reg[59][28][2]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X135Y420       FDRE (Hold_BFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[59][28][2]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.108    
+  -------------------------------------------------------------------
+                         slack                                 -0.057    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[12][1][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[12][2][4]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X231Y602       FDRE                                         r  core/a_pipe_reg[12][1][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X231Y602       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[12][1][4]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[12][1][4]__0_n_0
+    SLICE_X231Y602       FDRE                                         r  core/a_pipe_reg[12][2][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X231Y602       FDRE                                         r  core/a_pipe_reg[12][2][4]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X231Y602       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[12][2][4]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[20][1][0]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[20][2][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X130Y598       FDRE                                         r  core/a_pipe_reg[20][1][0]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X130Y598       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[20][1][0]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[20][1][0]__0_n_0
+    SLICE_X130Y598       FDRE                                         r  core/a_pipe_reg[20][2][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X130Y598       FDRE                                         r  core/a_pipe_reg[20][2][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X130Y598       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[20][2][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[22][1][0]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[22][2][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X140Y534       FDRE                                         r  core/a_pipe_reg[22][1][0]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X140Y534       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[22][1][0]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[22][1][0]__0_n_0
+    SLICE_X140Y534       FDRE                                         r  core/a_pipe_reg[22][2][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X140Y534       FDRE                                         r  core/a_pipe_reg[22][2][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X140Y534       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[22][2][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[45][0][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[45][1][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X195Y101       FDRE                                         r  core/a_pipe_reg[45][0][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X195Y101       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[45][0][3]__0/Q
+                         net (fo=2, estimated)        0.058     0.110    core/a_pipe_reg[45][0][3]__0_n_0
+    SLICE_X195Y101       FDRE                                         r  core/a_pipe_reg[45][1][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X195Y101       FDRE                                         r  core/a_pipe_reg[45][1][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X195Y101       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[45][1][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[51][1][0]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[51][2][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X218Y96        FDRE                                         r  core/a_pipe_reg[51][1][0]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X218Y96        FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[51][1][0]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[51][1][0]__0_n_0
+    SLICE_X218Y96        FDRE                                         r  core/a_pipe_reg[51][2][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X218Y96        FDRE                                         r  core/a_pipe_reg[51][2][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X218Y96        FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[51][2][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[54][1][1]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[54][2][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X219Y353       FDRE                                         r  core/a_pipe_reg[54][1][1]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X219Y353       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[54][1][1]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[54][1][1]__0_n_0
+    SLICE_X219Y353       FDRE                                         r  core/a_pipe_reg[54][2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X219Y353       FDRE                                         r  core/a_pipe_reg[54][2][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X219Y353       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[54][2][1]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[56][1][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[56][2][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X209Y380       FDRE                                         r  core/a_pipe_reg[56][1][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X209Y380       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[56][1][3]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[56][1][3]__0_n_0
+    SLICE_X209Y380       FDRE                                         r  core/a_pipe_reg[56][2][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X209Y380       FDRE                                         r  core/a_pipe_reg[56][2][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X209Y380       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[56][2][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[58][1][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[58][2][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X226Y395       FDRE                                         r  core/a_pipe_reg[58][1][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X226Y395       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[58][1][2]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[58][1][2]__0_n_0
+    SLICE_X226Y395       FDRE                                         r  core/a_pipe_reg[58][2][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X226Y395       FDRE                                         r  core/a_pipe_reg[58][2][2]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X226Y395       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[58][2][2]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[5][0][5]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[5][1][5]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.098ns  (logic 0.039ns (39.796%)  route 0.059ns (60.204%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.007ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][0][5]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X138Y530       FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[5][0][5]__0/Q
+                         net (fo=2, estimated)        0.059     0.110    core/a_pipe_reg[5][0][5]__0_n_0
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][1][5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X138Y530       FDRE                                         r  core/a_pipe_reg[5][1][5]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X138Y530       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[5][1][5]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.056ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[8][1][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[8][2][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.097ns  (logic 0.039ns (40.206%)  route 0.058ns (59.794%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X143Y641       FDRE                                         r  core/a_pipe_reg[8][1][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X143Y641       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[8][1][3]__0/Q
+                         net (fo=1, estimated)        0.058     0.110    core/a_pipe_reg[8][1][3]__0_n_0
+    SLICE_X143Y641       FDRE                                         r  core/a_pipe_reg[8][2][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X143Y641       FDRE                                         r  core/a_pipe_reg[8][2][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X143Y641       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[8][2][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.110    
+  -------------------------------------------------------------------
+                         slack                                 -0.056    
+
+Slack (VIOLATED) :        -0.055ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[45][0][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[45][1][4]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.007ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][0][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X195Y97        FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/a_pipe_reg[45][0][4]__0/Q
+                         net (fo=2, estimated)        0.060     0.111    core/a_pipe_reg[45][0][4]__0_n_0
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][1][4]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X195Y97        FDRE                                         r  core/a_pipe_reg[45][1][4]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X195Y97        FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[45][1][4]__0
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.111    
+  -------------------------------------------------------------------
+                         slack                                 -0.055    
+
+Slack (VIOLATED) :        -0.055ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[54][0][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[54][1][4]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.098ns  (logic 0.039ns (39.796%)  route 0.059ns (60.204%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X218Y359       FDRE                                         r  core/a_pipe_reg[54][0][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X218Y359       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[54][0][4]__0/Q
+                         net (fo=2, estimated)        0.059     0.111    core/a_pipe_reg[54][0][4]__0_n_0
+    SLICE_X218Y360       FDRE                                         r  core/a_pipe_reg[54][1][4]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X218Y360       FDRE                                         r  core/a_pipe_reg[54][1][4]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X218Y360       FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[54][1][4]__0
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.111    
+  -------------------------------------------------------------------
+                         slack                                 -0.055    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[29][25][3]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[29][26][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X138Y472       FDRE                                         r  core/a_pipe_reg[29][25][3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X138Y472       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[29][25][3]/Q
+                         net (fo=20, estimated)       0.060     0.112    core/a_pipe_reg_n_0_[29][25][3]
+    SLICE_X138Y472       FDRE                                         r  core/a_pipe_reg[29][26][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X138Y472       FDRE                                         r  core/a_pipe_reg[29][26][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X138Y472       FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[29][26][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[45][13][1]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[45][14][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X188Y67        FDRE                                         r  core/a_pipe_reg[45][13][1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X188Y67        FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[45][13][1]/Q
+                         net (fo=20, estimated)       0.060     0.112    core/a_pipe_reg_n_0_[45][13][1]
+    SLICE_X188Y67        FDRE                                         r  core/a_pipe_reg[45][14][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X188Y67        FDRE                                         r  core/a_pipe_reg[45][14][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X188Y67        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[45][14][1]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[48][36][1]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[48][37][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X158Y104       FDRE                                         r  core/a_pipe_reg[48][36][1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X158Y104       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[48][36][1]/Q
+                         net (fo=20, estimated)       0.060     0.112    core/a_pipe_reg_n_0_[48][36][1]
+    SLICE_X158Y104       FDRE                                         r  core/a_pipe_reg[48][37][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X158Y104       FDRE                                         r  core/a_pipe_reg[48][37][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X158Y104       FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[48][37][1]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[58][50][6]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[58][51][6]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X14Y399        FDRE                                         r  core/a_pipe_reg[58][50][6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y399        FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[58][50][6]/Q
+                         net (fo=20, estimated)       0.060     0.112    core/a_pipe_reg_n_0_[58][50][6]
+    SLICE_X14Y399        FDRE                                         r  core/a_pipe_reg[58][51][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X14Y399        FDRE                                         r  core/a_pipe_reg[58][51][6]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X14Y399        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[58][51][6]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[63][21][1]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[63][22][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.039ns (39.394%)  route 0.060ns (60.606%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X160Y446       FDRE                                         r  core/a_pipe_reg[63][21][1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y446       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[63][21][1]/Q
+                         net (fo=20, estimated)       0.060     0.112    core/a_pipe_reg_n_0_[63][21][1]
+    SLICE_X160Y446       FDRE                                         r  core/a_pipe_reg[63][22][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X160Y446       FDRE                                         r  core/a_pipe_reg[63][22][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X160Y446       FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[63][22][1]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[36][0][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[36][1][4]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.099ns  (logic 0.037ns (37.374%)  route 0.062ns (62.626%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][0][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y277       FDRE (Prop_FFF_SLICEM_C_Q)
+                                                      0.037     0.050 r  core/a_pipe_reg[36][0][4]__0/Q
+                         net (fo=2, estimated)        0.062     0.112    core/a_pipe_reg[36][0][4]__0_n_0
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][1][4]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y277       FDRE                                         r  core/a_pipe_reg[36][1][4]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y277       FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[36][1][4]__0
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.112    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[3][1][5]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[3][2][5]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.098ns  (logic 0.039ns (39.796%)  route 0.059ns (60.204%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.005ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X159Y575       FDRE                                         r  core/a_pipe_reg[3][1][5]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X159Y575       FDRE (Prop_HFF2_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[3][1][5]__0/Q
+                         net (fo=1, estimated)        0.059     0.111    core/a_pipe_reg[3][1][5]__0_n_0
+    SLICE_X158Y575       FDRE                                         r  core/a_pipe_reg[3][2][5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X158Y575       FDRE                                         r  core/a_pipe_reg[3][2][5]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X158Y575       FDRE (Hold_DFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[3][2][5]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.111    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.054ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[57][1][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[57][2][4]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.098ns  (logic 0.039ns (39.796%)  route 0.059ns (60.204%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.005ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.018ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X219Y383       FDRE                                         r  core/a_pipe_reg[57][1][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X219Y383       FDRE (Prop_HFF2_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[57][1][4]__0/Q
+                         net (fo=1, estimated)        0.059     0.111    core/a_pipe_reg[57][1][4]__0_n_0
+    SLICE_X219Y382       FDRE                                         r  core/a_pipe_reg[57][2][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.018     0.018    core/clk
+    SLICE_X219Y382       FDRE                                         r  core/a_pipe_reg[57][2][4]/C
+                         clock pessimism              0.000     0.018    
+                         clock uncertainty            0.100     0.118    
+    SLICE_X219Y382       FDRE (Hold_DFF2_SLICEL_C_D)
+                                                      0.047     0.165    core/a_pipe_reg[57][2][4]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.111    
+  -------------------------------------------------------------------
+                         slack                                 -0.054    
+
+Slack (VIOLATED) :        -0.053ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[56][0][7]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[56][1][7]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.100ns  (logic 0.038ns (38.000%)  route 0.062ns (62.000%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X208Y386       FDRE                                         r  core/a_pipe_reg[56][0][7]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X208Y386       FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[56][0][7]__0/Q
+                         net (fo=2, estimated)        0.062     0.113    core/a_pipe_reg[56][0][7]__0_n_0
+    SLICE_X208Y386       FDRE                                         r  core/a_pipe_reg[56][1][7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X208Y386       FDRE                                         r  core/a_pipe_reg[56][1][7]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X208Y386       FDRE (Hold_BFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[56][1][7]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.113    
+  -------------------------------------------------------------------
+                         slack                                 -0.053    
+
+Slack (VIOLATED) :        -0.052ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[36][1][1]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[36][2][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.101ns  (logic 0.039ns (38.614%)  route 0.062ns (61.386%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y275       FDRE                                         r  core/a_pipe_reg[36][1][1]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y275       FDRE (Prop_GFF_SLICEM_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[36][1][1]__0/Q
+                         net (fo=1, estimated)        0.062     0.114    core/a_pipe_reg[36][1][1]__0_n_0
+    SLICE_X229Y275       FDRE                                         r  core/a_pipe_reg[36][2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y275       FDRE                                         r  core/a_pipe_reg[36][2][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y275       FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[36][2][1]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.114    
+  -------------------------------------------------------------------
+                         slack                                 -0.052    
+
+Slack (VIOLATED) :        -0.052ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[50][1][3]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[50][2][3]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.101ns  (logic 0.038ns (37.624%)  route 0.063ns (62.376%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X220Y101       FDRE                                         r  core/a_pipe_reg[50][1][3]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X220Y101       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[50][1][3]__0/Q
+                         net (fo=1, estimated)        0.063     0.114    core/a_pipe_reg[50][1][3]__0_n_0
+    SLICE_X220Y101       FDRE                                         r  core/a_pipe_reg[50][2][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X220Y101       FDRE                                         r  core/a_pipe_reg[50][2][3]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X220Y101       FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[50][2][3]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.114    
+  -------------------------------------------------------------------
+                         slack                                 -0.052    
+
+Slack (VIOLATED) :        -0.052ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[61][1][6]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[61][2][6]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.101ns  (logic 0.039ns (38.614%)  route 0.062ns (61.386%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X217Y446       FDRE                                         r  core/a_pipe_reg[61][1][6]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X217Y446       FDRE (Prop_GFF_SLICEM_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[61][1][6]__0/Q
+                         net (fo=1, estimated)        0.062     0.114    core/a_pipe_reg[61][1][6]__0_n_0
+    SLICE_X217Y446       FDRE                                         r  core/a_pipe_reg[61][2][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X217Y446       FDRE                                         r  core/a_pipe_reg[61][2][6]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X217Y446       FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[61][2][6]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.114    
+  -------------------------------------------------------------------
+                         slack                                 -0.052    
+
+Slack (VIOLATED) :        -0.052ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[63][0][1]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[63][1][1]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.101ns  (logic 0.039ns (38.614%)  route 0.062ns (61.386%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X209Y444       FDRE                                         r  core/a_pipe_reg[63][0][1]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X209Y444       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[63][0][1]__0/Q
+                         net (fo=2, estimated)        0.062     0.114    core/a_pipe_reg[63][0][1]__0_n_0
+    SLICE_X209Y442       FDRE                                         r  core/a_pipe_reg[63][1][1]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X209Y442       FDRE                                         r  core/a_pipe_reg[63][1][1]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X209Y442       FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[63][1][1]__0
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.114    
+  -------------------------------------------------------------------
+                         slack                                 -0.052    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[11][0][6]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[11][1][6]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.038ns (37.255%)  route 0.064ns (62.745%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X206Y570       FDRE                                         r  core/a_pipe_reg[11][0][6]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X206Y570       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[11][0][6]__0/Q
+                         net (fo=2, estimated)        0.064     0.115    core/a_pipe_reg[11][0][6]__0_n_0
+    SLICE_X206Y570       FDRE                                         r  core/a_pipe_reg[11][1][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X206Y570       FDRE                                         r  core/a_pipe_reg[11][1][6]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X206Y570       FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[11][1][6]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[41][1][7]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[41][2][7]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.038ns (37.255%)  route 0.064ns (62.745%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y154       FDRE                                         r  core/a_pipe_reg[41][1][7]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y154       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[41][1][7]__0/Q
+                         net (fo=1, estimated)        0.064     0.115    core/a_pipe_reg[41][1][7]__0_n_0
+    SLICE_X229Y154       FDRE                                         r  core/a_pipe_reg[41][2][7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y154       FDRE                                         r  core/a_pipe_reg[41][2][7]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y154       FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[41][2][7]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[57][1][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[57][2][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.038ns (37.255%)  route 0.064ns (62.745%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X230Y376       FDRE                                         r  core/a_pipe_reg[57][1][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X230Y376       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/a_pipe_reg[57][1][2]__0/Q
+                         net (fo=1, estimated)        0.064     0.115    core/a_pipe_reg[57][1][2]__0_n_0
+    SLICE_X230Y376       FDRE                                         r  core/a_pipe_reg[57][2][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X230Y376       FDRE                                         r  core/a_pipe_reg[57][2][2]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X230Y376       FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[57][2][2]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[10][0][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[10][1][2]__0/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X138Y610       FDRE                                         r  core/a_pipe_reg[10][0][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X138Y610       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[10][0][2]__0/Q
+                         net (fo=2, estimated)        0.063     0.115    core/a_pipe_reg[10][0][2]__0_n_0
+    SLICE_X138Y610       FDRE                                         r  core/a_pipe_reg[10][1][2]__0/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X138Y610       FDRE                                         r  core/a_pipe_reg[10][1][2]__0/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X138Y610       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[10][1][2]__0
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[20][0][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[20][1][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.040ns (39.216%)  route 0.062ns (60.784%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X130Y600       FDRE                                         r  core/a_pipe_reg[20][0][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X130Y600       FDRE (Prop_GFF2_SLICEL_C_Q)
+                                                      0.040     0.053 r  core/a_pipe_reg[20][0][2]__0/Q
+                         net (fo=2, estimated)        0.062     0.115    core/a_pipe_reg[20][0][2]__0_n_0
+    SLICE_X129Y600       FDRE                                         r  core/a_pipe_reg[20][1][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X129Y600       FDRE                                         r  core/a_pipe_reg[20][1][2]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X129Y600       FDRE (Hold_DFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[20][1][2]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[31][1][0]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[31][2][0]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X231Y443       FDRE                                         r  core/a_pipe_reg[31][1][0]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X231Y443       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[31][1][0]__0/Q
+                         net (fo=1, estimated)        0.063     0.115    core/a_pipe_reg[31][1][0]__0_n_0
+    SLICE_X231Y443       FDRE                                         r  core/a_pipe_reg[31][2][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X231Y443       FDRE                                         r  core/a_pipe_reg[31][2][0]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X231Y443       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[31][2][0]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[43][0][4]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[43][1][4]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][0][4]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X223Y120       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[43][0][4]__0/Q
+                         net (fo=2, estimated)        0.063     0.115    core/a_pipe_reg[43][0][4]__0_n_0
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X223Y120       FDRE                                         r  core/a_pipe_reg[43][1][4]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X223Y120       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[43][1][4]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[44][0][7]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[44][1][7]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X200Y100       FDRE                                         r  core/a_pipe_reg[44][0][7]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X200Y100       FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[44][0][7]__0/Q
+                         net (fo=2, estimated)        0.063     0.115    core/a_pipe_reg[44][0][7]__0_n_0
+    SLICE_X200Y100       FDRE                                         r  core/a_pipe_reg[44][1][7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X200Y100       FDRE                                         r  core/a_pipe_reg[44][1][7]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X200Y100       FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[44][1][7]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[50][1][2]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[50][2][2]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X215Y101       FDRE                                         r  core/a_pipe_reg[50][1][2]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X215Y101       FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[50][1][2]__0/Q
+                         net (fo=1, estimated)        0.063     0.115    core/a_pipe_reg[50][1][2]__0_n_0
+    SLICE_X215Y103       FDRE                                         r  core/a_pipe_reg[50][2][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X215Y103       FDRE                                         r  core/a_pipe_reg[50][2][2]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X215Y103       FDRE (Hold_EFF2_SLICEL_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[50][2][2]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[59][0][7]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[59][1][7]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.102ns  (logic 0.039ns (38.235%)  route 0.063ns (61.765%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X229Y416       FDRE                                         r  core/a_pipe_reg[59][0][7]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X229Y416       FDRE (Prop_GFF_SLICEM_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[59][0][7]__0/Q
+                         net (fo=2, estimated)        0.063     0.115    core/a_pipe_reg[59][0][7]__0_n_0
+    SLICE_X229Y416       FDRE                                         r  core/a_pipe_reg[59][1][7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X229Y416       FDRE                                         r  core/a_pipe_reg[59][1][7]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X229Y416       FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.166    core/a_pipe_reg[59][1][7]
+  -------------------------------------------------------------------
+                         required time                         -0.166    
+                         arrival time                           0.115    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+Slack (VIOLATED) :        -0.051ns  (arrival time - required time)
+  Source:                 core/a_pipe_reg[44][1][1]__0/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            core/a_pipe_reg[44][2][1]/D
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.101ns  (logic 0.039ns (38.614%)  route 0.062ns (61.386%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.019ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X202Y98        FDRE                                         r  core/a_pipe_reg[44][1][1]__0/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X202Y98        FDRE (Prop_GFF_SLICEL_C_Q)
+                                                      0.039     0.052 r  core/a_pipe_reg[44][1][1]__0/Q
+                         net (fo=1, estimated)        0.062     0.114    core/a_pipe_reg[44][1][1]__0_n_0
+    SLICE_X202Y98        FDRE                                         r  core/a_pipe_reg[44][2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.019     0.019    core/clk
+    SLICE_X202Y98        FDRE                                         r  core/a_pipe_reg[44][2][1]/C
+                         clock pessimism              0.000     0.019    
+                         clock uncertainty            0.100     0.119    
+    SLICE_X202Y98        FDRE (Hold_HFF_SLICEL_C_D)
+                                                      0.046     0.165    core/a_pipe_reg[44][2][1]
+  -------------------------------------------------------------------
+                         required time                         -0.165    
+                         arrival time                           0.114    
+  -------------------------------------------------------------------
+                         slack                                 -0.051    
+
+
+
+

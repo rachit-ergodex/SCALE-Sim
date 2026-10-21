@@ -122,5 +122,7 @@
   "baseline_result": "compute_200_m7a8_result.json",
   "timing_closed": false,
   "f2_shell_timing_closed": false,
-  "scope": "Full 4096-MAC compute-only OOC. No AWS shell, HBM or SRAM adapter; no FPGA inference throughput claim."
+  "scope": "Full 4096-MAC compute-only OOC. No AWS shell, HBM or SRAM adapter; no FPGA inference throughput claim.",
+  "subsequent_status": "failed_timing",
+  "result_record": "compute_50_m7a8_result.json"
 }

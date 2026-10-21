@@ -1,0 +1,30 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Tue Oct 20 13:23:11 2026
+| Host         : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command      : report_utilization -hierarchical -file /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001/place_utilization.rpt
+| Design       : decode_f2_compute
+| Device       : xcvu47p-fsvh2892-2-e
+| Speed File   : -2
+| Design State : Fully Placed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------+----------------+------------+------------+---------+------+--------+--------+--------+------+------------+
+|      Instance     |     Module     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |   FFs  | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-------------------+----------------+------------+------------+---------+------+--------+--------+--------+------+------------+
+| decode_f2_compute |          (top) |    1009511 |    1009511 |       0 |    0 | 174685 |      0 |      0 |    0 |          0 |
+|   core            | decode_os_core |    1009511 |    1009511 |       0 |    0 | 174685 |      0 |      0 |    0 |          0 |
++-------------------+----------------+------------+------------+---------+------+--------+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

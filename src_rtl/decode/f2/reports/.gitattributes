@@ -1,2 +1,4 @@
 # Preserve native Vivado reports byte-for-byte, including tool whitespace.
 *.rpt -whitespace
+**/console.txt -whitespace
+**/launcher.txt -whitespace

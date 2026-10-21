@@ -1,0 +1,69 @@
+{
+  "archive_sha256": "f4effdcaee49f7ca8dfe099a279eeddfc007cc5bcda1ab2fb55c60ae47de70cb",
+  "archive_bytes": 103930,
+  "archive_collection_ssm_command": "32c66c5c-6fdb-45f2-a065-fe8e61c1472e",
+  "transfer_chunks": [
+    {
+      "chunk": 0,
+      "command": "8b4ab135-0200-4c7a-9c6a-7d5d08d0d07e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 1,
+      "command": "659ead0f-c267-4f0f-8d08-a9bad379bc5d",
+      "bytes": 9000
+    },
+    {
+      "chunk": 2,
+      "command": "09852f2d-4b14-4bbb-bccd-b74a80f2ac2a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 3,
+      "command": "5c081d32-3309-431f-ad4b-5ce1715e13d5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 4,
+      "command": "1474b614-36ce-4707-9c91-1e060fe6b3e8",
+      "bytes": 9000
+    },
+    {
+      "chunk": 5,
+      "command": "69bc54de-05f0-404b-90bf-a69c6556d77e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 6,
+      "command": "a450fafb-b0d4-4def-be7c-0981b9226244",
+      "bytes": 9000
+    },
+    {
+      "chunk": 7,
+      "command": "caf17955-483b-4bb3-8249-6954affdc3d1",
+      "bytes": 9000
+    },
+    {
+      "chunk": 8,
+      "command": "e5eda05e-c4a9-4c2b-b382-cd78d90cb535",
+      "bytes": 9000
+    },
+    {
+      "chunk": 9,
+      "command": "fad9bcbf-a331-44ac-86e3-38d905cf9150",
+      "bytes": 9000
+    },
+    {
+      "chunk": 10,
+      "command": "3ee98d7b-62e1-47a8-9beb-6ba9f3d2fe2a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 11,
+      "command": "aba14e91-5122-4020-9093-7a6ff2b3d3b5",
+      "bytes": 4930
+    }
+  ],
+  "native_files_hash_verified": true,
+  "scope": "Diagnostics reconstructed from the saved post_phys_opt checkpoint before route; these are NOT terminal routed timing results."
+}
