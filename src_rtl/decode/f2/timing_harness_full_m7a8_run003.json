@@ -104,5 +104,7 @@
   },
   "scope": "Full 4096-MAC analysis-only registered harness synthesis at100MHz; resource gate before P&R. No full-size fit/timing, AWS shell integration, image or TPS claim.",
   "full_4096mac_timing_closed": false,
-  "f2_shell_timing_closed": false
+  "f2_shell_timing_closed": false,
+  "subsequent_status": "host_terminated_completion_unknown",
+  "subsequent_observation": "timing_harness_full_m7a8_interruption003.json"
 }

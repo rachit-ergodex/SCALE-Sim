@@ -22,10 +22,12 @@ and a strict mapped-netlist comparison with actual Vivado UNISIM models passed
 520 legal commands, including long reductions, stalls and resets. All 3,496
 observable bits remain checked after reconstructing proven synthesis boundary
 aliases. Fresh DSP physical runs passed at 100 MHz (+0.449 ns setup / +0.020 ns hold)
-and 50 MHz (+5.172 ns / +0.016 ns). Full 64×64 synthesis at 100 MHz is running
-on the m7a.8xlarge; full-size resource use and timing remain unverified for this
-revision. [DSP physical evidence](timing_harness_small_m7a8_result003.json) and
-[full synthesis launch](timing_harness_full_m7a8_run003.json) record the scope.
+and 50 MHz (+5.172 ns / +0.016 ns). The full 64×64 build host was terminated at 19:05 IST on October 21.
+The last retained observation showed synthesis running at 16:47 IST; completion
+and resource-gate status are unknown, and full-size P&R has not started in this
+flow. [DSP physical evidence](timing_harness_small_m7a8_result003.json) remains
+valid; the [termination observation](timing_harness_full_m7a8_interruption003.json)
+supersedes the running status in the [launch record](timing_harness_full_m7a8_run003.json).
 
 
 ## Verified behavior

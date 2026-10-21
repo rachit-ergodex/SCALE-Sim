@@ -129,4 +129,6 @@ See [source-bound evidence](../timing_harness_small_m7a8_result002.json).
 These measurements precede the separate DSP mapping revision. Fresh 32-MAC
 DSP runs also passed at 100 MHz (+0.449 ns setup / +0.020 ns hold) and 50 MHz
 (+5.172 ns / +0.016 ns); see [DSP evidence](../timing_harness_small_m7a8_result003.json).
-Full 64×64 synthesis is running, with full-size timing still unverified.
+The full 64×64 build host was terminated at 19:05 IST on October 21; synthesis
+completion and the resource gate are unknown, and full-size timing remains
+unverified. See the [lifecycle observation](../timing_harness_full_m7a8_interruption003.json).

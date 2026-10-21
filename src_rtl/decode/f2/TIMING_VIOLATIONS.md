@@ -166,10 +166,16 @@ Both terminal audits have zero timing, routing, coverage and DRC failures.
 retains the exact DSP mapping, source, native reports and checkpoint hashes.
 The earlier LUT-mapped passes are preserved separately.
 
-Full 64×64 synthesis at 100 MHz is now running on the existing m7a.8xlarge,
-with eight Vivado threads and a 100 GiB memory limit. It must pass the resource
-and exact per-lane DSP mapping gates before full-size routing. See the
-[full synthesis launch record](timing_harness_full_m7a8_run003.json).
+Full 64×64 synthesis at 100 MHz was launched on the m7a.8xlarge at 16:46 IST,
+with eight Vivado threads and a 100 GiB memory limit. The instance was
+**terminated at 19:05 IST on October 21**. The last retained observation at
+16:47 IST still showed synthesis running; no final resource-gate report or
+full-size checkpoint was collected. Completion is therefore **unknown**, and
+full-size P&R has not been launched by this flow. The
+[host lifecycle observation](timing_harness_full_m7a8_interruption003.json)
+supersedes the running status in the [launch record](timing_harness_full_m7a8_run003.json).
+A matching synthesis checkpoint and passing resource/DSP checks must be recovered
+or regenerated before P&R.
 
 ## Verification and remaining physical work
 
@@ -189,7 +195,8 @@ The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
 The corrected small harness passed at both clocks, including the DSP revision.
-Full-size synthesis is running to establish resource headroom
+Full-size synthesis completion is unknown after host termination; resource
+headroom still needs verified evidence
 before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
@@ -204,4 +211,5 @@ future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
 complete. Small routed setup and hold timing now pass at both frequencies with DSPs.
-Full-size synthesis is running; full-size fit and timing remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.
+The full-size build host has been terminated; full-size fit and timing remain
+unverified, with no active P&R run. No new inference TPS or ready-to-load F2 image is claimed.
