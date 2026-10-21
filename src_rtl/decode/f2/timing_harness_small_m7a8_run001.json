@@ -67,5 +67,7 @@
   },
   "scope": "Small analysis-only physical clock/boundary/hold repair validation; no full-size timing, AWS shell integration, bitstream or measured TPS claim.",
   "component_routed_timing_pass": false,
-  "f2_shell_timing_closed": false
+  "f2_shell_timing_closed": false,
+  "subsequent_status": "50_pass_100_serial_output_setup_failure",
+  "result_record": "timing_harness_small_m7a8_result001.json"
 }

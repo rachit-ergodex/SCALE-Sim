@@ -32,16 +32,16 @@
     }
   ],
   "source_sha256": {
-    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
     "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
     "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
     "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
-    "src_rtl/decode/f2/harness/test_timing_harness.py": "acfc81f3d100a13f09d4c90aec6593eaaa68b86e923c92674a1c17e0cdab786b",
+    "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
     "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
     "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d"
   },
   "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
-  "recorded_utc": "2026-10-21T10:19:25.022844+00:00",
+  "recorded_utc": "2026-10-21T10:37:18.819371+00:00",
   "tests_passed": 8,
   "core_arithmetic_verification": "Separate core numerical regression is required; these tests validate the scan harness and stalled boundary behavior."
 }

@@ -91,6 +91,30 @@ result-path pins contributing to hold-repair congestion. These are warnings,
 not a recovered final critical-path report; the old flow did not save that
 failed routed design. Future route failures now preserve that evidence.
 
+## First registered-boundary physical results
+
+The initial 4×8 / 32-MAC harness experiment produced these native audited results:
+
+| Clock | Setup WNS | Hold WHS | Result |
+|---|---:|---:|---|
+| 50 MHz | +5.189 ns | +0.014 ns | Routed component audit passed |
+| 100 MHz | −0.467 ns | +0.018 ns | One serial-output setup endpoint failed; hold passed |
+
+[The combined result record](timing_harness_small_m7a8_result001.json) links the
+native reports and source hashes. These are small component results, not
+full-array or F2 shell closure.
+
+The sole 100 MHz failure was `scan_out_reg/C` → external `scan_out`, in the
+analysis harness. Falling-edge launch gave 5 ns before the next rising-edge
+external reference, but 3.903 ns of clock insertion, 0.079 ns clock-to-Q,
+1 ns output budget and 0.485 ns reported setup uncertainty required 5.467 ns.
+The next internal setup path passed by +0.296 ns. The serial output now launches
+on the rising edge and is read after that edge, providing a real full-cycle
+output path. Inputs still sample on the falling edge. This is a hardware and
+protocol change, with unchanged timing constraints and unchanged compute RTL.
+Eight updated harness tests and all 39 flow/audit tests pass. Both clock targets
+are rerunning on this exact corrected harness source before full-size synthesis.
+
 ## Verification and remaining physical work
 
 The complete canonical functional suite passed on the repaired core in 4 min
@@ -106,8 +130,8 @@ The previous RTL failed that structural check on all eight buses.
 The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
-A small physical harness experiment must establish clock, boundary and hold
-behavior first. Full-size synthesis must then establish resource headroom
+The corrected small harness must pass at both clocks. Full-size synthesis must
+then establish resource headroom
 before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
@@ -121,5 +145,5 @@ even if copied reports or a checkpoint otherwise look positive. This prevents
 future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
-complete. Physical hold repair and full-size timing closure remain to be
-verified. No new inference TPS or ready-to-load F2 image is claimed.
+complete. Small physical hold timing now passes at both frequencies; the corrected
+serial output and full-size timing closure remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.

@@ -21,8 +21,8 @@ module decode_compute_timing_harness #(
     wire core_clk;
     BUFG core_clock_buffer (.I(clk), .O(core_clk));
 
-    // External pins have half a cycle to/from the registered wide boundary.
-    // These are real negative-edge registers, not timing exceptions.
+    // External controls use real negative-edge launch registers. The serial
+    // output launches on the positive edge and has a full external cycle.
     reg reset_q, scan_q, input_shift_q, input_commit_q;
     reg output_capture_q, output_shift_q;
     always @(negedge core_clk) begin
@@ -32,7 +32,6 @@ module decode_compute_timing_harness #(
         input_commit_q <= input_commit;
         output_capture_q <= output_capture;
         output_shift_q <= output_shift;
-        scan_out <= output_scan[0];
     end
 
     // No reset tree across the wide banks. Before the first commit, armed=0
@@ -44,6 +43,10 @@ module decode_compute_timing_harness #(
     reg armed;
     wire [OUTPUT_BITS-1:0] core_outputs;
     always @(posedge core_clk) begin
+        // Sample the pre-shift head; the host reads this bit after this edge.
+        // Positive-edge launch avoids a half-cycle output budget dominated by
+        // global clock insertion latency. No timing budget is relaxed.
+        scan_out <= output_scan[0];
         if (reset_q) begin
             armed <= 1'b0;
         end else begin

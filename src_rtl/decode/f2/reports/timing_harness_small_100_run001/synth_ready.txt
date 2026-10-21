@@ -1,0 +1,1 @@
+Source, clock, coverage, DRC and physical BUFG checks passed; unplaced timing is not closure.

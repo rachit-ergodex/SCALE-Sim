@@ -32,16 +32,21 @@ def inspect(dut, fields):
 
 async def cycle(dut, **values):
     # External controls settle before the falling edge; wide banks operate at
-    # the following rising edge. Serial data is sampled before a shift occurs.
+    # the following rising edge. Serial output samples the pre-shift head at
+    # that rising edge and is read after it.
     for name in CONTROLS:
         getattr(dut,name).value=values.get(name,0)
+    serial_before=int(dut.scan_out.value)
     dut.clk.value=1
     await Timer(5,unit='ns')
     dut.clk.value=0
     await Timer(5,unit='ns')
-    serial=int(dut.scan_out.value)
+    assert int(dut.scan_out.value)==serial_before, 'Serial output changed on falling edge'
+    head_before=int(dut.output_scan.value)&1
     dut.clk.value=1
     await Timer(5,unit='ns')
+    serial=int(dut.scan_out.value)
+    assert serial==head_before, 'Serial output must launch the pre-shift bit on rising edge'
     return serial
 
 async def load(dut, word, previous=None):
@@ -149,11 +154,14 @@ async def controls_sample_on_falling_edge(dut):
     await cycle(dut,input_shift=1,scan_in=1)
     pending=int(dut.input_scan.value)
     assert pending!=initial
+    serial_before=int(dut.scan_out.value)
+    head_before=int(dut.output_scan.value)&1
     for name in CONTROLS: getattr(dut,name).value=0
     dut.clk.value=1
     await Timer(5,unit='ns')
     dut.clk.value=0
     await Timer(5,unit='ns')
+    assert int(dut.scan_out.value)==serial_before, 'Falling edge must not launch serial output'
     # Pulsing controls after the falling edge must NOT affect the imminent
     # positive edge. This also tests commit/capture atomicity at that edge.
     dut.input_commit.value=1
@@ -162,6 +170,7 @@ async def controls_sample_on_falling_edge(dut):
     await Timer(5,unit='ns')
     assert inspect(dut,INPUT_FIELDS)==initial
     assert int(dut.output_scan.value)==saved_output
+    assert int(dut.scan_out.value)==head_before, 'Rising edge must sample the old snapshot head'
     expected=inspect(dut,OUTPUT_FIELDS)
     await cycle(dut,input_commit=1,output_capture=1)
     assert inspect(dut,INPUT_FIELDS)==pending

@@ -1,0 +1,74 @@
+{
+  "status": "50_pass_100_serial_output_setup_failure",
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "macs": 32
+  },
+  "runs": [
+    {
+      "compute_mhz": 50,
+      "status": "passed",
+      "finished_utc": "2026-10-21T10:31:46.391284+00:00",
+      "setup_slack_ns": 5.189,
+      "hold_slack_ns": 0.014,
+      "component_routed_timing_pass": true,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_50_run001",
+      "audit_sha256": "d136b8d438f2a7f35026d3c2e36f1535402883f5938ceecc1f3a213aafdc5f69",
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "acfc81f3d100a13f09d4c90aec6593eaaa68b86e923c92674a1c17e0cdab786b",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4c78dc7d8d8185a49fdd39298e7f2f14decf872caf3d960d369dc529e40bc739",
+        "src_rtl/decode/f2/harness/verification.json": "3a5b8b5cc59485a5934bec761a6a640dd10ed0fe502f93c81fae737e01a55d30",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "602c196cc338abc807fc0ec32a5e931414760eac1816ab9f37c0016cb09526af",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "0e5d7bdeaa38c390553ac5eb8e767b4c08868e711d5a14bc72cfb34c029a0e0f",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      }
+    },
+    {
+      "compute_mhz": 100,
+      "status": "failed",
+      "finished_utc": "2026-10-21T10:32:39.668413+00:00",
+      "setup_slack_ns": -0.467,
+      "hold_slack_ns": 0.018,
+      "component_routed_timing_pass": false,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_100_run001",
+      "audit_sha256": "68fb51b53cf0ef467c129a71b10daa290088c00dce8fcc4681380f23fe693f2e",
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "acfc81f3d100a13f09d4c90aec6593eaaa68b86e923c92674a1c17e0cdab786b",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4c78dc7d8d8185a49fdd39298e7f2f14decf872caf3d960d369dc529e40bc739",
+        "src_rtl/decode/f2/harness/verification.json": "3a5b8b5cc59485a5934bec761a6a640dd10ed0fe502f93c81fae737e01a55d30",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "602c196cc338abc807fc0ec32a5e931414760eac1816ab9f37c0016cb09526af",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "0e5d7bdeaa38c390553ac5eb8e767b4c08868e711d5a14bc72cfb34c029a0e0f",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      }
+    }
+  ],
+  "remaining_100mhz_path": {
+    "source": "scan_out_reg/C",
+    "destination": "scan_out",
+    "setup_slack_ns": -0.467,
+    "clock_launch_edge": "falling",
+    "clock_capture_reference_edge": "next rising",
+    "clock_insertion_ns": 3.903,
+    "clock_to_q_ns": 0.079,
+    "output_max_ns": 1,
+    "reported_setup_uncertainty_ns": 0.485,
+    "half_cycle_budget_ns": 5,
+    "repair": "Move serial-output launch to rising edge and adjust scan reader protocol; core unchanged."
+  },
+  "scope": "Small analysis-only registered physical harness; not the full4096MAC design, AWS shell fit, HBM integration or inference throughput."
+}

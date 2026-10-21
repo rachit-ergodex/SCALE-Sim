@@ -10,9 +10,9 @@ with an ideal external clock and no physical endpoints for the interface. This
 harness gives every core input a real positive-edge launch register and every
 core output a real positive-edge capture register. One actual `BUFG` drives the
 core and the harness. Each external control/data input is sampled on the falling
-edge, and the serial output is registered on that edge. Therefore the narrow
-external interface uses real half-cycle timing paths under the original 1 ns
-maximum / 0 ns minimum I/O delays and 0.250 ns setup / 0.100 ns hold uncertainty.
+edge; the serial output launches on the rising edge. Input paths therefore have
+half a cycle and the output has a full cycle under the original 1 ns maximum /
+0 ns minimum I/O delays and 0.250 ns setup / 0.100 ns hold uncertainty.
 No timing exceptions, relaxed minimum delays, or disabled timing arcs are used.
 
 Only these synthesizable files belong in Vivado: the real `decode_os_core.sv`,
@@ -37,9 +37,12 @@ the following rising edge. Input and output chains are independent.
 4. Pulse `output_capture`. The complete core-output vector is sampled at the next
    rising edge, using values **before** that edge. If commit and capture coincide,
    capture sees the previous launch vector. Capture wins over output shifting.
-5. For each output bit, observe `scan_out` after the falling edge and before the
-   following rising edge with `output_shift=1`. Read exactly `OUTPUT_BITS` bits,
-   least significant bit first. The chain shifts zeros in after its last bit.
+5. For each output bit, set `output_shift=1` before the falling edge and observe
+   `scan_out` after the following rising edge. That edge samples the old chain
+   head into `scan_out` and shifts the chain simultaneously. Read exactly
+   `OUTPUT_BITS` bits, least significant bit first. The chain shifts zeros in
+   after its last bit. Ignore `scan_out` on the capture edge itself: it contains
+   the previous snapshot's head, since capture and serial launch use old state.
 
 Commit and input shift may coincide: commit receives the **previous** staging
 value, not the bit arriving on that edge. Keep `cycle_ready=0` in the launch
@@ -103,5 +106,22 @@ exercise every input bit. The real-core cases verify atomic input launch,
 unchanged phase under stalls, immutable output snapshots while counters advance,
 capture priority, and reset/disarm. Separate edge tests change controls after the
 falling edge to ensure they cannot alter the immediately following rising edge,
-then verify coincident commit/capture semantics. These verify the harness; the
-real numerical MAC correctness suite remains independently required.
+then verify coincident commit/capture semantics. Every cycle checks that the
+serial output remains unchanged at the falling edge and launches the pre-shift
+head at the rising edge. These verify the harness; the real numerical MAC
+correctness suite remains independently required.
+
+## First physical experiment and output phase correction
+
+The first small 4x8 physical harness passed routed timing at 50 MHz. At 100 MHz,
+its only setup failure was the serial output: the former falling-edge
+`scan_out_reg` had a 5 ns external budget, while 3.903 ns of source clock
+insertion, 0.079 ns clock-to-output delay, 1 ns output delay and 0.485 ns total
+uncertainty required 5.467 ns. The resulting slack was -0.467 ns. Hold timing
+passed at +0.018 ns, and the next worst internal setup path passed at +0.296 ns.
+
+The correction moves only serial-output launch to the rising edge and updates
+the read protocol above. It provides a full external cycle through real RTL
+behavior; all clock, I/O-delay and uncertainty constraints are unchanged. This
+is not a timing exception or a change to the compute core. Fresh physical runs
+are required for this corrected harness version.
