@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-21T10:55:44.253309+00:00",
+  "reference_original_sha256": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+  "reference_modification": "Only module identifier renamed to decode_os_core_reference",
+  "source_netlist": "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/dsp-003/post_synth.v",
+  "source_netlist_sha256": "3de89e7c93571b758306a0cc48a72e542fa2e91ecbc9cb16ad84fb27380cf330",
+  "extracted_core_sha256": "ab4a3ded6098dcc13b6d9f5f4b160e42374fd52b9b68ec7cb4253fd0a2e2a6d4",
+  "core_extraction": "Exact decode_os_core module bytes from emitted netlist with1ps/1ps timescale prefix; no primitive substitutions",
+  "dsp48e2_count": 32,
+  "candidate_rtl_sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+  "probe_harness_scope": "Original source-001 falling-edge serial output; same harness for baseline andcandidate3; direct-core equivalence excludes serial harness",
+  "uploaded_files_sha256": {
+    "tb.sv": "cfc41a20969036d5d86b2904d855870408b682b7d389cd8d85bb1f7b4eabe9cf",
+    "run_equivalence.py": "ef0eb619c05f9dc2927f863642fda7431157d51a64ba5c5d2424245912143c5b",
+    "generate_tb.py": "6d53f9b1fc49538fe9dad0e1e5ce37d973d0362ae5cb4ca93ddb81460f98f935",
+    "rtl-smoke-002.log": "65d7715bb07975f6b15a81d0e0e2327ee6a749e542c781d38e950ce9ad3d57f0"
+  },
+  "memory_max": "24G",
+  "elaboration_threads": 8
+}

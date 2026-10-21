@@ -1,0 +1,81 @@
+{
+  "status": "running_at_observation",
+  "instance_id": "i-04fc91f9015037a6c",
+  "instance_type": "m7a.8xlarge",
+  "region": "us-east-1",
+  "source_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/source-003",
+  "archive_sha256": "25ce598268c68450e66257529a2eb6ed288240a2272283ba61651e8406897299",
+  "archive_bytes": 30859,
+  "source_hashes": {
+    "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+    "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+    "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+    "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+    "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+    "src_rtl/decode/verification.json": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627",
+    "src_rtl/decode/f2/harness/verification.json": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8",
+    "src_rtl/decode/f2/scripts/run_timing_harness.py": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08",
+    "src_rtl/decode/f2/scripts/timing_harness.tcl": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76",
+    "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+  },
+  "ssm_launch_command": "bd599389-9f0c-4b20-9578-4160e902547b",
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "macs": 32,
+    "max_m": 4,
+    "max_k": 8192
+  },
+  "threads_per_run": 8,
+  "runs": [
+    {
+      "compute_mhz": 50,
+      "period_ns": 20.0,
+      "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003",
+      "service": "scalesim-harness-small-50-20261021-003.service",
+      "memory_limit_gib": 24,
+      "swap_limit_gib": 2,
+      "observed_progress": "Active in placement at the latest native observation; no completed timing result yet."
+    },
+    {
+      "compute_mhz": 100,
+      "period_ns": 10.0,
+      "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-003",
+      "service": "scalesim-harness-small-100-20261021-003.service",
+      "memory_limit_gib": 24,
+      "swap_limit_gib": 2,
+      "observed_progress": "Active in placement at the latest native observation; no completed timing result yet."
+    }
+  ],
+  "boundary_budgets_ns": {
+    "input_max": 1,
+    "input_min": 0,
+    "output_max": 1,
+    "output_min": 0,
+    "setup_uncertainty": 0.25,
+    "hold_uncertainty": 0.1
+  },
+  "verification": {
+    "full_core_suite": "passed",
+    "production_output_comparisons": 29584,
+    "harness_functional_tests": 8,
+    "combined_flow_audit_tests": 45,
+    "mapped_dsp_netlist": "Passed actual UNISIM models: 3496 bits, 520 valid/6 invalid commands, 4 mid-command resets, 27727 stalled cycles."
+  },
+  "scope": "Small analysis-only physical clock/boundary/hold repair validation; no full-size timing, AWS shell integration, bitstream or measured TPS claim.",
+  "component_routed_timing_pass": false,
+  "f2_shell_timing_closed": false,
+  "change_from_previous_run": "Per-lane F2 DSP48E2 mapping; unchanged core arithmetic/schedule and corrected rising-edge serial-output harness.",
+  "dsp_mapping": {
+    "define": "SCALESIM_F2_USE_DSP",
+    "expected_dsps": 32,
+    "exact_lane_identity_guard": true
+  },
+  "recorded_utc": "2026-10-21T11:14:05.208425+00:00",
+  "source_commit": "deff96ff0969e070dbea4f6b8ed29f206d25c7cc",
+  "source_commit_note": "Commit identifies the exact frozen build inputs; snapshot upload and launch preceded recording this commit.",
+  "subsequent_status": "both_small_physical_harness_runs_passed",
+  "result_record": "timing_harness_small_m7a8_result003.json"
+}

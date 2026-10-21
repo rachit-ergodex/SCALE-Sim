@@ -1,0 +1,13 @@
+TB_PROGRESS valid_cases=64 ticks=1426
+TB_PROGRESS valid_cases=128 ticks=2794
+TB_PROGRESS valid_cases=192 ticks=4773
+TB_PROGRESS valid_cases=256 ticks=7374
+TB_PROGRESS valid_cases=320 ticks=10228
+TB_PROGRESS valid_cases=384 ticks=14193
+TB_PROGRESS valid_cases=448 ticks=17633
+TB_PROGRESS valid_cases=512 ticks=22668
+TB_PASS valid=520 invalid=6 resets=4 ticks=110991 comparisons=221934 stalls=27727
+- /private/tmp/scalesim-dsp-netlist-equivalence/tb.sv:264: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.048 2026-04-26
+- Verilator: $finish at 1ms; walltime 0.354 s; speed 3.135 ms/s
+- Verilator: cpu 0.354 s on 1 threads; allocated 5 MB

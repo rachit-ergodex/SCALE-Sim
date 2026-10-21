@@ -1,0 +1,10 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/core_netlist.v" into library work
+INFO: [VRFC 10-311] analyzing module decode_os_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/observation_wrapper.v" into library work
+INFO: [VRFC 10-311] analyzing module mapped_core_observed
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/reference.sv" into library work
+INFO: [VRFC 10-311] analyzing module decode_os_core_reference
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/opt/Xilinx/2025.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl

@@ -1,0 +1,2 @@
+Vivado Simulator v2025.2
+Copyright 1986-2025 Xilinx, Inc. All Rights Reserved.

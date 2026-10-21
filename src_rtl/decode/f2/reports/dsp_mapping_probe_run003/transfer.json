@@ -1,0 +1,41 @@
+{
+  "archive": "/private/tmp/scalesim-dsp-probe-download/mapping-evidence-001.tar.gz",
+  "sha256": "15aa3e52e1e789ec1710591a4c7f3b35f323d3b055c1cd0d5b48a82ca284a613",
+  "chunks": [
+    {
+      "chunk": 0,
+      "command": "2dfae7bb-d8f6-4981-9b56-c74c08f31b25",
+      "bytes": 9000
+    },
+    {
+      "chunk": 1,
+      "command": "9180cbc7-3397-41a2-8a6d-9e00a7ff3e8b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 2,
+      "command": "d260aa3b-7647-4449-9e91-dc66441b344f",
+      "bytes": 9000
+    },
+    {
+      "chunk": 3,
+      "command": "a5f7eeda-d266-4896-8e43-66e29885166e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 4,
+      "command": "bf488174-9bb5-45b7-a59c-09a222d24470",
+      "bytes": 9000
+    },
+    {
+      "chunk": 5,
+      "command": "a8e42492-1e23-4a8a-9812-0fd072edb0df",
+      "bytes": 9000
+    },
+    {
+      "chunk": 6,
+      "command": "906443ad-5330-49be-8f04-5ab4f941b1ca",
+      "bytes": 5433
+    }
+  ]
+}

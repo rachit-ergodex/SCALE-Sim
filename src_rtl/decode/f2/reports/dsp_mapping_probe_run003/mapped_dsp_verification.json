@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "4x8 mapped-netlist functional equivalence against original verified RTL, using installed UNISIM and glbl; no SDF or routed timing claim",
+  "native_result": "mapped_verification/netlist-equivalence-002/summary.json",
+  "native_result_sha256": "6fc63ec3dd353037936072aa5e4211ccbb376bc2089642755e27e78abca4fbac",
+  "results": {
+    "status": "passed",
+    "valid_commands": "520",
+    "invalid_commands": "6",
+    "mid_command_resets": "4",
+    "clock_ticks": "110991",
+    "all_output_comparisons": "221934",
+    "stall_cycles_checked": "27727",
+    "committed_steps": "82122",
+    "observed_output_bits": "3496",
+    "initial_random_seed": "d5f2c0de"
+  },
+  "previous_attempt": "mapped_verification/netlist-equivalence-001/summary.json",
+  "observation_boundary": "All 3496 bits reconstructed from actual top-level capture mux connectivity; 20 address aliases, no masks, identical netlist, reference, and test stimulus between attempts",
+  "proof": "mapped_verification/output_capture_map.json",
+  "core_port_proof": "mapped_verification/core_connection_proof.json",
+  "reference_original_sha256": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+  "candidate_sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+  "netlist_sha256": "3de89e7c93571b758306a0cc48a72e542fa2e91ecbc9cb16ad84fb27380cf330",
+  "vendor_sources_included": false,
+  "sdf_backannotated": false,
+  "physical_timing_closed": false
+}

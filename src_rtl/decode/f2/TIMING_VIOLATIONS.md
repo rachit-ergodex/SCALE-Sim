@@ -124,10 +124,57 @@ Both have zero setup/hold/pulse-width failing endpoints, DRC errors or critical
 warnings, coverage gaps, and unrouted/partial/conflicting nets. Both exited
 successfully and retained routed checkpoints. [Final small-run evidence](timing_harness_small_m7a8_result002.json) binds the native reports and exact source. These results establish the 32-MAC harness only.
 
+## F2 DSP mapping to reduce routing pressure
+
+The earlier full-array implementation used zero DSP blocks and over a million
+LUTs. The MAC expression now exposes a separate 32-bit sum for each lane before
+applying the unchanged valid mask. The F2 harness flow defines
+`SCALESIM_F2_USE_DSP`, enabling `use_dsp=yes` on that lane sum. Default/ASIC
+compilation retains the same arithmetic without the FPGA mapping attribute.
+
+In a controlled 4×8 synthesis comparison, this changed **0 DSPs / 10,270 LUTs /
+8,692 FFs** to **32 DSP48E2s / 7,943 LUTs / 8,471 FFs**: one DSP per lane and
+22.7% fewer LUTs. Both sides used the same earlier source-001 harness, so this
+is a mapping/area comparison, not a routed result for the corrected harness.
+[Native mapping evidence](reports/dsp_mapping_probe_run003/) records the source,
+tool, scripts and reports. Full-array savings and fit must be measured.
+
+The flow now rejects missing, extra, duplicate or unrelated DSPs by checking
+the exact partition/column identity set. It records input-register absorption
+and requires CREG/MREG/PREG=0. These properties do not by themselves prove cycle
+behavior: the actual synthesized netlist must also pass comparison using
+Vivado's installed UNISIM models. That comparison **passed**: all 3,496
+observable bits matched before and after each checked edge, with 221,934 vector
+comparisons over 110,991 ticks, 520 legal commands, six invalid commands, four
+mid-command resets and 27,727 stalled cycles, including K=8192 corners.
+
+The first direct-module test exposed 20 address-bit aliases moved into the
+surrounding harness by synthesis. The observation wrapper now reconstructs
+all 3,496 output bits from the actual synthesized capture muxes and registers;
+no comparisons are masked. The original failed extraction attempt, independent
+connectivity proof and successful vendor-model attempt are retained together.
+The compute source and synthesized netlist did not change between attempts.
+Fresh DSP-mapped 4×8 physical runs also **passed**:
+
+| DSP harness | Setup WNS | Hold WHS |
+|---|---:|---:|
+| 100 MHz | +0.449 ns | +0.020 ns |
+| 50 MHz | +5.172 ns | +0.016 ns |
+
+Both terminal audits have zero timing, routing, coverage and DRC failures.
+[Source-bound DSP physical evidence](timing_harness_small_m7a8_result003.json)
+retains the exact DSP mapping, source, native reports and checkpoint hashes.
+The earlier LUT-mapped passes are preserved separately.
+
+Full 64×64 synthesis at 100 MHz is now running on the existing m7a.8xlarge,
+with eight Vivado threads and a 100 GiB memory limit. It must pass the resource
+and exact per-lane DSP mapping gates before full-size routing. See the
+[full synthesis launch record](timing_harness_full_m7a8_run003.json).
+
 ## Verification and remaining physical work
 
-The complete canonical functional suite passed on the repaired core in 4 min
-38 s. It includes nine cocotb tests, 24 Switchboard GEMMs, seven synthesis checks,
+The complete canonical functional suite passed again on the row-control and
+per-lane arithmetic source in 5 min 22 s. It includes nine cocotb tests, 24 Switchboard GEMMs, seven synthesis checks,
 HBM/CDC and four-state checks, and 14 production commands checking **29,584 exact
 integer outputs**. Added regression cases stall before and after partial-row
 wave boundaries and check inactive outputs. A structural test confirms `m_reg`
@@ -135,12 +182,14 @@ no longer reaches the eight running operand/result/valid buses combinationally.
 The previous RTL failed that structural check on all eight buses.
 
 [Core verification](../verification.json) binds core SHA256
-`2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d`.
+`5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed`.
+The earlier small routed timing results above bind their own original core
+source hashes and are not timing results for this DSP revision.
 The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
-The corrected small harness passed at both clocks. Full-size synthesis must
-now establish resource headroom
+The corrected small harness passed at both clocks, including the DSP revision.
+Full-size synthesis is running to establish resource headroom
 before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
@@ -154,5 +203,5 @@ even if copied reports or a checkpoint otherwise look positive. This prevents
 future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
-complete. Small routed setup and hold timing now pass at both frequencies, including
-the corrected serial output. Full-size fit and timing remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.
+complete. Small routed setup and hold timing now pass at both frequencies with DSPs.
+Full-size synthesis is running; full-size fit and timing remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.

@@ -123,5 +123,10 @@ passed at +0.018 ns, and the next worst internal setup path passed at +0.296 ns.
 The correction moves only serial-output launch to the rising edge and updates
 the read protocol above. It provides a full external cycle through real RTL
 behavior; all clock, I/O-delay and uncertainty constraints are unchanged. This
-is not a timing exception or a change to the compute core. Fresh physical runs
-are required for this corrected harness version.
+is not a timing exception or a change to the compute core. Both corrected 32-MAC physical runs passed routed timing: 100 MHz at
++0.715 ns setup / +0.017 ns hold, and 50 MHz at +5.284 ns / +0.019 ns.
+See [source-bound evidence](../timing_harness_small_m7a8_result002.json).
+These measurements precede the separate DSP mapping revision. Fresh 32-MAC
+DSP runs also passed at 100 MHz (+0.449 ns setup / +0.020 ns hold) and 50 MHz
+(+5.172 ns / +0.016 ns); see [DSP evidence](../timing_harness_small_m7a8_result003.json).
+Full 64×64 synthesis is running, with full-size timing still unverified.

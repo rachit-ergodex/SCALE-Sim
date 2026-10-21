@@ -1,0 +1,11 @@
+# Preserve archived evidence bytes across platform checkout conventions.
+* -text
+# Native tool whitespace is intentional; do not normalize it.
+*.log -whitespace
+*.rpt -whitespace
+dsp-003/dsp_instances_excerpt.v -whitespace
+# Large generated netlists remain available as files and bound by SHA-256.
+mapped_verification/dsp-003/post_synth.v -diff -whitespace
+mapped_verification/mapped_harness_module.v -diff -whitespace
+mapped_verification/netlist-equivalence-001/core_netlist.v -diff -whitespace
+mapped_verification/netlist-equivalence-002/core_netlist.v -diff -whitespace

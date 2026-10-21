@@ -1,0 +1,302 @@
+{
+  "collected_utc": "2026-10-21T11:16:20.752178+00:00",
+  "instance_id": "i-04fc91f9015037a6c",
+  "source_revision": "003",
+  "target_mhz": 50,
+  "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003",
+  "scope": "Native small registered physical compute harness artifacts; not full4096MAC/F2 shell/HBM closure or inference throughput",
+  "source_run_status": "route_pass",
+  "source_run_finished_utc": "2026-10-21T11:15:00.999299+00:00",
+  "source_binding_verified": true,
+  "source_snapshot_files": {
+    "src_rtl/decode/rtl/decode_os_core.sv": {
+      "bytes": 10262,
+      "sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed"
+    },
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": {
+      "bytes": 4755,
+      "sha256": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd"
+    },
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": {
+      "bytes": 1096,
+      "sha256": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d"
+    },
+    "src_rtl/decode/f2/harness/bufg_sim.sv": {
+      "bytes": 154,
+      "sha256": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e"
+    },
+    "src_rtl/decode/f2/harness/scan_core_fixture.sv": {
+      "bytes": 2159,
+      "sha256": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e"
+    },
+    "src_rtl/decode/f2/harness/test_timing_harness.py": {
+      "bytes": 7592,
+      "sha256": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5"
+    },
+    "src_rtl/decode/f2/harness/run_harness_tests.py": {
+      "bytes": 2820,
+      "sha256": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee"
+    },
+    "src_rtl/decode/verification.json": {
+      "bytes": 65332,
+      "sha256": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627"
+    },
+    "src_rtl/decode/f2/harness/verification.json": {
+      "bytes": 1807,
+      "sha256": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8"
+    },
+    "src_rtl/decode/f2/scripts/run_timing_harness.py": {
+      "bytes": 16780,
+      "sha256": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08"
+    },
+    "src_rtl/decode/f2/scripts/timing_harness.tcl": {
+      "bytes": 11789,
+      "sha256": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76"
+    },
+    "src_rtl/decode/f2/scripts/audit_compute_ooc.py": {
+      "bytes": 5769,
+      "sha256": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+    }
+  },
+  "native_files": {
+    "audit.json": {
+      "source_name": "audit.json",
+      "bytes": 1287,
+      "sha256": "3c92ac5cf0ceb86285d4a847f269d32c4d3874b68c73e5471de19c9d6a94c054"
+    },
+    "clockInfo.txt": {
+      "source_name": "clockInfo.txt",
+      "bytes": 1028,
+      "sha256": "b5d59a24aa7f9559d9b0eed01cf3d3533b4d468ddd3714ecf38d8bd1fbcdfde0"
+    },
+    "console.txt": {
+      "source_name": "console.log",
+      "bytes": 116295,
+      "sha256": "88292b2a19959dba8e48a8b64097eaa607240f7367fb5240f82e5175fa6c99b3"
+    },
+    "dsp_mapping.tsv": {
+      "source_name": "dsp_mapping.tsv",
+      "bytes": 2845,
+      "sha256": "00de795e2123a4f298838f4082fa301b4b13d588d4eef8ad4701d4704fe3505d"
+    },
+    "exceptions.rpt": {
+      "source_name": "exceptions.rpt",
+      "bytes": 1008,
+      "sha256": "4cfea19cc3b975c22a9e59215cee1ae79c86a543f2501d06c28e65d040d2a25f"
+    },
+    "hold_clock_domain_paths.rpt": {
+      "source_name": "hold_clock_domain_paths.rpt",
+      "bytes": 211627,
+      "sha256": "6fce286d834f27449885b786ab02c6b45757920f137878de11d6b5425fec4e6d"
+    },
+    "hold_input_paths.rpt": {
+      "source_name": "hold_input_paths.rpt",
+      "bytes": 71183,
+      "sha256": "fa26c3cf3bfe045ee3267b4341731d91f27972f03d5aed611db48594a6f94a37"
+    },
+    "hold_output_paths.rpt": {
+      "source_name": "hold_output_paths.rpt",
+      "bytes": 4545,
+      "sha256": "023e5a282f089a621de426866af87139d9a5212a2077070602eee2cc0245d676"
+    },
+    "hold_paths.rpt": {
+      "source_name": "hold_paths.rpt",
+      "bytes": 211396,
+      "sha256": "f011aa83c47cabbe8b27800d3b6e012826d9e7fc2308ded2b342edabb9acca4c"
+    },
+    "manifest.json": {
+      "source_name": "manifest.json",
+      "bytes": 3699,
+      "sha256": "477b27bcb1db06163e6aabe193667071b7c74dd8dc593a1280193e7ab857f5e1"
+    },
+    "metrics.tsv": {
+      "source_name": "metrics.tsv",
+      "bytes": 273,
+      "sha256": "342bf4c63696e7363ada7b9fde41e87897eae8600582b9c57d6560103768a13e"
+    },
+    "phys_opt_check_timing.rpt": {
+      "source_name": "phys_opt_check_timing.rpt",
+      "bytes": 3280,
+      "sha256": "ab53446f6237d4f7cd32ae753127b39fb1a2a94a4d7a047fdaab9feb20042732"
+    },
+    "phys_opt_drc.rpt": {
+      "source_name": "phys_opt_drc.rpt",
+      "bytes": 63020,
+      "sha256": "90e37f373fa1b1a93bfc091956f1dc0c4cc4cb99c26b7f36d17911dcd190dc15"
+    },
+    "phys_opt_timing.rpt": {
+      "source_name": "phys_opt_timing.rpt",
+      "bytes": 19379,
+      "sha256": "2219ef6c20d0a4a5c385baa59c576c62ab66ddd5b4fe1a2664b2fa38d1dca705"
+    },
+    "phys_opt_utilization.rpt": {
+      "source_name": "phys_opt_utilization.rpt",
+      "bytes": 2159,
+      "sha256": "6f83470b8befd2e8f5a9fa1cd56eb4e94eb49ae4f315052df9af8c783ea4618e"
+    },
+    "phys_opt_utilization_flat.rpt": {
+      "source_name": "phys_opt_utilization_flat.rpt",
+      "bytes": 16961,
+      "sha256": "d4d3f6a4e120044d7baab51ed982f6985f762d2421eabb76e66dafb58d2e1a1f"
+    },
+    "place_check_timing.rpt": {
+      "source_name": "place_check_timing.rpt",
+      "bytes": 3272,
+      "sha256": "2b8ad8a19d141883985c2f6b6fb4037c562a979d8a3b7e6f67787f6a87a3762e"
+    },
+    "place_drc.rpt": {
+      "source_name": "place_drc.rpt",
+      "bytes": 63017,
+      "sha256": "46d5ee5ed2fb9e80aa552b66976a40ae61d0fb1d33f48eec6b7c1b813495db89"
+    },
+    "place_timing.rpt": {
+      "source_name": "place_timing.rpt",
+      "bytes": 19357,
+      "sha256": "99970f1ec4684a4f6f0f4b4d3ef5934fa5e0ddd2ba2e5dbbb18620ac160e671d"
+    },
+    "place_utilization.rpt": {
+      "source_name": "place_utilization.rpt",
+      "bytes": 2151,
+      "sha256": "ebde267bfcd6e8b30a0b3de35290d2f2234cd55c985cdd7cff8a55afcf7077c1"
+    },
+    "place_utilization_flat.rpt": {
+      "source_name": "place_utilization_flat.rpt",
+      "bytes": 16953,
+      "sha256": "036195ee263e2cc9e07ace34d2097acaa2b9209e61165bbf4c7890e91c67d597"
+    },
+    "route_check_timing.rpt": {
+      "source_name": "route_check_timing.rpt",
+      "bytes": 3266,
+      "sha256": "e1d4769d6a215c58ae28e70dfc8cb0ad6180e11b8218477c90da2d0379e5a837"
+    },
+    "route_drc.rpt": {
+      "source_name": "route_drc.rpt",
+      "bytes": 62816,
+      "sha256": "a49bfab921d79eb9a83f57971a6bd0d7224158c1ae8a0d1b21d96f061731accd"
+    },
+    "route_status.rpt": {
+      "source_name": "route_status.rpt",
+      "bytes": 714,
+      "sha256": "469d0f4f0fe7c25e67b83b1e0895eb29323762a26196672ecb4818a43e12be88"
+    },
+    "route_timing.rpt": {
+      "source_name": "route_timing.rpt",
+      "bytes": 19793,
+      "sha256": "88ec420450383c8f5e49cf179e363a5795728eeb1adcbbf5c41ee87c77ec4ee8"
+    },
+    "route_utilization.rpt": {
+      "source_name": "route_utilization.rpt",
+      "bytes": 2145,
+      "sha256": "a193361105dbb870d90bbc11eaffcc58a3d146596ae7bb5780e9bac6d2dbd7b1"
+    },
+    "route_utilization_flat.rpt": {
+      "source_name": "route_utilization_flat.rpt",
+      "bytes": 16947,
+      "sha256": "c145e119eacd6d59636fa74c50e4d0c58c1bd31ce9a2b767383b9f1f04862236"
+    },
+    "setup_clock_domain_paths.rpt": {
+      "source_name": "setup_clock_domain_paths.rpt",
+      "bytes": 232037,
+      "sha256": "e8bbecc2ac57f5b178aba33fe4bcdecf3686e4994b866e2bcc0f0b93f392125e"
+    },
+    "setup_input_paths.rpt": {
+      "source_name": "setup_input_paths.rpt",
+      "bytes": 70714,
+      "sha256": "833e883c3e04df6376200db7613600d7c0fca1e083ff8f50fb56d6a9f24cdd52"
+    },
+    "setup_output_paths.rpt": {
+      "source_name": "setup_output_paths.rpt",
+      "bytes": 4573,
+      "sha256": "a01e9306b10665675082e80450eea54060c2233c80f55d6beb4249d247a108b4"
+    },
+    "setup_paths.rpt": {
+      "source_name": "setup_paths.rpt",
+      "bytes": 231806,
+      "sha256": "85fe87418a7e59b15ac9e62ba75caee08d80819a22e65a5dc40e6f7fb5d73017"
+    },
+    "synth_check_timing.rpt": {
+      "source_name": "synth_check_timing.rpt",
+      "bytes": 3271,
+      "sha256": "16b863d153853e3a0c85ad70ddd83d4efda8b2e5586104c3478c5b5b0d9e13c4"
+    },
+    "synth_drc.rpt": {
+      "source_name": "synth_drc.rpt",
+      "bytes": 62586,
+      "sha256": "6809d78deecf46f5e6159ddd80857377bc4216fe380719355528f53ad11d8dcf"
+    },
+    "synth_ready.txt": {
+      "source_name": "synth_ready.txt",
+      "bytes": 94,
+      "sha256": "89e294186f9023a1a7b3638db724ade64c87d3c6cb508dca8923925d46edf47c"
+    },
+    "synth_timing.rpt": {
+      "source_name": "synth_timing.rpt",
+      "bytes": 19249,
+      "sha256": "773524857ed9a622082c899571633fa71fdfd0944611c48c426a8e9b6eea5c1f"
+    },
+    "synth_utilization.rpt": {
+      "source_name": "synth_utilization.rpt",
+      "bytes": 2031,
+      "sha256": "16086444fbaa62fe2152d7f5221fa5469fc75ddc0113da444e644a966f53c3e6"
+    },
+    "synth_utilization_flat.rpt": {
+      "source_name": "synth_utilization_flat.rpt",
+      "bytes": 12504,
+      "sha256": "1f582db02f737798c85a0572a1e57e895cbb7f67af2b6815596ad9a3ef8b315b"
+    },
+    "vivado_version.txt": {
+      "source_name": "vivado_version.txt",
+      "bytes": 331,
+      "sha256": "2521e7d680ff26073152c1666270e075c62e9b4e09a3495bff76f6ef184ac269"
+    }
+  },
+  "checkpoints_not_archived": {
+    "post_phys_opt.dcp": {
+      "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_phys_opt.dcp",
+      "bytes": 5608981,
+      "sha256": "7fc7a39bd0a152341a8e7c81ca1d660074feef406dd8d792fd33c9f1a8ab3de4",
+      "archived": false
+    },
+    "post_place.dcp": {
+      "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_place.dcp",
+      "bytes": 5447875,
+      "sha256": "192cc20a510246e769206adb6e19e9dd0b10696a8d3046d5b33a2063eee2ce2f",
+      "archived": false
+    },
+    "post_route.dcp": {
+      "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_route.dcp",
+      "bytes": 7088486,
+      "sha256": "c9ffd5947f0b4ab6abef66f658e9d9eddb917e2030f3da0890de3d852ec32613",
+      "archived": false
+    },
+    "post_synth.dcp": {
+      "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_synth.dcp",
+      "bytes": 3244504,
+      "sha256": "70ece0c191a2710a4c722b32a52a46ba97bf87cd0271944e6b88c84f04adbb80",
+      "archived": false
+    }
+  },
+  "dsp_mapping_check": {
+    "status": "passed",
+    "count": 32,
+    "exact_lane_identity_set": true,
+    "areg_counts": {
+      "0": 4,
+      "1": 20,
+      "2": 8
+    },
+    "breg_counts": {
+      "0": 32,
+      "1": 0,
+      "2": 0
+    },
+    "creg": 0,
+    "mreg": 0,
+    "preg": 0,
+    "scope": "Mapping identity/property check; not numerical or cycle equivalence"
+  },
+  "dsp_mapping_manifest_sha256": "00de795e2123a4f298838f4082fa301b4b13d588d4eef8ad4701d4704fe3505d",
+  "audit_status": "passed",
+  "component_routed_timing_pass": true,
+  "console_preservation": "console.log copied byte-for-byte as console.txt"
+}

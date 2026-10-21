@@ -1,0 +1,5 @@
+{
+    "Status": "Success",
+    "Output": "{\n  \"all_direct_bus_widths_checked\": true,\n  \"connected_port_count\": 27,\n  \"every_formal_port_checked\": true,\n  \"exceptions\": {\n    \"c_address\": \"Formal [1023:1] maps directly to top c_address[1023:1]; formal bit0 maps to unused bit0. Captured bit0 is reconstructed from the independently proved top capture mux.\",\n    \"clk\": \"Direct core clock wire core_clk\"\n  },\n  \"formal_port_count\": 27,\n  \"instance_count\": 1,\n  \"post_synth_v_sha256\": \"3de89e7c93571b758306a0cc48a72e542fa2e91ecbc9cb16ad84fb27380cf330\",\n  \"scope\": \"Exact synthesized core instance port correspondence; capture aliases are separately reconstructed without masking any compared bit\",\n  \"script_sha256\": \"ff5d277148d80256c0ffb32eedfc6ade2d5c1a89ac6a6f8a569169c70ee3b814\",\n  \"status\": \"passed\"\n}\nproof_sha256=b23b156a92cb4a56dae1096ae519f8422339b7ed5c4ddff594ae461e83b3e9cb\n",
+    "Error": ""
+}

@@ -185,5 +185,13 @@ python3 src_rtl/decode/f2/scripts/run_timing_harness.py \
 
 Use a fresh output directory for each command. The driver refuses full routing
 without the matching, verified synthesis checkpoint and a passing resource gate.
+The harness flow enables `SCALESIM_F2_USE_DSP` during synthesis. It requires
+exactly one `DSP48E2` at each named partition/column MAC lane, rejects unrelated
+or missing DSPs, and writes `dsp_mapping.tsv` with register properties. CREG,
+MREG and PREG must be zero; existing input pipeline registers may be absorbed
+into AREG/BREG. Register settings alone do not prove cycle equivalence: retain
+the separate vendor-model mapped-netlist comparison. Synthesis reuse checks
+source hashes, geometry, clock, mapping report, utilization and checkpoint.
+
 This is an analysis-only compute harness: it does not create an F2 deployment
 image or establish HBM integration, board timing, or tokens-per-second throughput.

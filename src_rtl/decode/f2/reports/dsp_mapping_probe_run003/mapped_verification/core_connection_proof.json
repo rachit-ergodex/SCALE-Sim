@@ -1,0 +1,206 @@
+{
+  "all_direct_bus_widths_checked": true,
+  "connected_port_count": 27,
+  "connections": [
+    {
+      "direction": "output",
+      "expression": "a_address",
+      "formal_declaration": "output [127:0]a_address;",
+      "port": "a_address",
+      "width": 128
+    },
+    {
+      "direction": "input",
+      "expression": "a_data",
+      "formal_declaration": "input [31:0]a_data;",
+      "port": "a_data",
+      "width": 32
+    },
+    {
+      "direction": "output",
+      "expression": "a_valid",
+      "formal_declaration": "output [3:0]a_valid;",
+      "port": "a_valid",
+      "width": 4
+    },
+    {
+      "direction": "output",
+      "expression": "b_address",
+      "formal_declaration": "output [1023:0]b_address;",
+      "port": "b_address",
+      "width": 1024
+    },
+    {
+      "direction": "input",
+      "expression": "b_data",
+      "formal_declaration": "input [255:0]b_data;",
+      "port": "b_data",
+      "width": 256
+    },
+    {
+      "direction": "output",
+      "expression": "b_valid",
+      "formal_declaration": "output [31:0]b_valid;",
+      "port": "b_valid",
+      "width": 32
+    },
+    {
+      "direction": "output",
+      "expression": "busy",
+      "formal_declaration": "output busy;",
+      "port": "busy",
+      "width": 1
+    },
+    {
+      "direction": "output",
+      "expression": "{c_address,NLW_core_c_address_UNCONNECTED[0]}",
+      "formal_declaration": "output [1023:0]c_address;",
+      "port": "c_address",
+      "width": 1024
+    },
+    {
+      "direction": "output",
+      "expression": "c_data",
+      "formal_declaration": "output [1023:0]c_data;",
+      "port": "c_data",
+      "width": 1024
+    },
+    {
+      "direction": "output",
+      "expression": "c_valid",
+      "formal_declaration": "output [31:0]c_valid;",
+      "port": "c_valid",
+      "width": 32
+    },
+    {
+      "direction": "input",
+      "expression": "core_clk",
+      "formal_declaration": "input clk;",
+      "port": "clk",
+      "width": 1
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_accumulate",
+      "formal_declaration": "input cmd_accumulate;",
+      "port": "cmd_accumulate",
+      "width": 1
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_k",
+      "formal_declaration": "input [31:0]cmd_k;",
+      "port": "cmd_k",
+      "width": 32
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_m",
+      "formal_declaration": "input [31:0]cmd_m;",
+      "port": "cmd_m",
+      "width": 32
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_n",
+      "formal_declaration": "input [31:0]cmd_n;",
+      "port": "cmd_n",
+      "width": 32
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_parallel_rows",
+      "formal_declaration": "input cmd_parallel_rows;",
+      "port": "cmd_parallel_rows",
+      "width": 1
+    },
+    {
+      "direction": "output",
+      "expression": "cmd_ready",
+      "formal_declaration": "output cmd_ready;",
+      "port": "cmd_ready",
+      "width": 1
+    },
+    {
+      "direction": "input",
+      "expression": "cmd_valid",
+      "formal_declaration": "input cmd_valid;",
+      "port": "cmd_valid",
+      "width": 1
+    },
+    {
+      "direction": "output",
+      "expression": "command_error",
+      "formal_declaration": "output command_error;",
+      "port": "command_error",
+      "width": 1
+    },
+    {
+      "direction": "input",
+      "expression": "cycle_ready",
+      "formal_declaration": "input cycle_ready;",
+      "port": "cycle_ready",
+      "width": 1
+    },
+    {
+      "direction": "output",
+      "expression": "done",
+      "formal_declaration": "output done;",
+      "port": "done",
+      "width": 1
+    },
+    {
+      "direction": "output",
+      "expression": "elapsed_cycles",
+      "formal_declaration": "output [63:0]elapsed_cycles;",
+      "port": "elapsed_cycles",
+      "width": 64
+    },
+    {
+      "direction": "output",
+      "expression": "logical_cycles",
+      "formal_declaration": "output [63:0]logical_cycles;",
+      "port": "logical_cycles",
+      "width": 64
+    },
+    {
+      "direction": "input",
+      "expression": "rst",
+      "formal_declaration": "input rst;",
+      "port": "rst",
+      "width": 1
+    },
+    {
+      "direction": "input",
+      "expression": "seed_data",
+      "formal_declaration": "input [1023:0]seed_data;",
+      "port": "seed_data",
+      "width": 1024
+    },
+    {
+      "direction": "output",
+      "expression": "seed_valid",
+      "formal_declaration": "output [31:0]seed_valid;",
+      "port": "seed_valid",
+      "width": 32
+    },
+    {
+      "direction": "output",
+      "expression": "stall_cycles",
+      "formal_declaration": "output [63:0]stall_cycles;",
+      "port": "stall_cycles",
+      "width": 64
+    }
+  ],
+  "every_formal_port_checked": true,
+  "exceptions": {
+    "c_address": "Formal [1023:1] maps directly to top c_address[1023:1]; formal bit0 maps to unused bit0. Captured bit0 is reconstructed from the independently proved top capture mux.",
+    "clk": "Direct core clock wire core_clk"
+  },
+  "formal_port_count": 27,
+  "instance_count": 1,
+  "post_synth_v_sha256": "3de89e7c93571b758306a0cc48a72e542fa2e91ecbc9cb16ad84fb27380cf330",
+  "scope": "Exact synthesized core instance port correspondence; capture aliases are separately reconstructed without masking any compared bit",
+  "script_sha256": "ff5d277148d80256c0ffb32eedfc6ade2d5c1a89ac6a6f8a569169c70ee3b814",
+  "status": "passed"
+}

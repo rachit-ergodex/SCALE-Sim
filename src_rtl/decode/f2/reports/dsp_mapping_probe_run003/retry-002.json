@@ -1,0 +1,10 @@
+{
+  "attempt": "dsp-002",
+  "reason": "read_verilog -define requires compile-unit mode; use synth_design -verilog_define instead",
+  "original_run": "dsp",
+  "core_sha256": "0fba31fbfa39d0989899324686d4990e38174c2e973549d87f3217f8d3d476ae",
+  "tcl_sha256": "08ac8d9957e2302dcc02f744a74146532da27b59cd6fc5cd7ac397d71078265d",
+  "define": "SCALESIM_F2_USE_DSP=1",
+  "physical_timing_closed": false,
+  "functional_verification_pass": false
+}

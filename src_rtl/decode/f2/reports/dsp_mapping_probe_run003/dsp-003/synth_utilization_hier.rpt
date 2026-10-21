@@ -1,0 +1,30 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Wed Oct 21 10:46:29 2026
+| Host         : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command      : report_utilization -hierarchical -file synth_utilization_hier.rpt
+| Design       : decode_compute_timing_harness
+| Device       : xcvu47p-fsvh2892-2-e
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------------+----------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|              Instance             |     Module     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------------+----------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| decode_compute_timing_harness     |          (top) |       7943 |       7943 |       0 |    0 | 8471 |      0 |      0 |    0 |         32 |
+|   (decode_compute_timing_harness) |          (top) |       1756 |       1756 |       0 |    0 | 6357 |      0 |      0 |    0 |          0 |
+|   core                            | decode_os_core |       6187 |       6187 |       0 |    0 | 2114 |      0 |      0 |    0 |         32 |
++-----------------------------------+----------------+------------+------------+---------+------+------+--------+--------+------+------------+
+
+

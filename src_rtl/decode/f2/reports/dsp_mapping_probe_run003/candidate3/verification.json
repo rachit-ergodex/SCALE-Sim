@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "Temporary per-lane expression RTL checked against existing independent NumPy/native-schedule 4x8 tests, not mapped-netlist or physical closure",
+  "tests": 2,
+  "source_sha256": {
+    "/private/tmp/scalesim-dsp-probe-candidate3/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "/Users/rachittibrewal/.codex/worktrees/decode-over-100-tps/SCALE-Sim/src_rtl/decode/tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf"
+  },
+  "define": "SCALESIM_F2_USE_DSP=1"
+}

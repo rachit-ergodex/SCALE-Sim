@@ -1,0 +1,26 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Oct 21 11:07:24 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/netlist_equiv/xsim_script.tcl
+# xsim {netlist_equiv} -autoloadwcfg -runall -onfinish quit
+Time resolution is 1 ps
+run -all
+TB_PROGRESS valid_cases=64 ticks=1426
+TB_PROGRESS valid_cases=128 ticks=2794
+TB_PROGRESS valid_cases=192 ticks=4773
+TB_PROGRESS valid_cases=256 ticks=7374
+TB_PROGRESS valid_cases=320 ticks=10228
+TB_PROGRESS valid_cases=384 ticks=14193
+TB_PROGRESS valid_cases=448 ticks=17633
+TB_PROGRESS valid_cases=512 ticks=22668
+TB_PASS valid=520 invalid=6 resets=4 ticks=110991 comparisons=221934 stalls=27727
+$finish called at time : 1109910 ns : File "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/tb.sv" Line 264
+exit 0
+INFO: xsimkernel Simulation Memory Usage: 342848 KB (Peak: 388732 KB), Simulation CPU Usage: 158650 ms
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 11:10:04 2026...

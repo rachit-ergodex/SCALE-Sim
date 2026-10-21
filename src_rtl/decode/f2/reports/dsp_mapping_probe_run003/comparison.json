@@ -1,0 +1,53 @@
+{
+  "scope": "Small 4x8 FPGA synthesis mapping and actual UNISIM mapped functional comparison; no physical timing closure, full-size fit, or inference throughput claim",
+  "status": "mapping_demonstrated",
+  "mapped_equivalence_status": "passed",
+  "baseline": {
+    "total_luts": 10270,
+    "core_luts": 8514,
+    "registers": 8692,
+    "dsps": 0,
+    "report": "baseline/synth_utilization_flat.rpt",
+    "sha256": "c5fb4cf83154252f1fd008998bd5619dcfca6d4c6d5d9633966a90cc461abd8e"
+  },
+  "candidate3": {
+    "total_luts": 7943,
+    "core_luts": 6187,
+    "registers": 8471,
+    "dsps": 32,
+    "report": "dsp-003/synth_utilization_flat.rpt",
+    "sha256": "a66f0752824fa564628655b09ef93f38f8cd5c9da780ad6848d7da1e1080cfaf",
+    "core_sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "rtl_tests_passed": 2
+  },
+  "luts_saved": 2327,
+  "total_lut_reduction_percent": 22.658227848101266,
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "max_m": 4,
+    "max_k": 8192
+  },
+  "device": "xcvu47p-fsvh2892-2-e",
+  "available": {
+    "luts": 1303680,
+    "registers": 2607360,
+    "dsps": 9024
+  },
+  "synthesis_define": "SCALESIM_F2_USE_DSP=1",
+  "harness_source_sha256": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+  "harness_scope": "Both compared variants use frozen source-001 harness, whose serial output is falling-edge; current harness changes are not part of this area comparison.",
+  "mapped_equivalence_result": "mapped_verification/netlist-equivalence-002/summary.json",
+  "mapped_equivalence_results": {
+    "status": "passed",
+    "valid_commands": "520",
+    "invalid_commands": "6",
+    "mid_command_resets": "4",
+    "clock_ticks": "110991",
+    "all_output_comparisons": "221934",
+    "stall_cycles_checked": "27727",
+    "committed_steps": "82122",
+    "observed_output_bits": "3496",
+    "initial_random_seed": "d5f2c0de"
+  }
+}

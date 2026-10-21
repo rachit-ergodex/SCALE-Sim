@@ -1,0 +1,69 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Wed Oct 21 11:14:58 2026
+| Host              : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command           : report_timing -delay_type max -to [get_ports -filter {DIRECTION == OUT}] -max_paths 20 -path_type full_clock_expanded -file /home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/setup_output_paths.rpt
+| Design            : decode_compute_timing_harness
+| Device            : xcvu47p-fsvh2892
+| Speed File        : -2  PRODUCTION 1.30 05-01-2022
+| Design State      : Routed
+| Temperature Grade : E
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             16.345ns  (required time - arrival time)
+  Source:                 scan_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            scan_out
+                            (output port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (harness_clock rise@20.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.079ns  (logic 0.079ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           1.000ns
+  Clock Path Skew:        -2.291ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.000ns = ( 20.000 - 20.000 ) 
+    Source Clock Delay      (SCD):    2.291ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.285ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+  Clock Net Delay (Source):      2.220ns (routing 1.274ns, distribution 0.946ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.043     0.043    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     0.071 r  core_clock_buffer/O
+    X1Y1 (CLOCK_ROOT)    net (fo=8639, routed)        2.220     2.291    core_clk
+    SLICE_X61Y116        FDRE                                         r  scan_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y116        FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.079     2.370 r  scan_out_reg/Q
+                         net (fo=0)                   0.000     2.370    scan_out
+                                                                      r  scan_out (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock rise edge)
+                                                     20.000    20.000 r  
+                         clock pessimism              0.000    20.000    
+                         clock uncertainty           -0.285    19.715    
+                         output delay                -1.000    18.715    
+  -------------------------------------------------------------------
+                         required time                         18.715    
+                         arrival time                          -2.370    
+  -------------------------------------------------------------------
+                         slack                                 16.345    
+
+
+
+

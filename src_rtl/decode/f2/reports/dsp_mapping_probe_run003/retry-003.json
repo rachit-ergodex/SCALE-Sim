@@ -1,0 +1,9 @@
+{
+  "attempt": "dsp-003",
+  "core_sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+  "tcl_sha256": "46ea3adf03fae8bbc4bced71b1a62a1e17dc443016bc040a3a3e11ef878ce33c",
+  "scope": "Named per-lane32-bit combinational sum USE_DSP before unchanged valid mux",
+  "rtl_tests_passed": 2,
+  "mapped_netlist_verified": false,
+  "physical_timing_closed": false
+}

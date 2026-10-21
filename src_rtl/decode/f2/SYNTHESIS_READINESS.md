@@ -15,6 +15,19 @@ timing at 100 MHz (+0.715 ns setup / +0.017 ns hold) and 50 MHz (+5.284 ns /
 +0.019 ns). Full 4,096-MAC and F2 shell closure remain pending. See
 [timing causes, exact locations and repairs](TIMING_VIOLATIONS.md).
 
+The subsequent F2 mapping revision exposes each lane's sum to DSP inference.
+A controlled 32-MAC synthesis comparison uses 32 DSP48E2s and reduces LUT use
+from 10,270 to 7,943. The complete functional suite passes on the new source,
+and a strict mapped-netlist comparison with actual Vivado UNISIM models passed
+520 legal commands, including long reductions, stalls and resets. All 3,496
+observable bits remain checked after reconstructing proven synthesis boundary
+aliases. Fresh DSP physical runs passed at 100 MHz (+0.449 ns setup / +0.020 ns hold)
+and 50 MHz (+5.172 ns / +0.016 ns). Full 64×64 synthesis at 100 MHz is running
+on the m7a.8xlarge; full-size resource use and timing remain unverified for this
+revision. [DSP physical evidence](timing_harness_small_m7a8_result003.json) and
+[full synthesis launch](timing_harness_full_m7a8_run003.json) record the scope.
+
+
 ## Verified behavior
 
 A fresh baseline suite passed, followed by targeted reruns of all HBM and
