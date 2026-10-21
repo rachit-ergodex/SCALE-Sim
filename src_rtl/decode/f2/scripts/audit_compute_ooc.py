@@ -24,6 +24,14 @@ def audit(run: Path, expected_period_ns: float = 5.0) -> dict:
             raise ValueError(f"Nonfinite metric {key}")
         return value
 
+    # Legacy runs did not record completion explicitly. New failure captures
+    # must remain failures even if someone changes the stage label, copies a
+    # routed checkpoint, or partial timing reports otherwise look passing.
+    if "route_command_completed" in metrics and number("route_command_completed") != 1:
+        problems.append("route_design did not complete successfully")
+    if (run / "route_failure.txt").exists():
+        problems.append("Recorded route_design failure; reports are diagnostic only")
+
     if metrics["part"] != "xcvu47p-fsvh2892-2-e":
         problems.append("Unexpected FPGA part")
     if number("clock_count") != 1 or abs(number("clock_period_ns") - expected_period_ns) > 0.001:

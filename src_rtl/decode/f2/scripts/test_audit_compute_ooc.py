@@ -99,6 +99,44 @@ class AuditTest(unittest.TestCase):
         self.assertEqual(result["status"], "passed")
         self.assertFalse(result["component_routed_timing_pass"])
 
+    def test_explicit_route_completion_is_required_when_recorded(self):
+        # The fixture has positive timing, clean coverage and post_route.dcp.
+        self.metrics["route_command_completed"] = "1"
+        self.write_metrics()
+        self.assertEqual(MODULE.audit(self.run)["status"], "passed")
+        for value in ("0", "-1", "2"):
+            with self.subTest(value=value):
+                self.metrics["route_command_completed"] = value
+                self.write_metrics()
+                result = MODULE.audit(self.run)
+                self.assertEqual(result["status"], "failed")
+                self.assertFalse(result["component_routed_timing_pass"])
+                self.assertIn("route_design did not complete successfully", result["problems"])
+        del self.metrics["route_command_completed"]
+        self.write_metrics()
+        self.assertEqual(MODULE.audit(self.run)["status"], "passed")
+
+    def test_route_failure_marker_overrides_positive_reports_and_completion(self):
+        self.metrics["route_command_completed"] = "1"
+        self.write_metrics()
+        (self.run / "route_failure.txt").write_text("SYNTHETIC route failure")
+        result = MODULE.audit(self.run)
+        self.assertEqual(result["status"], "failed")
+        self.assertFalse(result["component_routed_timing_pass"])
+        self.assertIn("Recorded route_design failure; reports are diagnostic only", result["problems"])
+
+    def test_failure_evidence_cannot_be_bypassed_by_synthesis_stage_label(self):
+        self.metrics["stage"] = "synth"
+        for suffix in ("check_timing", "timing"):
+            (self.run / f"route_{suffix}.rpt").rename(self.run / f"synth_{suffix}.rpt")
+        self.metrics["route_command_completed"] = "0"
+        self.write_metrics()
+        self.assertEqual(MODULE.audit(self.run)["status"], "failed")
+        del self.metrics["route_command_completed"]
+        self.write_metrics()
+        (self.run / "route_failure.txt").touch()
+        self.assertEqual(MODULE.audit(self.run)["status"], "failed")
+
     def test_missing_summary_does_not_pass(self):
         (self.run / "route_timing.rpt").write_text("Unrecognized report\n")
         self.assertEqual(MODULE.audit(self.run)["status"], "failed")
