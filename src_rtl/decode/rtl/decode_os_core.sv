@@ -48,6 +48,29 @@ module decode_os_core #(
     reg [31:0] requested_a_base [0:PARTITIONS-1];
     reg [31:0] requested_c_base [0:PARTITIONS-1];
     reg [31:0] requested_a_stride, requested_c_stride;
+    // Temporary F2 DSP mapping experiment; identical combinational arithmetic.
+    wire [PARTITIONS*COLS*32-1:0] mac_result;
+    generate
+        for (genvar mac_p=0;mac_p<PARTITIONS;mac_p=mac_p+1) begin: g_mac_partition
+            for (genvar mac_c=0;mac_c<COLS;mac_c=mac_c+1) begin: g_mac_column
+                wire signed [7:0] lane_a;
+                if (mac_c==0) begin: g_first
+                    assign lane_a=$signed(a_data[mac_p*8 +: 8]);
+                end else begin: g_delayed
+                    assign lane_a=a_pipe[mac_p][mac_c-1];
+                end
+`ifdef SCALESIM_F2_USE_DSP
+                (* use_dsp = "yes" *)
+`endif
+                wire [31:0] lane_sum;
+                assign lane_sum=
+                    ((phase==32'(mac_c)) ? (accumulate ? seed_data[(mac_p*COLS+mac_c)*32 +: 32] : 32'b0) :
+                     accumulator[mac_p][mac_c]) + 32'($signed(lane_a) *
+                        $signed(b_data[(mac_p*COLS+mac_c)*8 +: 8]));
+                assign mac_result[(mac_p*COLS+mac_c)*32 +: 32]=lane_sum;
+            end
+        end
+    endgenerate
     assign cmd_ready=!rst && !busy;
     initial begin
         if (PARTITIONS<1 || COLS<1 || MAX_M<1 || MAX_K<1) $fatal(1,"Invalid array geometry");
@@ -109,10 +132,7 @@ module decode_os_core #(
                         b_address[(p*COLS+c)*32 +: 32]=b_row_base[c]+column_base[p]+32'(c);
                         seed_valid[p*COLS+c]=accumulate && phase==32'(c);
                         c_valid[p*COLS+c]=phase==k_reg-1+32'(c);
-                        c_data[(p*COLS+c)*32 +: 32]=
-                            ((phase==32'(c)) ? (accumulate ? seed_data[(p*COLS+c)*32 +: 32] : 32'b0) :
-                             accumulator[p][c]) + 32'($signed((c==0)?a_data[p*8 +: 8]:a_pipe[p][c-1]) *
-                                $signed(b_data[(p*COLS+c)*8 +: 8]));
+                        c_data[(p*COLS+c)*32 +: 32]=mac_result[(p*COLS+c)*32 +: 32];
                     end
                 end
             end

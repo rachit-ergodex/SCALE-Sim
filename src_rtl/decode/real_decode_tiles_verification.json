@@ -25,7 +25,7 @@
   "checked_final_outputs": 15760,
   "logical_cycles": 11446,
   "stall_cycles": 2216,
-  "wall_seconds": 54.224000000000004,
+  "wall_seconds": 54.87,
   "cases": [
     {
       "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
@@ -254,7 +254,7 @@
     "numpy": "2.5.4"
   },
   "source_sha256": {
-    "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+    "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
     "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
     "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
   },

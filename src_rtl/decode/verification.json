@@ -17,7 +17,7 @@
     "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
     "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
     "src_rtl/decode/rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
-    "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+    "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
     "src_rtl/decode/tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b",
@@ -2132,7 +2132,7 @@
       "cocotb": "2.1.0"
     },
     "source_sha256": {
-      "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+      "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
       "tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
       "tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
       "tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
@@ -2166,7 +2166,7 @@
     "checked_final_outputs": 15760,
     "logical_cycles": 11446,
     "stall_cycles": 2216,
-    "wall_seconds": 54.224000000000004,
+    "wall_seconds": 54.87,
     "cases": [
       {
         "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
@@ -2395,7 +2395,7 @@
       "numpy": "2.5.4"
     },
     "source_sha256": {
-      "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+      "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
       "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
       "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
     },

@@ -39,6 +39,45 @@ proc assert_design {} {
         error "Compute core state was removed"
     }
 }
+proc assert_dsp_mapping {run partitions cols} {
+    set dsps [get_cells -hierarchical -filter {REF_NAME == DSP48E2}]
+    set expected [expr {$partitions * $cols}]
+    set expected_cells [dict create]
+    for {set p 0} {$p < $partitions} {incr p} {
+        for {set c 0} {$c < $cols} {incr c} {
+            dict set expected_cells [format {core/g_mac_partition[%d].g_mac_column[%d].lane_sum} $p $c] 0
+        }
+    }
+    set properties {AREG BREG MREG PREG ACASCREG BCASCREG ADREG ALUMODEREG CARRYINREG CARRYINSELREG CREG DREG INMODEREG OPMODEREG}
+    set fp [open $run/dsp_mapping.tsv w]
+    puts $fp "cell\tprimitive\t[join $properties \t]"
+    set invalid [list]
+    foreach cell $dsps {
+        set name [get_property NAME $cell]
+        set values [list]
+        foreach property $properties {lappend values [get_property $property $cell]}
+        puts $fp "$name\t[get_property REF_NAME $cell]\t[join $values \t]"
+        if {![dict exists $expected_cells $name] || [dict get $expected_cells $name] != 0} {
+            lappend invalid "$name is outside the expected MAC lane identity set or duplicated"
+        } else {dict set expected_cells $name 1}
+        # Input registers may absorb existing clock-enabled A/B pipeline state.
+        # These properties alone do not establish cycle equivalence; the actual
+        # mapped DSP netlist is checked separately against the original RTL.
+        foreach property {AREG BREG} {
+            if {[get_property $property $cell] ni {0 1 2}} {lappend invalid "$name/$property"}
+        }
+        foreach property {CREG MREG PREG} {
+            if {[get_property $property $cell] ne "0"} {lappend invalid "$name/$property"}
+        }
+    }
+    close $fp
+    dict for {name seen} $expected_cells {
+        if {!$seen} {lappend invalid "$name is missing"}
+    }
+    puts "HARNESS_DSP_MAPPING primitive=DSP48E2 expected=$expected actual=[llength $dsps]"
+    if {[llength $dsps] != $expected} {error "Expected exactly one DSP48E2 per MAC lane"}
+    if {[llength $invalid]} {error "Unexpected DSP lane/register mapping: $invalid"}
+}
 proc assert_constraints {run period} {
     if {[llength [get_clocks]] != 1 || [llength [get_clocks harness_clock]] != 1 ||
         abs([get_property PERIOD [get_clocks harness_clock]] - $period) > 0.001} {error "Wrong harness clock"}
@@ -142,12 +181,14 @@ if {$checkpoint eq "none"} {
     # No simulation BUFG model or mapping fixture is in the synthesis source set.
     synth_design -top decode_compute_timing_harness -part xcvu47p-fsvh2892-2-e \
         -mode out_of_context -flatten_hierarchy none \
+        -verilog_define SCALESIM_F2_USE_DSP \
         -generic [list PARTITIONS=$partitions COLS=$cols MAX_M=4 MAX_K=8192]
 } else {
     if {$stage ne "route"} {error "Checkpoint reuse is route-only"}
     open_checkpoint $checkpoint
 }
 assert_design
+assert_dsp_mapping $run $partitions $cols
 source $source_root/src_rtl/decode/f2/harness/harness_constraints.tcl
 assert_constraints $run $period_ns
 write_checkpoint -force $run/post_synth.dcp

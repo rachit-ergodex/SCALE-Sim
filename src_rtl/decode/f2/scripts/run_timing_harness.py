@@ -92,12 +92,57 @@ def resource_gate(report, ceiling):
             'physical_timing_closed': False, 'f2_shell_timing_closed': False}
 
 
+def expected_dsp_mapping(partitions, cols):
+    return {'define': 'SCALESIM_F2_USE_DSP', 'primitive': 'DSP48E2',
+            'expected_count': partitions * cols,
+            'lane_identity': 'core/g_mac_partition[p].g_mac_column[c].lane_sum',
+            'allowed_areg': [0, 1, 2], 'allowed_breg': [0, 1, 2],
+            'creg': 0, 'mreg': 0, 'preg': 0,
+            'latency_evidence': 'Register properties are a mapping guard; cycle equivalence requires mapped-netlist verification'}
+
+
+def validate_dsp_report(path, partitions, cols):
+    lines = path.read_text().splitlines()
+    if not lines:
+        raise ValueError('Missing DSP mapping report')
+    header = lines[0].split('\t')
+    required = {'cell', 'primitive', 'AREG', 'BREG', 'CREG', 'MREG', 'PREG'}
+    if not required.issubset(header) or len(header) != len(set(header)):
+        raise ValueError('Unrecognized DSP mapping header')
+    expected_cells = {f'core/g_mac_partition[{p}].g_mac_column[{c}].lane_sum'
+                      for p in range(partitions) for c in range(cols)}
+    rows = []
+    cells = set()
+    for line in lines[1:]:
+        fields = line.split('\t')
+        if len(fields) != len(header):
+            raise ValueError('Malformed DSP mapping row')
+        row = dict(zip(header, fields))
+        if row['primitive'] != 'DSP48E2':
+            raise ValueError('Unexpected DSP primitive')
+        if row['cell'] not in expected_cells or row['cell'] in cells:
+            raise ValueError('Unexpected or duplicate DSP MAC lane identity')
+        cells.add(row['cell'])
+        if row['AREG'] not in {'0', '1', '2'} or row['BREG'] not in {'0', '1', '2'}:
+            raise ValueError('Unexpected DSP input register mapping')
+        if any(row[property] != '0' for property in ('CREG', 'MREG', 'PREG')):
+            raise ValueError('Unexpected DSP C/multiplier/output register mapping')
+        rows.append(row)
+    if cells != expected_cells:
+        raise ValueError('Expected exactly one DSP48E2 for every MAC lane identity')
+    return {'primitive': 'DSP48E2', 'count': len(rows), 'lane_identity_set_verified': True,
+            'areg_counts': {str(v): sum(row['AREG'] == str(v) for row in rows) for v in range(3)},
+            'breg_counts': {str(v): sum(row['BREG'] == str(v) for row in rows) for v in range(3)},
+            'creg': 0, 'mreg': 0, 'preg': 0}
+
+
 def checked_synthesis(run, hashes, partitions, cols, period, ceiling):
     manifest = json.loads((run / 'manifest.json').read_text())
     if manifest.get('status') != 'synth_resource_pass' or manifest.get('stage') != 'synth':
         raise ValueError('Route prerequisite is not a successful synth-only resource-gated run')
     for key, expected in [('part', PART), ('partitions', partitions), ('cols', cols),
-                          ('clock_period_ns', period), ('source_hashes', hashes)]:
+                          ('clock_period_ns', period), ('source_hashes', hashes),
+                          ('dsp_mapping', expected_dsp_mapping(partitions, cols))]:
         if manifest.get(key) != expected:
             raise ValueError(f'Synthesis prerequisite mismatch: {key}')
     for name, digest in hashes.items():
@@ -108,6 +153,10 @@ def checked_synthesis(run, hashes, partitions, cols, period, ceiling):
         raise ValueError('Missing synthesis checkpoint')
     if manifest.get('checkpoint_sha256') != sha(checkpoint):
         raise ValueError('Synthesis checkpoint hash mismatch')
+    mapping = run / 'dsp_mapping.tsv'
+    if manifest.get('dsp_mapping_sha256') != sha(mapping):
+        raise ValueError('Synthesis DSP mapping report hash mismatch')
+    validate_dsp_report(mapping, partitions, cols)
     report = run / 'synth_utilization_flat.rpt'
     if manifest.get('utilization_sha256') != sha(report):
         raise ValueError('Synthesis utilization report hash mismatch')
@@ -185,6 +234,7 @@ def main(argv=None):
                     macs=args.partitions*args.cols, max_m=4, max_k=8192, threads=args.threads,
                     compute_mhz=args.compute_mhz, clock_period_ns=period, stage=args.stage,
                     maximum_utilization_percent=args.max_utilization_percent, source_hashes=hashes,
+                    dsp_mapping=expected_dsp_mapping(args.partitions, args.cols),
                     synthesis_run=str(args.synthesis_run.resolve()) if checkpoint else None,
                     baseline_checkpoint_sha256=checkpoint_digest,
                     command=command, component_routed_timing_pass=False, f2_shell_timing_closed=False,
@@ -220,6 +270,10 @@ def main(argv=None):
         with (output / 'console.log').open('w') as log:
             result = subprocess.run(command, cwd=output, stdout=log, stderr=subprocess.STDOUT)
         manifest['vivado_returncode'] = result.returncode
+        if not result.returncode:
+            mapping = output / 'dsp_mapping.tsv'
+            manifest['actual_dsp_mapping'] = validate_dsp_report(mapping, args.partitions, args.cols)
+            manifest['dsp_mapping_sha256'] = sha(mapping)
         if args.stage == 'route':
             audit = route_audit(output, snapshot, period, result.returncode)
             manifest['component_routed_timing_pass'] = audit['component_routed_timing_pass']
