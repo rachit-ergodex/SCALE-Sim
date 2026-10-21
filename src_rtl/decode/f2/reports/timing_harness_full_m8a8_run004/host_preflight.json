@@ -1,0 +1,6 @@
+{
+  "command_id": "77259be8-7dbe-4a32-bc78-0547d9e3dc94",
+  "Status": "Success",
+  "Output": "{\n  \"cpu_count\": 32,\n  \"platform\": \"Linux-6.8.0-1021-aws-x86_64-with-glibc2.39\",\n  \"python\": \"3.12.3\",\n  \"mem_total_kib\": 129452724,\n  \"mem_available_kib\": 127937112,\n  \"disk\": {\n    \"total\": 310911414272,\n    \"used\": 76751949824,\n    \"free\": 234142687232\n  }\n}\nvivado v2025.2 (64-bit)\nTool Version Limit: 2025.11\nSW Build 6299465 on Fri Nov 14 12:34:56 MST 2025\nIP Build 6300035 on Fri Nov 14 10:48:45 MST 2025\nSharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025\nCopyright 1986-2022 Xilinx, Inc. All Rights Reserved.\nCopyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.\n",
+  "Error": ""
+}

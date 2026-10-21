@@ -1,0 +1,6 @@
+{
+  "command_id": "3676b0eb-56ea-40d1-9a12-b38a0ad24418",
+  "Status": "Success",
+  "Output": "PASS: source/runner provenance, prerequisite audit and memory checked\nMainPID=1976\nOOMPolicy=stop\nMemoryMax=107374182400\nMemorySwapMax=4294967296\nKillMode=control-group\nActiveState=active\nSubState=running\n",
+  "Error": "Running as unit: scalesim-full4096-100-m8a8-20261021-004.service; invocation ID: a0f0b603949f466e962233fbc426b453\n"
+}

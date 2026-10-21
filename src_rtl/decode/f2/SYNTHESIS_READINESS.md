@@ -29,6 +29,14 @@ flow. [DSP physical evidence](timing_harness_small_m7a8_result003.json) remains
 valid; the [termination observation](timing_harness_full_m7a8_interruption003.json)
 supersedes the running status in the [launch record](timing_harness_full_m7a8_run003.json).
 
+**M8a relaunch:** full 4,096-MAC synthesis restarted at **21:46 IST on October 21**
+on `m8a.8xlarge` (32 vCPUs, 128 GiB RAM), using the same verified source and
+Vivado 2025.2. A persistent service automatically starts **100 MHz P&R** from
+the saved checkpoint after exact 4,096-DSP mapping, source/checkpoint identity
+and the 90% resource-policy checks pass. The latest observation shows synthesis
+running; fit and full-size timing remain pending. The encrypted build disk is
+retained after instance termination. [Run and launch evidence](timing_harness_full_m8a8_run004.json).
+
 
 ## Verified behavior
 

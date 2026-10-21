@@ -177,6 +177,14 @@ supersedes the running status in the [launch record](timing_harness_full_m7a8_ru
 A matching synthesis checkpoint and passing resource/DSP checks must be recovered
 or regenerated before P&R.
 
+The authorized rerun started at **21:46 IST on October 21** on a new
+`m8a.8xlarge`, with the exact verified DSP source, eight Vivado threads and
+a 100 GiB process memory cap. Synthesis is running. A tested sequential service
+will start 100 MHz P&R only after a fresh matching checkpoint, exact 4,096-DSP
+lane mapping and the 90% resource checks pass. It stops on any failed gate.
+The 300 GiB encrypted build disk survives instance termination; the prior M7a
+observation remains historical. [New launch record](timing_harness_full_m8a8_run004.json).
+
 ## Verification and remaining physical work
 
 The complete canonical functional suite passed again on the row-control and
@@ -195,8 +203,8 @@ The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
 The corrected small harness passed at both clocks, including the DSP revision.
-Full-size synthesis completion is unknown after host termination; resource
-headroom still needs verified evidence
+The interrupted M7a synthesis result is unknown; the new M8a synthesis is
+running. Resource headroom still needs verified evidence
 before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
@@ -211,5 +219,7 @@ future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
 complete. Small routed setup and hold timing now pass at both frequencies with DSPs.
-The full-size build host has been terminated; full-size fit and timing remain
-unverified, with no active P&R run. No new inference TPS or ready-to-load F2 image is claimed.
+Full-size synthesis has restarted on M8a, with automatic 100 MHz P&R gated on
+its resource result. Full-size fit and timing remain unverified; P&R has not
+started at the recorded observation. No new inference TPS or ready-to-load F2
+image is claimed.

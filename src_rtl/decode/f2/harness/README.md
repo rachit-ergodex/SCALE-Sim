@@ -132,3 +132,14 @@ DSP runs also passed at 100 MHz (+0.449 ns setup / +0.020 ns hold) and 50 MHz
 The full 64×64 build host was terminated at 19:05 IST on October 21; synthesis
 completion and the resource gate are unknown, and full-size timing remains
 unverified. See the [lifecycle observation](../timing_harness_full_m7a8_interruption003.json).
+
+
+## Full-array M8a rerun
+
+Full 64×64 synthesis restarted at 21:46 IST on October 21, 2026 on
+`m8a.8xlarge`. The [sequential runner](../scripts/FULL_TIMING_PIPELINE.md)
+automatically routes at 100 MHz only after the existing synthesis, DSP mapping,
+resource and checkpoint checks pass. All 60 flow/runner tests and 15 additional
+Linux runner tests passed before launch. RTL and physical constraints are
+unchanged from the verified DSP revision. The [launch record](../timing_harness_full_m8a8_run004.json)
+records synthesis running, with full-size fit and timing still pending.

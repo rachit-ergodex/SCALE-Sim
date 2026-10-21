@@ -1,0 +1,119 @@
+{
+  "name": "scalesim-f2-build-m8a8-20261021",
+  "token": "66e4102c-bf94-4090-a8d7-6010a24ac573",
+  "template_token": "2973bf3f-17bd-4d7f-a737-719e1ec5bb7f",
+  "template_data": {
+    "ImageId": "ami-07c259dae738189ec",
+    "InstanceType": "m8a.8xlarge",
+    "IamInstanceProfile": {
+      "Name": "opentpu-f2-ssm"
+    },
+    "MetadataOptions": {
+      "HttpTokens": "required",
+      "HttpPutResponseHopLimit": 2,
+      "HttpEndpoint": "enabled"
+    },
+    "NetworkInterfaces": [
+      {
+        "DeviceIndex": 0,
+        "SubnetId": "subnet-0656894452802a556",
+        "Groups": [
+          "sg-0162535a37c67dcef"
+        ],
+        "AssociatePublicIpAddress": true,
+        "DeleteOnTermination": true
+      }
+    ],
+    "BlockDeviceMappings": [
+      {
+        "DeviceName": "/dev/sda1",
+        "Ebs": {
+          "VolumeSize": 300,
+          "VolumeType": "gp3",
+          "Iops": 3000,
+          "Throughput": 125,
+          "Encrypted": true,
+          "DeleteOnTermination": false
+        }
+      },
+      {
+        "DeviceName": "/dev/sdm",
+        "Ebs": {
+          "VolumeSize": 10,
+          "VolumeType": "gp3",
+          "Encrypted": true,
+          "DeleteOnTermination": true
+        }
+      },
+      {
+        "DeviceName": "/dev/sdb",
+        "NoDevice": ""
+      },
+      {
+        "DeviceName": "/dev/sdc",
+        "NoDevice": ""
+      }
+    ],
+    "InstanceInitiatedShutdownBehavior": "stop",
+    "TagSpecifications": [
+      {
+        "ResourceType": "instance",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "scalesim-f2-build-m8a8-20261021"
+          },
+          {
+            "Key": "Owner",
+            "Value": "rachit"
+          },
+          {
+            "Key": "Project",
+            "Value": "SCALE-Sim"
+          },
+          {
+            "Key": "Purpose",
+            "Value": "Full4096MAC synthesis and gated100MHz compute-harness PnR"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Codex"
+          }
+        ]
+      },
+      {
+        "ResourceType": "volume",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "scalesim-f2-build-m8a8-20261021"
+          },
+          {
+            "Key": "Owner",
+            "Value": "rachit"
+          },
+          {
+            "Key": "Project",
+            "Value": "SCALE-Sim"
+          },
+          {
+            "Key": "Purpose",
+            "Value": "Full4096MAC synthesis and gated100MHz compute-harness PnR"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Codex"
+          }
+        ]
+      }
+    ],
+    "UserData": "IyEvYmluL2Jhc2gKc3lzdGVtY3RsIGVuYWJsZSAtLW5vdyBzbmFwLmFtYXpvbi1zc20tYWdlbnQuYW1hem9uLXNzbS1hZ2VudC5zZXJ2aWNlIHx8IHN5c3RlbWN0bCBlbmFibGUgLS1ub3cgYW1hem9uLXNzbS1hZ2VudCB8fCB0cnVlCg=="
+  },
+  "region": "us-east-1",
+  "source_commit": "8c09ff2",
+  "root_disk_retained_after_termination": true,
+  "launch_template": "lt-038a23c00aea6593f",
+  "launch_template_version": 1,
+  "instance_id": "i-053000112615d30d5",
+  "launch_time": "2026-10-21T16:08:09+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "Read-only independent review and local process-level supervisor/flow tests; not Vivado execution or physical timing closure",
+  "runner_sha256": "ac97193289c433f7e4bbeb68529a373a4bee3e662a2c3ed29501ceb1b3404004",
+  "tests": 60,
+  "test_log": "/private/tmp/scalesim-full-pipeline-independent-tests-escalated.log",
+  "test_log_sha256": "4c2070627a7905ac37057bb8c4eeec4a8a52a3fefd9442dd3046d9e6b7a14ef7",
+  "findings_resolved": [
+    "Failed-driver descendant cleanup retains the process-group handle through error handling",
+    "Late stop request checked before final route-pass state",
+    "Cleanup failures record terminal failure plus cleanup_error instead of losing terminal status"
+  ],
+  "blocking_findings": [],
+  "environment_note": "Initial sandboxed run failed only two ps-based process checks; rerun outside that process-inspection restriction passed all 60 tests. Root will additionally run the supervisor tests on Linux."
+}

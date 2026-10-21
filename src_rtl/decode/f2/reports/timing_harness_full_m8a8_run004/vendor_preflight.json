@@ -1,0 +1,6 @@
+{
+  "command_id": "f0923fdc-f237-47d1-9282-8621cc6710ad",
+  "Status": "Success",
+  "Output": "data/verilog/src/glbl.v 6270251cf35e1fce3119fc79f8fb968912f7983027e43cf030409ba68f048936\ndata/verilog/src/unisims/DSP48E2.v da2d5acbea7bb7fc4008faf5755d93964c01f081713b1640da77c8f143fd58b2\nPASS: vendor models match previous mapped-netlist validation\n",
+  "Error": ""
+}
