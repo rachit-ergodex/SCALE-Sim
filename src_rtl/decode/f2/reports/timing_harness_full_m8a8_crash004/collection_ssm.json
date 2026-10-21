@@ -1,0 +1,5 @@
+{
+    "Status": "Success",
+    "Output": "{\n  \"archive\": \"/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004-native-crash-evidence.tar.gz\",\n  \"bytes\": 196758,\n  \"sha256\": \"2946e0aa26851b10d03a32092ca3082f9e45f70c27174dcb0fcc364b3c4dc04c\",\n  \"files\": 10,\n  \"pipeline_status\": \"failed\",\n  \"vivado_returncode\": 139,\n  \"supervisor_exit_status\": 1\n}\n",
+    "Error": ""
+}

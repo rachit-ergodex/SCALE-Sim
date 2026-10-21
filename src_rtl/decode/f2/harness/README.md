@@ -136,10 +136,19 @@ unverified. See the [lifecycle observation](../timing_harness_full_m7a8_interrup
 
 ## Full-array M8a rerun
 
-Full 64×64 synthesis restarted at 21:46 IST on October 21, 2026 on
-`m8a.8xlarge`. The [sequential runner](../scripts/FULL_TIMING_PIPELINE.md)
-automatically routes at 100 MHz only after the existing synthesis, DSP mapping,
-resource and checkpoint checks pass. All 60 flow/runner tests and 15 additional
-Linux runner tests passed before launch. RTL and physical constraints are
-unchanged from the verified DSP revision. The [launch record](../timing_harness_full_m8a8_run004.json)
-records synthesis running, with full-size fit and timing still pending.
+Run004 started at 21:46 IST on October 21, 2026 on `m8a.8xlarge`, but Vivado
+crashed with SIGSEGV / exit 139 at 22:56:54 IST. The pipeline stopped before
+resource checks or P&R; no final synthesis checkpoint exists. The
+[crash record](../timing_harness_full_m8a8_result004.json) preserves native logs
+and selected diagnostics. Stack exhaustion is unconfirmed.
+
+Fresh [retry005](../timing_harness_full_m8a8_run005.json) started at 00:00 IST
+on October 22 with the stack soft limit raised from 8 to 256 MiB and core dumps
+enabled. The actual Vivado process inherited both limits. RTL, physical
+constraints, eight threads and Vivado 2025.2 are unchanged. The
+[sequential runner](../scripts/FULL_TIMING_PIPELINE.md) automatically routes at
+100 MHz only after synthesis, exact 4,096-DSP mapping, resource and checkpoint
+checks pass. All 60 flow/runner tests and 15 additional Linux runner tests passed
+before the original launch; unchanged inputs were rehashed before retry005.
+Synthesis has started, with full-size fit and timing pending. The previous ETA
+is withdrawn until the retry progresses beyond the failure point.

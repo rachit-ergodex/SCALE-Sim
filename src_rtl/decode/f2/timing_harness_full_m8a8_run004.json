@@ -195,5 +195,11 @@
     "source_extract.json": "d4983c969220a06e8505cc95c34d9671c2aa2217819612fc74733b2d03b1d0f7",
     "source_upload.json": "897dd7e2a72c91059329707571fcf1888dd157daa1332cf399e8cec919c0e525",
     "vendor_preflight.json": "73b18bddcfc4db315e41649daecdab86af461e724cb9eb0640756f002dd0b9bd"
+  },
+  "subsequent_status": {
+    "status": "synthesis_process_crashed",
+    "result": "timing_harness_full_m8a8_result004.json",
+    "active_retry": "timing_harness_full_m8a8_run005.json",
+    "note": "Original launch observation retained above; it is no longer the active run."
   }
 }

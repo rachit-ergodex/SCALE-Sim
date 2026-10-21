@@ -1,4 +1,4 @@
-# Timing violations and repair — 2026-10-21
+# Timing violations and repair — 2026-10-22
 
 Both full 64×64 experiments finished on October 20 and **failed timing**.
 The 100 MHz run finished at 20:47 IST after 3 h 11 min; the 50 MHz run finished
@@ -177,13 +177,27 @@ supersedes the running status in the [launch record](timing_harness_full_m7a8_ru
 A matching synthesis checkpoint and passing resource/DSP checks must be recovered
 or regenerated before P&R.
 
-The authorized rerun started at **21:46 IST on October 21** on a new
-`m8a.8xlarge`, with the exact verified DSP source, eight Vivado threads and
-a 100 GiB process memory cap. Synthesis is running. A tested sequential service
-will start 100 MHz P&R only after a fresh matching checkpoint, exact 4,096-DSP
-lane mapping and the 90% resource checks pass. It stops on any failed gate.
-The 300 GiB encrypted build disk survives instance termination; the prior M7a
-observation remains historical. [New launch record](timing_harness_full_m8a8_run004.json).
+The authorized M8a run004 started at **21:46 IST on October 21**, then Vivado
+crashed with **SIGSEGV / exit 139 at 22:56:54 IST**. The supervisor recorded
+failure at 23:04:17 IST and correctly stopped before the resource gate or P&R.
+The final log section is preliminary DSP inference after cross-boundary/area
+optimization; it is not final lane mapping or a resource report. No synthesis
+checkpoint exists. Peak resident memory was 53.5 GiB against a 100 GiB cap,
+with 218G free disk afterward and no observed OOM event. The crash report has no
+backtrace and shows only a 136 KiB main stack, so stack exhaustion is unproven.
+[Failed run and exact native evidence](timing_harness_full_m8a8_result004.json).
+
+Fresh **run005 started at 00:00 IST on October 22** on the same `m8a.8xlarge`.
+Only runtime limits changed: the stack soft limit increased from 8 to 256 MiB,
+and core dumps were enabled for diagnosis if another crash occurs. Both values
+were read back from the actual Vivado process. This is a recovery experiment,
+not a confirmed root-cause fix. Source, constraints, tool version, eight threads
+and the resource gates are unchanged; the existing numerical verification still
+binds the exact RTL. Synthesis has started. The sequential service will start
+100 MHz P&R only after a fresh matching checkpoint, exact 4,096-DSP lane mapping
+and 90% resource checks pass. It stops on any failure. Both runs are retained on
+the encrypted build disk. The previous ETA no longer applies.
+[Retry launch record](timing_harness_full_m8a8_run005.json).
 
 ## Verification and remaining physical work
 
@@ -203,9 +217,9 @@ The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
 The corrected small harness passed at both clocks, including the DSP revision.
-The interrupted M7a synthesis result is unknown; the new M8a synthesis is
-running. Resource headroom still needs verified evidence
-before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
+The interrupted M7a synthesis result is unknown; M8a run004 crashed, and the
+separate runtime retry005 is running. Resource headroom still needs verified
+evidence before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
 needs banked SRAM adapters, legal AWS CL-region fit, HBM/shell integration and
@@ -219,7 +233,7 @@ future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
 complete. Small routed setup and hold timing now pass at both frequencies with DSPs.
-Full-size synthesis has restarted on M8a, with automatic 100 MHz P&R gated on
-its resource result. Full-size fit and timing remain unverified; P&R has not
-started at the recorded observation. No new inference TPS or ready-to-load F2
+Full-size synthesis is being retried on M8a after a Vivado process crash,
+with automatic 100 MHz P&R gated on its resource result. Full-size fit and timing
+remain unverified; P&R has not started at the recorded observation. No new inference TPS or ready-to-load F2
 image is claimed.

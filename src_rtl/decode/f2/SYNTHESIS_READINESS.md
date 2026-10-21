@@ -1,4 +1,4 @@
-# F2 RTL synthesis readiness — 2026-10-21
+# F2 RTL synthesis readiness — 2026-10-22
 
 **Functional gate: PASS for the implemented components.** The compute core and
 32-port HBM read subsystem can proceed to **out-of-context component synthesis**.
@@ -29,13 +29,23 @@ flow. [DSP physical evidence](timing_harness_small_m7a8_result003.json) remains
 valid; the [termination observation](timing_harness_full_m7a8_interruption003.json)
 supersedes the running status in the [launch record](timing_harness_full_m7a8_run003.json).
 
-**M8a relaunch:** full 4,096-MAC synthesis restarted at **21:46 IST on October 21**
-on `m8a.8xlarge` (32 vCPUs, 128 GiB RAM), using the same verified source and
-Vivado 2025.2. A persistent service automatically starts **100 MHz P&R** from
-the saved checkpoint after exact 4,096-DSP mapping, source/checkpoint identity
-and the 90% resource-policy checks pass. The latest observation shows synthesis
-running; fit and full-size timing remain pending. The encrypted build disk is
-retained after instance termination. [Run and launch evidence](timing_harness_full_m8a8_run004.json).
+**M8a recovery:** run004 crashed inside Vivado synthesis with **SIGSEGV / exit 139**
+at 22:56:54 IST on October 21; the supervisor recorded failure at 23:04:17 IST.
+No final checkpoint or resource-gate result was produced, and P&R did not start.
+Peak resident memory was 53.5 GiB against the 100 GiB limit; no OOM event was
+observed. This is a tool-process failure, not a measured resource-fit failure.
+[Crash result and native evidence](timing_harness_full_m8a8_result004.json).
+
+Fresh **run005 started at 00:00 IST on October 22** on the same `m8a.8xlarge`.
+It raises the process stack soft limit from 8 to 256 MiB and enables core dumps;
+these limits were verified on the actual Vivado process. Stack exhaustion is
+unconfirmed, so this is a controlled recovery experiment. The exact verified RTL,
+constraints, eight-thread setting and Vivado 2025.2 remain unchanged. Synthesis
+has started, but resource fit and full-size timing remain pending. The persistent
+service automatically starts **100 MHz P&R** only after a matching checkpoint,
+exact 4,096-DSP mapping and the 90% resource checks pass. The earlier ETA is
+withdrawn. Both runs remain on the retained encrypted build disk.
+[Retry launch evidence](timing_harness_full_m8a8_run005.json).
 
 
 ## Verified behavior

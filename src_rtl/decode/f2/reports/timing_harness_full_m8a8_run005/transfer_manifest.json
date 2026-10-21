@@ -1,0 +1,110 @@
+{
+  "archive": {
+    "archive": "/private/tmp/scalesim-m8a-launch005-snapshot.tar.gz",
+    "remote_archive": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005-launch-snapshot-001.tar.gz",
+    "bytes": 5663,
+    "sha256": "dd8aa8230dbd6b8e93e4a97c7d39d5afd88bb610668aabe88b5251f14876b87a",
+    "chunks": [
+      {
+        "offset": 0,
+        "bytes": 5663,
+        "command_id": "6918d7d2-1a21-4b75-9d4d-8ee5807fcfea"
+      }
+    ]
+  },
+  "snapshot_command_id": "26d33d7e-9720-4c22-a867-556bf0fa075b",
+  "launch_command_id": "588ec70b-1559-433b-aec1-33ed2368bdd4",
+  "observed_utc": "2026-10-21T18:35:28.845463+00:00",
+  "native_source_and_runner_match_run004": true,
+  "base64_chunk_limit_bytes": 16000,
+  "content_files": {
+    "provenance.json": {
+      "bytes": 4524,
+      "sha256": "b54f3675e73d4ca49ea75f5de41834b9aa34032be01c8b581fce013ad4139bbc"
+    },
+    "status.json": {
+      "bytes": 2917,
+      "sha256": "7a5076cdda653767947c28473edf847c0d07d30a3d3259daa8bd65d8244e2c4e"
+    },
+    "synth/manifest.json": {
+      "bytes": 3282,
+      "sha256": "81e6afd60df6e5e4e4134ec35a7f0b235a5697cd08063fad349a08eb4db7dd95"
+    },
+    "synth/vivado_version.txt": {
+      "bytes": 331,
+      "sha256": "2521e7d680ff26073152c1666270e075c62e9b4e09a3495bff76f6ef184ac269"
+    },
+    "synth_preflight.log": {
+      "bytes": 3740,
+      "sha256": "1ed9f624bf8548b7e3abe3484990ca5f40835655e1b991983cc9ac01e9f8da41"
+    },
+    "pipeline-dry-run-005.json": {
+      "bytes": 4054,
+      "sha256": "0ec56abda9fd67b356f34f38037fa8d83ab120f988883c30a458a3f27760e579"
+    },
+    "progress.txt": {
+      "bytes": 7410,
+      "sha256": "5ba4053361ba5f733300e850e69d822eb23c68de60b6a7d2110669d8e61c137c"
+    },
+    "progress.json": {
+      "bytes": 7927,
+      "sha256": "a60c5b5673bc26ff7ab19492130f655fecaa3611d55a796d2084f1f4ed043ba3"
+    },
+    "collection_manifest.json": {
+      "bytes": 9474,
+      "sha256": "5273366d769670e0439bd427494de1198eff879b9be7d83ae03893709c3db5e6"
+    },
+    "launch_retry005.sh": {
+      "bytes": 4805,
+      "sha256": "2a7fc54c757df9ab0242a6e51c3b78636a759fe5bc9ad0ca33671329619550a9"
+    },
+    "launch_ssm.json": {
+      "bytes": 467,
+      "sha256": "f1e7029d7aedd95a6fc8a9647957e98722a8ddaa27a49feb9aeebd80d38d2a60"
+    },
+    "initial_observation_ssm.json": {
+      "bytes": 7965,
+      "sha256": "11e1ff45da48391faa37b49e60f4af71e27b42bc114ee79ab5bc1a1e1154226d"
+    },
+    "snapshot_ssm.json": {
+      "bytes": 2084,
+      "sha256": "25a740361dd395768a0e864b24e43804d20267a53d2e91539c487ac2afede1a3"
+    },
+    "status005.sh": {
+      "bytes": 2313,
+      "sha256": "1422e908649fa5d8d73c490c922db9a395b861fb0ee65fca904d0c3d2ea35aad"
+    },
+    "README.md": {
+      "bytes": 2051,
+      "sha256": "b0c279652942646344fda906b1d10b18f057ec8ed61a7c98d0d0eb28ed54993e"
+    }
+  },
+  "supplemental_file_provenance": {
+    "launch_retry005.sh": {
+      "source_path": "/private/tmp/scalesim-m8a-launch-retry005.sh",
+      "bytes": 4805,
+      "sha256": "2a7fc54c757df9ab0242a6e51c3b78636a759fe5bc9ad0ca33671329619550a9"
+    },
+    "launch_ssm.json": {
+      "source_path": "/private/tmp/scalesim-m8a-launch005-result.json",
+      "bytes": 467,
+      "sha256": "f1e7029d7aedd95a6fc8a9647957e98722a8ddaa27a49feb9aeebd80d38d2a60"
+    },
+    "initial_observation_ssm.json": {
+      "source_path": "/private/tmp/scalesim-m8a-status005-result.json",
+      "bytes": 7965,
+      "sha256": "11e1ff45da48391faa37b49e60f4af71e27b42bc114ee79ab5bc1a1e1154226d"
+    },
+    "snapshot_ssm.json": {
+      "source_path": "/private/tmp/scalesim-m8a-launch005-snapshot-result.json",
+      "bytes": 2084,
+      "sha256": "25a740361dd395768a0e864b24e43804d20267a53d2e91539c487ac2afede1a3"
+    },
+    "status005.sh": {
+      "source_path": "/private/tmp/scalesim-m8a-status005.sh",
+      "bytes": 2313,
+      "sha256": "1422e908649fa5d8d73c490c922db9a395b861fb0ee65fca904d0c3d2ea35aad"
+    }
+  },
+  "scope": "Point-in-time launch/running evidence; no completion or resource/timing pass"
+}

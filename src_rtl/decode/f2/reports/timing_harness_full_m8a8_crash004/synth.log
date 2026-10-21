@@ -1,0 +1,2 @@
+/opt/Xilinx/2025.2/Vivado/bin/vivado -mode batch -nojournal -log /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/vivado.log -source /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/source/src_rtl/decode/f2/scripts/timing_harness.tcl -tclargs /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/source /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth 64 64 10 synth 8 none
+Run artifacts: /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth

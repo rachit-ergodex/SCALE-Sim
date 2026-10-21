@@ -1,0 +1,176 @@
+{
+  "observation": {
+    "observed_utc": "2026-10-21T18:35:28.845463+00:00",
+    "service": "MainPID=3105\nResult=success\nMemoryCurrent=1537212416\nMemoryPeak=1542094848\nActiveState=active\nSubState=running\nActiveEnterTimestamp=Wed 2026-10-21 18:30:15 UTC\n",
+    "status.json": {
+      "status": "synth_running",
+      "stage": "synth",
+      "updated_utc": "2026-10-21T18:35:15.362932+00:00",
+      "created_utc": "2026-10-21T18:30:15.205188+00:00",
+      "component_routed_timing_pass": false,
+      "events": [
+        {
+          "stage": null,
+          "status": "snapshotting",
+          "utc": "2026-10-21T18:30:15.205997+00:00"
+        },
+        {
+          "stage": "synth_preflight",
+          "status": "synth_preflight_running",
+          "utc": "2026-10-21T18:30:15.223666+00:00"
+        },
+        {
+          "stage": "synth_preflight",
+          "status": "synth_preflight_passed",
+          "utc": "2026-10-21T18:30:15.270672+00:00"
+        },
+        {
+          "stage": "synth",
+          "status": "synth_running",
+          "utc": "2026-10-21T18:30:15.275890+00:00"
+        }
+      ],
+      "stages": {
+        "synth": {
+          "command": [
+            "/usr/bin/python3",
+            "-u",
+            "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/source/src_rtl/decode/f2/scripts/run_timing_harness.py",
+            "--output",
+            "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth",
+            "--partitions",
+            "64",
+            "--cols",
+            "64",
+            "--compute-mhz",
+            "100",
+            "--threads",
+            "8",
+            "--max-utilization-percent",
+            "90.0",
+            "--vivado",
+            "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+            "--stage",
+            "synth"
+          ],
+          "log": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth.log",
+          "pid": 3109,
+          "started_utc": "2026-10-21T18:30:15.275883+00:00"
+        },
+        "synth_preflight": {
+          "command": [
+            "/usr/bin/python3",
+            "-u",
+            "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/source/src_rtl/decode/f2/scripts/run_timing_harness.py",
+            "--output",
+            "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth",
+            "--partitions",
+            "64",
+            "--cols",
+            "64",
+            "--compute-mhz",
+            "100",
+            "--threads",
+            "8",
+            "--max-utilization-percent",
+            "90.0",
+            "--vivado",
+            "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+            "--stage",
+            "synth",
+            "--dry-run"
+          ],
+          "finished_utc": "2026-10-21T18:30:15.265385+00:00",
+          "log": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth_preflight.log",
+          "log_sha256": "1ed9f624bf8548b7e3abe3484990ca5f40835655e1b991983cc9ac01e9f8da41",
+          "pid": 3108,
+          "returncode": 0,
+          "started_utc": "2026-10-21T18:30:15.223658+00:00"
+        }
+      }
+    },
+    "synth/manifest.json": {
+      "status": "running",
+      "stage": "synth",
+      "created_utc": "2026-10-21T18:30:15.301504+00:00",
+      "component_routed_timing_pass": false
+    },
+    "artifacts": {
+      "synth/post_synth.dcp": {
+        "exists": false,
+        "bytes": null
+      },
+      "synth/synth_utilization_flat.rpt": {
+        "exists": false,
+        "bytes": null
+      },
+      "synth/dsp_mapping.tsv": {
+        "exists": false,
+        "bytes": null
+      },
+      "route/post_place.dcp": {
+        "exists": false,
+        "bytes": null
+      },
+      "route/post_route.dcp": {
+        "exists": false,
+        "bytes": null
+      }
+    },
+    "synth_log": {
+      "bytes": 27941,
+      "modified_utc": "2026-10-21T18:30:27.251799+00:00",
+      "errors": [],
+      "progress": [
+        "Starting synth_design",
+        "INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcvu47p'",
+        "INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.",
+        "INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes",
+        "INFO: [Synth 8-7075] Helper process launched with PID 3323",
+        "Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 4092.645 ; gain = 0.000 ; free physical = 122820 ; free virtual = 134849",
+        "INFO: [Synth 8-6157] synthesizing module 'decode_compute_timing_harness' [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/f2/harness/decode_compute_timing_harness.sv:4]",
+        "INFO: [Synth 8-6157] synthesizing module 'BUFG' [/opt/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]",
+        "INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [/opt/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]",
+        "INFO: [Synth 8-6157] synthesizing module 'decode_os_core' [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:5]",
+        "INFO: [Synth 8-6155] done synthesizing module 'decode_os_core' (0#1) [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:5]",
+        "INFO: [Synth 8-6155] done synthesizing module 'decode_compute_timing_harness' (0#1) [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/f2/harness/decode_compute_timing_harness.sv:4]"
+      ],
+      "tail": [
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[58][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]",
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[59][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]",
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[60][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]",
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[61][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]",
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[62][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]",
+        "WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[63][63] was removed.  [/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/rtl/decode_os_core.sv:60]"
+      ]
+    }
+  },
+  "actual_vivado_limits": [
+    {
+      "pid": "3294",
+      "limits": [
+        "Max stack size            268435456            unlimited            bytes     ",
+        "Max core file size        unlimited            unlimited            bytes     "
+      ],
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/vivado",
+        "-mode",
+        "batch",
+        "-nojournal",
+        "-log",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/vivado.log",
+        "-source",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/f2/scripts/timing_harness.tcl",
+        "-tclargs",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth",
+        "64",
+        "64",
+        "10",
+        "synth",
+        "8",
+        "none"
+      ]
+    }
+  ]
+}

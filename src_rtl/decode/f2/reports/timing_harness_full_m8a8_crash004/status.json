@@ -1,0 +1,110 @@
+{
+  "child_pid": null,
+  "cleanup_error": null,
+  "cols": 64,
+  "component_routed_timing_pass": false,
+  "compute_mhz": 100,
+  "created_utc": "2026-10-21T16:16:37.289628+00:00",
+  "error": "RuntimeError: synth failed with exit status 139; see /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth.log",
+  "events": [
+    {
+      "stage": null,
+      "status": "snapshotting",
+      "utc": "2026-10-21T16:16:37.290396+00:00"
+    },
+    {
+      "stage": "synth_preflight",
+      "status": "synth_preflight_running",
+      "utc": "2026-10-21T16:16:37.308626+00:00"
+    },
+    {
+      "stage": "synth_preflight",
+      "status": "synth_preflight_passed",
+      "utc": "2026-10-21T16:16:37.355575+00:00"
+    },
+    {
+      "stage": "synth",
+      "status": "synth_running",
+      "utc": "2026-10-21T16:16:37.360733+00:00"
+    },
+    {
+      "stage": "synth",
+      "status": "failed",
+      "utc": "2026-10-21T17:34:17.058733+00:00"
+    }
+  ],
+  "f2_shell_timing_closed": false,
+  "finished_utc": "2026-10-21T17:34:17.058721+00:00",
+  "host": "ip-172-31-42-108",
+  "macs": 4096,
+  "partitions": 64,
+  "pid": 1978,
+  "process_group_cleanup_confirmed": true,
+  "provenance_sha256": "69dc64723089c828cdee62326347ce4e4573ea10a10c582f55c2a241e0bf0f11",
+  "remaining_process_group": null,
+  "scope": "Analysis-only registered compute harness on VU47P; not AWS shell/HBM integration or inference throughput",
+  "stage": "synth",
+  "stages": {
+    "synth": {
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/source/src_rtl/decode/f2/scripts/run_timing_harness.py",
+        "--output",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth",
+        "--partitions",
+        "64",
+        "--cols",
+        "64",
+        "--compute-mhz",
+        "100",
+        "--threads",
+        "8",
+        "--max-utilization-percent",
+        "90.0",
+        "--vivado",
+        "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+        "--stage",
+        "synth"
+      ],
+      "finished_utc": "2026-10-21T17:34:16.951756+00:00",
+      "log": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth.log",
+      "log_sha256": "9f04678354d1da2366edbf2f0495d0571967ffecf045e1c096cda19ae71d8e27",
+      "pid": 1980,
+      "returncode": 139,
+      "started_utc": "2026-10-21T16:16:37.360725+00:00"
+    },
+    "synth_preflight": {
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/source/src_rtl/decode/f2/scripts/run_timing_harness.py",
+        "--output",
+        "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth",
+        "--partitions",
+        "64",
+        "--cols",
+        "64",
+        "--compute-mhz",
+        "100",
+        "--threads",
+        "8",
+        "--max-utilization-percent",
+        "90.0",
+        "--vivado",
+        "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+        "--stage",
+        "synth",
+        "--dry-run"
+      ],
+      "finished_utc": "2026-10-21T16:16:37.350354+00:00",
+      "log": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth_preflight.log",
+      "log_sha256": "fa1c2d6b791e26c7341333bc06618d88ded8624868659cad7cd48606b7f51c54",
+      "pid": 1979,
+      "returncode": 0,
+      "started_utc": "2026-10-21T16:16:37.308617+00:00"
+    }
+  },
+  "status": "failed",
+  "updated_utc": "2026-10-21T17:34:17.058759+00:00"
+}

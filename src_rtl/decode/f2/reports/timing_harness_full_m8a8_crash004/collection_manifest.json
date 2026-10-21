@@ -1,0 +1,308 @@
+{
+  "collected_utc": "2026-10-21T18:31:01.651465+00:00",
+  "instance_id": "i-053000112615d30d5",
+  "instance_type": "m8a.8xlarge",
+  "run_directory": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004",
+  "scope": "Failed full4096-MAC synthesis evidence only; no synthesis checkpoint, final resource gate, P&R, timing closure or F2 image",
+  "pipeline_status": "failed",
+  "pipeline_stage": "synth",
+  "native_vivado_returncode": 139,
+  "synthesis_driver_returncode": 139,
+  "supervisor_exit_status_from_launcher": 1,
+  "pipeline_created_utc": "2026-10-21T16:16:37.289628+00:00",
+  "pipeline_finished_utc": "2026-10-21T17:34:17.058721+00:00",
+  "native_files": {
+    "status.json": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/status.json",
+      "bytes": 3491,
+      "sha256": "f2dbd51c792a5bfe280a425129e44a673404b539770c588254c52e3e77877e6e"
+    },
+    "provenance.json": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/provenance.json",
+      "bytes": 4524,
+      "sha256": "69dc64723089c828cdee62326347ce4e4573ea10a10c582f55c2a241e0bf0f11"
+    },
+    "synth.log": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth.log",
+      "bytes": 544,
+      "sha256": "9f04678354d1da2366edbf2f0495d0571967ffecf045e1c096cda19ae71d8e27"
+    },
+    "synth_preflight.log": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth_preflight.log",
+      "bytes": 3740,
+      "sha256": "fa1c2d6b791e26c7341333bc06618d88ded8624868659cad7cd48606b7f51c54"
+    },
+    "synth/manifest.json": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/manifest.json",
+      "bytes": 3370,
+      "sha256": "9fb218ec4f7bf9536cfe60cff2d6f9f003f2fcc9d4025c88474100ed5fad4ee4"
+    },
+    "synth/console.log": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/console.log",
+      "bytes": 3038666,
+      "sha256": "62b65c6422cf3989212090c6f790359579fcc5c627e9579accaef83c8cde3857"
+    },
+    "synth/vivado.log": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/vivado.log",
+      "bytes": 3039068,
+      "sha256": "0cb93331959e6350c9cb4814fbb07ba09396fc3640bd6b1b2cd3c86082ef0d31"
+    },
+    "synth/vivado_version.txt": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/vivado_version.txt",
+      "bytes": 331,
+      "sha256": "2521e7d680ff26073152c1666270e075c62e9b4e09a3495bff76f6ef184ac269"
+    },
+    "pipeline-launcher-004.log": {
+      "source_path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/pipeline-launcher-004.log",
+      "bytes": 1446,
+      "sha256": "072f2b772161a84377cdfb10b09f3a3bcfd5f3e88b545c38199065af4316872d"
+    }
+  },
+  "source_hashes": {
+    "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+    "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+    "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+    "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+    "src_rtl/decode/f2/harness/verification.json": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8",
+    "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c",
+    "src_rtl/decode/f2/scripts/run_timing_harness.py": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08",
+    "src_rtl/decode/f2/scripts/timing_harness.tcl": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76",
+    "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "src_rtl/decode/verification.json": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627"
+  },
+  "source_snapshot_files": {
+    "source": {
+      "src_rtl/decode/f2/harness/bufg_sim.sv": {
+        "bytes": 154,
+        "sha256": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e"
+      },
+      "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": {
+        "bytes": 4755,
+        "sha256": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd"
+      },
+      "src_rtl/decode/f2/harness/harness_constraints.tcl": {
+        "bytes": 1096,
+        "sha256": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d"
+      },
+      "src_rtl/decode/f2/harness/run_harness_tests.py": {
+        "bytes": 2820,
+        "sha256": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee"
+      },
+      "src_rtl/decode/f2/harness/scan_core_fixture.sv": {
+        "bytes": 2159,
+        "sha256": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e"
+      },
+      "src_rtl/decode/f2/harness/test_timing_harness.py": {
+        "bytes": 7592,
+        "sha256": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5"
+      },
+      "src_rtl/decode/f2/harness/verification.json": {
+        "bytes": 1807,
+        "sha256": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8"
+      },
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": {
+        "bytes": 5769,
+        "sha256": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      },
+      "src_rtl/decode/f2/scripts/run_timing_harness.py": {
+        "bytes": 16780,
+        "sha256": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08"
+      },
+      "src_rtl/decode/f2/scripts/timing_harness.tcl": {
+        "bytes": 11789,
+        "sha256": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76"
+      },
+      "src_rtl/decode/rtl/decode_os_core.sv": {
+        "bytes": 10262,
+        "sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed"
+      },
+      "src_rtl/decode/verification.json": {
+        "bytes": 65332,
+        "sha256": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627"
+      }
+    },
+    "synth/source": {
+      "src_rtl/decode/f2/harness/bufg_sim.sv": {
+        "bytes": 154,
+        "sha256": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e"
+      },
+      "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": {
+        "bytes": 4755,
+        "sha256": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd"
+      },
+      "src_rtl/decode/f2/harness/harness_constraints.tcl": {
+        "bytes": 1096,
+        "sha256": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d"
+      },
+      "src_rtl/decode/f2/harness/run_harness_tests.py": {
+        "bytes": 2820,
+        "sha256": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee"
+      },
+      "src_rtl/decode/f2/harness/scan_core_fixture.sv": {
+        "bytes": 2159,
+        "sha256": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e"
+      },
+      "src_rtl/decode/f2/harness/test_timing_harness.py": {
+        "bytes": 7592,
+        "sha256": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5"
+      },
+      "src_rtl/decode/f2/harness/verification.json": {
+        "bytes": 1807,
+        "sha256": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8"
+      },
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": {
+        "bytes": 5769,
+        "sha256": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      },
+      "src_rtl/decode/f2/scripts/run_timing_harness.py": {
+        "bytes": 16780,
+        "sha256": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08"
+      },
+      "src_rtl/decode/f2/scripts/timing_harness.tcl": {
+        "bytes": 11789,
+        "sha256": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76"
+      },
+      "src_rtl/decode/rtl/decode_os_core.sv": {
+        "bytes": 10262,
+        "sha256": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed"
+      },
+      "src_rtl/decode/verification.json": {
+        "bytes": 65332,
+        "sha256": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627"
+      }
+    }
+  },
+  "runner_snapshot": {
+    "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/source/src_rtl/decode/f2/scripts/run_full_timing_pipeline.py",
+    "bytes": 13449,
+    "sha256": "ac97193289c433f7e4bbeb68529a373a4bee3e662a2c3ed29501ceb1b3404004"
+  },
+  "verified_absent_artifacts": [
+    "synth/post_synth.dcp",
+    "synth/synth_ready.txt",
+    "synth/resource_gate.json",
+    "synth/dsp_mapping.tsv",
+    "synth/synth_utilization_flat.rpt",
+    "route",
+    "route_preflight.log",
+    "route.log"
+  ],
+  "all_dcp_paths": [],
+  "native_inventory": [
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/provenance.json",
+      "relative_path": "provenance.json",
+      "bytes": 4524,
+      "sha256": "69dc64723089c828cdee62326347ce4e4573ea10a10c582f55c2a241e0bf0f11",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/status.json",
+      "relative_path": "status.json",
+      "bytes": 3491,
+      "sha256": "f2dbd51c792a5bfe280a425129e44a673404b539770c588254c52e3e77877e6e",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/.lpr",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/.lpr",
+      "bytes": 418,
+      "sha256": "1887037597fcd32e28a0251a2d918e03fddd494d074294dbeea6955d86267b44",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/elab.rtd",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/elab.rtd",
+      "bytes": 146866906,
+      "sha256": "479f8a7bb5435696e416ad58f5d6dbd7fa2abb7620601b1499dd4c5567a71b8e",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/incrSyn/1392976910/u/e/elab.rtd",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/incrSyn/1392976910/u/e/elab.rtd",
+      "bytes": 147329235,
+      "sha256": "d06a3b3a92b68258cf748c0c385ae77c4dce22bf0ccf871e1cdff7bc448ffb25",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/decode_compute_timing_harness.tcl",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/decode_compute_timing_harness.tcl",
+      "bytes": 4911,
+      "sha256": "932771d263e5cdc21616b35180535af181c7479f6171ebabbb270db5376c73cb",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/dupFiles.rpt",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/dupFiles.rpt",
+      "bytes": 88,
+      "sha256": "7aec9143f33dd770c189fa48971cdade0db688431bb0028df2b1deb3054dbcaf",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/tmp/genlib.875.0",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/realtime/tmp/genlib.875.0",
+      "bytes": 1416,
+      "sha256": "2a480b6e2e5db3ef9b76a7da151b70dc607fd9bad0a6dd53d27b5f34980ae88e",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/.Xil/Vivado-2165-ip-172-31-42-108/wt/synthesis.wdf",
+      "relative_path": "synth/.Xil/Vivado-2165-ip-172-31-42-108/wt/synthesis.wdf",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archived": false
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/console.log",
+      "relative_path": "synth/console.log",
+      "bytes": 3038666,
+      "sha256": "62b65c6422cf3989212090c6f790359579fcc5c627e9579accaef83c8cde3857",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/manifest.json",
+      "relative_path": "synth/manifest.json",
+      "bytes": 3370,
+      "sha256": "9fb218ec4f7bf9536cfe60cff2d6f9f003f2fcc9d4025c88474100ed5fad4ee4",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/vivado.log",
+      "relative_path": "synth/vivado.log",
+      "bytes": 3039068,
+      "sha256": "0cb93331959e6350c9cb4814fbb07ba09396fc3640bd6b1b2cd3c86082ef0d31",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth/vivado_version.txt",
+      "relative_path": "synth/vivado_version.txt",
+      "bytes": 331,
+      "sha256": "2521e7d680ff26073152c1666270e075c62e9b4e09a3495bff76f6ef184ac269",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth.log",
+      "relative_path": "synth.log",
+      "bytes": 544,
+      "sha256": "9f04678354d1da2366edbf2f0495d0571967ffecf045e1c096cda19ae71d8e27",
+      "archived": true
+    },
+    {
+      "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004/synth_preflight.log",
+      "relative_path": "synth_preflight.log",
+      "bytes": 3740,
+      "sha256": "fa1c2d6b791e26c7341333bc06618d88ded8624868659cad7cd48606b7f51c54",
+      "archived": true
+    }
+  ],
+  "retained_apport_report": {
+    "path": "/home/ubuntu/rachit/scalesim-m8a8-20261021/crash-004-original/_opt_Xilinx_2025.2_Vivado_bin_unwrapped_lnx64.o_vivado.1000.crash",
+    "bytes": 133879,
+    "sha256": "8a97b1bbd2a28dd408cb90341e2d6ec37059f3218d51a3f9d5d3c325dbbf64b2",
+    "archived": false,
+    "contents_not_downloaded": true
+  },
+  "apport_privacy": "Only the separately selected summary is exported; raw report including ProcEnviron remains remote"
+}
