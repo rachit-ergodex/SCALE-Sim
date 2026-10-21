@@ -17,7 +17,7 @@
     "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
     "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
     "src_rtl/decode/rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
-    "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+    "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
     "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
     "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
     "src_rtl/decode/tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b",
@@ -28,7 +28,7 @@
     "src_rtl/decode/tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
     "src_rtl/decode/tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03",
     "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
-    "src_rtl/decode/tests/run_synthesis.py": "675e2a4a7788a8ed644a9578eceaf21725c8c86dedaab1e231c8a3b6bfebd706",
+    "src_rtl/decode/tests/run_synthesis.py": "8726067d1d60cb723d7b51e8c83376eec4df22037d01f12d254f352f8d081f1d",
     "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
     "src_rtl/decode/tests/test_hbm_bridge.py": "606861b0ce125f8c750715da24820e6fcb1e1abe40195bbd835e397550ee2d63",
     "src_rtl/decode/tests/test_hbm_directed_bridge.py": "5e307568b0784200141b5f343404056c00b6dec08b0e5156565ce8a154eb8e90",
@@ -37,7 +37,7 @@
     "src_rtl/decode/tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
     "src_rtl/decode/tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
     "src_rtl/decode/tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
-    "src_rtl/decode/tests/test_real_decode_tiles.py": "f78fb773c46356445641f78acc16eb4a48c4196f497f9b1e3227b5956945c961",
+    "src_rtl/decode/tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
     "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
     "src_rtl/decode/verify.py": "5e2868797dd3240d623a69e746f024e0605d50bb95ec0d92f71a0a5c022954cf"
   },
@@ -153,8 +153,8 @@
       "status": "passed",
       "cells": {
         "$add": 181,
-        "$sdffe": 75,
-        "$sdff": 27,
+        "$sdffe": 71,
+        "$sdff": 31,
         "$reduce_bool": 1,
         "$ne": 1,
         "$reduce_and": 35,
@@ -168,12 +168,13 @@
         "$logic_or": 5,
         "$lt": 51,
         "$mul": 34,
-        "$mux": 632,
+        "$mux": 656,
         "$sub": 3
       },
       "signed_int8_multipliers": 32,
       "variable_dividers_or_modulo": 0,
-      "variable_non_mac_multipliers": 0
+      "variable_non_mac_multipliers": 0,
+      "global_m_combinational_interface_paths": 0
     },
     {
       "top": "decode_scratchpad",
@@ -2131,7 +2132,7 @@
       "cocotb": "2.1.0"
     },
     "source_sha256": {
-      "rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
       "tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
       "tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
       "tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
@@ -2164,8 +2165,8 @@
     "checked_command_outputs": 29584,
     "checked_final_outputs": 15760,
     "logical_cycles": 11446,
-    "stall_cycles": 2172,
-    "wall_seconds": 46.791,
+    "stall_cycles": 2216,
+    "wall_seconds": 54.224000000000004,
     "cases": [
       {
         "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
@@ -2379,8 +2380,8 @@
             "row_workers": 3,
             "waves": 2,
             "logical_cycles": 640,
-            "stall_cycles": 151,
-            "elapsed_cycles": 791,
+            "stall_cycles": 195,
+            "elapsed_cycles": 835,
             "ideal_compute_us_at_200mhz": 3.2,
             "checked_outputs": 4612
           }
@@ -2394,8 +2395,8 @@
       "numpy": "2.5.4"
     },
     "source_sha256": {
-      "rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
-      "tests/test_real_decode_tiles.py": "f78fb773c46356445641f78acc16eb4a48c4196f497f9b1e3227b5956945c961",
+      "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+      "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
       "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
     },
     "limitations": [

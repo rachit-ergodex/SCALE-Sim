@@ -63,6 +63,15 @@ def main():
             assert len(variable_products)==len(macs), 'non-MAC variable multiplier returned'
             row['variable_dividers_or_modulo']=len(divmods)
             row['variable_non_mac_multipliers']=len(variable_products)-len(macs)
+            # M may control the next wave's state, but must not directly gate
+            # the wide operand/result interface through a combinational cone.
+            # This is the measured long setup path in the full F2 placement.
+            m_bits={bit for bit in module['netnames']['m_reg']['bits'] if isinstance(bit,int)}
+            interface=('a_valid','a_address','b_valid','b_address',
+                       'seed_valid','c_valid','c_address','c_data')
+            m_paths=[port for port in interface if m_bits.intersection(input_cone(module,port))]
+            assert not m_paths, f'global M register returned to data/valid path: {m_paths}'
+            row['global_m_combinational_interface_paths']=len(m_paths)
         if top=='decode_scratchpad':
             memories=[cell for cell in cells if cell['type']=='$mem_v2'];assert len(memories)==1
             params=memories[0]['parameters']

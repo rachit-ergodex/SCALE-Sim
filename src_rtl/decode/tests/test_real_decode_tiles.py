@@ -68,7 +68,7 @@ def save_case(name, commands, outputs):
     path.write_text(json.dumps(cases, indent=2) + '\n')
 
 
-async def command(d, a, b, *, seed=None, random_seed=1, parallel=True):
+async def command(d, a, b, *, seed=None, random_seed=1, parallel=True, stall_wave_boundaries=False):
     """Check every accepted result and every requested operand address.
 
     The schedule below is derived from matrix coordinates, independently of
@@ -129,6 +129,10 @@ async def command(d, a, b, *, seed=None, random_seed=1, parallel=True):
         np.testing.assert_array_equal(aa[av], (rows * k + phase)[av])
         np.testing.assert_array_equal(ba[bv], (inner * n + columns)[bv])
         np.testing.assert_array_equal(ca[active], (lane_rows * n + columns)[active])
+        # Inactive rows must not expose stale addresses after a partial wave.
+        np.testing.assert_array_equal(aa[~used], 0)
+        np.testing.assert_array_equal(ba[~active], 0)
+        np.testing.assert_array_equal(ca[~np.repeat(used, COLS)], 0)
 
         a_values = np.full(PARTITIONS, -91, dtype=np.int8)
         b_values = np.full(LANES, -107, dtype=np.int8)
@@ -144,7 +148,8 @@ async def command(d, a, b, *, seed=None, random_seed=1, parallel=True):
         # Long backpressure at the first output of every wave exercises the
         # final-MAC combinational result and prevents double retirement.
         marker = (wave, phase)
-        if phase == k - 1 and marker not in injected_bursts:
+        boundary = stall_wave_boundaries and phase in (0, k + COLS - 2)
+        if (phase == k - 1 or boundary) and marker not in injected_bursts:
             injected_bursts.add(marker)
             burst_remaining = 11
         ready = burst_remaining == 0 and rng.random() >= 0.15
@@ -152,6 +157,7 @@ async def command(d, a, b, *, seed=None, random_seed=1, parallel=True):
             burst_remaining -= 1
         d.cycle_ready.value = ready
         await Timer(2250, unit='ps')
+        np.testing.assert_array_equal(unsigned_words(d.c_data, LANES)[~active], 0)
         if ready:
             indices = ca[cv].astype(np.int64)
             assert not np.any(writes[indices]), 'duplicate accepted output'
@@ -164,12 +170,12 @@ async def command(d, a, b, *, seed=None, random_seed=1, parallel=True):
         else:
             stalled += 1
             snapshot = tuple(int(signal.value) for signal in
-                             (d.a_address, d.b_address, d.c_address, d.c_valid, d.c_data))
+                             (d.a_valid, d.b_valid, d.seed_valid, d.a_address, d.b_address, d.c_address, d.c_valid, d.c_data))
         d.clk.value = 1
         await Timer(2500, unit='ps')
         if not ready:
             assert snapshot == tuple(int(signal.value) for signal in
-                                     (d.a_address, d.b_address, d.c_address, d.c_valid, d.c_data))
+                                     (d.a_valid, d.b_valid, d.seed_valid, d.a_address, d.b_address, d.c_address, d.c_valid, d.c_data))
         assert committed <= cycles and stalled < cycles * 2 + 100
 
     assert int(d.done.value) and int(d.cmd_ready.value)
@@ -248,6 +254,7 @@ async def ragged_two_wave_partials_signed_wrap(d):
     a = np.full((m, k), -128, dtype=np.int8)
     b = np.tile(np.array([-128, 127], dtype=np.int8), (k, (n + 1) // 2))[:, :n]
     seed = np.resize(np.array([(1 << 31) - 16, -(1 << 31) + 16, -1, 0], dtype=np.int64), (m, n))
-    result, report = await command(d, a, b, seed=seed, random_seed=300)
+    result, report = await command(d, a, b, seed=seed, random_seed=300,
+                                   stall_wave_boundaries=True)
     assert report['row_workers'] == 3 and report['waves'] == 2
     save_case('ragged_4x257x1153_two_waves_int32_wrap', [report], result.size)

@@ -36,6 +36,8 @@ module decode_os_core #(
     reg [31:0] a_row_base [0:PARTITIONS-1];
     reg [31:0] c_row_base [0:PARTITIONS-1];
     reg [31:0] column_base [0:PARTITIONS-1];
+    // Current-wave row activity. Register the row bound at wave transitions so
+    // the global M bus and row comparison do not gate every operand/result bit.
     reg [PARTITIONS-1:0] partition_used;
     reg [31:0] b_row_base [0:COLS-1];
     reg [31:0] a_wave_stride, c_wave_stride;
@@ -96,7 +98,7 @@ module decode_os_core #(
             b_address[lane*32 +: 32]=0;c_address[lane*32 +: 32]=0;c_data[lane*32 +: 32]=0;
         end
         for (integer p=0;p<PARTITIONS;p=p+1) begin
-            if (busy && !rst && partition_used[p] && row_index[p]<m_reg) begin
+            if (busy && !rst && partition_used[p]) begin
                 a_address[p*32 +: 32]=a_row_base[p]+phase;
                 a_valid[p]=phase<k_reg;
                 for (integer c=0;c<COLS;c=c+1) begin
@@ -143,6 +145,7 @@ module decode_os_core #(
                         row_index[p]<=requested_row[p];
                         a_row_base[p]<=requested_a_base[p];c_row_base[p]<=requested_c_base[p];
                         column_base[p]<=requested_column[p];
+                        // requested_workers <= cmd_m for every legal command.
                         partition_used[p]<=requested_row[p]<requested_workers;
                     end
                 end
@@ -165,6 +168,9 @@ module decode_os_core #(
                         else begin
                             wave_row<=wave_row+workers;
                             for(integer p=0;p<PARTITIONS;p=p+1) begin
+                                // Only a committed wave can deactivate a row;
+                                // stalls retain the complete current-wave mask.
+                                partition_used[p]<=partition_used[p] && row_index[p]+workers<m_reg;
                                 row_index[p]<=row_index[p]+workers;
                                 a_row_base[p]<=a_row_base[p]+a_wave_stride;
                                 c_row_base[p]<=c_row_base[p]+c_wave_stride;

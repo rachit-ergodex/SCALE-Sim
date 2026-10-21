@@ -24,8 +24,8 @@
   "checked_command_outputs": 29584,
   "checked_final_outputs": 15760,
   "logical_cycles": 11446,
-  "stall_cycles": 2172,
-  "wall_seconds": 46.791,
+  "stall_cycles": 2216,
+  "wall_seconds": 54.224000000000004,
   "cases": [
     {
       "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
@@ -239,8 +239,8 @@
           "row_workers": 3,
           "waves": 2,
           "logical_cycles": 640,
-          "stall_cycles": 151,
-          "elapsed_cycles": 791,
+          "stall_cycles": 195,
+          "elapsed_cycles": 835,
           "ideal_compute_us_at_200mhz": 3.2,
           "checked_outputs": 4612
         }
@@ -254,8 +254,8 @@
     "numpy": "2.5.4"
   },
   "source_sha256": {
-    "rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
-    "tests/test_real_decode_tiles.py": "f78fb773c46356445641f78acc16eb4a48c4196f497f9b1e3227b5956945c961",
+    "rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+    "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
     "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
   },
   "limitations": [
