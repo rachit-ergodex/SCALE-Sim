@@ -189,7 +189,7 @@ backtrace and shows only a 136 KiB main stack, so stack exhaustion is unproven.
 
 Fresh **run005 started at 00:00 IST on October 22** on the same `m8a.8xlarge`.
 Only runtime limits changed: the stack soft limit increased from 8 to 256 MiB,
-and core dumps were enabled for diagnosis if another crash occurs. Both values
+and the core-dump size limit was raised to unlimited for diagnosis. Both values
 were read back from the actual Vivado process. This is a recovery experiment,
 not a confirmed root-cause fix. Source, constraints, tool version, eight threads
 and the resource gates are unchanged; the existing numerical verification still
@@ -211,8 +211,8 @@ The previous RTL failed that structural check on all eight buses.
 
 [Core verification](../verification.json) binds core SHA256
 `5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed`.
-The earlier small routed timing results above bind their own original core
-source hashes and are not timing results for this DSP revision.
+The earlier LUT-mapped small results bind their own source hashes; the DSP
+run003 results bind this core revision.
 The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 

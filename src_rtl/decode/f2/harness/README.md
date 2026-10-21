@@ -143,8 +143,8 @@ resource checks or P&R; no final synthesis checkpoint exists. The
 and selected diagnostics. Stack exhaustion is unconfirmed.
 
 Fresh [retry005](../timing_harness_full_m8a8_run005.json) started at 00:00 IST
-on October 22 with the stack soft limit raised from 8 to 256 MiB and core dumps
-enabled. The actual Vivado process inherited both limits. RTL, physical
+on October 22 with the stack soft limit raised from 8 to 256 MiB and the
+core-dump size limit set to unlimited. The actual Vivado process inherited both. RTL, physical
 constraints, eight threads and Vivado 2025.2 are unchanged. The
 [sequential runner](../scripts/FULL_TIMING_PIPELINE.md) automatically routes at
 100 MHz only after synthesis, exact 4,096-DSP mapping, resource and checkpoint

@@ -6,7 +6,7 @@ This is not approval for a complete F2 accelerator image: a connected board top
 and several inference blocks do not yet exist in this implementation.
 
 
-**Latest physical result:** both 50 and 100 MHz full-size runs finished and failed
+**Original full-size OOC timing results:** both 50 and 100 MHz runs finished and failed
 timing. The 50 MHz terminal summary had setup +0.738 ns / hold −0.180 ns; 100 MHz
 had setup −0.147 ns / hold −0.180 ns. The registered row-activity RTL fix passed
 the complete functional suite, and a separate physical-boundary harness passed
@@ -37,8 +37,8 @@ observed. This is a tool-process failure, not a measured resource-fit failure.
 [Crash result and native evidence](timing_harness_full_m8a8_result004.json).
 
 Fresh **run005 started at 00:00 IST on October 22** on the same `m8a.8xlarge`.
-It raises the process stack soft limit from 8 to 256 MiB and enables core dumps;
-these limits were verified on the actual Vivado process. Stack exhaustion is
+It raises the process stack soft limit from 8 to 256 MiB and the core-dump size
+limit to unlimited; both were verified on the actual Vivado process. Stack exhaustion is
 unconfirmed, so this is a controlled recovery experiment. The exact verified RTL,
 constraints, eight-thread setting and Vivado 2025.2 remain unchanged. Synthesis
 has started, but resource fit and full-size timing remain pending. The persistent
