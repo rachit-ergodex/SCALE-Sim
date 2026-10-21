@@ -1,0 +1,1058 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Wed Oct 21 10:42:32 2026
+| Host              : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command           : report_timing -delay_type max -from [get_ports -filter {DIRECTION == IN && NAME != clk}] -max_paths 20 -path_type full_clock_expanded -file /home/ubuntu/rachit/scalesim-harness-20261021/small-50-002/setup_input_paths.rpt
+| Design            : decode_compute_timing_harness
+| Device            : xcvu47p-fsvh2892
+| Speed File        : -2  PRODUCTION 1.30 05-01-2022
+| Design State      : Routed
+| Temperature Grade : E
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             9.925ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__5/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.410ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.410ns = ( 11.410 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.368ns (routing 0.805ns, distribution 0.563ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X55Y148        FDRE                                         r  output_capture_q_reg_rep__5/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.368    11.410    core_clk
+    SLICE_X55Y148        FDRE                                         r  output_capture_q_reg_rep__5/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.410    
+                         clock uncertainty           -0.485    10.924    
+    SLICE_X55Y148        FDRE (Setup_AFF_SLICEL_C_D)
+                                                      0.023    10.947    output_capture_q_reg_rep__5
+  -------------------------------------------------------------------
+                         required time                         10.947    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.925    
+
+Slack (MET) :             9.928ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__4/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.413ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.413ns = ( 11.413 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.371ns (routing 0.805ns, distribution 0.566ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X51Y151        FDRE                                         r  output_capture_q_reg_rep__4/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.371    11.413    core_clk
+    SLICE_X51Y151        FDRE                                         r  output_capture_q_reg_rep__4/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.413    
+                         clock uncertainty           -0.485    10.927    
+    SLICE_X51Y151        FDRE (Setup_AFF_SLICEL_C_D)
+                                                      0.023    10.950    output_capture_q_reg_rep__4
+  -------------------------------------------------------------------
+                         required time                         10.950    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.928    
+
+Slack (MET) :             9.940ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__3/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.425ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.425ns = ( 11.425 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.383ns (routing 0.805ns, distribution 0.578ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X53Y131        FDRE                                         r  output_capture_q_reg_rep__3/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.383    11.425    core_clk
+    SLICE_X53Y131        FDRE                                         r  output_capture_q_reg_rep__3/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.425    
+                         clock uncertainty           -0.485    10.940    
+    SLICE_X53Y131        FDRE (Setup_AFF_SLICEM_C_D)
+                                                      0.023    10.963    output_capture_q_reg_rep__3
+  -------------------------------------------------------------------
+                         required time                         10.963    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.940    
+
+Slack (MET) :             9.971ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__20/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.457ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.457ns = ( 11.457 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.415ns (routing 0.805ns, distribution 0.610ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X60Y145        FDRE                                         r  output_capture_q_reg_rep__20/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.415    11.457    core_clk
+    SLICE_X60Y145        FDRE                                         r  output_capture_q_reg_rep__20/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.457    
+                         clock uncertainty           -0.485    10.971    
+    SLICE_X60Y145        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    10.994    output_capture_q_reg_rep__20
+  -------------------------------------------------------------------
+                         required time                         10.994    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.971    
+
+Slack (MET) :             9.972ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.457ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.457ns = ( 11.457 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.415ns (routing 0.805ns, distribution 0.610ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X60Y166        FDRE                                         r  output_capture_q_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.415    11.457    core_clk
+    SLICE_X60Y166        FDRE                                         r  output_capture_q_reg/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.457    
+                         clock uncertainty           -0.485    10.972    
+    SLICE_X60Y166        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    10.995    output_capture_q_reg
+  -------------------------------------------------------------------
+                         required time                         10.995    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.972    
+
+Slack (MET) :             9.973ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__16/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.457ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.457ns = ( 11.457 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.415ns (routing 0.805ns, distribution 0.610ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X66Y152        FDRE                                         r  output_capture_q_reg_rep__16/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.415    11.457    core_clk
+    SLICE_X66Y152        FDRE                                         r  output_capture_q_reg_rep__16/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.457    
+                         clock uncertainty           -0.485    10.972    
+    SLICE_X66Y152        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    10.995    output_capture_q_reg_rep__16
+  -------------------------------------------------------------------
+                         required time                         10.995    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.973    
+
+Slack (MET) :             9.975ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__22/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.021ns  (logic 0.000ns (0.000%)  route 0.021ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.457ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.457ns = ( 11.457 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.415ns (routing 0.805ns, distribution 0.610ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.021     1.021    output_capture
+    SLICE_X60Y145        FDRE                                         r  output_capture_q_reg_rep__22/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.415    11.457    core_clk
+    SLICE_X60Y145        FDRE                                         r  output_capture_q_reg_rep__22/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.457    
+                         clock uncertainty           -0.485    10.971    
+    SLICE_X60Y145        FDRE (Setup_EFF2_SLICEM_C_D)
+                                                      0.025    10.996    output_capture_q_reg_rep__22
+  -------------------------------------------------------------------
+                         required time                         10.996    
+                         arrival time                          -1.021    
+  -------------------------------------------------------------------
+                         slack                                  9.975    
+
+Slack (MET) :             9.975ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__18/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.460ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.460ns = ( 11.460 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.418ns (routing 0.805ns, distribution 0.613ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X64Y154        FDRE                                         r  output_capture_q_reg_rep__18/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.418    11.460    core_clk
+    SLICE_X64Y154        FDRE                                         r  output_capture_q_reg_rep__18/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.460    
+                         clock uncertainty           -0.485    10.974    
+    SLICE_X64Y154        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    10.997    output_capture_q_reg_rep__18
+  -------------------------------------------------------------------
+                         required time                         10.997    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.975    
+
+Slack (MET) :             9.977ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__7/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.463ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.463ns = ( 11.463 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.421ns (routing 0.805ns, distribution 0.616ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X63Y161        FDRE                                         r  output_capture_q_reg_rep__7/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.421    11.463    core_clk
+    SLICE_X63Y161        FDRE                                         r  output_capture_q_reg_rep__7/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.463    
+                         clock uncertainty           -0.485    10.977    
+    SLICE_X63Y161        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    11.000    output_capture_q_reg_rep__7
+  -------------------------------------------------------------------
+                         required time                         11.000    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.977    
+
+Slack (MET) :             9.980ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__15/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.464ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.464ns = ( 11.464 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.422ns (routing 0.805ns, distribution 0.617ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X64Y171        FDRE                                         r  output_capture_q_reg_rep__15/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.422    11.464    core_clk
+    SLICE_X64Y171        FDRE                                         r  output_capture_q_reg_rep__15/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.464    
+                         clock uncertainty           -0.485    10.979    
+    SLICE_X64Y171        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    11.002    output_capture_q_reg_rep__15
+  -------------------------------------------------------------------
+                         required time                         11.002    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.980    
+
+Slack (MET) :             9.980ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__6/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.465ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.465ns = ( 11.465 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.423ns (routing 0.805ns, distribution 0.618ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X63Y158        FDRE                                         r  output_capture_q_reg_rep__6/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.423    11.465    core_clk
+    SLICE_X63Y158        FDRE                                         r  output_capture_q_reg_rep__6/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.465    
+                         clock uncertainty           -0.485    10.980    
+    SLICE_X63Y158        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    11.003    output_capture_q_reg_rep__6
+  -------------------------------------------------------------------
+                         required time                         11.003    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.980    
+
+Slack (MET) :             9.981ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__24/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.465ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.465ns = ( 11.465 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.423ns (routing 0.805ns, distribution 0.618ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X68Y156        FDRE                                         r  output_capture_q_reg_rep__24/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.423    11.465    core_clk
+    SLICE_X68Y156        FDRE                                         r  output_capture_q_reg_rep__24/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.465    
+                         clock uncertainty           -0.485    10.980    
+    SLICE_X68Y156        FDRE (Setup_AFF_SLICEL_C_D)
+                                                      0.023    11.003    output_capture_q_reg_rep__24
+  -------------------------------------------------------------------
+                         required time                         11.003    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.981    
+
+Slack (MET) :             9.981ns  (required time - arrival time)
+  Source:                 harness_reset
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            reset_q_reg/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.467ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 11.467 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.425ns (routing 0.805ns, distribution 0.620ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  harness_reset (IN)
+                         net (fo=0)                   0.023     1.023    harness_reset
+    SLICE_X67Y165        FDRE                                         r  reset_q_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.425    11.467    core_clk
+    SLICE_X67Y165        FDRE                                         r  reset_q_reg/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.467    
+                         clock uncertainty           -0.485    10.981    
+    SLICE_X67Y165        FDRE (Setup_BFF_SLICEL_C_D)
+                                                      0.023    11.004    reset_q_reg
+  -------------------------------------------------------------------
+                         required time                         11.004    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.981    
+
+Slack (MET) :             9.982ns  (required time - arrival time)
+  Source:                 input_shift
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            input_shift_q_reg/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.467ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 11.467 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.425ns (routing 0.805ns, distribution 0.620ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  input_shift (IN)
+                         net (fo=0)                   0.022     1.022    input_shift
+    SLICE_X67Y165        FDRE                                         r  input_shift_q_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.425    11.467    core_clk
+    SLICE_X67Y165        FDRE                                         r  input_shift_q_reg/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.467    
+                         clock uncertainty           -0.485    10.981    
+    SLICE_X67Y165        FDRE (Setup_AFF_SLICEL_C_D)
+                                                      0.023    11.004    input_shift_q_reg
+  -------------------------------------------------------------------
+                         required time                         11.004    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.982    
+
+Slack (MET) :             9.982ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__21/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.467ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 11.467 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.425ns (routing 0.805ns, distribution 0.620ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X69Y156        FDRE                                         r  output_capture_q_reg_rep__21/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.425    11.467    core_clk
+    SLICE_X69Y156        FDRE                                         r  output_capture_q_reg_rep__21/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.467    
+                         clock uncertainty           -0.485    10.981    
+    SLICE_X69Y156        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    11.004    output_capture_q_reg_rep__21
+  -------------------------------------------------------------------
+                         required time                         11.004    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.982    
+
+Slack (MET) :             9.983ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__14/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.467ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 11.467 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.425ns (routing 0.805ns, distribution 0.620ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X66Y175        FDRE                                         r  output_capture_q_reg_rep__14/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.425    11.467    core_clk
+    SLICE_X66Y175        FDRE                                         r  output_capture_q_reg_rep__14/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.467    
+                         clock uncertainty           -0.485    10.982    
+    SLICE_X66Y175        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    11.005    output_capture_q_reg_rep__14
+  -------------------------------------------------------------------
+                         required time                         11.005    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.983    
+
+Slack (MET) :             9.985ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__19/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.022ns  (logic 0.000ns (0.000%)  route 0.022ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.470ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.470ns = ( 11.470 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.428ns (routing 0.805ns, distribution 0.623ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.022     1.022    output_capture
+    SLICE_X75Y150        FDRE                                         r  output_capture_q_reg_rep__19/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.428    11.470    core_clk
+    SLICE_X75Y150        FDRE                                         r  output_capture_q_reg_rep__19/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.470    
+                         clock uncertainty           -0.485    10.984    
+    SLICE_X75Y150        FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.023    11.007    output_capture_q_reg_rep__19
+  -------------------------------------------------------------------
+                         required time                         11.007    
+                         arrival time                          -1.022    
+  -------------------------------------------------------------------
+                         slack                                  9.985    
+
+Slack (MET) :             9.985ns  (required time - arrival time)
+  Source:                 output_shift
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_shift_q_reg/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.020ns  (logic 0.000ns (0.000%)  route 0.020ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.467ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.467ns = ( 11.467 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.425ns (routing 0.805ns, distribution 0.620ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_shift (IN)
+                         net (fo=0)                   0.020     1.020    output_shift
+    SLICE_X67Y165        FDRE                                         r  output_shift_q_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.425    11.467    core_clk
+    SLICE_X67Y165        FDRE                                         r  output_shift_q_reg/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.467    
+                         clock uncertainty           -0.485    10.981    
+    SLICE_X67Y165        FDRE (Setup_AFF2_SLICEL_C_D)
+                                                      0.024    11.005    output_shift_q_reg
+  -------------------------------------------------------------------
+                         required time                         11.005    
+                         arrival time                          -1.020    
+  -------------------------------------------------------------------
+                         slack                                  9.985    
+
+Slack (MET) :             9.987ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__17/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.473ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.473ns = ( 11.473 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.431ns (routing 0.805ns, distribution 0.626ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X71Y139        FDRE                                         r  output_capture_q_reg_rep__17/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.431    11.473    core_clk
+    SLICE_X71Y139        FDRE                                         r  output_capture_q_reg_rep__17/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.473    
+                         clock uncertainty           -0.485    10.987    
+    SLICE_X71Y139        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    11.010    output_capture_q_reg_rep__17
+  -------------------------------------------------------------------
+                         required time                         11.010    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.987    
+
+Slack (MET) :             9.987ns  (required time - arrival time)
+  Source:                 output_capture
+                            (input port clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            output_capture_q_reg_rep__2/D
+                            (falling edge-triggered cell FDRE clocked by harness_clock  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             harness_clock
+  Path Type:              Setup (Max at Fast Process Corner)
+  Requirement:            10.000ns  (harness_clock fall@10.000ns - harness_clock rise@0.000ns)
+  Data Path Delay:        0.023ns  (logic 0.000ns (0.000%)  route 0.023ns (100.000%))
+  Logic Levels:           0  
+  Input Delay:            1.000ns
+  Clock Path Skew:        1.473ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.473ns = ( 11.473 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.485ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.250ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Destination): 1.431ns (routing 0.805ns, distribution 0.626ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock harness_clock rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  1.000     1.000    
+                                                      0.000     1.000 r  output_capture (IN)
+                         net (fo=27, unset)           0.023     1.023    output_capture
+    SLICE_X61Y129        FDRE                                         r  output_capture_q_reg_rep__2/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock harness_clock fall edge)
+                                                     10.000    10.000 f  
+                                                      0.000    10.000 f  clk (IN)
+                         net (fo=0)                   0.025    10.025    clk
+    BUFGCE_X0Y0          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017    10.042 f  core_clock_buffer/O
+    X1Y2 (CLOCK_ROOT)    net (fo=8692, routed)        1.431    11.473    core_clk
+    SLICE_X61Y129        FDRE                                         r  output_capture_q_reg_rep__2/C  (IS_INVERTED)
+                         clock pessimism              0.000    11.473    
+                         clock uncertainty           -0.485    10.987    
+    SLICE_X61Y129        FDRE (Setup_EFF_SLICEM_C_D)
+                                                      0.023    11.010    output_capture_q_reg_rep__2
+  -------------------------------------------------------------------
+                         required time                         11.010    
+                         arrival time                          -1.023    
+  -------------------------------------------------------------------
+                         slack                                  9.987    
+
+
+
+

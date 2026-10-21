@@ -10,7 +10,9 @@ and several inference blocks do not yet exist in this implementation.
 timing. The 50 MHz terminal summary had setup +0.738 ns / hold −0.180 ns; 100 MHz
 had setup −0.147 ns / hold −0.180 ns. The registered row-activity RTL fix passed
 the complete functional suite, and a separate physical-boundary harness passed
-eight functional tests. Physical timing closure remains pending. See
+eight functional tests. The corrected 32-MAC harness subsequently passed routed
+timing at 100 MHz (+0.715 ns setup / +0.017 ns hold) and 50 MHz (+5.284 ns /
++0.019 ns). Full 4,096-MAC and F2 shell closure remain pending. See
 [timing causes, exact locations and repairs](TIMING_VIOLATIONS.md).
 
 ## Verified behavior

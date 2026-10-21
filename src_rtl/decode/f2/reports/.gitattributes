@@ -2,3 +2,4 @@
 *.rpt -whitespace
 **/console.txt -whitespace
 **/launcher.txt -whitespace
+**/clockInfo.txt -whitespace

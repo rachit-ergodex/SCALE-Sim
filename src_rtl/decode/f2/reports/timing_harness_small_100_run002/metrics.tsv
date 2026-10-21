@@ -1,0 +1,14 @@
+stage	route
+route_command_completed	1
+part	xcvu47p-fsvh2892-2-e
+clock_count	1
+clock_period_ns	10.000
+setup_path_count	1
+setup_slack_ns	0.715
+hold_path_count	1
+hold_slack_ns	0.017
+drc_errors	0
+drc_critical_warnings	0
+nets_UNROUTED	0
+nets_PARTIALLY_ROUTED	0
+nets_CONFLICTS	0

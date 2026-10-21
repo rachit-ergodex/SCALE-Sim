@@ -1,0 +1,69 @@
+{
+  "status": "both_small_physical_harness_runs_passed",
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "macs": 32
+  },
+  "runs": [
+    {
+      "compute_mhz": 50,
+      "status": "passed",
+      "created_utc": "2026-10-21T10:38:24.623672+00:00",
+      "finished_utc": "2026-10-21T10:42:34.761530+00:00",
+      "setup_slack_ns": 5.284,
+      "hold_slack_ns": 0.019,
+      "component_routed_timing_pass": true,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_50_run002",
+      "audit_sha256": "89507ab8293574660928b2cb4906d28070404058d86d4c1e78fc1a7bbe87cf69",
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4c78dc7d8d8185a49fdd39298e7f2f14decf872caf3d960d369dc529e40bc739",
+        "src_rtl/decode/f2/harness/verification.json": "717f3769093c6ee7fc9f63c1d758a3f9ee53dd7df1955b9b75e45302e7a35ec5",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "602c196cc338abc807fc0ec32a5e931414760eac1816ab9f37c0016cb09526af",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "0e5d7bdeaa38c390553ac5eb8e767b4c08868e711d5a14bc72cfb34c029a0e0f",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      }
+    },
+    {
+      "compute_mhz": 100,
+      "status": "passed",
+      "created_utc": "2026-10-21T10:38:24.683155+00:00",
+      "finished_utc": "2026-10-21T10:42:34.230022+00:00",
+      "setup_slack_ns": 0.715,
+      "hold_slack_ns": 0.017,
+      "component_routed_timing_pass": true,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_100_run002",
+      "audit_sha256": "b3fcd65038e5d4f4da06b2db25db6ce92130709895f3088cec6b4bb3b0649300",
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4c78dc7d8d8185a49fdd39298e7f2f14decf872caf3d960d369dc529e40bc739",
+        "src_rtl/decode/f2/harness/verification.json": "717f3769093c6ee7fc9f63c1d758a3f9ee53dd7df1955b9b75e45302e7a35ec5",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "602c196cc338abc807fc0ec32a5e931414760eac1816ab9f37c0016cb09526af",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "0e5d7bdeaa38c390553ac5eb8e767b4c08868e711d5a14bc72cfb34c029a0e0f",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      }
+    }
+  ],
+  "unrouted_or_conflicting_nets": 0,
+  "setup_hold_pulse_width_failing_endpoints": 0,
+  "drc_errors_or_critical_warnings": 0,
+  "timing_coverage_gaps": 0,
+  "full_4096mac_timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "scope": "Small analysis-only registered physical harness; no full4096MAC timing, AWS shell/HBM integration, bitstream or measured inference throughput claim."
+}

@@ -113,7 +113,16 @@ on the rising edge and is read after that edge, providing a real full-cycle
 output path. Inputs still sample on the falling edge. This is a hardware and
 protocol change, with unchanged timing constraints and unchanged compute RTL.
 Eight updated harness tests and all 39 flow/audit tests pass. Both clock targets
-are rerunning on this exact corrected harness source before full-size synthesis.
+subsequently **passed** on this exact corrected harness source:
+
+| Corrected harness | Setup WNS | Hold WHS |
+|---|---:|---:|
+| 100 MHz | +0.715 ns | +0.017 ns |
+| 50 MHz | +5.284 ns | +0.019 ns |
+
+Both have zero setup/hold/pulse-width failing endpoints, DRC errors or critical
+warnings, coverage gaps, and unrouted/partial/conflicting nets. Both exited
+successfully and retained routed checkpoints. [Final small-run evidence](timing_harness_small_m7a8_result002.json) binds the native reports and exact source. These results establish the 32-MAC harness only.
 
 ## Verification and remaining physical work
 
@@ -130,8 +139,8 @@ The previous RTL failed that structural check on all eight buses.
 The [harness verification](harness/verification.json) passed all eight tests,
 including every-bit mapping and edge/commit/capture behavior.
 
-The corrected small harness must pass at both clocks. Full-size synthesis must
-then establish resource headroom
+The corrected small harness passed at both clocks. Full-size synthesis must
+now establish resource headroom
 before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
 of thousands of output multiplexers. A small passing experiment is not proof
 that all 4,096 MACs fit or close timing. The eventual production design still
@@ -145,5 +154,5 @@ even if copied reports or a checkpoint otherwise look positive. This prevents
 future loss of the exact failing physical paths.
 
 **Current claim:** the row-control RTL repair and functional verification are
-complete. Small physical hold timing now passes at both frequencies; the corrected
-serial output and full-size timing closure remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.
+complete. Small routed setup and hold timing now pass at both frequencies, including
+the corrected serial output. Full-size fit and timing remain to be verified. No new inference TPS or ready-to-load F2 image is claimed.
