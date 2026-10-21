@@ -139,3 +139,51 @@ Checkpoint reuse skips the original five-hour synthesis stage. It does not
 remap LUT arithmetic into DSPs or reduce interface/control routing demand, so
 this lower-frequency experiment can still fail congestion or timing. It remains
 a compute-only OOC experiment, without the AWS shell, HBM or SRAM adapters.
+
+## Failure evidence and bounded timing samples
+
+A failed retargeted route now saves `failed_route.dcp`, the original routing
+error, and independently attempted timing, coverage, DRC, route-status and
+constraint reports. `route_failure_capture.tsv` identifies incomplete reports.
+The original routing error remains fatal, and both the driver and standalone
+auditor reject a recorded route failure even when partial reports look positive.
+
+Supplemental `*_sample.rpt` files classify at most 200 globally worst setup
+paths and 200 globally worst hold paths by their actual endpoint names. They
+separate input boundaries, output boundaries, input-to-output paths, and
+internal paths **within that sample**. A category absent from the sample is not
+evidence of passing timing. `sampled_path_reports.tsv` records each report's
+status. These bounded samples avoid giant endpoint selections and do not
+replace the mandatory global timing/coverage/DRC audit. Clock-domain selectors
+can include constrained input/output paths and are not internal-only filters.
+A supplemental diagnostic error is recorded without aborting other diagnostics;
+the global fatal-warning policy and mandatory closure checks are unchanged.
+
+## Registered physical timing harness
+
+The [harness documentation](../harness/README.md) explains its physical clock,
+registered boundary, serial protocol, and resource overhead. Start with the
+small 32-MAC physical experiment:
+
+```sh
+python3 src_rtl/decode/f2/scripts/run_timing_harness.py \
+  --partitions 4 --cols 8 --compute-mhz 100 --stage route \
+  --output /path/to/new/harness-small-100
+```
+
+Full 64x64 routing requires a separate synthesis run to pass the resource gate:
+
+```sh
+python3 src_rtl/decode/f2/scripts/run_timing_harness.py \
+  --partitions 64 --cols 64 --compute-mhz 100 --stage synth \
+  --output /path/to/new/harness-full-synth
+python3 src_rtl/decode/f2/scripts/run_timing_harness.py \
+  --partitions 64 --cols 64 --compute-mhz 100 --stage route \
+  --synthesis-run /path/to/new/harness-full-synth \
+  --output /path/to/new/harness-full-route
+```
+
+Use a fresh output directory for each command. The driver refuses full routing
+without the matching, verified synthesis checkpoint and a passing resource gate.
+This is an analysis-only compute harness: it does not create an F2 deployment
+image or establish HBM integration, board timing, or tokens-per-second throughput.

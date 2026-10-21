@@ -67,6 +67,26 @@ def copy_checked(source, destination, digest):
         raise ValueError(f'Input changed while snapshotting: {source}')
 
 
+
+def audit_result(output, snapshot, period, vivado_returncode):
+    """Audit partial reports too; a failed tool process can never certify closure."""
+    audit = subprocess.run([sys.executable, str(snapshot / BASE / 'f2/scripts/audit_compute_ooc.py'),
+                            str(output), '--expected-period-ns', format(period, '.12g')], cwd=output)
+    path = output / 'audit.json'
+    if vivado_returncode:
+        try:
+            result = json.loads(path.read_text())
+        except (OSError, ValueError):
+            result = {'problems': ['Audit did not produce a readable result']}
+        result.update(status='failed', component_routed_timing_pass=False,
+                      f2_shell_timing_closed=False, vivado_returncode=vivado_returncode,
+                      diagnostic_reports_only=True)
+        result.setdefault('problems', []).append(
+            f'Vivado exited with status {vivado_returncode}; partial route reports cannot establish closure')
+        path.write_text(json.dumps(result, indent=2) + '\n')
+    return audit.returncode
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', type=Path, required=True, help='Existing run with post_synth.dcp and source manifest')
@@ -140,19 +160,21 @@ def main():
         with (output / 'console.log').open('w') as log:
             result = subprocess.run(command, cwd=output, stdout=log, stderr=subprocess.STDOUT)
         manifest['vivado_returncode'] = result.returncode
+        if args.stage == 'route':
+            manifest['audit_returncode'] = audit_result(output, snapshot, period, result.returncode)
         if result.returncode:
             manifest['status'] = 'vivado_failed'
+            manifest['diagnostic_reports_only'] = True
             return result.returncode
         if args.stage == 'preflight':
             if not (output / 'preflight_passed.txt').is_file():
                 raise ValueError('Vivado exited without completing retarget preflight')
             manifest['status'] = 'preflight_passed'
             return 0
-        audit = subprocess.run([sys.executable, str(snapshot / BASE / 'f2/scripts/audit_compute_ooc.py'),
-                                str(output), '--expected-period-ns', format(period, '.12g')], cwd=output)
-        manifest['status'] = 'passed' if audit.returncode == 0 else 'audit_failed'
-        manifest['component_routed_timing_pass'] = audit.returncode == 0
-        return audit.returncode
+        audit_code = manifest['audit_returncode']
+        manifest['status'] = 'passed' if audit_code == 0 else 'audit_failed'
+        manifest['component_routed_timing_pass'] = audit_code == 0
+        return audit_code
     except BaseException:
         manifest['status'] = 'interrupted_or_failed'
         raise
