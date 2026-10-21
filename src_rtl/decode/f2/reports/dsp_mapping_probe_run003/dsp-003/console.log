@@ -1,0 +1,514 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Oct 21 10:45:39 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/probe-003.tcl
+# if {[llength $argv] != 2} {error "Expected probe-root baseline|dsp"}
+# lassign $argv root variant
+# if {$variant ni {baseline dsp}} {error "Unknown variant"}
+# set root [file normalize $root]
+# set_param general.maxThreads 8
+# set_msg_config -severity {CRITICAL WARNING} -new_severity ERROR
+# set arguments [list -sv]
+# lappend arguments $root/candidate3/decode_os_core.sv
+# read_verilog {*}$arguments
+# read_verilog -sv $root/decode_compute_timing_harness.sv
+# synth_design -top decode_compute_timing_harness -part xcvu47p-fsvh2892-2-e -mode out_of_context -flatten_hierarchy none -verilog_define SCALESIM_F2_USE_DSP=1 -generic [list PARTITIONS=4 COLS=8 MAX_M=4 MAX_K=8192]
+Command: synth_design -top decode_compute_timing_harness -part xcvu47p-fsvh2892-2-e -mode out_of_context -flatten_hierarchy none -verilog_define SCALESIM_F2_USE_DSP=1 -generic {PARTITIONS=4 COLS=8 MAX_M=4 MAX_K=8192}
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcvu47p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcvu47p'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 927536
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2012.219 ; gain = 399.672 ; free physical = 117535 ; free virtual = 134285
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6901] identifier 'output_scan' is used before its declaration [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/decode_compute_timing_harness.sv:35]
+INFO: [Synth 8-6157] synthesizing module 'decode_compute_timing_harness' [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/decode_compute_timing_harness.sv:4]
+	Parameter PARTITIONS bound to: 4 - type: integer 
+	Parameter COLS bound to: 8 - type: integer 
+	Parameter MAX_M bound to: 4 - type: integer 
+	Parameter MAX_K bound to: 8192 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [/opt/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [/opt/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]
+INFO: [Synth 8-6157] synthesizing module 'decode_os_core' [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:5]
+	Parameter PARTITIONS bound to: 4 - type: integer 
+	Parameter COLS bound to: 8 - type: integer 
+	Parameter MAX_M bound to: 4 - type: integer 
+	Parameter MAX_K bound to: 8192 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'decode_os_core' (0#1) [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'decode_compute_timing_harness' (0#1) [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/decode_compute_timing_harness.sv:4]
+WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[0][7] was removed.  [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:60]
+WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[1][7] was removed.  [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:60]
+WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[2][7] was removed.  [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:60]
+WARNING: [Synth 8-6014] Unused sequential element a_pipe_reg[3][7] was removed.  [/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/candidate3/decode_os_core.sv:60]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2133.188 ; gain = 520.641 ; free physical = 117398 ; free virtual = 134149
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2133.188 ; gain = 520.641 ; free physical = 117401 ; free virtual = 134153
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcvu47p-fsvh2892-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xcvu47p-fsvh2892-2-e
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2139.125 ; gain = 526.578 ; free physical = 117401 ; free virtual = 134152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2461.859 ; gain = 849.312 ; free physical = 117073 ; free virtual = 133825
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 2     
+	   3 Input   33 Bit       Adders := 35    
+	   2 Input   32 Bit       Adders := 100   
+	   3 Input   32 Bit       Adders := 28    
++---Registers : 
+	             3496 Bit    Registers := 1     
+	             1413 Bit    Registers := 2     
+	               64 Bit    Registers := 2     
+	               32 Bit    Registers := 64    
+	                8 Bit    Registers := 8     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 12    
++---Multipliers : 
+	               2x32  Multipliers := 2     
++---Muxes : 
+	   2 Input 3496 Bit        Muxes := 1     
+	   2 Input 1024 Bit        Muxes := 6     
+	   2 Input  256 Bit        Muxes := 4     
+	   2 Input   64 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 217   
+	   3 Input   32 Bit        Muxes := 4     
+	   5 Input   32 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 2     
+	   4 Input    5 Bit        Muxes := 1     
+	   3 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 5     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   5 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 154   
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 9024 (col length:94)
+BRAMs: 4032 (col length: RAMB18 288 RAMB36 144)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[0].lane_sum, operation Mode is: C+A*B.
+DSP Report: operator g_mac_partition[1].g_mac_column[0].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[0].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[0].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[0].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[1].lane_sum, operation Mode is: C+A2*B.
+DSP Report: register a_pipe_reg[1][0] is absorbed into DSP g_mac_partition[1].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[1].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[1].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[1].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[2].lane_sum, operation Mode is: C+A''*B.
+DSP Report: register a_pipe_reg[1][0] is absorbed into DSP g_mac_partition[1].g_mac_column[2].lane_sum.
+DSP Report: register a_pipe_reg[1][1] is absorbed into DSP g_mac_partition[1].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[2].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[2].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[2].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[3].lane_sum, operation Mode is: C+ACIN''*B.
+DSP Report: register a_pipe_reg[1][1] is absorbed into DSP g_mac_partition[1].g_mac_column[3].lane_sum.
+DSP Report: register a_pipe_reg[1][2] is absorbed into DSP g_mac_partition[1].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[3].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[3].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[3].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[4].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[1][3] is absorbed into DSP g_mac_partition[1].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[4].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[4].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[4].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[5].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[1][4] is absorbed into DSP g_mac_partition[1].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[5].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[5].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[5].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[6].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[1][5] is absorbed into DSP g_mac_partition[1].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[6].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[6].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[6].lane_sum.
+DSP Report: Generating DSP g_mac_partition[1].g_mac_column[7].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[1][6] is absorbed into DSP g_mac_partition[1].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[7].lane_sum is absorbed into DSP g_mac_partition[1].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[1].g_mac_column[7].lane_sum0 is absorbed into DSP g_mac_partition[1].g_mac_column[7].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[0].lane_sum, operation Mode is: C+A*B.
+DSP Report: operator g_mac_partition[2].g_mac_column[0].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[0].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[0].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[0].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[1].lane_sum, operation Mode is: C+A2*B.
+DSP Report: register a_pipe_reg[2][0] is absorbed into DSP g_mac_partition[2].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[1].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[1].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[1].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[2].lane_sum, operation Mode is: C+A''*B.
+DSP Report: register a_pipe_reg[2][0] is absorbed into DSP g_mac_partition[2].g_mac_column[2].lane_sum.
+DSP Report: register a_pipe_reg[2][1] is absorbed into DSP g_mac_partition[2].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[2].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[2].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[2].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[3].lane_sum, operation Mode is: C+ACIN''*B.
+DSP Report: register a_pipe_reg[2][1] is absorbed into DSP g_mac_partition[2].g_mac_column[3].lane_sum.
+DSP Report: register a_pipe_reg[2][2] is absorbed into DSP g_mac_partition[2].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[3].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[3].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[3].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[4].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[2][3] is absorbed into DSP g_mac_partition[2].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[4].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[4].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[4].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[5].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[2][4] is absorbed into DSP g_mac_partition[2].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[5].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[5].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[5].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[6].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[2][5] is absorbed into DSP g_mac_partition[2].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[6].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[6].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[6].lane_sum.
+DSP Report: Generating DSP g_mac_partition[2].g_mac_column[7].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[2][6] is absorbed into DSP g_mac_partition[2].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[7].lane_sum is absorbed into DSP g_mac_partition[2].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[2].g_mac_column[7].lane_sum0 is absorbed into DSP g_mac_partition[2].g_mac_column[7].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[0].lane_sum, operation Mode is: C+A*B.
+DSP Report: operator g_mac_partition[3].g_mac_column[0].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[0].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[0].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[0].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[1].lane_sum, operation Mode is: C+A2*B.
+DSP Report: register a_pipe_reg[3][0] is absorbed into DSP g_mac_partition[3].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[1].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[1].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[1].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[2].lane_sum, operation Mode is: C+A''*B.
+DSP Report: register a_pipe_reg[3][0] is absorbed into DSP g_mac_partition[3].g_mac_column[2].lane_sum.
+DSP Report: register a_pipe_reg[3][1] is absorbed into DSP g_mac_partition[3].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[2].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[2].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[2].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[3].lane_sum, operation Mode is: C+ACIN''*B.
+DSP Report: register a_pipe_reg[3][1] is absorbed into DSP g_mac_partition[3].g_mac_column[3].lane_sum.
+DSP Report: register a_pipe_reg[3][2] is absorbed into DSP g_mac_partition[3].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[3].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[3].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[3].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[4].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[3][3] is absorbed into DSP g_mac_partition[3].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[4].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[4].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[4].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[5].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[3][4] is absorbed into DSP g_mac_partition[3].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[5].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[5].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[5].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[6].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[3][5] is absorbed into DSP g_mac_partition[3].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[6].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[6].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[6].lane_sum.
+DSP Report: Generating DSP g_mac_partition[3].g_mac_column[7].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[3][6] is absorbed into DSP g_mac_partition[3].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[7].lane_sum is absorbed into DSP g_mac_partition[3].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[3].g_mac_column[7].lane_sum0 is absorbed into DSP g_mac_partition[3].g_mac_column[7].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[0].lane_sum, operation Mode is: C+A*B.
+DSP Report: operator g_mac_partition[0].g_mac_column[0].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[0].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[0].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[0].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[1].lane_sum, operation Mode is: C+A2*B.
+DSP Report: register a_pipe_reg[0][0] is absorbed into DSP g_mac_partition[0].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[1].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[1].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[1].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[1].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[2].lane_sum, operation Mode is: C+A''*B.
+DSP Report: register a_pipe_reg[0][0] is absorbed into DSP g_mac_partition[0].g_mac_column[2].lane_sum.
+DSP Report: register a_pipe_reg[0][1] is absorbed into DSP g_mac_partition[0].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[2].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[2].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[2].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[2].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[3].lane_sum, operation Mode is: C+ACIN''*B.
+DSP Report: register a_pipe_reg[0][1] is absorbed into DSP g_mac_partition[0].g_mac_column[3].lane_sum.
+DSP Report: register a_pipe_reg[0][2] is absorbed into DSP g_mac_partition[0].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[3].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[3].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[3].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[3].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[4].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[0][3] is absorbed into DSP g_mac_partition[0].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[4].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[4].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[4].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[4].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[5].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[0][4] is absorbed into DSP g_mac_partition[0].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[5].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[5].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[5].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[5].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[6].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[0][5] is absorbed into DSP g_mac_partition[0].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[6].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[6].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[6].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[6].lane_sum.
+DSP Report: Generating DSP g_mac_partition[0].g_mac_column[7].lane_sum, operation Mode is: C+ACIN2*B.
+DSP Report: register a_pipe_reg[0][6] is absorbed into DSP g_mac_partition[0].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[7].lane_sum is absorbed into DSP g_mac_partition[0].g_mac_column[7].lane_sum.
+DSP Report: operator g_mac_partition[0].g_mac_column[7].lane_sum0 is absorbed into DSP g_mac_partition[0].g_mac_column[7].lane_sum.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 3512.656 ; gain = 1900.109 ; free physical = 116067 ; free virtual = 132820
+---------------------------------------------------------------------------------
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 0 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 1 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 2 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 3 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 4 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[2].lane_sum_d : 0 5 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 0 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 1 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 2 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 3 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 4 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[2].lane_sum_a : 0 5 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 0 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 1 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 2 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 3 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 4 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[2].lane_sum_7 : 0 5 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 0 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 1 : 582 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 2 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 3 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 4 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[2].lane_sum_0 : 0 5 : 574 3460 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[1].lane_sum_e : 0 0 : 574 574 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[1].lane_sum_b : 0 0 : 574 574 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[1].lane_sum_8 : 0 0 : 574 574 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[1].lane_sum_4 : 0 0 : 574 574 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[0].g_mac_column[0].lane_sum_f : 0 0 : 566 566 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[1].g_mac_column[0].lane_sum_c : 0 0 : 566 566 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[2].g_mac_column[0].lane_sum_9 : 0 0 : 566 566 : Used 1 time 100
+ Sort Area is decode_os_core__GB0 g_mac_partition[3].g_mac_column[0].lane_sum_5 : 0 0 : 566 566 : Used 1 time 100
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|decode_os_core | C+A*B       | 8      | 8      | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A2*B      | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN''*B  | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 8      | 8      | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A2*B      | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN''*B  | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 8      | 8      | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A2*B      | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN''*B  | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 8      | 8      | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A2*B      | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN''*B  | 8      | 8      | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+ACIN2*B   | 8      | 8      | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:33 . Memory (MB): peak = 3518.594 ; gain = 1906.047 ; free physical = 116067 ; free virtual = 132820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:35 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116067 ; free virtual = 132820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116067 ; free virtual = 132820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116067 ; free virtual = 132820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116069 ; free virtual = 132821
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|decode_os_core | C+A*B       | 30     | 18     | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 30     | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 30     | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 0      | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 30     | 18     | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 30     | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 30     | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 0      | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 30     | 18     | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 30     | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 30     | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 0      | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A*B       | 30     | 18     | 32     | -      | 32     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 30     | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 30     | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A''*B     | 0      | 18     | 32     | -      | 32     | 2    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
+|decode_os_core | C+A'*B      | 0      | 18     | 32     | -      | 32     | 1    | 0    | 0    | -    | -     | 0    | 0    | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY8  |   599|
+|3     |DSP48E2 |    32|
+|4     |LUT1    |   905|
+|5     |LUT2    |  3547|
+|6     |LUT3    |  3816|
+|7     |LUT4    |  1607|
+|8     |LUT5    |   593|
+|9     |LUT6    |   881|
+|10    |FDRE    |  8470|
+|11    |FDSE    |     1|
++------+--------+------+
+
+Report Instance Areas: 
++------+---------+---------------+------+
+|      |Instance |Module         |Cells |
++------+---------+---------------+------+
+|1     |top      |               | 20452|
+|2     |  core   |decode_os_core | 10593|
++------+---------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116069 ; free virtual = 132821
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:39 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.602 ; gain = 1914.055 ; free physical = 116069 ; free virtual = 132821
+Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:38 . Memory (MB): peak = 3526.609 ; gain = 1914.055 ; free physical = 116069 ; free virtual = 132821
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 3543.445 ; gain = 0.000 ; free physical = 116217 ; free virtual = 132969
+INFO: [Netlist 29-17] Analyzing 632 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3727.777 ; gain = 0.000 ; free physical = 116091 ; free virtual = 132843
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 33 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 32 instances
+
+Synth Design complete | Checksum: 1b13e1ab
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:45 ; elapsed = 00:00:43 . Memory (MB): peak = 3727.812 ; gain = 2115.266 ; free physical = 116091 ; free virtual = 132844
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 3147.364; main = 3146.746; forked = 344.502
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4497.258; main = 3727.781; forked = 986.598
+# set period_ns 10
+# source $root/harness_constraints.tcl
+## if {![info exists period_ns] || ![string is double -strict $period_ns] ||
+##     !($period_ns > 0 && $period_ns < Inf)} {
+##     error "Set a finite positive period_ns before sourcing harness constraints"
+## }
+## create_clock -name harness_clock -period $period_ns [get_ports clk]
+## set_clock_uncertainty -setup 0.250 [get_clocks harness_clock]
+## set_clock_uncertainty -hold 0.100 [get_clocks harness_clock]
+## set harness_inputs [get_ports -filter {DIRECTION == IN && NAME != clk}]
+## set harness_outputs [get_ports -filter {DIRECTION == OUT}]
+## if {[llength [get_ports clk]] != 1 || [llength $harness_inputs] != 6 ||
+##     [llength $harness_outputs] != 1} {
+##     error "Unexpected physical harness boundary"
+## }
+## set_input_delay -clock harness_clock -max 1.000 $harness_inputs
+## set_input_delay -clock harness_clock -min 0.000 $harness_inputs
+## set_output_delay -clock harness_clock -max 1.000 $harness_outputs
+## set_output_delay -clock harness_clock -min 0.000 $harness_outputs
+# report_utilization -file synth_utilization_flat.rpt
+# report_utilization -hierarchical -file synth_utilization_hier.rpt
+# report_timing_summary -delay_type min_max -report_unconstrained -file synth_timing.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+report_timing_summary: Time (s): cpu = 00:00:21 ; elapsed = 00:00:17 . Memory (MB): peak = 4693.234 ; gain = 965.422 ; free physical = 115363 ; free virtual = 132116
+# write_checkpoint -force post_synth.dcp
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4725.250 ; gain = 0.000 ; free physical = 115362 ; free virtual = 132115
+INFO: [Common 17-1381] The checkpoint '/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/dsp-003/post_synth.dcp' has been generated.
+# write_verilog -force -mode funcsim post_synth.v
+# set cells [get_cells -hierarchical -filter {REF_NAME == DSP48E2}]
+# set fp [open dsp_mapping.tsv w]
+# puts $fp "variant\t$variant"
+# puts $fp "dsp_count\t[llength $cells]"
+# puts $fp "cell\tUSE_MULT\tAREG\tBREG\tCREG\tMREG\tPREG"
+# foreach cell $cells {
+#  puts $fp "$cell\t[get_property USE_MULT $cell]\t[get_property AREG $cell]\t[get_property BREG $cell]\t[get_property CREG $cell]\t[get_property MREG $cell]\t[get_property PREG $cell]"
+# }
+# close $fp
+# set fp [open complete.txt w]
+# puts $fp "Synthesis mapping probe completed; no functional or timing closure claim."
+# close $fp
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 10:46:47 2026...

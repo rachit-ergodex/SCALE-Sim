@@ -1,0 +1,30 @@
+{
+  "scope": "Synthesis-only mapping experiment",
+  "command": [
+    "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+    "-mode",
+    "batch",
+    "-nojournal",
+    "-log",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/dsp-002/vivado.log",
+    "-source",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/probe-002.tcl",
+    "-tclargs",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe",
+    "dsp"
+  ],
+  "started_utc": "2026-10-21T10:40:43.160862+00:00",
+  "functional_verification_pass": false,
+  "physical_timing_closed": false,
+  "returncode": 0,
+  "finished_utc": "2026-10-21T10:41:58.037736+00:00",
+  "complete": true,
+  "files_sha256": {
+    "synth_utilization_flat.rpt": "9f34bd1671e33cbfd092211571110b33115b5514f22d8585cc258d6e39151fd6",
+    "post_synth.dcp": "10c252fa6db65c3e10090955bad4eda1b68b58a67e4f233c953be4d259896db8",
+    "synth_utilization_hier.rpt": "11d2b37591909c3a2c548baa344dbbccd10682e4a8adf4a6f69026c2c7540909",
+    "synth_timing.rpt": "996954e73f6e2dc8cac942d6db9e2adeb4506aeb9f21d74a7cfb4e9d1aa9d012",
+    "post_synth.v": "da09df4eaf533e5699e07fa817c5fbb0e408f54672429b87836caf1dee9a0378",
+    "dsp_mapping.tsv": "315852ad1fa36d8e1db347ad87ad20e204dbc88b635c94f9d3c57fa8dd0e1d8c"
+  }
+}

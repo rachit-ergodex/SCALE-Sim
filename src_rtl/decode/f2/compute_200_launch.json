@@ -1,0 +1,57 @@
+{
+  "record_type": "launch observation, not completed synthesis or timing signoff",
+  "observed_utc": "2026-10-19T21:53:27.357253+00:00",
+  "git_commit": "cca6fb13e93ea34bbf78a30de4a5a9625d59a321",
+  "host": "opentpu-f2",
+  "instance_id": "i-0c78de2253f66519d",
+  "region": "us-east-1",
+  "run_directory": "/home/ubuntu/rachit/scalesim-200-20261020/run-001",
+  "launch_ssm_command": "ed037436-cca3-4f43-a5e5-c81d6d87d3de",
+  "stage_observed": "Vivado synthesis running; VU47P synthesis license acquired and RTL elaborated",
+  "vivado_version": "2025.2",
+  "manifest": {
+    "status": "running",
+    "created_utc": "2026-10-19T21:52:11.062140+00:00",
+    "part": "xcvu47p-fsvh2892-2-e",
+    "compute_mhz": 200,
+    "macs": 4096,
+    "stage": "route",
+    "source_hashes": {
+      "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+      "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+      "src_rtl/decode/verification.json": "6d93252abd367f6a643b1b5a9df81100490cb6edf4bbf648c472f21c8b55197c",
+      "src_rtl/decode/f2/constraints/compute_200mhz.xdc": "ed50e6e5e951e0b55b97885ebbb5f89c17eaddfbadcb3d17df11e60376517067",
+      "src_rtl/decode/f2/scripts/compute_ooc.tcl": "4d25f9b06c4f0c757aa586edacfdb1f81fa27d9b5761995423f4f7ba887a6eae",
+      "src_rtl/decode/f2/scripts/run_compute_ooc.py": "32b9b975d201a38a0c8449889e603b4a19d067c53553ac7d02fe17d03960803b",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "f40d105390dd0b946d74a0c026109afb44325f66b71e8213f64f0afeaae9c964"
+    },
+    "command": [
+      "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+      "-mode",
+      "batch",
+      "-nojournal",
+      "-log",
+      "/home/ubuntu/rachit/scalesim-200-20261020/run-001/vivado.log",
+      "-source",
+      "/home/ubuntu/rachit/scalesim-200-20261020/run-001/source/src_rtl/decode/f2/scripts/compute_ooc.tcl",
+      "-tclargs",
+      "/home/ubuntu/rachit/scalesim-200-20261020/run-001/source",
+      "/home/ubuntu/rachit/scalesim-200-20261020/run-001",
+      "route",
+      "4"
+    ],
+    "scope": "Compute-only OOC; full-device placement, no AWS shell, HBM or SRAM adapter",
+    "boundary_budget_ns": {
+      "input_max": 1,
+      "output_max": 1,
+      "input_min": 0,
+      "output_min": 0,
+      "setup_uncertainty": 0.25,
+      "hold_uncertainty": 0.1
+    },
+    "historical_simulator_profile_mhz": 250,
+    "f2_shell_timing_closed": false
+  },
+  "timing_closed": false
+}

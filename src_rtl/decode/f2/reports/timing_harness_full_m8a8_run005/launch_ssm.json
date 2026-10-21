@@ -1,0 +1,5 @@
+{
+    "Status": "Success",
+    "Output": "PASS: unchanged source, failedrunpreserved, fresh005path, >110GiBavailableRAM, >150GiBfreedisk\nMainPID=3105\nMemoryMax=107374182400\nMemorySwapMax=4294967296\nLimitSTACK=infinity\nLimitSTACKSoft=268435456\nLimitCORE=infinity\nLimitCORESoft=infinity\nActiveState=active\nSubState=running\n",
+    "Error": "Running as unit: scalesim-full4096-100-m8a8-20261021-005.service; invocation ID: d4d85d24d6034c99a8aed733ab88e1d7\n"
+}

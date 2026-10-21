@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "scope": "Full 64x64 INT8 compute RTL; production-size synthetic operands, not model weights or a full token pipeline",
+  "clock_hz": 200000000,
+  "parameters": {
+    "PARTITIONS": 64,
+    "COLS": 64,
+    "physical_macs": 4096
+  },
+  "independent_oracle": "NumPy INT64 matrix multiplication with explicit signed INT32 modular wrap",
+  "checks": [
+    "every requested A/B and active C address",
+    "all valid masks",
+    "all accepted outputs exactly once",
+    "INT32 accumulated K partials",
+    "parallel rows, multiple waves and ragged output tiles",
+    "minimum/maximum signed INT8 and INT32 wrap",
+    "random backpressure and 11-cycle output stalls",
+    "poison values on unused operand and partial-sum inputs",
+    "logical/elapsed/stall cycle counters"
+  ],
+  "tests": 4,
+  "commands": 14,
+  "checked_command_outputs": 29584,
+  "checked_final_outputs": 15760,
+  "logical_cycles": 11446,
+  "stall_cycles": 2216,
+  "wall_seconds": 54.87,
+  "cases": [
+    {
+      "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
+      "commands": [
+        {
+          "m": 1,
+          "k": 576,
+          "n": 4096,
+          "parallel_rows": true,
+          "accumulate": false,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 639,
+          "stall_cycles": 116,
+          "elapsed_cycles": 755,
+          "ideal_compute_us_at_200mhz": 3.195,
+          "checked_outputs": 4096
+        },
+        {
+          "m": 1,
+          "k": 576,
+          "n": 4096,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 639,
+          "stall_cycles": 117,
+          "elapsed_cycles": 756,
+          "ideal_compute_us_at_200mhz": 3.195,
+          "checked_outputs": 4096
+        },
+        {
+          "m": 1,
+          "k": 576,
+          "n": 2816,
+          "parallel_rows": true,
+          "accumulate": false,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 639,
+          "stall_cycles": 133,
+          "elapsed_cycles": 772,
+          "ideal_compute_us_at_200mhz": 3.195,
+          "checked_outputs": 2816
+        },
+        {
+          "m": 1,
+          "k": 576,
+          "n": 2816,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 639,
+          "stall_cycles": 112,
+          "elapsed_cycles": 751,
+          "ideal_compute_us_at_200mhz": 3.195,
+          "checked_outputs": 2816
+        }
+      ],
+      "checked_final_outputs": 6912
+    },
+    {
+      "name": "gemma_ffn_down_1x6912x1152_seven_k_tiles",
+      "commands": [
+        {
+          "m": 1,
+          "k": 988,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": false,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1051,
+          "stall_cycles": 160,
+          "elapsed_cycles": 1211,
+          "ideal_compute_us_at_200mhz": 5.255,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 988,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1051,
+          "stall_cycles": 203,
+          "elapsed_cycles": 1254,
+          "ideal_compute_us_at_200mhz": 5.255,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 988,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1051,
+          "stall_cycles": 174,
+          "elapsed_cycles": 1225,
+          "ideal_compute_us_at_200mhz": 5.255,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 987,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1050,
+          "stall_cycles": 212,
+          "elapsed_cycles": 1262,
+          "ideal_compute_us_at_200mhz": 5.25,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 987,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1050,
+          "stall_cycles": 199,
+          "elapsed_cycles": 1249,
+          "ideal_compute_us_at_200mhz": 5.25,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 987,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1050,
+          "stall_cycles": 210,
+          "elapsed_cycles": 1260,
+          "ideal_compute_us_at_200mhz": 5.25,
+          "checked_outputs": 1152
+        },
+        {
+          "m": 1,
+          "k": 987,
+          "n": 1152,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 1,
+          "waves": 1,
+          "logical_cycles": 1050,
+          "stall_cycles": 200,
+          "elapsed_cycles": 1250,
+          "ideal_compute_us_at_200mhz": 5.25,
+          "checked_outputs": 1152
+        }
+      ],
+      "checked_final_outputs": 1152
+    },
+    {
+      "name": "gemma_attention_qk_and_av_four_rows_context515",
+      "commands": [
+        {
+          "m": 4,
+          "k": 256,
+          "n": 515,
+          "parallel_rows": true,
+          "accumulate": false,
+          "row_workers": 4,
+          "waves": 1,
+          "logical_cycles": 319,
+          "stall_cycles": 64,
+          "elapsed_cycles": 383,
+          "ideal_compute_us_at_200mhz": 1.595,
+          "checked_outputs": 2060
+        },
+        {
+          "m": 4,
+          "k": 515,
+          "n": 256,
+          "parallel_rows": true,
+          "accumulate": false,
+          "row_workers": 4,
+          "waves": 1,
+          "logical_cycles": 578,
+          "stall_cycles": 121,
+          "elapsed_cycles": 699,
+          "ideal_compute_us_at_200mhz": 2.89,
+          "checked_outputs": 1024
+        }
+      ],
+      "checked_final_outputs": 3084
+    },
+    {
+      "name": "ragged_4x257x1153_two_waves_int32_wrap",
+      "commands": [
+        {
+          "m": 4,
+          "k": 257,
+          "n": 1153,
+          "parallel_rows": true,
+          "accumulate": true,
+          "row_workers": 3,
+          "waves": 2,
+          "logical_cycles": 640,
+          "stall_cycles": 195,
+          "elapsed_cycles": 835,
+          "ideal_compute_us_at_200mhz": 3.2,
+          "checked_outputs": 4612
+        }
+      ],
+      "checked_final_outputs": 4612
+    }
+  ],
+  "tools": {
+    "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+    "cocotb": "2.1.0",
+    "numpy": "2.5.4"
+  },
+  "source_sha256": {
+    "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
+    "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
+  },
+  "limitations": [
+    "The 200 MHz simulation period does not establish FPGA timing closure.",
+    "HBM/DMA/CDC and vector/SFU integration are outside these arithmetic component tests.",
+    "These component timings do not establish end-to-end tokens/second."
+  ]
+}

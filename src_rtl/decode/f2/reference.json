@@ -1,0 +1,120 @@
+{
+  "purpose": "Platform integration reference only; does not replace the new decode architecture",
+  "source_url": "s3://ergodex-bonsai-on-chip-438374459156-us-east-1/opentpu-alex/alex-burst200-branch.tar",
+  "archive_sha256": "fdd38e2be3e87fe80d73b9af111911c2d26f8a699b767dfc37b62b8c5a1505dc",
+  "source_commit": "06c169cbcd1721ae8b167de992a93461697a397d",
+  "matching_tracked_files": 850,
+  "selected_source_sha256": {
+    "boards/f2/README.md": "b5983c7cee85c747d6bbdda39c01912b2ca6a4975d6e8ad49d20316fec13f5b2",
+    "rtl/boards/f2/cl_opentpu.sv": "e6261a24272c3d2c74ddc9f43afa97015099b9a6b4abce0caadb3ba466927fa8",
+    "rtl/boards/f2/otpu_native_axi.sv": "9219ade00e16bf1b3a200167bd90a44283a606842a6477ce75f9b3eae7e14f01",
+    "rtl/boards/f2/otpu_hbm_geometry.sv": "05f07a174b22edb17f7d72876c87c33e37884e028195b950272d57abaf598127",
+    "boards/f2/scripts/create_f2_ip.tcl": "6172bf483db0826b909dbeb9abb797a9671bc5a98a9ae08fe9ac7bc01d4ac512",
+    "opentpu/host/f2_transport.py": "76c02d8d90ce3716cd70dc455d925192cc9d5bf5cffdd55d5688542065aa9d35",
+    "opentpu/host/f2_mmio.c": "b214b097d560dfb2b7467737bb0cd4f05223c57e8c8da78f178928227b32691f",
+    "targets/f2.toml": "e0b276b2fa254b407618babb6d4432adad3088fff5caf7c57c2a9f285b47ab2c",
+    "rtl/vpu/otpu_fp.sv": "16fc71077a7c7f9c7ef98ee8791c27eee340d6704cbdb0f1852104c64b2bbd48"
+  },
+  "documented_image": "agfi-0d06cb48544a02106",
+  "documented_dcp_sha256": "0f600fd7fecd2028a6db7767d1de5a2230e62c265baa545b749866b9e9ff15ed",
+  "bitstream_in_archive": false,
+  "hardware_revalidated": false,
+  "native_adapter_trials": [
+    {
+      "burst": 1,
+      "outstanding": 8,
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "burst": 1,
+      "outstanding": 8,
+      "seed": 42,
+      "passed": true
+    },
+    {
+      "burst": 1,
+      "outstanding": 8,
+      "seed": 2026,
+      "passed": true
+    },
+    {
+      "burst": 1,
+      "outstanding": 8,
+      "seed": 4700,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 8,
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 8,
+      "seed": 42,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 8,
+      "seed": 2026,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 8,
+      "seed": 4700,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 32,
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 32,
+      "seed": 42,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 32,
+      "seed": 2026,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 32,
+      "seed": 4700,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 128,
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 128,
+      "seed": 42,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 128,
+      "seed": 2026,
+      "passed": true
+    },
+    {
+      "burst": 16,
+      "outstanding": 128,
+      "seed": 4700,
+      "passed": true
+    }
+  ]
+}

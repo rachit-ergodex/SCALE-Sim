@@ -1,0 +1,133 @@
+{
+  "target_mhz": 100,
+  "run_directory": "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002",
+  "diagnostic_directory": "/home/ubuntu/rachit/scalesim-closure-analysis-20261021/100-paths",
+  "stage": "post_phys_opt_before_route",
+  "final_routed_timing": false,
+  "timing_closed": false,
+  "baseline_checkpoint": {
+    "path": "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/post_phys_opt.dcp",
+    "bytes": 330438814,
+    "sha256": "230807ed077252e13ff1bd4ea793b7800ebba7c1d65b9260e47557fc55c80ec5"
+  },
+  "native_files": {
+    "clocks.rpt": {
+      "bytes": 1637,
+      "sha256": "ce4ea530a0d1af00ccbfd6f2da1c2414deb6a995ef1e9b6557a652435a39305e"
+    },
+    "feedthrough_max.rpt": {
+      "bytes": 152586,
+      "sha256": "3d9227086d21de9334480d26ab3aa6ee358b966b19bf1074fc6e1767407f4a26"
+    },
+    "feedthrough_min.rpt": {
+      "bytes": 167232,
+      "sha256": "163d34d58925a7c4b4410849d3c5071b03b53479108f7a548d0c2111179d27a1"
+    },
+    "input_to_register_max.rpt": {
+      "bytes": 266150,
+      "sha256": "da71ab00099d0c6d5c69d8da3d8db6964e104d17dfbb3a6fee2c4705b4c47803"
+    },
+    "input_to_register_min.rpt": {
+      "bytes": 154260,
+      "sha256": "f3558e0a9e3da80687774bc44a7bd487d6f5693d43fae74656d0c07b959913e9"
+    },
+    "internal_max.rpt": {
+      "bytes": 254815,
+      "sha256": "edfd69523623b39665ec830e0af0490fe4e4ac5eb28d4090660a5d9d0d202538"
+    },
+    "internal_min.rpt": {
+      "bytes": 172562,
+      "sha256": "4da1e131ae41fdbdf187e983b17e872d7cabd90a10042535d33d6c7a787acf2b"
+    },
+    "register_to_output_max.rpt": {
+      "bytes": 223019,
+      "sha256": "195ba9d031adfdcaecfc1716f8786aa42b0245c45b6f34a60db578990c783e63"
+    },
+    "register_to_output_min.rpt": {
+      "bytes": 154106,
+      "sha256": "05a45ff54fdcceb7388758744e7446b87c2a630953341babd6e802fc8051bdd8"
+    },
+    "timing_summary.rpt": {
+      "bytes": 18008,
+      "sha256": "ae84cc140f9083b9e60e9b60c4670cd42c03cfab6067c9009d2475cf15d8328d"
+    },
+    "summary.tsv": {
+      "bytes": 608,
+      "sha256": "7745f95af65b5594a802045339c0a96b61a59f841ec8c57713d88e53184a7f1f"
+    },
+    "complete.txt": {
+      "bytes": 61,
+      "sha256": "685f9fa7fbc626dd531aff62dc21dc5c56dba3a13ff40a06653e467523d93ed9"
+    },
+    "diagnose_paths.tcl": {
+      "bytes": 1530,
+      "sha256": "5306c644e78a87b0504140f103444028d2ad3c8b2871c4e2b180dde3d8d54a87"
+    }
+  },
+  "original_run_manifest": {
+    "status": "vivado_failed",
+    "created_utc": "2026-10-20T12:06:06.621690+00:00",
+    "part": "xcvu47p-fsvh2892-2-e",
+    "macs": 4096,
+    "compute_mhz": 100.0,
+    "clock_period_ns": 10.0,
+    "stage": "route",
+    "threads": 8,
+    "command": [
+      "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+      "-mode",
+      "batch",
+      "-nojournal",
+      "-log",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/vivado.log",
+      "-source",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/flow_source/src_rtl/decode/f2/scripts/compute_retarget.tcl",
+      "-tclargs",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002/baseline/post_synth.dcp",
+      "/home/ubuntu/rachit/scalesim-m7a8-100-20261020/run-002",
+      "10",
+      "route",
+      "8"
+    ],
+    "flow_source_hashes": {
+      "src_rtl/decode/f2/scripts/run_compute_retarget.py": "118d03545a87120bb1ee9e002b84d9cef8de869b06a984154e3a660e1fcec206",
+      "src_rtl/decode/f2/scripts/compute_retarget.tcl": "8e72d17ea5540898a58bb3e1290f82ade3073be57748c0525ddeb9653430c565",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "77d763d0131d6ab9992571e1238a84bd36eaa2738d633405ea019a3dbef18c52"
+    },
+    "source_hashes": {
+      "src_rtl/decode/rtl/decode_os_core.sv": "4c8a112864c00ddd6925f73f9bba54b5772314cb366182f7bb4deb5a24ecf90e",
+      "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+      "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+      "src_rtl/decode/verification.json": "ab03cbdfe0a651692e99ec7a4c871a25efe3a5bf54033b2cb9507263ffd9d3d6",
+      "src_rtl/decode/f2/constraints/compute_200mhz.tcl": "87573006e262b4befda91fb6e73f4f4b423917a9e82a18b7661d671892b20b11",
+      "src_rtl/decode/f2/constraint_smoke_verification.json": "bbd638fade45094d483aeb552fb70c73cfa5a31c5e21675b3fd631abd09c4779",
+      "src_rtl/decode/f2/scripts/constraint_smoke.tcl": "cc03aae60e4709b427840aa283668156cc1f3df7bb3a0aa29cc174845a140485",
+      "src_rtl/decode/f2/scripts/constraint_smoke.sv": "1c7ef154d8d5b09858263245e3047ec34f41ec4dfca959fe9fc4fbcda5864558",
+      "src_rtl/decode/f2/scripts/compute_ooc.tcl": "fc11c8b85fb5873ece39f41aeb37e8c65c6bf6e3f3ace1559e7ff48476eb04dd",
+      "src_rtl/decode/f2/scripts/run_compute_ooc.py": "9141a17996a6c6c6d640f260e34fccf5710c3ca91beb563d2578882385854bd8",
+      "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "f40d105390dd0b946d74a0c026109afb44325f66b71e8213f64f0afeaae9c964"
+    },
+    "baseline": {
+      "directory": "/home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001",
+      "manifest_sha256": "47ba5a5a0e3b8b0226fa87688c4462231b91c78c2a1129e1791e59ebd7b8e27d",
+      "checkpoint": "post_synth.dcp",
+      "checkpoint_sha256": "a06f3e39778c8133ea788c7961e101c694e4f88e1568dd8dde4c6ac55eef2020",
+      "compute_mhz": 200,
+      "source_git_label": "4f0783d49fb3cc14e907e200130cb4080633fca3"
+    },
+    "boundary_budget_ns": {
+      "input_max": 1,
+      "input_min": 0,
+      "output_max": 1,
+      "output_min": 0,
+      "setup_uncertainty": 0.25,
+      "hold_uncertainty": 0.1
+    },
+    "scope": "Compute-only OOC checkpoint retarget; full-device placement without AWS shell, HBM or SRAM adapter",
+    "synthesis_rerun": false,
+    "f2_shell_timing_closed": false,
+    "component_routed_timing_pass": false,
+    "vivado_returncode": 1,
+    "finished_utc": "2026-10-20T15:17:14.601746+00:00"
+  }
+}

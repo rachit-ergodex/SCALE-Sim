@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-10-21T10:37:44.921479+00:00",
+  "scope": "Temporary 4x8 synthesis mapping experiment only; no timing closure, functional verification, F2 shell or inference claim",
+  "source_snapshot": "/home/ubuntu/rachit/scalesim-harness-20261021/source-001",
+  "baseline_source_sha256": {
+    "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d"
+  },
+  "modified_core_sha256": "0fba31fbfa39d0989899324686d4990e38174c2e973549d87f3217f8d3d476ae",
+  "only_modification": "F2-specific USE_DSP=yes attribute on c_data under SCALESIM_F2_USE_DSP",
+  "baseline_define": null,
+  "dsp_define": "SCALESIM_F2_USE_DSP=1",
+  "part": "xcvu47p-fsvh2892-2-e",
+  "partitions": 4,
+  "cols": 8,
+  "macs": 32,
+  "threads": 8,
+  "memory_max": "24G",
+  "clock_period_ns": 10,
+  "functional_verification_pass": false,
+  "physical_timing_closed": false
+}

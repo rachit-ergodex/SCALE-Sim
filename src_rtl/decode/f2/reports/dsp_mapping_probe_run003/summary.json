@@ -1,0 +1,54 @@
+{
+  "scope": "Synthesis-only mapping experiment",
+  "functional_verification_pass": false,
+  "physical_timing_closed": false,
+  "variants": {
+    "baseline": {
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+        "-mode",
+        "batch",
+        "-nojournal",
+        "-log",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/baseline/vivado.log",
+        "-source",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/probe.tcl",
+        "-tclargs",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe",
+        "baseline"
+      ],
+      "started_utc": "2026-10-21T10:37:44.967317+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T10:38:59.839996+00:00",
+      "complete": true,
+      "files_sha256": {
+        "synth_utilization_flat.rpt": "c5fb4cf83154252f1fd008998bd5619dcfca6d4c6d5d9633966a90cc461abd8e",
+        "post_synth.dcp": "2385be3426a27356232c728f10fe9993877908b349a660d49268e97abc36c972",
+        "synth_utilization_hier.rpt": "7e5d10b39395367bd27eb17c7a32bca87a4f74ef53aa036ebcec787bdc4d9106",
+        "synth_timing.rpt": "a23f218bc3f184670827e4642d45938d47388818cb83537055b4bc9a98c5d78f",
+        "post_synth.v": "e9b6ac7f5e4d8ea6c84bffe820cf38a625292b1ac78f5b5d90ee5464065df129",
+        "dsp_mapping.tsv": "d8bb97ef5638723f4554c1e470b1312331efa042074e98fb8f22e11810808163"
+      }
+    },
+    "dsp": {
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+        "-mode",
+        "batch",
+        "-nojournal",
+        "-log",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/dsp/vivado.log",
+        "-source",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/probe.tcl",
+        "-tclargs",
+        "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe",
+        "dsp"
+      ],
+      "started_utc": "2026-10-21T10:38:59.847590+00:00",
+      "returncode": 1,
+      "finished_utc": "2026-10-21T10:39:03.875443+00:00",
+      "complete": false,
+      "files_sha256": {}
+    }
+  }
+}

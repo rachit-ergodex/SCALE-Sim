@@ -1,0 +1,26 @@
+/opt/Xilinx/2025.2/Vivado/bin/vivado -mode batch -nojournal -log /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001/vivado.log -source /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001/flow_source/src_rtl/decode/f2/scripts/compute_retarget.tcl -tclargs /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001/baseline/post_synth.dcp /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001 20 route 8
+Run artifacts: /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001
+Command exited with non-zero status 1
+	Command being timed: "/usr/bin/python3 src_rtl/decode/f2/scripts/run_compute_retarget.py --baseline /home/ubuntu/rachit/scalesim-m7a8-200-20261020/run-001 --output /home/ubuntu/rachit/scalesim-m7a8-50-20261020/run-001 --compute-mhz 50 --baseline-source-git 4f0783d49fb3cc14e907e200130cb4080633fca3 --stage route --threads 8 --vivado /opt/Xilinx/2025.2/Vivado/bin/vivado"
+	User time (seconds): 23200.48
+	System time (seconds): 346.45
+	Percent of CPU this job got: 210%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:06:19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 17910920
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 13686073
+	Voluntary context switches: 47502789
+	Involuntary context switches: 32715
+	Swaps: 0
+	File system inputs: 344
+	File system outputs: 11847728
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

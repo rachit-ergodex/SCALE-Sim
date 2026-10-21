@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "HBM-clock-domain read frontends, behavioral AXI target, no PHY/CDC or FPGA timing validation",
+  "ports": 32,
+  "ids_per_port": 64,
+  "total_request_capacity": 2048,
+  "verified_reads": 13312,
+  "source_sha256": {
+    "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+    "rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+    "tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
+    "tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d"
+  },
+  "cocotb": "2.1.0",
+  "checks": [
+    "all 32 ports transfer simultaneously",
+    "256 consecutive full-rate response cycles",
+    "all 2048 credits occupied",
+    "random AR and output stalls",
+    "out-of-order response IDs",
+    "per-port fault isolation",
+    "RRESP and RLAST errors",
+    "reset recovery"
+  ]
+}

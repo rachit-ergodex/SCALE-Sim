@@ -1,0 +1,93 @@
+{
+  "status": "failed",
+  "scope": "4x8 mapped-netlist functional equivalence against original verified RTL, using installed UNISIM and glbl; no SDF or routed timing claim",
+  "started_utc": "2026-10-21T10:55:44.310162+00:00",
+  "source_sha256": {
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/tb.sv": "cfc41a20969036d5d86b2904d855870408b682b7d389cd8d85bb1f7b4eabe9cf",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/reference.sv": "5e946085a5b050b768206b10e6cf92890d4a4b750b32cdb5a86a8fc69bbdc21c",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/core_netlist.v": "ab4a3ded6098dcc13b6d9f5f4b160e42374fd52b9b68ec7cb4253fd0a2e2a6d4",
+    "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v": "6270251cf35e1fce3119fc79f8fb968912f7983027e43cf030409ba68f048936"
+  },
+  "vendor_glbl_path": "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v",
+  "vendor_dsp_model_path": "/opt/Xilinx/2025.2/Vivado/data/verilog/src/unisims/DSP48E2.v",
+  "vendor_dsp_model_sha256": "da2d5acbea7bb7fc4008faf5755d93964c01f081713b1640da77c8f143fd58b2",
+  "libraries": [
+    "unisims_ver",
+    "secureip"
+  ],
+  "physical_timing_closed": false,
+  "stages": [
+    {
+      "name": "xvlog",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xvlog",
+        "--sv",
+        "--work",
+        "work",
+        "core_netlist.v",
+        "reference.sv",
+        "tb.sv",
+        "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v"
+      ],
+      "started_utc": "2026-10-21T10:55:45.314152+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T10:55:46.981288+00:00"
+    },
+    {
+      "name": "xelab",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xelab",
+        "--debug",
+        "typical",
+        "--relax",
+        "--mt",
+        "8",
+        "-L",
+        "unisims_ver",
+        "-L",
+        "secureip",
+        "work.tb",
+        "work.glbl",
+        "-s",
+        "netlist_equiv"
+      ],
+      "started_utc": "2026-10-21T10:55:46.981609+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T10:55:57.262643+00:00"
+    },
+    {
+      "name": "xsim",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xsim",
+        "netlist_equiv",
+        "-runall",
+        "-onfinish",
+        "quit",
+        "-log",
+        "xsim.log"
+      ],
+      "started_utc": "2026-10-21T10:55:57.262966+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T10:56:00.682390+00:00"
+    }
+  ],
+  "simulator_version": "Vivado Simulator v2025.2\nCopyright 1986-2025 Xilinx, Inc. All Rights Reserved.",
+  "error": "Simulation has no clean explicit pass",
+  "finished_utc": "2026-10-21T10:56:00.682792+00:00",
+  "artifacts_sha256": {
+    "xsim_version.txt": "b943d9a6fdec7ccca25bf78a43be448938fcba3ca13de1d54568410a4a046269",
+    "xelab.console.log": "6583ff37f43dda86b1ad80cd5bde05ff59d6aa59c0ea37e27822cb3b9c3bca5a",
+    "run_equivalence.py": "ef0eb619c05f9dc2927f863642fda7431157d51a64ba5c5d2424245912143c5b",
+    "generate_tb.py": "6d53f9b1fc49538fe9dad0e1e5ce37d973d0362ae5cb4ca93ddb81460f98f935",
+    "xvlog.log": "ffcae5437560f531d11246f565e7dcc32fe6ae287084bed8dc47a37b1fbe6a1e",
+    "xsim.console.log": "86991bc1633ef97caa694276eb475ec0a7d82d8133687d9dd0f0e21a8a297b8a",
+    "rtl-smoke-002.log": "65d7715bb07975f6b15a81d0e0e2327ee6a749e542c781d38e950ce9ad3d57f0",
+    "core_netlist.v": "ab4a3ded6098dcc13b6d9f5f4b160e42374fd52b9b68ec7cb4253fd0a2e2a6d4",
+    "xsim.log": "19857935e149300b01c049a7c17619d8ee78d009e30e42cf316d50c5c2c40f12",
+    "reference.sv": "5e946085a5b050b768206b10e6cf92890d4a4b750b32cdb5a86a8fc69bbdc21c",
+    "xvlog.console.log": "ffcae5437560f531d11246f565e7dcc32fe6ae287084bed8dc47a37b1fbe6a1e",
+    "provenance.json": "a4b8417baa665a822de08f561515d8babcf8b92618f2493c52e6bdb97d09ffd1",
+    "xelab.log": "d4b92ace2eeab86348aa68b89599e852097c2574fd4f56d5b35eb8a51feccd50",
+    "tb.sv": "cfc41a20969036d5d86b2904d855870408b682b7d389cd8d85bb1f7b4eabe9cf"
+  }
+}

@@ -1,0 +1,2462 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Wed Oct 21 10:16:09 2026
+| Host              : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command           : report_timing -delay_type min -from [get_ports -filter {DIRECTION == IN && NAME != clk}] -to [all_outputs] -max_paths 50 -nworst 1 -path_type full_clock_expanded -file ./feedthrough_min.rpt
+| Design            : decode_f2_compute
+| Device            : xcvu47p-fsvh2892
+| Speed File        : -2  PRODUCTION 1.30 05-01-2022
+| Design State      : Physopt postPlace
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.066ns  (arrival time - required time)
+  Source:                 rst
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            cmd_ready
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.034ns  (logic 0.020ns (58.824%)  route 0.014ns (41.176%))
+  Logic Levels:           1  (LUT2=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 f  rst (IN)
+                         net (fo=176371, unset)       0.000     0.000    core/rst
+    SLICE_X140Y227       LUT2 (Prop_D5LUT_SLICEL_I0_O)
+                                                      0.020     0.020 r  core/cmd_ready_INST_0/O
+                         net (fo=0)                   0.014     0.034    cmd_ready
+                                                                      r  cmd_ready (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.034    
+  -------------------------------------------------------------------
+                         slack                                 -0.066    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[100566]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[100566]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[100566] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[100566]
+    SLICE_X226Y68        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[100567]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[100567]_INST_0_i_11_n_0
+    SLICE_X226Y68        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[100567]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02731_out[22]
+    SLICE_X225Y68        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[100566]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[100566]
+                                                                      r  c_data[100566] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[100572]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[100572]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[100572] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[100572]
+    SLICE_X226Y69        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[100575]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[100575]_INST_0_i_12_n_0
+    SLICE_X226Y69        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[100575]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02731_out[28]
+    SLICE_X225Y69        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[100572]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[100572]
+                                                                      r  c_data[100572] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[100950]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[100950]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[100950] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[100950]
+    SLICE_X198Y87        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[100951]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[100951]_INST_0_i_11_n_0
+    SLICE_X198Y87        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[100951]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02767_out[22]
+    SLICE_X197Y87        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[100950]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[100950]
+                                                                      r  c_data[100950] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[101662]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[101662]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[101662] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[101662]
+    SLICE_X138Y105       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[101663]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[101663]_INST_0_i_10_n_0
+    SLICE_X138Y105       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[101663]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02833_out[30]
+    SLICE_X137Y105       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[101662]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[101662]
+                                                                      r  c_data[101662] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[102558]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[102558]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[102558] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[102558]
+    SLICE_X213Y107       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[102559]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[102559]_INST_0_i_10_n_0
+    SLICE_X213Y107       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[102559]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02531_out[30]
+    SLICE_X212Y107       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[102558]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[102558]
+                                                                      r  c_data[102558] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[102900]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[102900]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[102900] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[102900]
+    SLICE_X218Y116       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[102903]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[102903]_INST_0_i_13_n_0
+    SLICE_X218Y116       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[102903]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02564_out[20]
+    SLICE_X217Y116       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[102900]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[102900]
+                                                                      r  c_data[102900] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[103091]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[103091]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[103091] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[103091]
+    SLICE_X189Y119       LUT6 (Prop_D6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[103095]_INST_0_i_14/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[103095]_INST_0_i_14_n_0
+    SLICE_X189Y119       CARRY8 (Prop_CARRY8_SLICEL_S[3]_O[3])
+                                                      0.017     0.046 r  core/c_data[103095]_INST_0_i_1/O[3]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02582_out[19]
+    SLICE_X190Y119       LUT5 (Prop_D6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[103091]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[103091]
+                                                                      r  c_data[103091] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[103420]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[103420]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[103420] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[103420]
+    SLICE_X169Y103       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[103423]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[103423]_INST_0_i_12_n_0
+    SLICE_X169Y103       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[103423]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02612_out[28]
+    SLICE_X170Y103       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[103420]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[103420]
+                                                                      r  c_data[103420] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[103902]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[103902]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[103902] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[103902]
+    SLICE_X131Y127       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[103903]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[103903]_INST_0_i_10_n_0
+    SLICE_X131Y127       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[103903]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02657_out[30]
+    SLICE_X132Y127       LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[103902]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[103902]
+                                                                      r  c_data[103902] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[106740]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[106740]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[106740] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[106740]
+    SLICE_X213Y357       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[106743]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[106743]_INST_0_i_13_n_0
+    SLICE_X213Y357       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[106743]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02152_out[20]
+    SLICE_X212Y357       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[106740]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[106740]
+                                                                      r  c_data[106740] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[107508]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[107508]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[107508] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[107508]
+    SLICE_X125Y343       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[107511]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[107511]_INST_0_i_13_n_0
+    SLICE_X125Y343       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[107511]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02224_out[20]
+    SLICE_X124Y343       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[107508]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[107508]
+                                                                      r  c_data[107508] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[107516]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[107516]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[107516] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[107516]
+    SLICE_X125Y344       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[107519]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[107519]_INST_0_i_12_n_0
+    SLICE_X125Y344       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[107519]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data02224_out[28]
+    SLICE_X124Y344       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[107516]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[107516]
+                                                                      r  c_data[107516] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[109182]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[109182]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[109182] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[109182]
+    SLICE_X177Y358       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[109183]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[109183]_INST_0_i_10_n_0
+    SLICE_X177Y358       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[109183]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01994_out[30]
+    SLICE_X176Y358       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[109182]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[109182]
+                                                                      r  c_data[109182] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[111252]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[111252]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[111252] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[111252]
+    SLICE_X174Y362       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[111255]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[111255]_INST_0_i_13_n_0
+    SLICE_X174Y362       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[111255]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01803_out[20]
+    SLICE_X173Y362       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[111252]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[111252]
+                                                                      r  c_data[111252] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[111540]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[111540]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[111540] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[111540]
+    SLICE_X132Y364       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[111543]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[111543]_INST_0_i_13_n_0
+    SLICE_X132Y364       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[111543]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01830_out[20]
+    SLICE_X131Y364       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[111540]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[111540]
+                                                                      r  c_data[111540] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[113246]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[113246]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[113246] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[113246]
+    SLICE_X181Y369       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[113247]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[113247]_INST_0_i_11_n_0
+    SLICE_X181Y369       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[113247]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01603_out[30]
+    SLICE_X180Y369       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[113246]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[113246]
+                                                                      r  c_data[113246] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[113310]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[113310]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[113310] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[113310]
+    SLICE_X174Y373       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[113311]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[113311]_INST_0_i_11_n_0
+    SLICE_X174Y373       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[113311]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01609_out[30]
+    SLICE_X173Y373       LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[113310]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[113310]
+                                                                      r  c_data[113310] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[113364]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[113364]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[113364] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[113364]
+    SLICE_X170Y380       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[113367]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[113367]_INST_0_i_13_n_0
+    SLICE_X170Y380       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[113367]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01615_out[20]
+    SLICE_X169Y380       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[113364]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[113364]
+                                                                      r  c_data[113364] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[113564]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[113564]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[113564] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[113564]
+    SLICE_X136Y379       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[113567]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[113567]_INST_0_i_13_n_0
+    SLICE_X136Y379       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[113567]_INST_0_i_2/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01633_out[28]
+    SLICE_X135Y379       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[113564]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[113564]
+                                                                      r  c_data[113564] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[114292]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[114292]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[114292] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[114292]
+    SLICE_X26Y357        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[114295]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[114295]_INST_0_i_13_n_0
+    SLICE_X26Y357        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[114295]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01702_out[20]
+    SLICE_X25Y357        LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[114292]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[114292]
+                                                                      r  c_data[114292] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[114294]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[114294]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[114294] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[114294]
+    SLICE_X26Y357        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[114295]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[114295]_INST_0_i_11_n_0
+    SLICE_X26Y357        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[114295]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01702_out[22]
+    SLICE_X25Y357        LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[114294]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[114294]
+                                                                      r  c_data[114294] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[114334]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[114334]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[114334] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[114334]
+    SLICE_X26Y350        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[114335]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[114335]_INST_0_i_11_n_0
+    SLICE_X26Y350        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[114335]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01705_out[30]
+    SLICE_X25Y350        LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[114334]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[114334]
+                                                                      r  c_data[114334] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[114718]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[114718]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT4=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[114718] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[114718]
+    SLICE_X172Y272       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[114719]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[114719]_INST_0_i_10_n_0
+    SLICE_X172Y272       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[114719]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01355_out[30]
+    SLICE_X171Y272       LUT4 (Prop_F6LUT_SLICEM_I1_O)
+                                                      0.014     0.117 r  core/c_data[114718]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[114718]
+                                                                      r  c_data[114718] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[115390]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[115390]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[115390] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[115390]
+    SLICE_X163Y383       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[115391]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[115391]_INST_0_i_10_n_0
+    SLICE_X163Y383       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[115391]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01418_out[30]
+    SLICE_X162Y383       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[115390]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[115390]
+                                                                      r  c_data[115390] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[116124]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[116124]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[116124] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[116124]
+    SLICE_X54Y375        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[116127]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[116127]_INST_0_i_12_n_0
+    SLICE_X54Y375        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[116127]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01487_out[28]
+    SLICE_X53Y375        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[116124]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[116124]
+                                                                      r  c_data[116124] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[116510]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[116510]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[116510] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[116510]
+    SLICE_X14Y382        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[116511]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[116511]_INST_0_i_10_n_0
+    SLICE_X14Y382        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[116511]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01523_out[30]
+    SLICE_X13Y382        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[116510]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[116510]
+                                                                      r  c_data[116510] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[117086]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[117086]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[117086] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[117086]
+    SLICE_X211Y396       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[117087]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[117087]_INST_0_i_10_n_0
+    SLICE_X211Y396       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[117087]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01191_out[30]
+    SLICE_X210Y396       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[117086]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[117086]
+                                                                      r  c_data[117086] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[117396]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[117396]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[117396] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[117396]
+    SLICE_X163Y388       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[117399]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[117399]_INST_0_i_13_n_0
+    SLICE_X163Y388       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[117399]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01221_out[20]
+    SLICE_X162Y388       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[117396]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[117396]
+                                                                      r  c_data[117396] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[118174]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[118174]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[118174] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[118174]
+    SLICE_X66Y384        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[118175]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[118175]_INST_0_i_10_n_0
+    SLICE_X66Y384        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[118175]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01293_out[30]
+    SLICE_X65Y384        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[118174]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[118174]
+                                                                      r  c_data[118174] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[11828]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[11828]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[11828] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[11828]
+    SLICE_X84Y594        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[11831]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[11831]_INST_0_i_13_n_0
+    SLICE_X84Y594        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[11831]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data011396_out[20]
+    SLICE_X83Y594        LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[11828]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[11828]
+                                                                      r  c_data[11828] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[119132]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[119132]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[119132] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[119132]
+    SLICE_X207Y405       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[119135]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[119135]_INST_0_i_12_n_0
+    SLICE_X207Y405       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[119135]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0997_out[28]
+    SLICE_X206Y405       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[119132]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[119132]
+                                                                      r  c_data[119132] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[119326]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[119326]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[119326] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[119326]
+    SLICE_X174Y399       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[119327]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[119327]_INST_0_i_10_n_0
+    SLICE_X174Y399       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[119327]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01015_out[30]
+    SLICE_X173Y399       LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[119326]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[119326]
+                                                                      r  c_data[119326] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[119902]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[119902]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[119902] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[119902]
+    SLICE_X96Y393        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[119903]_INST_0_i_10/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[119903]_INST_0_i_10_n_0
+    SLICE_X96Y393        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[119903]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data01069_out[30]
+    SLICE_X95Y393        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[119902]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[119902]
+                                                                      r  c_data[119902] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[121406]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[121406]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[121406] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[121406]
+    SLICE_X177Y413       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[121407]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[121407]_INST_0_i_11_n_0
+    SLICE_X177Y413       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[121407]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0824_out[30]
+    SLICE_X176Y413       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[121406]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[121406]
+                                                                      r  c_data[121406] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[12182]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[12182]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[12182] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[12182]
+    SLICE_X75Y594        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[12183]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[12183]_INST_0_i_11_n_0
+    SLICE_X75Y594        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[12183]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data011429_out[22]
+    SLICE_X74Y594        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[12182]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[12182]
+                                                                      r  c_data[12182] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[123068]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[123068]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[123068] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[123068]
+    SLICE_X231Y438       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[123071]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[123071]_INST_0_i_12_n_0
+    SLICE_X231Y438       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[123071]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0594_out[28]
+    SLICE_X230Y438       LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[123068]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[123068]
+                                                                      r  c_data[123068] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[123228]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[123228]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[123228] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[123228]
+    SLICE_X199Y421       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[123231]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[123231]_INST_0_i_12_n_0
+    SLICE_X199Y421       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[123231]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0609_out[28]
+    SLICE_X200Y421       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[123228]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[123228]
+                                                                      r  c_data[123228] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[124372]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[124372]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[124372] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[124372]
+    SLICE_X32Y434        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[124375]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[124375]_INST_0_i_13_n_0
+    SLICE_X32Y434        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[124375]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0717_out[20]
+    SLICE_X31Y434        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[124372]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[124372]
+                                                                      r  c_data[124372] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[124726]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[124726]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[124726] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[124726]
+    SLICE_X5Y443         LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[124727]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[124727]_INST_0_i_11_n_0
+    SLICE_X5Y443         CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[124727]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0750_out[22]
+    SLICE_X4Y443         LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[124726]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[124726]
+                                                                      r  c_data[124726] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[124796]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[124796]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[124796] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[124796]
+    SLICE_X5Y439         LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[124799]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[124799]_INST_0_i_12_n_0
+    SLICE_X5Y439         CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[124799]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0756_out[28]
+    SLICE_X4Y439         LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[124796]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[124796]
+                                                                      r  c_data[124796] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[125564]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[125564]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[125564] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[125564]
+    SLICE_X174Y455       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[125567]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[125567]_INST_0_i_12_n_0
+    SLICE_X174Y455       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[125567]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0442_out[28]
+    SLICE_X173Y455       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[125564]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[125564]
+                                                                      r  c_data[125564] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[126646]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[126646]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[126646] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[126646]
+    SLICE_X22Y463        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[126647]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[126647]_INST_0_i_11_n_0
+    SLICE_X22Y463        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[126647]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0544_out[22]
+    SLICE_X21Y463        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[126646]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[126646]
+                                                                      r  c_data[126646] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[126652]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[126652]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[126652] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[126652]
+    SLICE_X22Y464        LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[126655]_INST_0_i_12/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[126655]_INST_0_i_12_n_0
+    SLICE_X22Y464        CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[126655]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0544_out[28]
+    SLICE_X21Y464        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[126652]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[126652]
+                                                                      r  c_data[126652] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[127382]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[127382]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[127382] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[127382]
+    SLICE_X204Y469       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[127383]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[127383]_INST_0_i_11_n_0
+    SLICE_X204Y469       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[127383]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0227_out[22]
+    SLICE_X203Y469       LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[127382]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[127382]
+                                                                      r  c_data[127382] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[128822]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[128822]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[128822] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[128822]
+    SLICE_X22Y450        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[128823]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[128823]_INST_0_i_11_n_0
+    SLICE_X22Y450        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[128823]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0362_out[22]
+    SLICE_X21Y450        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[128822]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[128822]
+                                                                      r  c_data[128822] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[128854]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[128854]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[128854] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[128854]
+    SLICE_X18Y451        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[128855]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[128855]_INST_0_i_11_n_0
+    SLICE_X18Y451        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[128855]_INST_0_i_1/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0365_out[22]
+    SLICE_X17Y451        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[128854]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[128854]
+                                                                      r  c_data[128854] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[129396]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[129396]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[129396] (IN)
+                         net (fo=2, unset)            0.000     0.000    core/seed_data[129396]
+    SLICE_X200Y450       LUT6 (Prop_E6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[129399]_INST_0_i_13/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[129399]_INST_0_i_13_n_0
+    SLICE_X200Y450       CARRY8 (Prop_CARRY8_SLICEL_S[4]_O[4])
+                                                      0.017     0.046 r  core/c_data[129399]_INST_0_i_1/O[4]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data032_out[20]
+    SLICE_X199Y450       LUT5 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[129396]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[129396]
+                                                                      r  c_data[129396] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[129406]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[129406]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[129406] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[129406]
+    SLICE_X200Y451       LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[129407]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[129407]_INST_0_i_11_n_0
+    SLICE_X200Y451       CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[129407]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data032_out[30]
+    SLICE_X199Y451       LUT5 (Prop_F6LUT_SLICEL_I4_O)
+                                                      0.014     0.117 r  core/c_data[129406]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[129406]
+                                                                      r  c_data[129406] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+Slack (MET) :             0.017ns  (arrival time - required time)
+  Source:                 seed_data[130846]
+                            (input port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            c_data[130846]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.117ns  (logic 0.053ns (45.299%)  route 0.064ns (54.701%))
+  Logic Levels:           3  (CARRY8=1 LUT5=1 LUT6=1)
+  Input Delay:            0.000ns
+  Output Delay:           0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         input delay                  0.000     0.000    
+                                                      0.000     0.000 r  seed_data[130846] (IN)
+                         net (fo=1, unset)            0.000     0.000    core/seed_data[130846]
+    SLICE_X47Y440        LUT6 (Prop_G6LUT_SLICEL_I4_O)
+                                                      0.022     0.022 r  core/c_data[130847]_INST_0_i_11/O
+                         net (fo=1, routed)           0.007     0.029    core/c_data[130847]_INST_0_i_11_n_0
+    SLICE_X47Y440        CARRY8 (Prop_CARRY8_SLICEL_S[6]_O[6])
+                                                      0.017     0.046 r  core/c_data[130847]_INST_0_i_2/O[6]
+                         net (fo=1, estimated)        0.057     0.103    core/c_data0167_out[30]
+    SLICE_X46Y440        LUT5 (Prop_F6LUT_SLICEM_I4_O)
+                                                      0.014     0.117 r  core/c_data[130846]_INST_0/O
+                         net (fo=1, unset)            0.000     0.117    c_data[130846]
+                                                                      r  c_data[130846] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.117    
+  -------------------------------------------------------------------
+                         slack                                  0.017    
+
+
+
+

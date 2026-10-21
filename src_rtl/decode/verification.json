@@ -1,0 +1,2412 @@
+{
+  "status": "passed",
+  "scope": "Compute core and standalone memory/control blocks; not full-transformer RTL or physical FPGA validation",
+  "sources_sha256": {
+    "scalesim/compute/systolic_compute_os.py": "63124a2b0ee7d6c646388de324fc2652cd6fa6c9e7b108d35faf4fac0009efe0",
+    "scalesim/scale_config.py": "631a1995b27a9f318b7eabf30fc7e7400fbd474ead03bd6ff7de2562346b8291",
+    "src_rtl/decode/generate.py": "0f7838c7ff56ea2b0bb84605a2a81f7171aa9a902a0a1bef1bf560d7d29219ce",
+    "src_rtl/decode/generated/decode_asic_compute.json": "cdc53861652a64fdd8736220b75b5878c54894251ced8107c9bdce15c7f13962",
+    "src_rtl/decode/generated/decode_asic_compute.sv": "67d8baaf97ac4b3a46326bdbb1bc4afa67d2697aa1722bb4089c544ef712ef85",
+    "src_rtl/decode/generated/decode_f2_compute.json": "ba13a234d1401aad50f07360548d8ff8cb4c7729c0dc1f3b7cbf7798c8a4b3fe",
+    "src_rtl/decode/generated/decode_f2_compute.sv": "5eb286a92ba0d840e90eee2890c88fcd0bf243fd1670acfaae789f31bbfbcf5c",
+    "src_rtl/decode/requirements.txt": "15b99f20e7355a630201566237d1bfc673059faa1f0fa0c38588fecd84de1bf5",
+    "src_rtl/decode/rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+    "src_rtl/decode/rtl/decode_bank_lifetimes.sv": "190bace1ef5f25651a49a85e985953afd5e98a4692dbee94775a7d0e1cf31003",
+    "src_rtl/decode/rtl/decode_hbm_map.sv": "e1d8fdb4d9d9bacbf17fee4cc5682b7e156c4d4d63d3c107500b4d8927c5ad98",
+    "src_rtl/decode/rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
+    "src_rtl/decode/rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
+    "src_rtl/decode/rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+    "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "src_rtl/decode/rtl/decode_scratchpad.sv": "bc74e46e89fb18938022c471e8169d85b0626de6a85aa06e54465326b785d049",
+    "src_rtl/decode/switchboard/main.cpp": "2d6ac6f533223c207a25da5193ef000d263dc5c0333781f7c489154882e76fbe",
+    "src_rtl/decode/tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b",
+    "src_rtl/decode/tests/run_cocotb.py": "4d0d586ff55f5bc4af45141074f7bf092626df90989246a5a7ab1aadd7ea8f6e",
+    "src_rtl/decode/tests/run_hbm_bridge.py": "6f0b55f9011a9c2b7955effd19a009fcccc319a3e3b3a0535cbc18f10f76f5da",
+    "src_rtl/decode/tests/run_hbm_directed.py": "b66bd19bf4e5b2f784bfac19010cdb670dbe7a6431ec77e3423e73b300b3d4f6",
+    "src_rtl/decode/tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d",
+    "src_rtl/decode/tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
+    "src_rtl/decode/tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03",
+    "src_rtl/decode/tests/run_switchboard.py": "98c6f38583a380f0437ba8b7458307f8fed5fb70c84ffc03f9384527466c26c6",
+    "src_rtl/decode/tests/run_synthesis.py": "8726067d1d60cb723d7b51e8c83376eec4df22037d01f12d254f352f8d081f1d",
+    "src_rtl/decode/tests/test_bank_lifetimes.py": "a5fbb4e8b9b7e661fa90a22ed89a29d4318f4e5686371b9cc7adb46c73eab0f3",
+    "src_rtl/decode/tests/test_hbm_bridge.py": "606861b0ce125f8c750715da24820e6fcb1e1abe40195bbd835e397550ee2d63",
+    "src_rtl/decode/tests/test_hbm_directed_bridge.py": "5e307568b0784200141b5f343404056c00b6dec08b0e5156565ce8a154eb8e90",
+    "src_rtl/decode/tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
+    "src_rtl/decode/tests/test_hbm_map.py": "fd1d6fb5a52ac01a87298ba1a6f8397f79478794d20d23a2236ff65a5fcb1377",
+    "src_rtl/decode/tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
+    "src_rtl/decode/tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
+    "src_rtl/decode/tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
+    "src_rtl/decode/tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
+    "src_rtl/decode/tests/test_scratchpad.py": "1925043af77ab142a650c0a3634a57c4ba353fa01b3186eb7ac9fce6b2d58fa6",
+    "src_rtl/decode/verify.py": "5e2868797dd3240d623a69e746f024e0605d50bb95ec0d92f71a0a5c022954cf"
+  },
+  "tools": {
+    "cocotb": "2.1.0",
+    "switchboard-hw": "0.3.4",
+    "numpy": "2.5.4",
+    "tqdm": "4.70.1"
+  },
+  "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+  "yosys": "Yosys 0.64 (git sha1 d8dab5b32666564eca8e18f412973853ce006e61, clang++ 16.0.0 -fPIC -O3)",
+  "cocotb_configurations": [
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 4,
+        "COLS": 8
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 32,
+        "COLS": 64
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_os_core",
+      "parameters": {
+        "PARTITIONS": 64,
+        "COLS": 64
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_scratchpad",
+      "parameters": {
+        "DATA_WIDTH": 256,
+        "DEPTH": 13
+      },
+      "status": "passed"
+    },
+    {
+      "top": "decode_bank_lifetimes",
+      "parameters": {},
+      "status": "passed"
+    },
+    {
+      "top": "decode_hbm_map",
+      "parameters": {},
+      "status": "passed"
+    }
+  ],
+  "cocotb_tests": [
+    {
+      "name": "ownership_and_illegal_completions",
+      "module": "test_bank_lifetimes",
+      "simulation_ns": null
+    },
+    {
+      "name": "complete_bank_column_bijection",
+      "module": "test_hbm_map",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "every_partition_layout_and_wave_base",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "every_partition_layout_and_wave_base",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "integer_datapath_and_protocol",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "every_partition_layout_and_wave_base",
+      "module": "test_os_core",
+      "simulation_ns": null
+    },
+    {
+      "name": "byte_writes_stalls_and_collisions",
+      "module": "test_scratchpad",
+      "simulation_ns": null
+    }
+  ],
+  "switchboard": {
+    "status": "passed",
+    "cases": 24,
+    "transport": "Switchboard shared-memory queues",
+    "simulator": "Verilator",
+    "reference": "independent NumPy INT64, explicit INT32 wrap"
+  },
+  "generic_synthesis": [
+    {
+      "top": "decode_os_core",
+      "status": "passed",
+      "cells": {
+        "$add": 181,
+        "$sdffe": 71,
+        "$sdff": 31,
+        "$reduce_bool": 1,
+        "$ne": 1,
+        "$reduce_and": 35,
+        "$reduce_or": 2,
+        "$not": 5,
+        "$eq": 32,
+        "$logic_not": 6,
+        "$ge": 9,
+        "$gt": 3,
+        "$logic_and": 83,
+        "$logic_or": 5,
+        "$lt": 51,
+        "$mul": 34,
+        "$mux": 656,
+        "$sub": 3
+      },
+      "signed_int8_multipliers": 32,
+      "variable_dividers_or_modulo": 0,
+      "variable_non_mac_multipliers": 0,
+      "global_m_combinational_interface_paths": 0
+    },
+    {
+      "top": "decode_scratchpad",
+      "status": "passed",
+      "cells": {
+        "$sdff": 1,
+        "$sdffe": 2,
+        "$reduce_bool": 1,
+        "$reduce_or": 1,
+        "$not": 1,
+        "$ge": 2,
+        "$logic_and": 4,
+        "$logic_not": 2,
+        "$logic_or": 1,
+        "$lt": 1,
+        "$mux": 386,
+        "$mem_v2": 1
+      },
+      "memory_bits": 1048576
+    },
+    {
+      "top": "decode_bank_lifetimes",
+      "status": "passed",
+      "cells": {
+        "$sdff": 1,
+        "$logic_not": 2,
+        "$eq": 3,
+        "$logic_and": 8,
+        "$ne": 1,
+        "$mux": 17,
+        "$mem_v2": 1
+      }
+    },
+    {
+      "top": "decode_hbm_map",
+      "status": "passed",
+      "cells": {
+        "$mux": 1
+      }
+    },
+    {
+      "top": "decode_async_fifo",
+      "status": "passed",
+      "cells": {
+        "$add": 2,
+        "$sdff": 4,
+        "$sdffe": 5,
+        "$reduce_bool": 1,
+        "$eq": 1,
+        "$logic_and": 3,
+        "$logic_not": 3,
+        "$logic_or": 1,
+        "$ne": 1,
+        "$not": 1,
+        "$mux": 8,
+        "$xor": 2,
+        "$mem_v2": 1
+      },
+      "memory_bits": 1024,
+      "gray_synchronizer_registers": 4
+    },
+    {
+      "top": "decode_hbm_read_bridge32",
+      "status": "passed",
+      "cells": {
+        "$paramod$8307450884e12b7811925b27a28b4a95d9f665a9\\decode_hbm_read_bridge": 1,
+        "$paramod$5da5b1f84252ef611387fa5b0e3f28c1d918d2d7\\decode_hbm_read_bridge": 1,
+        "$paramod$0aff9dad0a3ea95e992db39fce9b9eb41a1d0910\\decode_hbm_read_bridge": 1,
+        "$paramod$9b1fa51ede6ef0ae4b2a046811e3833717d81313\\decode_hbm_read_bridge": 1,
+        "$paramod$4aeb9e9957c289ffcf77edd42c50f3d5bb83d0dc\\decode_hbm_read_bridge": 1,
+        "$paramod$8d15d43020bb0d0ad872406b7dd409da11b6b6b7\\decode_hbm_read_bridge": 1,
+        "$paramod$3b033defbdd2c0bb8102feae7fec9bd404907320\\decode_hbm_read_bridge": 1,
+        "$paramod$54d04760459d8e2a7dc8bd3d75dfac28552c78c6\\decode_hbm_read_bridge": 1,
+        "$paramod$8d4b3b884042c34c0b68b60e041a614f9d8c41af\\decode_hbm_read_bridge": 1,
+        "$paramod$498f4c0a19ccf985482794f1296fa557e1d5a4b2\\decode_hbm_read_bridge": 1,
+        "$paramod$4b4efd970f79943d8fe623565e48f1508aefe33b\\decode_hbm_read_bridge": 1,
+        "$paramod$dd7ee52228e294653860f541db7530695a300274\\decode_hbm_read_bridge": 1,
+        "$paramod$3e701affa73f119f61f406fe785e31b8306ee949\\decode_hbm_read_bridge": 1,
+        "$paramod$c3a17886b2095c5f9e776880cfe7771e6f6de3ca\\decode_hbm_read_bridge": 1,
+        "$paramod$3fb063d5d93f85b05c53feeef99a27773abbd4ec\\decode_hbm_read_bridge": 1,
+        "$paramod$62595d5639f2fe2e1a3e66c34b61df15e14f5d46\\decode_hbm_read_bridge": 1,
+        "$paramod$5820187f87280d60e0d2b99d415cba3e6defe22f\\decode_hbm_read_bridge": 1,
+        "$paramod$b25c3bbf6b43182d3969c57734190a8563a65c8b\\decode_hbm_read_bridge": 1,
+        "$paramod$838d10978e6064f27993a25ce77e7676ae3ae7c0\\decode_hbm_read_bridge": 1,
+        "$paramod$3d13fcb7e2e2037e52523590f838bcdc5a67ad35\\decode_hbm_read_bridge": 1,
+        "$paramod$ef41ae02f98855743e8617c308bb7021cbf29f89\\decode_hbm_read_bridge": 1,
+        "$paramod$693b61dedd6f245e3e379f2ee986f0dd22af641e\\decode_hbm_read_bridge": 1,
+        "$paramod$b860db0ce6501769a11e1d5c4c061afd2134060f\\decode_hbm_read_bridge": 1,
+        "$paramod$5ea195ef7b2436468620a826dadc5fb5112a995b\\decode_hbm_read_bridge": 1,
+        "$paramod$fdd4b89157aec1c377e9d514462d7305633cc5ef\\decode_hbm_read_bridge": 1,
+        "$paramod$f927b38b7a11b9b17bcccebe3fe0bbedc7c622af\\decode_hbm_read_bridge": 1,
+        "$paramod$d2452f69cac8d7e1150119fb8df698975a5b7ecf\\decode_hbm_read_bridge": 1,
+        "$paramod$c478e3ec78f6dc9edcf917357da9cc20ec429292\\decode_hbm_read_bridge": 1,
+        "$paramod$3dffa3a58391cda21cc4761ad5167aac88148ef2\\decode_hbm_read_bridge": 1,
+        "$paramod$e3fa5c215fc0f7c8b75af8137d74d50a687bd4c0\\decode_hbm_read_bridge": 1,
+        "$paramod$9a9bd430397cd388e89b9cf7bd13b36bd9fd22b6\\decode_hbm_read_bridge": 1,
+        "$paramod$b02854905b72db40d4e037503c226c9cb55c1c3e\\decode_hbm_read_bridge": 1
+      },
+      "independent_port_bridges": 32,
+      "return_records_per_port": 2,
+      "axi_rready_combinational_input_paths": 0
+    },
+    {
+      "top": "decode_hbm_read_bridge32",
+      "status": "passed",
+      "cells": {
+        "$paramod$027bd9b9c6b9a3a1ab9b840a3c4fa540bd1e67bf\\decode_hbm_read_bridge": 1,
+        "$paramod$919abc8e52aeecacfa06194791c18bf83fe419c6\\decode_hbm_read_bridge": 1,
+        "$paramod$3253bb7033fe8994ba508a4535a7bb14bcb4ddeb\\decode_hbm_read_bridge": 1,
+        "$paramod$f3106e962245a56f8359b07e8edec2ff15654196\\decode_hbm_read_bridge": 1,
+        "$paramod$af6703bec49c6d56e505b4e1f8ca265e612b9b34\\decode_hbm_read_bridge": 1,
+        "$paramod$6efb6d3c22bee60f7964ab1b67f6a4bf2d33fead\\decode_hbm_read_bridge": 1,
+        "$paramod$aff12ba3f086eeb8756dd022eca0fdcd81c8d633\\decode_hbm_read_bridge": 1,
+        "$paramod$95d04bc2755daf329ea7ba9bd96591b24e3e03ed\\decode_hbm_read_bridge": 1,
+        "$paramod$bd0971b988c24958cbcfb777bd750558ef7acf65\\decode_hbm_read_bridge": 1,
+        "$paramod$84d87876b93862e4fd8869ac0eeb22ad6d0748cb\\decode_hbm_read_bridge": 1,
+        "$paramod$3188a910cd6fd7bab8f19a5cab11a6c650136a44\\decode_hbm_read_bridge": 1,
+        "$paramod$2826913fa84df0406660dd3b2ece08d966d2c8de\\decode_hbm_read_bridge": 1,
+        "$paramod$98c667aeee3fbcf5a017420914f6173312c7e849\\decode_hbm_read_bridge": 1,
+        "$paramod$9c7c01be1c7d8e638a748b05fed04696d707ad31\\decode_hbm_read_bridge": 1,
+        "$paramod$d13a16ccd81836a31e6673763388bfa2f33b9947\\decode_hbm_read_bridge": 1,
+        "$paramod$7a9f7eda479bb90c61762d44fc8ccafcb3f7b487\\decode_hbm_read_bridge": 1,
+        "$paramod$151e1012e664fdeb5a7e11f409973407c1090844\\decode_hbm_read_bridge": 1,
+        "$paramod$330d09ff85fd523ad190b99437e48a893317a93c\\decode_hbm_read_bridge": 1,
+        "$paramod$10b2ce8aad2ed06117fe749cd04f4b22a19b2932\\decode_hbm_read_bridge": 1,
+        "$paramod$6e97971e78c258c2b70bc83332c81c027b739011\\decode_hbm_read_bridge": 1,
+        "$paramod$def6fa362edc763dd14d2df800537f81e4fbae3d\\decode_hbm_read_bridge": 1,
+        "$paramod$3f6352f31176ccacbf377059338b1fd5586737bf\\decode_hbm_read_bridge": 1,
+        "$paramod$7a070ca76fd118c0f592dd571ba9bedbb7b1d7c7\\decode_hbm_read_bridge": 1,
+        "$paramod$f76017ecb91cdb5071e874a8fd9a2ce35a844827\\decode_hbm_read_bridge": 1,
+        "$paramod$bc08db9241727363adcf4d33217026fcf470aa48\\decode_hbm_read_bridge": 1,
+        "$paramod$6e5c29770854a5aa57aea74a2d0d830e1300850e\\decode_hbm_read_bridge": 1,
+        "$paramod$60e7142784f4070546abfb7a4d95cf0888b80e03\\decode_hbm_read_bridge": 1,
+        "$paramod$7345ece53ab0433427f3c897e58120bc782af7fc\\decode_hbm_read_bridge": 1,
+        "$paramod$25b98a2ab21e688708559d20dad7330fef11a642\\decode_hbm_read_bridge": 1,
+        "$paramod$087e907ba4ae29f1c6b0ce18967fa800b2258de5\\decode_hbm_read_bridge": 1,
+        "$paramod$05c658725dfbe2fd44f53185a8920ebb7cc58c21\\decode_hbm_read_bridge": 1,
+        "$paramod$d77a3bd7cedb4c9c44c7895472702bcf9a004654\\decode_hbm_read_bridge": 1
+      },
+      "parameters": {
+        "RETURN_RECORDS": 3
+      },
+      "independent_port_bridges": 32,
+      "return_records_per_port": 3,
+      "axi_rready_combinational_input_paths": 0
+    }
+  ],
+  "hbm_read_frontends": {
+    "status": "passed",
+    "scope": "HBM-clock-domain read frontends, behavioral AXI target, no PHY/CDC or FPGA timing validation",
+    "ports": 32,
+    "ids_per_port": 64,
+    "total_request_capacity": 2048,
+    "verified_reads": 13312,
+    "source_sha256": {
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+      "rtl/decode_hbm_read32.sv": "629f496da0fde765f45153eca951201ce7a80ab5ea554126c95fdd68e03ea0c4",
+      "tests/test_hbm_read32.py": "bde95ccf7fa2df07515acdedd9d31050b421bff2da81b1122d002052597a07e3",
+      "tests/run_hbm_read32.py": "37a164c8984177c78f317fcc8f3aa74071ec1433864067169427098266d0437d"
+    },
+    "cocotb": "2.1.0",
+    "checks": [
+      "all 32 ports transfer simultaneously",
+      "256 consecutive full-rate response cycles",
+      "all 2048 credits occupied",
+      "random AR and output stalls",
+      "out-of-order response IDs",
+      "per-port fault isolation",
+      "RRESP and RLAST errors",
+      "reset recovery"
+    ]
+  },
+  "hbm_read_clock_crossings": {
+    "status": "passed",
+    "scope": "Digital CDC behavior only; no metastability, vendor PHY or physical timing claim",
+    "cases": [
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 2,
+          "PORT": 31
+        },
+        "core_period_ps": 4000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2048
+            ],
+            "response_utilization": [
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              373
+            ],
+            "response_utilization": [
+              0.45576407506702415
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 76,
+                "1": 18
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              372
+            ],
+            "response_utilization": [
+              0.45698924731182794
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 78,
+                "1": 14
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 32,
+        "parameters": {
+          "FIFO_DEPTH": 16,
+          "RETURN_RECORDS": 2
+        },
+        "core_period_ps": 4000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_span_cycles": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_utilization": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              },
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              382,
+              385,
+              354,
+              351,
+              481,
+              394,
+              423,
+              365,
+              385,
+              408,
+              426,
+              383,
+              413,
+              376,
+              418,
+              442,
+              400,
+              443,
+              399,
+              400,
+              350,
+              427,
+              392,
+              361,
+              486,
+              414,
+              417,
+              389,
+              395,
+              359,
+              427,
+              428
+            ],
+            "response_utilization": [
+              0.44502617801047123,
+              0.4779220779220779,
+              0.5141242937853108,
+              0.5242165242165242,
+              0.4781704781704782,
+              0.4543147208121827,
+              0.5035460992907801,
+              0.4821917808219178,
+              0.509090909090909,
+              0.5073529411764706,
+              0.4859154929577465,
+              0.4908616187989556,
+              0.5278450363196125,
+              0.5132978723404256,
+              0.4880382775119617,
+              0.5361990950226244,
+              0.485,
+              0.5395033860045146,
+              0.48120300751879697,
+              0.49,
+              0.48857142857142855,
+              0.49414519906323184,
+              0.48214285714285715,
+              0.4930747922437673,
+              0.5061728395061729,
+              0.5193236714975845,
+              0.5299760191846523,
+              0.4910025706940874,
+              0.5088607594936709,
+              0.4986072423398329,
+              0.4918032786885246,
+              0.48130841121495327
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 74,
+                "1": 22
+              },
+              {
+                "3": 81,
+                "1": 22
+              },
+              {
+                "3": 87,
+                "1": 8
+              },
+              {
+                "3": 83,
+                "1": 18
+              },
+              {
+                "3": 106,
+                "1": 18
+              },
+              {
+                "1": 25,
+                "3": 77
+              },
+              {
+                "3": 99,
+                "1": 15
+              },
+              {
+                "1": 18,
+                "3": 79
+              },
+              {
+                "1": 22,
+                "3": 87
+              },
+              {
+                "3": 98,
+                "1": 11
+              },
+              {
+                "1": 9,
+                "3": 99
+              },
+              {
+                "1": 14,
+                "3": 87
+              },
+              {
+                "3": 103,
+                "1": 12
+              },
+              {
+                "3": 88,
+                "1": 17
+              },
+              {
+                "1": 26,
+                "3": 89
+              },
+              {
+                "3": 103,
+                "1": 31
+              },
+              {
+                "1": 18,
+                "3": 88
+              },
+              {
+                "3": 113,
+                "1": 13
+              },
+              {
+                "3": 87,
+                "1": 18
+              },
+              {
+                "1": 22,
+                "3": 87
+              },
+              {
+                "3": 76,
+                "1": 19
+              },
+              {
+                "1": 25,
+                "3": 93
+              },
+              {
+                "1": 23,
+                "3": 83
+              },
+              {
+                "3": 82,
+                "1": 14
+              },
+              {
+                "1": 24,
+                "3": 111
+              },
+              {
+                "3": 97,
+                "1": 21
+              },
+              {
+                "3": 107,
+                "1": 7
+              },
+              {
+                "1": 23,
+                "3": 84
+              },
+              {
+                "3": 94,
+                "1": 13
+              },
+              {
+                "1": 29,
+                "3": 75
+              },
+              {
+                "3": 95,
+                "1": 20
+              },
+              {
+                "3": 93,
+                "1": 20
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              383,
+              357,
+              375,
+              366,
+              422,
+              343,
+              451,
+              378,
+              376,
+              402,
+              423,
+              389,
+              430,
+              385,
+              427,
+              462,
+              395,
+              458,
+              375,
+              389,
+              342,
+              406,
+              375,
+              348,
+              433,
+              405,
+              436,
+              408,
+              420,
+              377,
+              430,
+              436
+            ],
+            "response_utilization": [
+              0.44386422976501305,
+              0.5154061624649859,
+              0.48533333333333334,
+              0.5027322404371585,
+              0.5450236966824644,
+              0.521865889212828,
+              0.4722838137472284,
+              0.4656084656084656,
+              0.5212765957446809,
+              0.5149253731343284,
+              0.48936170212765956,
+              0.4832904884318766,
+              0.5069767441860465,
+              0.5012987012987012,
+              0.477751756440281,
+              0.512987012987013,
+              0.4911392405063291,
+              0.5218340611353712,
+              0.512,
+              0.5038560411311054,
+              0.5,
+              0.5197044334975369,
+              0.504,
+              0.5114942528735632,
+              0.5681293302540416,
+              0.5308641975308642,
+              0.5068807339449541,
+              0.4681372549019608,
+              0.4785714285714286,
+              0.47480106100795755,
+              0.4883720930232558,
+              0.4724770642201835
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 74,
+                "1": 22
+              },
+              {
+                "3": 84,
+                "1": 16
+              },
+              {
+                "3": 81,
+                "1": 20
+              },
+              {
+                "1": 16,
+                "3": 84
+              },
+              {
+                "3": 109,
+                "1": 12
+              },
+              {
+                "1": 15,
+                "3": 82
+              },
+              {
+                "3": 102,
+                "1": 9
+              },
+              {
+                "1": 24,
+                "3": 76
+              },
+              {
+                "1": 20,
+                "3": 88
+              },
+              {
+                "3": 94,
+                "1": 19
+              },
+              {
+                "1": 11,
+                "3": 98
+              },
+              {
+                "1": 24,
+                "3": 82
+              },
+              {
+                "3": 96,
+                "1": 26
+              },
+              {
+                "3": 92,
+                "1": 9
+              },
+              {
+                "1": 22,
+                "3": 91
+              },
+              {
+                "3": 105,
+                "1": 27
+              },
+              {
+                "1": 20,
+                "3": 87
+              },
+              {
+                "3": 108,
+                "1": 23
+              },
+              {
+                "3": 88,
+                "1": 16
+              },
+              {
+                "1": 18,
+                "3": 89
+              },
+              {
+                "3": 78,
+                "1": 15
+              },
+              {
+                "3": 99,
+                "1": 13
+              },
+              {
+                "1": 13,
+                "3": 88
+              },
+              {
+                "3": 76,
+                "1": 26
+              },
+              {
+                "3": 117,
+                "1": 12
+              },
+              {
+                "1": 17,
+                "3": 99
+              },
+              {
+                "3": 99,
+                "1": 23
+              },
+              {
+                "1": 19,
+                "3": 86
+              },
+              {
+                "3": 91,
+                "1": 19
+              },
+              {
+                "1": 15,
+                "3": 82
+              },
+              {
+                "1": 12,
+                "3": 99
+              },
+              {
+                "3": 96,
+                "1": 14
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 3,
+          "PORT": 31
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2048
+            ],
+            "response_utilization": [
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 682,
+                "3": 1
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              359
+            ],
+            "response_utilization": [
+              0.4735376044568245
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 10,
+                "3": 11,
+                "7": 46
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              361
+            ],
+            "response_utilization": [
+              0.4709141274238227
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 6,
+                "3": 10,
+                "7": 48
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 32,
+        "parameters": {
+          "FIFO_DEPTH": 16,
+          "RETURN_RECORDS": 3
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": false,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_span_cycles": [
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048,
+              2048
+            ],
+            "response_utilization": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              },
+              {
+                "7": 682,
+                "3": 1
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              312,
+              326,
+              324,
+              326,
+              403,
+              311,
+              374,
+              321,
+              398,
+              361,
+              365,
+              352,
+              380,
+              339,
+              359,
+              422,
+              357,
+              420,
+              334,
+              349,
+              343,
+              375,
+              344,
+              328,
+              400,
+              374,
+              384,
+              368,
+              353,
+              319,
+              389,
+              345
+            ],
+            "response_utilization": [
+              0.5448717948717948,
+              0.5644171779141104,
+              0.5617283950617284,
+              0.5644171779141104,
+              0.5707196029776674,
+              0.5755627009646302,
+              0.56951871657754,
+              0.5482866043613707,
+              0.49246231155778897,
+              0.5734072022160664,
+              0.5671232876712329,
+              0.5340909090909091,
+              0.5736842105263158,
+              0.5693215339233039,
+              0.5682451253481894,
+              0.5616113744075829,
+              0.5434173669467787,
+              0.569047619047619,
+              0.5748502994011976,
+              0.5616045845272206,
+              0.49854227405247814,
+              0.5626666666666666,
+              0.5494186046511628,
+              0.5426829268292683,
+              0.615,
+              0.5748663101604278,
+              0.5755208333333334,
+              0.5190217391304348,
+              0.5694050991501416,
+              0.5611285266457681,
+              0.5398457583547558,
+              0.5971014492753624
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 47,
+                "1": 11,
+                "3": 9
+              },
+              {
+                "7": 50,
+                "3": 10,
+                "1": 14
+              },
+              {
+                "7": 52,
+                "3": 7,
+                "1": 12
+              },
+              {
+                "7": 51,
+                "3": 9,
+                "1": 13
+              },
+              {
+                "1": 14,
+                "7": 66,
+                "3": 9
+              },
+              {
+                "7": 53,
+                "3": 4,
+                "1": 12
+              },
+              {
+                "1": 13,
+                "7": 58,
+                "3": 13
+              },
+              {
+                "1": 10,
+                "7": 52,
+                "3": 5
+              },
+              {
+                "1": 16,
+                "3": 15,
+                "7": 50
+              },
+              {
+                "7": 56,
+                "1": 15,
+                "3": 12
+              },
+              {
+                "7": 56,
+                "3": 14,
+                "1": 11
+              },
+              {
+                "7": 51,
+                "1": 15,
+                "3": 10
+              },
+              {
+                "7": 60,
+                "3": 14,
+                "1": 10
+              },
+              {
+                "7": 50,
+                "3": 12,
+                "1": 19
+              },
+              {
+                "1": 15,
+                "7": 51,
+                "3": 18
+              },
+              {
+                "1": 10,
+                "7": 65,
+                "3": 16
+              },
+              {
+                "1": 11,
+                "7": 55,
+                "3": 9
+              },
+              {
+                "3": 15,
+                "1": 17,
+                "7": 64
+              },
+              {
+                "1": 9,
+                "7": 51,
+                "3": 15
+              },
+              {
+                "7": 59,
+                "1": 13,
+                "3": 3
+              },
+              {
+                "1": 16,
+                "7": 47,
+                "3": 7
+              },
+              {
+                "1": 12,
+                "7": 59,
+                "3": 11
+              },
+              {
+                "7": 51,
+                "3": 11,
+                "1": 14
+              },
+              {
+                "7": 47,
+                "1": 15,
+                "3": 11
+              },
+              {
+                "1": 21,
+                "7": 67,
+                "3": 12
+              },
+              {
+                "7": 56,
+                "3": 15,
+                "1": 17
+              },
+              {
+                "3": 12,
+                "1": 14,
+                "7": 61
+              },
+              {
+                "1": 13,
+                "7": 52,
+                "3": 11
+              },
+              {
+                "1": 15,
+                "7": 54,
+                "3": 12
+              },
+              {
+                "1": 10,
+                "7": 53,
+                "3": 5
+              },
+              {
+                "7": 54,
+                "3": 19,
+                "1": 10
+              },
+              {
+                "3": 7,
+                "1": 12,
+                "7": 60
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170,
+              184,
+              182,
+              184,
+              230,
+              179,
+              213,
+              176,
+              196,
+              207,
+              207,
+              188,
+              218,
+              193,
+              204,
+              237,
+              194,
+              239,
+              192,
+              196,
+              171,
+              211,
+              189,
+              178,
+              246,
+              215,
+              221,
+              191,
+              201,
+              179,
+              210,
+              206
+            ],
+            "response_span_cycles": [
+              308,
+              364,
+              340,
+              362,
+              366,
+              329,
+              366,
+              323,
+              380,
+              355,
+              358,
+              340,
+              379,
+              331,
+              359,
+              399,
+              323,
+              409,
+              350,
+              378,
+              315,
+              389,
+              326,
+              345,
+              424,
+              394,
+              372,
+              350,
+              358,
+              323,
+              393,
+              375
+            ],
+            "response_utilization": [
+              0.551948051948052,
+              0.5054945054945055,
+              0.5352941176470588,
+              0.5082872928176796,
+              0.6284153005464481,
+              0.5440729483282675,
+              0.5819672131147541,
+              0.544891640866873,
+              0.5157894736842106,
+              0.5830985915492958,
+              0.5782122905027933,
+              0.5529411764705883,
+              0.575197889182058,
+              0.5830815709969789,
+              0.5682451253481894,
+              0.5939849624060151,
+              0.6006191950464397,
+              0.5843520782396088,
+              0.5485714285714286,
+              0.5185185185185185,
+              0.5428571428571428,
+              0.5424164524421594,
+              0.5797546012269938,
+              0.5159420289855072,
+              0.5801886792452831,
+              0.5456852791878173,
+              0.5940860215053764,
+              0.5457142857142857,
+              0.5614525139664804,
+              0.5541795665634675,
+              0.5343511450381679,
+              0.5493333333333333
+            ],
+            "packet_mask_counts": [
+              {
+                "7": 47,
+                "3": 10,
+                "1": 9
+              },
+              {
+                "1": 13,
+                "7": 49,
+                "3": 12
+              },
+              {
+                "3": 13,
+                "1": 12,
+                "7": 48
+              },
+              {
+                "1": 19,
+                "7": 51,
+                "3": 6
+              },
+              {
+                "7": 66,
+                "1": 14,
+                "3": 9
+              },
+              {
+                "1": 10,
+                "3": 11,
+                "7": 49
+              },
+              {
+                "7": 55,
+                "3": 15,
+                "1": 18
+              },
+              {
+                "7": 49,
+                "1": 13,
+                "3": 8
+              },
+              {
+                "1": 15,
+                "7": 55,
+                "3": 8
+              },
+              {
+                "1": 10,
+                "7": 57,
+                "3": 13
+              },
+              {
+                "7": 58,
+                "1": 21,
+                "3": 6
+              },
+              {
+                "1": 9,
+                "3": 13,
+                "7": 51
+              },
+              {
+                "7": 58,
+                "1": 16,
+                "3": 14
+              },
+              {
+                "1": 16,
+                "7": 49,
+                "3": 15
+              },
+              {
+                "1": 17,
+                "3": 8,
+                "7": 57
+              },
+              {
+                "3": 16,
+                "7": 63,
+                "1": 16
+              },
+              {
+                "1": 12,
+                "7": 52,
+                "3": 13
+              },
+              {
+                "7": 61,
+                "3": 21,
+                "1": 14
+              },
+              {
+                "7": 54,
+                "1": 8,
+                "3": 11
+              },
+              {
+                "7": 53,
+                "1": 13,
+                "3": 12
+              },
+              {
+                "7": 42,
+                "1": 13,
+                "3": 16
+              },
+              {
+                "1": 18,
+                "3": 11,
+                "7": 57
+              },
+              {
+                "7": 51,
+                "1": 10,
+                "3": 13
+              },
+              {
+                "7": 49,
+                "1": 15,
+                "3": 8
+              },
+              {
+                "7": 73,
+                "1": 15,
+                "3": 6
+              },
+              {
+                "1": 14,
+                "3": 15,
+                "7": 57
+              },
+              {
+                "7": 63,
+                "1": 12,
+                "3": 10
+              },
+              {
+                "1": 14,
+                "7": 49,
+                "3": 15
+              },
+              {
+                "7": 52,
+                "3": 13,
+                "1": 19
+              },
+              {
+                "1": 22,
+                "7": 45,
+                "3": 11
+              },
+              {
+                "1": 15,
+                "7": 57,
+                "3": 12
+              },
+              {
+                "3": 17,
+                "7": 53,
+                "1": 13
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ports": 1,
+        "parameters": {
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 2,
+          "PORT": 31
+        },
+        "core_period_ps": 5000,
+        "hbm_period_ps": 2222,
+        "expect_return_path_saturation": true,
+        "status": "passed",
+        "metrics": {
+          "ideal": {
+            "stress": false,
+            "phase_ps": 137,
+            "reads_per_port": [
+              2048
+            ],
+            "response_span_cycles": [
+              2302
+            ],
+            "response_utilization": [
+              0.889661164205039
+            ],
+            "packet_mask_counts": [
+              {
+                "3": 1024
+              }
+            ]
+          },
+          "stress": {
+            "stress": true,
+            "phase_ps": 811,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              425
+            ],
+            "response_utilization": [
+              0.4
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 12,
+                "3": 79
+              }
+            ]
+          },
+          "after_reset": {
+            "stress": true,
+            "phase_ps": 0,
+            "reads_per_port": [
+              170
+            ],
+            "response_span_cycles": [
+              440
+            ],
+            "response_utilization": [
+              0.38636363636363635
+            ],
+            "packet_mask_counts": [
+              {
+                "1": 12,
+                "3": 79
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "source_sha256": {
+      "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+      "rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
+      "rtl/decode_hbm_read_bridge32.sv": "4d1cfafd8a14f2001a012f773a0c464f7484733be548605211405fc6797c04b1",
+      "tests/test_hbm_bridge.py": "606861b0ce125f8c750715da24820e6fcb1e1abe40195bbd835e397550ee2d63",
+      "tests/run_hbm_bridge.py": "6f0b55f9011a9c2b7955effd19a009fcccc319a3e3b3a0535cbc18f10f76f5da"
+    }
+  },
+  "hbm_directed": {
+    "status": "passed",
+    "scope": "Directed digital HBM protocol and CDC checks; no physical timing or vendor PHY claim",
+    "cases": [
+      {
+        "top": "decode_hbm_read_port",
+        "parameters": {
+          "PORT": 31
+        },
+        "core_period_ps": 4000,
+        "status": "passed",
+        "tests": [
+          "same_cycle_ar_and_r_with_next_request",
+          "disable_preserves_stalled_ar_and_drains_response",
+          "faults_drain_pending_transactions_without_id_reuse",
+          "axi_inputs_do_not_bypass_response_backpressure",
+          "stalled_unknown_rid_cannot_alias_a_new_request",
+          "premature_response_stays_unknown_after_ar_handshake"
+        ]
+      },
+      {
+        "top": "decode_hbm_read_bridge",
+        "parameters": {
+          "PORT": 31,
+          "FIFO_DEPTH": 4
+        },
+        "core_period_ps": 4000,
+        "status": "passed",
+        "tests": [
+          "aperture_end_and_wrapped_tags",
+          "descriptor_overflow_faults_without_partial_reads",
+          "response_errors_cross_clocks_and_other_reads_drain",
+          "isolated_single_returns_flush",
+          "partial_packet_flushes_without_extra_responses"
+        ]
+      },
+      {
+        "top": "decode_hbm_read_bridge",
+        "parameters": {
+          "PORT": 31,
+          "FIFO_DEPTH": 4,
+          "RETURN_RECORDS": 3
+        },
+        "core_period_ps": 5000,
+        "status": "passed",
+        "tests": [
+          "aperture_end_and_wrapped_tags",
+          "descriptor_overflow_faults_without_partial_reads",
+          "response_errors_cross_clocks_and_other_reads_drain",
+          "isolated_single_returns_flush",
+          "partial_packet_flushes_without_extra_responses"
+        ]
+      }
+    ],
+    "source_sha256": {
+      "rtl/decode_async_fifo.sv": "ea9a8b20c7b260ad7f19dfaab546bdb76d054263d4af4677d7b6272b91d05726",
+      "rtl/decode_hbm_read_port.sv": "ed5261ca58a6465cdf0bf39d11d221f36ca8fac63f0f0623d14a9a47892b7577",
+      "rtl/decode_hbm_read_bridge.sv": "073e97b8728116f01d7c88e0696d699268cb23274365d664a7403cbe5369a5e2",
+      "tests/test_hbm_directed_port.py": "10d29ece027fb662b3d922d0700f5014cc18438acba6025287c78f28ae252b8b",
+      "tests/test_hbm_directed_bridge.py": "5e307568b0784200141b5f343404056c00b6dec08b0e5156565ce8a154eb8e90",
+      "tests/run_hbm_directed.py": "b66bd19bf4e5b2f784bfac19010cdb670dbe7a6431ec77e3423e73b300b3d4f6"
+    }
+  },
+  "compute_boundaries": {
+    "status": "passed",
+    "reports": [
+      {
+        "simulator": "verilator",
+        "tests": 2,
+        "status": "passed"
+      },
+      {
+        "simulator": "icarus",
+        "tests": 3,
+        "status": "passed",
+        "checks": "X on unused lanes/seeds, result arithmetic, stalls and reset"
+      }
+    ],
+    "tools": {
+      "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+      "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+      "cocotb": "2.1.0"
+    },
+    "source_sha256": {
+      "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+      "tests/test_os_core.py": "d15add95e54cfeb9df4b584cf309112894a53938c600ac068addf23e882565bf",
+      "tests/test_os_boundaries.py": "906e32925c1e3a5c7f4c6b928c316f1abc725b791402484536ca736fdb0462d3",
+      "tests/run_os_boundaries.py": "3e97dcc64ec7b33cddbb22b319ca721b7ad065f6ed3a80deb19c3a4f9dfcafed",
+      "tests/os_four_state_tb.sv": "9d7637bcd5bef1e4f979acdf856dc10ed4af7e06a7df1b7b448ca0f2aaa03b6b"
+    }
+  },
+  "real_decode_tiles": {
+    "status": "passed",
+    "scope": "Full 64x64 INT8 compute RTL; production-size synthetic operands, not model weights or a full token pipeline",
+    "clock_hz": 200000000,
+    "parameters": {
+      "PARTITIONS": 64,
+      "COLS": 64,
+      "physical_macs": 4096
+    },
+    "independent_oracle": "NumPy INT64 matrix multiplication with explicit signed INT32 modular wrap",
+    "checks": [
+      "every requested A/B and active C address",
+      "all valid masks",
+      "all accepted outputs exactly once",
+      "INT32 accumulated K partials",
+      "parallel rows, multiple waves and ragged output tiles",
+      "minimum/maximum signed INT8 and INT32 wrap",
+      "random backpressure and 11-cycle output stalls",
+      "poison values on unused operand and partial-sum inputs",
+      "logical/elapsed/stall cycle counters"
+    ],
+    "tests": 4,
+    "commands": 14,
+    "checked_command_outputs": 29584,
+    "checked_final_outputs": 15760,
+    "logical_cycles": 11446,
+    "stall_cycles": 2216,
+    "wall_seconds": 54.87,
+    "cases": [
+      {
+        "name": "gemma_ffn_up_1x1152x6912_output_and_k_tiles",
+        "commands": [
+          {
+            "m": 1,
+            "k": 576,
+            "n": 4096,
+            "parallel_rows": true,
+            "accumulate": false,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 639,
+            "stall_cycles": 116,
+            "elapsed_cycles": 755,
+            "ideal_compute_us_at_200mhz": 3.195,
+            "checked_outputs": 4096
+          },
+          {
+            "m": 1,
+            "k": 576,
+            "n": 4096,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 639,
+            "stall_cycles": 117,
+            "elapsed_cycles": 756,
+            "ideal_compute_us_at_200mhz": 3.195,
+            "checked_outputs": 4096
+          },
+          {
+            "m": 1,
+            "k": 576,
+            "n": 2816,
+            "parallel_rows": true,
+            "accumulate": false,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 639,
+            "stall_cycles": 133,
+            "elapsed_cycles": 772,
+            "ideal_compute_us_at_200mhz": 3.195,
+            "checked_outputs": 2816
+          },
+          {
+            "m": 1,
+            "k": 576,
+            "n": 2816,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 639,
+            "stall_cycles": 112,
+            "elapsed_cycles": 751,
+            "ideal_compute_us_at_200mhz": 3.195,
+            "checked_outputs": 2816
+          }
+        ],
+        "checked_final_outputs": 6912
+      },
+      {
+        "name": "gemma_ffn_down_1x6912x1152_seven_k_tiles",
+        "commands": [
+          {
+            "m": 1,
+            "k": 988,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": false,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1051,
+            "stall_cycles": 160,
+            "elapsed_cycles": 1211,
+            "ideal_compute_us_at_200mhz": 5.255,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 988,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1051,
+            "stall_cycles": 203,
+            "elapsed_cycles": 1254,
+            "ideal_compute_us_at_200mhz": 5.255,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 988,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1051,
+            "stall_cycles": 174,
+            "elapsed_cycles": 1225,
+            "ideal_compute_us_at_200mhz": 5.255,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 987,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1050,
+            "stall_cycles": 212,
+            "elapsed_cycles": 1262,
+            "ideal_compute_us_at_200mhz": 5.25,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 987,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1050,
+            "stall_cycles": 199,
+            "elapsed_cycles": 1249,
+            "ideal_compute_us_at_200mhz": 5.25,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 987,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1050,
+            "stall_cycles": 210,
+            "elapsed_cycles": 1260,
+            "ideal_compute_us_at_200mhz": 5.25,
+            "checked_outputs": 1152
+          },
+          {
+            "m": 1,
+            "k": 987,
+            "n": 1152,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 1,
+            "waves": 1,
+            "logical_cycles": 1050,
+            "stall_cycles": 200,
+            "elapsed_cycles": 1250,
+            "ideal_compute_us_at_200mhz": 5.25,
+            "checked_outputs": 1152
+          }
+        ],
+        "checked_final_outputs": 1152
+      },
+      {
+        "name": "gemma_attention_qk_and_av_four_rows_context515",
+        "commands": [
+          {
+            "m": 4,
+            "k": 256,
+            "n": 515,
+            "parallel_rows": true,
+            "accumulate": false,
+            "row_workers": 4,
+            "waves": 1,
+            "logical_cycles": 319,
+            "stall_cycles": 64,
+            "elapsed_cycles": 383,
+            "ideal_compute_us_at_200mhz": 1.595,
+            "checked_outputs": 2060
+          },
+          {
+            "m": 4,
+            "k": 515,
+            "n": 256,
+            "parallel_rows": true,
+            "accumulate": false,
+            "row_workers": 4,
+            "waves": 1,
+            "logical_cycles": 578,
+            "stall_cycles": 121,
+            "elapsed_cycles": 699,
+            "ideal_compute_us_at_200mhz": 2.89,
+            "checked_outputs": 1024
+          }
+        ],
+        "checked_final_outputs": 3084
+      },
+      {
+        "name": "ragged_4x257x1153_two_waves_int32_wrap",
+        "commands": [
+          {
+            "m": 4,
+            "k": 257,
+            "n": 1153,
+            "parallel_rows": true,
+            "accumulate": true,
+            "row_workers": 3,
+            "waves": 2,
+            "logical_cycles": 640,
+            "stall_cycles": 195,
+            "elapsed_cycles": 835,
+            "ideal_compute_us_at_200mhz": 3.2,
+            "checked_outputs": 4612
+          }
+        ],
+        "checked_final_outputs": 4612
+      }
+    ],
+    "tools": {
+      "verilator": "Verilator 5.048 2026-04-26 rev vUNKNOWN-built20260426",
+      "cocotb": "2.1.0",
+      "numpy": "2.5.4"
+    },
+    "source_sha256": {
+      "rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+      "tests/test_real_decode_tiles.py": "459b5a1d3497a11ed1e1fadca21b7a1ccfbea114891a8d7581a6f56d1f97af00",
+      "tests/run_real_decode_tiles.py": "08cb3b581d9e91c740a337abe182d4ef4deaf2d8126f5f0028f2c8b052db2e03"
+    },
+    "limitations": [
+      "The 200 MHz simulation period does not establish FPGA timing closure.",
+      "HBM/DMA/CDC and vector/SFU integration are outside these arithmetic component tests.",
+      "These component timings do not establish end-to-end tokens/second."
+    ]
+  },
+  "generated_target_lint": [
+    "decode_asic_compute",
+    "decode_f2_compute"
+  ]
+}

@@ -1,0 +1,388 @@
+{
+  "status": "passed",
+  "classification": "Real numerical W8A8+KV8 decode paired with dependency-ordered native Ramulator2 memory timing and explicit compute models",
+  "scope": "Gemma3-1B W8A8/KV8 batch-one cached decode, contexts 513-515; architectural timing estimate, not end-to-end RTL or FPGA TPS",
+  "core_hz": 200000000,
+  "hbm_axi_hz": 450000000,
+  "mean_decode_tps": 205.8489226725091,
+  "mean_decode_ms": 4.8579316666666665,
+  "compute_ms_per_token": 3.6876249999999997,
+  "exposed_memory_wait_ms_per_token": 1.1703066666666666,
+  "no_memory_stall_compute_ceiling_tps": 271.1772482288736,
+  "physical_bytes_per_token": 1024877280.0,
+  "average_hbm_GB_s": 210.96988395953147,
+  "hbm_peak_GB_s": 460.8,
+  "configuration": {
+    "core_hz": 200000000,
+    "array_rows": 1,
+    "array_cols": 64,
+    "operand_staging_bytes": 4194304,
+    "vector_staging_bytes": 524288,
+    "vector_lanes": 256,
+    "sfu_lanes": 64,
+    "array_partitions": 64,
+    "max_inflight_requests": 2048,
+    "hbm_read_queue": 128,
+    "hbm_write_queue": 64,
+    "hbm_address_mapping": "pc_bankgroup",
+    "intermediate_sram_bytes": 131072,
+    "parallel_head_rows": true,
+    "stream_value_cache": true,
+    "dataflow": "os",
+    "balance_k_tiles": true,
+    "gemm_prefetch": true,
+    "fuse_value_cache": true
+  },
+  "tokens": [
+    {
+      "index": 0,
+      "context": 513,
+      "total_cycles": 971101,
+      "compute_cycles": 737489,
+      "reads": 31854722,
+      "writes": 172533,
+      "retries": 19970,
+      "stages": {
+        "control": 19,
+        "rope_generation": 72,
+        "embedding": 881,
+        "rmsnorm": 15127,
+        "quantize": 18502,
+        "gemm": 789688,
+        "dequantize": 18169,
+        "rope_apply": 1066,
+        "kv_write": 1043,
+        "value_cache_fused": 101722,
+        "attention_mask": 1164,
+        "softmax": 7560,
+        "residual": 1248,
+        "gelu": 10244,
+        "gating": 2912,
+        "argmax": 1684
+      },
+      "milliseconds": 4.855505000000001,
+      "tps": 205.95180109998856,
+      "memory_wait_cycles": 233612,
+      "dram_transaction_bytes": 1024872160,
+      "input_token_id": 818,
+      "output_token_id": 7217
+    },
+    {
+      "index": 1,
+      "context": 514,
+      "total_cycles": 971779,
+      "compute_cycles": 737525,
+      "reads": 31854850,
+      "writes": 172565,
+      "retries": 21166,
+      "stages": {
+        "control": 19,
+        "rope_generation": 72,
+        "embedding": 884,
+        "rmsnorm": 15370,
+        "quantize": 18502,
+        "gemm": 790015,
+        "dequantize": 18081,
+        "rope_apply": 1066,
+        "kv_write": 1043,
+        "value_cache_fused": 101922,
+        "attention_mask": 1164,
+        "softmax": 7560,
+        "residual": 1248,
+        "gelu": 10244,
+        "gating": 2912,
+        "argmax": 1677
+      },
+      "milliseconds": 4.858895,
+      "tps": 205.80811069183426,
+      "memory_wait_cycles": 234254,
+      "dram_transaction_bytes": 1024877280,
+      "input_token_id": 7217,
+      "output_token_id": 5724
+    },
+    {
+      "index": 2,
+      "context": 515,
+      "total_cycles": 971879,
+      "compute_cycles": 737561,
+      "reads": 31854978,
+      "writes": 172597,
+      "retries": 14502,
+      "stages": {
+        "control": 19,
+        "rope_generation": 72,
+        "embedding": 881,
+        "rmsnorm": 15458,
+        "quantize": 18502,
+        "gemm": 790064,
+        "dequantize": 18081,
+        "rope_apply": 1066,
+        "kv_write": 1115,
+        "value_cache_fused": 101960,
+        "attention_mask": 1164,
+        "softmax": 7560,
+        "residual": 1248,
+        "gelu": 10244,
+        "gating": 2912,
+        "argmax": 1533
+      },
+      "milliseconds": 4.859395,
+      "tps": 205.78693438174918,
+      "memory_wait_cycles": 234318,
+      "dram_transaction_bytes": 1024882400,
+      "input_token_id": 5724,
+      "output_token_id": 3730
+    }
+  ],
+  "timing_checks": {
+    "status": "passed",
+    "configuration": {
+      "core_hz": 200000000,
+      "array_rows": 1,
+      "array_cols": 64,
+      "operand_staging_bytes": 4194304,
+      "vector_staging_bytes": 524288,
+      "vector_lanes": 256,
+      "sfu_lanes": 64,
+      "array_partitions": 64,
+      "max_inflight_requests": 2048,
+      "hbm_read_queue": 128,
+      "hbm_write_queue": 64,
+      "hbm_address_mapping": "pc_bankgroup",
+      "intermediate_sram_bytes": 131072,
+      "parallel_head_rows": true,
+      "stream_value_cache": true,
+      "dataflow": "os",
+      "balance_k_tiles": true,
+      "gemm_prefetch": true,
+      "fuse_value_cache": true
+    },
+    "checks": [
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 256,
+        "n": 1,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 256,
+        "n": 2,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 256,
+        "n": 3,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 256,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 512,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 513,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 514,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 515,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 576,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 984,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 988,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "native_OS_tile",
+        "m": 1,
+        "k": 1024,
+        "n": 64,
+        "array": [
+          1,
+          64
+        ]
+      },
+      {
+        "check": "parallel_group_critical_paths_match_native_arrays",
+        "groups": 15
+      },
+      {
+        "check": "executed_numerical_matrix_shapes_match_every_timing_GEMM",
+        "status": "passed",
+        "real_checkpoint": "3d4ef8d71c14db7e448a09ebe891cfb6bf32c57a9b44499ae0d1c098e48516b6",
+        "mapping": "Four QK/AV heads fused as M=4; identical Q/K/V and gate/up input quantizations shared. Explicit layouts/dispatch/position/EOS work added.",
+        "numerical_gemm_calls": 1173,
+        "timing_gemm_calls": 705
+      },
+      {
+        "check": "native_completion_matches_live_bridge",
+        "kind": "R",
+        "core_cycles": 9
+      },
+      {
+        "check": "native_completion_matches_live_bridge",
+        "kind": "W",
+        "core_cycles": 8
+      },
+      {
+        "check": "compute_time_preserves_native_DRAM_clock_phase",
+        "core_cycles": 40,
+        "dram_ticks": 180
+      }
+    ]
+  },
+  "comparison": [
+    {
+      "profile": "decode_asic_stream256",
+      "decode_tps": 338.31639552299146,
+      "milliseconds": 2.955813,
+      "compute_ms": 0.953505,
+      "exposed_memory_wait_ms": 2.0023079999999998,
+      "average_GB_s": 346.7327872230077
+    },
+    {
+      "profile": "decode_f2_stream256",
+      "decode_tps": 232.27026844558853,
+      "milliseconds": 4.305329333333333,
+      "compute_ms": 2.9501000000000004,
+      "exposed_memory_wait_ms": 1.3552293333333332,
+      "average_GB_s": 238.04852094938462
+    }
+  ],
+  "execution": {
+    "status": "completed",
+    "configuration": {
+      "core_hz": 200000000,
+      "array_rows": 1,
+      "array_cols": 64,
+      "operand_staging_bytes": 4194304,
+      "vector_staging_bytes": 524288,
+      "vector_lanes": 256,
+      "sfu_lanes": 64,
+      "array_partitions": 64,
+      "max_inflight_requests": 2048,
+      "hbm_read_queue": 128,
+      "hbm_write_queue": 64,
+      "hbm_address_mapping": "pc_bankgroup",
+      "intermediate_sram_bytes": 131072,
+      "parallel_head_rows": true,
+      "stream_value_cache": true,
+      "dataflow": "os",
+      "balance_k_tiles": true,
+      "gemm_prefetch": true,
+      "fuse_value_cache": true
+    },
+    "inputs_sha256": {
+      "configuration.json": "cf669e7fb2ca83dec822ccbaedac99a4ace6d340b5b4424f958eb9af7105491d",
+      "manifest.json": "dd240449c2294732a3f0c1b208335c1ceb1fd270fa3f6ff152f3f380d0f83472",
+      "commands.txt": "b0dddc4311fecb6bd13d1444477e618fec87a52a67761944bcf7b12d10df2938",
+      "hbm2.json": "7b55bfd678f6bd6ceb375fe3ec69167acc17a9e8d8d53b1a5de19200762fb9e6",
+      "numerical_result.json": "df83b0df539f1bf1c6350585e70d5835e3d58e4f9326fe3e0a17bbeda5e68541",
+      "numerical_operator_trace.json": "fc634fb4f7fd16e1efd9524277e2391ed145ca50553153185cc74098ee641c14",
+      "residency.json": "53b519a98bbfb145e203b9d07701cf45b87ccdae0122b5687f6ba593bf565547"
+    },
+    "timing_sha256": "1d67955a4aa01f991a1777dd477c7ab50e799e3e787d8fab783060c0fd14f2ed"
+  },
+  "source_sha256": {
+    "experiments/gemma3_1b_int8/hbm2/full_model/intermediate_sram.py": "d486b2ebd42bd62dc6ac1bba7d445dfa5e73c5cc0caae6b6737da4f3b2d7ae62",
+    "experiments/gemma3_1b_int8/hbm2/full_model/address_map.h": "e1ed4b208d53dfa8ecf1499ebbf1fdbab24667e08dd8d2b1de4065ae1d2c6932",
+    "experiments/gemma3_1b_int8/hbm2/full_model/runner.cpp": "07d58f2a55cc59728e9fd6db3adbded159c1a240cf17745bcd3133b147f613be",
+    "experiments/gemma3_1b_int8/hbm2/full_model/workload.py": "c2d08aafa1924b9a92b97e67cb7e275cd5c837a8603807795a0827ea37933303",
+    "experiments/gemma3_1b_int8/hbm2/full_model/config.py": "58d4ef59a4b47538ca8b0ada8aaf0b1db2218b34539467235e4223067d6e576f",
+    "experiments/gemma3_1b_int8/hbm2/full_model/fused_value_cache.py": "b6fb4ebd12257411849fd0514be75967b6f4ca8615a9348635f0b6909e725ecd",
+    "experiments/gemma3_1b_int8/hbm2/full_model/run.py": "1801a938e7e421a106a7904933129bf23f01fb0b0fa497ae36cfd6241e8d63d5",
+    "src_rtl/cosim/native_bridge.cpp": "13cc7b73507629a069d8b0b6e7b0fd5f549ee3543c006b157da299251411493d"
+  },
+  "native_binary_sha256": "80b7da5583bda2b9f2bb2358ef7f49b746dcbec93b6da201dd25b3e003e28d56",
+  "native_library_sha256": "b9fcd7e3f2224f51a556d56e9de308e31190952c3c7bf09a03d0bb541a5960d3",
+  "ramulator_pin": "c6c7a5de0cef35935d6fad7369e6271406798865",
+  "numerical_trace_sha256": "fc634fb4f7fd16e1efd9524277e2391ed145ca50553153185cc74098ee641c14",
+  "verilator_scope": "Compute arithmetic/address/cycle checks and independent HBM frontend/CDC tests; no complete token-loop measurement",
+  "lpn_scope": "No LPN model or TPS measurement is present in this repository",
+  "limitations": [
+    "This is not full-transformer RTL execution, nor stock SCALE-Sim CALC/USER memory-policy equivalence.",
+    "0.2 GHz array/vector frequency, configured array/SRAM resources and SFU costs are assumptions, not achieved FPGA timing or measured non-GEMM hardware.",
+    "Numerical execution and memory timing are separate runs of matched operator graphs, not a lockstep data-carrying RTL simulation.",
+    "HBM2 uses generic HBM12 scheduling, striped addresses and write recovery guard, not AMD proprietary F2 controller/PHY timing.",
+    "Aggregate HBM frontend differs from the existing single-master RTL DMA. No cycle-equivalence claim to that DMA.",
+    "Greedy device-side cached decode only. Host tokenization/PCIe and simulated prefill/TTFT are outside this measurement.",
+    "Quantization quality is checked on one prompt, not a model accuracy benchmark. No trained quantization calibration.",
+    "All activations remain FP32 outside INT8 GEMMs; this model does not assume free non-GEMM operations."
+  ]
+}

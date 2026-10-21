@@ -1,0 +1,3 @@
+variant	baseline
+dsp_count	0
+cell	USE_MULT	AREG	BREG	CREG	MREG	PREG

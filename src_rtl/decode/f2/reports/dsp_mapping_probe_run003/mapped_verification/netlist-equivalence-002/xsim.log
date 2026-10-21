@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Wed Oct 21 11:07:24 2026
+# Process ID         : 929189
+# Current directory  : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002
+# Command line       : xsim -log xsim.log -mode tcl -source {xsim.dir/netlist_equiv/xsim_script.tcl}
+# Log file           : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/xsim.log
+# Journal file       : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/xsim.jou
+# Running On         : ip-172-31-42-250
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.1 LTS
+# Processor Detail   : AMD EPYC 9R14
+# CPU Frequency      : 2599.998 MHz
+# CPU Physical cores : 32
+# CPU Logical cores  : 32
+# Host memory        : 132207 MB
+# Swap memory        : 10737 MB
+# Total Virtual      : 142944 MB
+# Available Virtual  : 141592 MB
+#-----------------------------------------------------------
+source xsim.dir/netlist_equiv/xsim_script.tcl
+# xsim {netlist_equiv} -autoloadwcfg -runall -onfinish quit
+Time resolution is 1 ps
+run -all
+TB_PROGRESS valid_cases=64 ticks=1426
+TB_PROGRESS valid_cases=128 ticks=2794
+TB_PROGRESS valid_cases=192 ticks=4773
+TB_PROGRESS valid_cases=256 ticks=7374
+TB_PROGRESS valid_cases=320 ticks=10228
+TB_PROGRESS valid_cases=384 ticks=14193
+TB_PROGRESS valid_cases=448 ticks=17633
+TB_PROGRESS valid_cases=512 ticks=22668
+TB_PASS valid=520 invalid=6 resets=4 ticks=110991 comparisons=221934 stalls=27727
+$finish called at time : 1109910 ns : File "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/tb.sv" Line 264
+exit 0
+INFO: xsimkernel Simulation Memory Usage: 342848 KB (Peak: 388732 KB), Simulation CPU Usage: 158650 ms
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 11:10:04 2026...

@@ -1,0 +1,82 @@
+/opt/Xilinx/2025.2/Vivado/bin/vivado -mode batch -nojournal -log /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/vivado.log -source /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/f2/scripts/timing_harness.tcl -tclargs /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source /home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth 64 64 10 synth 8 none
+{
+  "status": "planned",
+  "created_utc": "2026-10-21T18:30:15.249992+00:00",
+  "scope": "Analysis-only registered compute harness on VU47P; not AWS shell/HBM integration or inference throughput",
+  "part": "xcvu47p-fsvh2892-2-e",
+  "partitions": 64,
+  "cols": 64,
+  "macs": 4096,
+  "max_m": 4,
+  "max_k": 8192,
+  "threads": 8,
+  "compute_mhz": 100.0,
+  "clock_period_ns": 10.0,
+  "stage": "synth",
+  "maximum_utilization_percent": 90.0,
+  "source_hashes": {
+    "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+    "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+    "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+    "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+    "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+    "src_rtl/decode/verification.json": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627",
+    "src_rtl/decode/f2/harness/verification.json": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8",
+    "src_rtl/decode/f2/scripts/run_timing_harness.py": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08",
+    "src_rtl/decode/f2/scripts/timing_harness.tcl": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76",
+    "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+  },
+  "dsp_mapping": {
+    "define": "SCALESIM_F2_USE_DSP",
+    "primitive": "DSP48E2",
+    "expected_count": 4096,
+    "lane_identity": "core/g_mac_partition[p].g_mac_column[c].lane_sum",
+    "allowed_areg": [
+      0,
+      1,
+      2
+    ],
+    "allowed_breg": [
+      0,
+      1,
+      2
+    ],
+    "creg": 0,
+    "mreg": 0,
+    "preg": 0,
+    "latency_evidence": "Register properties are a mapping guard; cycle equivalence requires mapped-netlist verification"
+  },
+  "synthesis_run": null,
+  "baseline_checkpoint_sha256": null,
+  "command": [
+    "/opt/Xilinx/2025.2/Vivado/bin/vivado",
+    "-mode",
+    "batch",
+    "-nojournal",
+    "-log",
+    "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/vivado.log",
+    "-source",
+    "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source/src_rtl/decode/f2/scripts/timing_harness.tcl",
+    "-tclargs",
+    "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth/source",
+    "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-005/synth",
+    "64",
+    "64",
+    "10",
+    "synth",
+    "8",
+    "none"
+  ],
+  "component_routed_timing_pass": false,
+  "f2_shell_timing_closed": false,
+  "boundary_budget_ns": {
+    "input_max": 1,
+    "input_min": 0,
+    "output_max": 1,
+    "output_min": 0,
+    "setup_uncertainty": 0.25,
+    "hold_uncertainty": 0.1
+  }
+}

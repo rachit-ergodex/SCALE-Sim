@@ -1,0 +1,10 @@
+status	passed
+valid_commands	520
+invalid_commands	6
+mid_command_resets	4
+clock_ticks	110991
+all_output_comparisons	221934
+stall_cycles_checked	27727
+committed_steps	82122
+observed_output_bits	3496
+initial_random_seed	d5f2c0de

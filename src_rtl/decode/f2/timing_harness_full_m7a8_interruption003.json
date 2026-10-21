@@ -1,0 +1,50 @@
+{
+  "recorded_utc": "2026-10-21T15:52:06.959786+00:00",
+  "status": "host_terminated_completion_unknown",
+  "instance_id": "i-04fc91f9015037a6c",
+  "region": "us-east-1",
+  "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/full-100-synth-003",
+  "source_commit": "deff96ff0969e070dbea4f6b8ed29f206d25c7cc",
+  "cloudtrail_event": {
+    "event_id": "fb07503f-19d2-4bae-931c-ae39ede14aea",
+    "event_name": "TerminateInstances",
+    "event_time_utc": "2026-10-21T13:35:06Z",
+    "event_time_ist": "2026-10-21T19:05:06+05:30",
+    "actor_type": "IAMUser",
+    "actor": "rachit-ergodex",
+    "invocation": "browser console",
+    "previous_instance_state": "running",
+    "resulting_instance_state": "shutting-down",
+    "error_code": null
+  },
+  "last_retained_synthesis_observation": {
+    "ssm_command_id": "8350d3fb-caab-4a38-90f1-57cb3ee5acfc",
+    "requested_utc": "2026-10-21T11:17:50.876Z",
+    "manifest_status": "running",
+    "stage": "synth",
+    "resource_gate_result_available": false,
+    "record": "timing_harness_full_m7a8_run003.json"
+  },
+  "current_read_only_checks": {
+    "aws_account": "438374459156",
+    "ec2_instance_records": 0,
+    "ssm_managed_instance_records": 0,
+    "later_ssm_commands_for_instance": 0,
+    "available_ebs_volumes_in_region": 0
+  },
+  "synthesis_completion": "Unknown: no final report or resource-gate result was collected before host termination. Termination alone does not establish a synthesis failure.",
+  "resource_gate_pass_confirmed": false,
+  "pnr_launched_by_this_flow": false,
+  "full_4096mac_timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "runtime_estimate": {
+    "first_pnr_attempt_hours_after_validated_synthesis_checkpoint": [
+      3,
+      6
+    ],
+    "basis": "Prior full-size 50/100 MHz attempts on this host took 3h06m/3h11m; revised DSP mapping and registered harness differ.",
+    "current_pnr_start_eta": null,
+    "timing_closure_guaranteed": false
+  },
+  "remaining_work": "Recover a matching completed synthesis checkpoint/report or rerun synthesis on a build host, pass resource/DSP checks, then start P&R. No cloud resources restarted by this status check."
+}

@@ -1,0 +1,37 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Wed Oct 21 10:55:58 2026
+# Process ID         : 928488
+# Current directory  : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001
+# Command line       : xsim -log xsim.log -mode tcl -source {xsim.dir/netlist_equiv/xsim_script.tcl}
+# Log file           : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/xsim.log
+# Journal file       : /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/xsim.jou
+# Running On         : ip-172-31-42-250
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.1 LTS
+# Processor Detail   : AMD EPYC 9R14
+# CPU Frequency      : 2599.998 MHz
+# CPU Physical cores : 32
+# CPU Logical cores  : 32
+# Host memory        : 132207 MB
+# Swap memory        : 10737 MB
+# Total Virtual      : 142944 MB
+# Available Virtual  : 141423 MB
+#-----------------------------------------------------------
+source xsim.dir/netlist_equiv/xsim_script.tcl
+# xsim {netlist_equiv} -autoloadwcfg -runall -onfinish quit
+Time resolution is 1 ps
+run -all
+TB_MISMATCH context=valid M1 K7 N1 par0 acc0 edge=after tick=26 first_bit=1248 ready=1 rst=0
+got busy/done/error=100 ref=100
+got c_valid=00000000 c_data=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002618
+ref c_valid=00000000 c_data=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002618
+Fatal: Mapped UNISIM netlist disagrees with verified reference RTL
+Time: 267 ns  Iteration: 0  Process: /tb/check_outputs  Scope: tb.check_outputs  File: /home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-001/tb.sv Line: 126
+$finish called at time : 267 ns
+exit 0
+INFO: xsimkernel Simulation Memory Usage: 337288 KB (Peak: 387272 KB), Simulation CPU Usage: 1000 ms
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 10:56:00 2026...

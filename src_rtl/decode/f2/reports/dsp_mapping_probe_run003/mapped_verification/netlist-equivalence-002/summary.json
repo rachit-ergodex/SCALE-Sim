@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "scope": "4x8 mapped-netlist functional equivalence against original verified RTL, using installed UNISIM and glbl; no SDF or routed timing claim",
+  "started_utc": "2026-10-21T11:07:08.662136+00:00",
+  "source_sha256": {
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/tb.sv": "50404757de2f6ca57341ebd1e4381945c344e0264a930a4107a6207cd73600e5",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/reference.sv": "5e946085a5b050b768206b10e6cf92890d4a4b750b32cdb5a86a8fc69bbdc21c",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/core_netlist.v": "ab4a3ded6098dcc13b6d9f5f4b160e42374fd52b9b68ec7cb4253fd0a2e2a6d4",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/observation_wrapper.v": "85758b566ab4a859a62fbf41c405f0527507f477e2e5bff6dee224e8f0dc027c",
+    "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/netlist-equivalence-002/output_capture_map.json": "cee57b84f4fd316479cb06e6f049c39af83f29113a60055e89f519a53e898bf3",
+    "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v": "6270251cf35e1fce3119fc79f8fb968912f7983027e43cf030409ba68f048936"
+  },
+  "vendor_glbl_path": "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v",
+  "vendor_dsp_model_path": "/opt/Xilinx/2025.2/Vivado/data/verilog/src/unisims/DSP48E2.v",
+  "vendor_dsp_model_sha256": "da2d5acbea7bb7fc4008faf5755d93964c01f081713b1640da77c8f143fd58b2",
+  "libraries": [
+    "unisims_ver",
+    "secureip"
+  ],
+  "physical_timing_closed": false,
+  "stages": [
+    {
+      "name": "xvlog",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xvlog",
+        "--sv",
+        "--work",
+        "work",
+        "core_netlist.v",
+        "observation_wrapper.v",
+        "reference.sv",
+        "tb.sv",
+        "/opt/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v"
+      ],
+      "started_utc": "2026-10-21T11:07:09.666230+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T11:07:11.082363+00:00"
+    },
+    {
+      "name": "xelab",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xelab",
+        "--debug",
+        "typical",
+        "--relax",
+        "--mt",
+        "8",
+        "-L",
+        "unisims_ver",
+        "-L",
+        "secureip",
+        "work.tb",
+        "work.glbl",
+        "-s",
+        "netlist_equiv"
+      ],
+      "started_utc": "2026-10-21T11:07:11.082680+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T11:07:23.766767+00:00"
+    },
+    {
+      "name": "xsim",
+      "command": [
+        "/opt/Xilinx/2025.2/Vivado/bin/xsim",
+        "netlist_equiv",
+        "-runall",
+        "-onfinish",
+        "quit",
+        "-log",
+        "xsim.log"
+      ],
+      "started_utc": "2026-10-21T11:07:23.767102+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-21T11:10:04.815287+00:00"
+    }
+  ],
+  "simulator_version": "Vivado Simulator v2025.2\nCopyright 1986-2025 Xilinx, Inc. All Rights Reserved.",
+  "results": {
+    "status": "passed",
+    "valid_commands": "520",
+    "invalid_commands": "6",
+    "mid_command_resets": "4",
+    "clock_ticks": "110991",
+    "all_output_comparisons": "221934",
+    "stall_cycles_checked": "27727",
+    "committed_steps": "82122",
+    "observed_output_bits": "3496",
+    "initial_random_seed": "d5f2c0de"
+  },
+  "finished_utc": "2026-10-21T11:10:04.819515+00:00",
+  "artifacts_sha256": {
+    "xsim_version.txt": "b943d9a6fdec7ccca25bf78a43be448938fcba3ca13de1d54568410a4a046269",
+    "xelab.console.log": "5a42e4dbbfe1997dd7c54765dc078df29670b70ad590c87bf5b17ca776cdad82",
+    "run_equivalence.py": "a313d79a6368438f393b4e870ebc4468b253ca632ebe789967ee1fb53974d887",
+    "generate_tb.py": "6d53f9b1fc49538fe9dad0e1e5ce37d973d0362ae5cb4ca93ddb81460f98f935",
+    "xvlog.log": "54feb06506d1e8e01e647b86b74f63dc01dc4dc80d0d9b423409c653ec44352f",
+    "xsim.console.log": "2ee717bf510169d54a602fefdc0152065d67c7acb55d2d3ed4da78bd7bd51c5f",
+    "core_netlist.v": "ab4a3ded6098dcc13b6d9f5f4b160e42374fd52b9b68ec7cb4253fd0a2e2a6d4",
+    "build_observation_wrapper.py": "4e807b0ce454c7a9db2288aeaec23cd5f4090bb2505a2b77b7f2aba93e5f5882",
+    "results.tsv": "40d8a09102793d2effc3066e57c0d1281ec8d4b290fcbab9c23e80b327dfff06",
+    "xsim.log": "636901302c6e38fddf89a81c292b6e766026102d63dcd709c5972b601cafaae6",
+    "reference.sv": "5e946085a5b050b768206b10e6cf92890d4a4b750b32cdb5a86a8fc69bbdc21c",
+    "xvlog.console.log": "54feb06506d1e8e01e647b86b74f63dc01dc4dc80d0d9b423409c653ec44352f",
+    "provenance.json": "2e9e32a3c28135ecf5e8e417c57d93ecb4b3aed87fb62528b87d758745c819e1",
+    "xelab.log": "bb46ab072700261c81631a4762ac34ee5669091305aa19fe3ba1524bc46026d1",
+    "tb.sv": "50404757de2f6ca57341ebd1e4381945c344e0264a930a4107a6207cd73600e5",
+    "output_capture_map.json": "cee57b84f4fd316479cb06e6f049c39af83f29113a60055e89f519a53e898bf3",
+    "observation_wrapper.v": "85758b566ab4a859a62fbf41c405f0527507f477e2e5bff6dee224e8f0dc027c"
+  }
+}

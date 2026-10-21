@@ -1,0 +1,9 @@
+kind	delay	paths_sampled	worst_slack_ns	startpoint	endpoint
+internal	min	1	-0.079	core/a_pipe_reg[43][0][2]__0/C	core/a_pipe_reg[43][1][2]__0/D
+input_to_register	min	1	-0.180	cmd_accumulate	core/accumulate_reg/D
+register_to_output	min	1	-0.050	core/logical_cycles_reg[59]/C	logical_cycles[59]
+feedthrough	min	1	-0.066	rst	cmd_ready
+internal	max	1	0.227	core/m_reg_reg[0]_replica_3/C	core/accumulator_reg[4][18][0]/CE
+input_to_register	max	1	0.474	cmd_n[0]	core/accumulate_reg_replica/CE
+register_to_output	max	1	0.008	core/m_reg_reg[10]_replica_2/C	b_address[10555]
+feedthrough	max	1	1.461	rst	c_data[38963]

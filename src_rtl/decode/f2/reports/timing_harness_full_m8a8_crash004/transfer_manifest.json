@@ -1,0 +1,173 @@
+{
+  "archive": {
+    "archive": "/private/tmp/scalesim-m8a-crash004-native-evidence.tar.gz",
+    "remote_archive": "/home/ubuntu/rachit/scalesim-m8a8-20261021/full-100-pipeline-004-native-crash-evidence.tar.gz",
+    "bytes": 196758,
+    "sha256": "2946e0aa26851b10d03a32092ca3082f9e45f70c27174dcb0fcc364b3c4dc04c",
+    "chunks": [
+      {
+        "offset": 0,
+        "bytes": 12000,
+        "command_id": "5c8e45dd-3ca2-4dcb-ac13-b9a063cea982"
+      },
+      {
+        "offset": 12000,
+        "bytes": 12000,
+        "command_id": "bc17816c-ff04-477a-bdb4-0aeb4112b445"
+      },
+      {
+        "offset": 24000,
+        "bytes": 12000,
+        "command_id": "cf6b9356-b851-4722-9490-2ca67a75e861"
+      },
+      {
+        "offset": 36000,
+        "bytes": 12000,
+        "command_id": "055750a2-51a5-499a-b1a7-2fd238ed6edd"
+      },
+      {
+        "offset": 48000,
+        "bytes": 12000,
+        "command_id": "feadd748-9930-4b34-b1c1-3710c320dcae"
+      },
+      {
+        "offset": 60000,
+        "bytes": 12000,
+        "command_id": "1d3cfad7-c974-4594-851e-a258cc78d55e"
+      },
+      {
+        "offset": 72000,
+        "bytes": 12000,
+        "command_id": "8ca8d96c-ab55-4334-9185-e89c7ceed26d"
+      },
+      {
+        "offset": 84000,
+        "bytes": 12000,
+        "command_id": "a2f86e84-52de-480e-afbd-f6e3de845438"
+      },
+      {
+        "offset": 96000,
+        "bytes": 12000,
+        "command_id": "0bf481a8-0088-4dba-9a5f-13bae11a60b6"
+      },
+      {
+        "offset": 108000,
+        "bytes": 12000,
+        "command_id": "8e5b8c97-87e4-483d-ac69-5a45e2ebf6e5"
+      },
+      {
+        "offset": 120000,
+        "bytes": 12000,
+        "command_id": "9ad38def-73a8-4206-82f3-5be54a73650f"
+      },
+      {
+        "offset": 132000,
+        "bytes": 12000,
+        "command_id": "25512e6b-f30a-4acb-86bf-5ae8226a763b"
+      },
+      {
+        "offset": 144000,
+        "bytes": 12000,
+        "command_id": "0d6672ec-012e-4e7c-a112-3dc6f26bbe88"
+      },
+      {
+        "offset": 156000,
+        "bytes": 12000,
+        "command_id": "bb192ed8-4e26-453b-ab4c-2a2dafaf6880"
+      },
+      {
+        "offset": 168000,
+        "bytes": 12000,
+        "command_id": "96eee54e-374a-445a-b998-b56d21688756"
+      },
+      {
+        "offset": 180000,
+        "bytes": 12000,
+        "command_id": "f43b2763-8112-4c8e-a166-b55358c2b0ba"
+      },
+      {
+        "offset": 192000,
+        "bytes": 4758,
+        "command_id": "dc353db8-7ff2-46e8-83ec-a6aa4508e5ec"
+      }
+    ]
+  },
+  "collection_command_id": "f812799f-9fc4-4ab0-83ef-baa1e003d78d",
+  "base64_chunk_limit_bytes": 16000,
+  "raw_chunk_limit_bytes": 12000,
+  "archive_members": {
+    "status.json": {
+      "bytes": 3491,
+      "sha256": "f2dbd51c792a5bfe280a425129e44a673404b539770c588254c52e3e77877e6e"
+    },
+    "provenance.json": {
+      "bytes": 4524,
+      "sha256": "69dc64723089c828cdee62326347ce4e4573ea10a10c582f55c2a241e0bf0f11"
+    },
+    "synth.log": {
+      "bytes": 544,
+      "sha256": "9f04678354d1da2366edbf2f0495d0571967ffecf045e1c096cda19ae71d8e27"
+    },
+    "synth_preflight.log": {
+      "bytes": 3740,
+      "sha256": "fa1c2d6b791e26c7341333bc06618d88ded8624868659cad7cd48606b7f51c54"
+    },
+    "synth/manifest.json": {
+      "bytes": 3370,
+      "sha256": "9fb218ec4f7bf9536cfe60cff2d6f9f003f2fcc9d4025c88474100ed5fad4ee4"
+    },
+    "synth/console.log": {
+      "bytes": 3038666,
+      "sha256": "62b65c6422cf3989212090c6f790359579fcc5c627e9579accaef83c8cde3857"
+    },
+    "synth/vivado.log": {
+      "bytes": 3039068,
+      "sha256": "0cb93331959e6350c9cb4814fbb07ba09396fc3640bd6b1b2cd3c86082ef0d31"
+    },
+    "synth/vivado_version.txt": {
+      "bytes": 331,
+      "sha256": "2521e7d680ff26073152c1666270e075c62e9b4e09a3495bff76f6ef184ac269"
+    },
+    "pipeline-launcher-004.log": {
+      "bytes": 1446,
+      "sha256": "072f2b772161a84377cdfb10b09f3a3bcfd5f3e88b545c38199065af4316872d"
+    },
+    "collection_manifest.json": {
+      "bytes": 14520,
+      "sha256": "90e1f81c364a4be288f63a836f7f756792aa4343a6ab075e3e946ec2146ee377"
+    }
+  },
+  "supplemental_files": {
+    "apport_selected_summary_ssm.json": {
+      "local_source_path": "/private/tmp/scalesim-m8a-apport-result.json",
+      "bytes": 1547,
+      "sha256": "990caa8a6104c73e31477f8902ce5fda17fbcbcf6a8c91a94e43a0b6e6cbcfd0",
+      "command_id": "cf384691-f7a8-449a-bc28-befc0dc924ab"
+    },
+    "crash_diagnostics_ssm.json": {
+      "local_source_path": "/private/tmp/scalesim-m8a-crash-diagnostics-result.json",
+      "bytes": 4310,
+      "sha256": "1fe0e293fe5081d3723234c97ff8211bcf8efaad530d3ed44a019745caf10fcd",
+      "command_id": "82fe7558-3b9b-4bf6-aab4-33e848f53442"
+    },
+    "crash_details_ssm.json": {
+      "local_source_path": "/private/tmp/scalesim-m8a-crash-details-result.json",
+      "bytes": 12368,
+      "sha256": "73589d9e3f3e90553c70f41360847d379254d42bec397af576f35d553e435ad7",
+      "command_id": "1366c1f3-e86a-4f68-9529-8ae4038aeb90"
+    },
+    "collection_ssm.json": {
+      "local_source_path": "/private/tmp/scalesim-m8a-crash004-collection-result.json",
+      "bytes": 409,
+      "sha256": "e69127aacfc4ee3dcbec77fae6c0ab0ccd8c74ebfd13f00700d4308d3816f62a",
+      "command_id": "f812799f-9fc4-4ab0-83ef-baa1e003d78d"
+    }
+  },
+  "readme": {
+    "bytes": 2165,
+    "sha256": "6164e5b804243b2da6ee0baba42ee41c71d7148d06d74d3e0be07de32ea98dd9"
+  },
+  "raw_apport_downloaded": false,
+  "all_native_hashes_verified": true,
+  "scope": "Collection receipt; no successful synthesis or hardware claim"
+}

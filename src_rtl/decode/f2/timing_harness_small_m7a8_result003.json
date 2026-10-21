@@ -1,0 +1,299 @@
+{
+  "status": "both_small_physical_harness_runs_passed",
+  "source_revision": "003",
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "macs": 32
+  },
+  "runs": [
+    {
+      "compute_mhz": 50,
+      "status": "passed",
+      "created_utc": "2026-10-21T11:10:53.886597+00:00",
+      "finished_utc": "2026-10-21T11:15:00.999299+00:00",
+      "setup_slack_ns": 5.172,
+      "hold_slack_ns": 0.016,
+      "component_routed_timing_pass": true,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_50_run003",
+      "manifest_sha256": "477b27bcb1db06163e6aabe193667071b7c74dd8dc593a1280193e7ab857f5e1",
+      "audit_sha256": "3c92ac5cf0ceb86285d4a847f269d32c4d3874b68c73e5471de19c9d6a94c054",
+      "collection_manifest_sha256": "6357f11777b4361d9f4d128d62098ec9a576c51ef4e8bb23da0bd27f493acfb8",
+      "dsp_mapping_sha256": "00de795e2123a4f298838f4082fa301b4b13d588d4eef8ad4701d4704fe3505d",
+      "dsp_mapping": {
+        "primitive": "DSP48E2",
+        "count": 32,
+        "lane_identity_set_verified": true,
+        "areg_counts": {
+          "0": 4,
+          "1": 20,
+          "2": 8
+        },
+        "breg_counts": {
+          "0": 32,
+          "1": 0,
+          "2": 0
+        },
+        "creg": 0,
+        "mreg": 0,
+        "preg": 0
+      },
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627",
+        "src_rtl/decode/f2/harness/verification.json": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      },
+      "native_checkpoint_hashes": {
+        "post_phys_opt.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_phys_opt.dcp",
+          "bytes": 5608981,
+          "sha256": "7fc7a39bd0a152341a8e7c81ca1d660074feef406dd8d792fd33c9f1a8ab3de4",
+          "archived": false
+        },
+        "post_place.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_place.dcp",
+          "bytes": 5447875,
+          "sha256": "192cc20a510246e769206adb6e19e9dd0b10696a8d3046d5b33a2063eee2ce2f",
+          "archived": false
+        },
+        "post_route.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_route.dcp",
+          "bytes": 7088486,
+          "sha256": "c9ffd5947f0b4ab6abef66f658e9d9eddb917e2030f3da0890de3d852ec32613",
+          "archived": false
+        },
+        "post_synth.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-003/post_synth.dcp",
+          "bytes": 3244504,
+          "sha256": "70ece0c191a2710a4c722b32a52a46ba97bf87cd0271944e6b88c84f04adbb80",
+          "archived": false
+        }
+      },
+      "synthesis_resources": {
+        "CLB LUTs": {
+          "used": 7943.0,
+          "available": 1303680.0,
+          "percent": 0.6092752822778595
+        },
+        "CLB Registers": {
+          "used": 8471.0,
+          "available": 2607360.0,
+          "percent": 0.32488800932744233
+        },
+        "Block RAM Tile": {
+          "used": 0.0,
+          "available": 2016.0,
+          "percent": 0.0
+        },
+        "DSPs": {
+          "used": 32.0,
+          "available": 9024.0,
+          "percent": 0.3546099290780142
+        }
+      },
+      "native_audit_report_fields_reproduced_locally": true,
+      "local_audit_limitation": "DCP files remain remote; native presence, size and SHA256 are recorded in the collection manifest",
+      "metrics": {
+        "stage": "route",
+        "route_command_completed": "1",
+        "part": "xcvu47p-fsvh2892-2-e",
+        "clock_count": "1",
+        "clock_period_ns": "20.000",
+        "setup_path_count": "1",
+        "setup_slack_ns": "5.172",
+        "hold_path_count": "1",
+        "hold_slack_ns": "0.016",
+        "drc_errors": "0",
+        "drc_critical_warnings": "0",
+        "nets_UNROUTED": "0",
+        "nets_PARTIALLY_ROUTED": "0",
+        "nets_CONFLICTS": "0"
+      },
+      "timing_checks": {
+        "no_clock": 0,
+        "constant_clock": 0,
+        "pulse_width_clock": 0,
+        "unconstrained_internal_endpoints": 0,
+        "no_input_delay": 0,
+        "no_output_delay": 0,
+        "multiple_clock": 0,
+        "generated_clocks": 0,
+        "loops": 0,
+        "partial_input_delay": 0,
+        "partial_output_delay": 0,
+        "latch_loops": 0
+      },
+      "timing_summary_values": [
+        5.172,
+        0.0,
+        0.0,
+        19904.0,
+        0.016,
+        0.0,
+        0.0,
+        19904.0,
+        9.725,
+        0.0,
+        0.0,
+        8480.0
+      ],
+      "problems": []
+    },
+    {
+      "compute_mhz": 100,
+      "status": "passed",
+      "created_utc": "2026-10-21T11:10:53.956337+00:00",
+      "finished_utc": "2026-10-21T11:15:03.085013+00:00",
+      "setup_slack_ns": 0.449,
+      "hold_slack_ns": 0.02,
+      "component_routed_timing_pass": true,
+      "f2_shell_timing_closed": false,
+      "reports": "reports/timing_harness_small_100_run003",
+      "manifest_sha256": "2c28b2eb4ade41dfcdec1ee9583cc58e77573076443a1c5fcc1b59a8ad3fd05e",
+      "audit_sha256": "286b9ad7d53042c5e0b7f40c76784c5a02c287f8beb6f55563f2bfddf50e72a8",
+      "collection_manifest_sha256": "d28a7f02fc188a489b4f29b8171e9ba62b96864b7fe1ff6b905d64a2e8a1584f",
+      "dsp_mapping_sha256": "00de795e2123a4f298838f4082fa301b4b13d588d4eef8ad4701d4704fe3505d",
+      "dsp_mapping": {
+        "primitive": "DSP48E2",
+        "count": 32,
+        "lane_identity_set_verified": true,
+        "areg_counts": {
+          "0": 4,
+          "1": 20,
+          "2": 8
+        },
+        "breg_counts": {
+          "0": 32,
+          "1": 0,
+          "2": 0
+        },
+        "creg": 0,
+        "mreg": 0,
+        "preg": 0
+      },
+      "source_hashes": {
+        "src_rtl/decode/rtl/decode_os_core.sv": "5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed",
+        "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "2488724ed4bbccce107bfd36149c2416f02c0c8283a838a508dc1116b5e53edd",
+        "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+        "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+        "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+        "src_rtl/decode/f2/harness/test_timing_harness.py": "a54162b491af8f96c80b99f600f45804844c4af9cb56bb282849d6e94bd713d5",
+        "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+        "src_rtl/decode/verification.json": "4f2a9a8c6327199c9888a8e1c474f3d2691a334358f351fc11c61c02c8327627",
+        "src_rtl/decode/f2/harness/verification.json": "14e844c29a64249c9bc8704a165a1a8b80763c4a04903bb4f70bef5192532ef8",
+        "src_rtl/decode/f2/scripts/run_timing_harness.py": "eb69e2213920ad88d421d11469b4f2f6bf1814786b270df3d9cf35542d672c08",
+        "src_rtl/decode/f2/scripts/timing_harness.tcl": "4fea79f9c69e94937966958bc9093fbf0ea24710b2ecfee8c906f7c403e88f76",
+        "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+      },
+      "native_checkpoint_hashes": {
+        "post_phys_opt.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-003/post_phys_opt.dcp",
+          "bytes": 5605698,
+          "sha256": "de4c26351b82fd87da91764285367a3ab37d0062460781c9b70989038910c386",
+          "archived": false
+        },
+        "post_place.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-003/post_place.dcp",
+          "bytes": 5442404,
+          "sha256": "7293eced4bacc35a6f0386111df020211312b791a04bc7f154a43afdb2cee08d",
+          "archived": false
+        },
+        "post_route.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-003/post_route.dcp",
+          "bytes": 7072980,
+          "sha256": "00f2063703e7cfc3fd0d3cf4896ad8df9417fe4b78832bcba0c261e758e7c958",
+          "archived": false
+        },
+        "post_synth.dcp": {
+          "path": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-003/post_synth.dcp",
+          "bytes": 3243878,
+          "sha256": "c20dbdf850efca15d5ded611d28f6f18ae2c39667dd3cdcb333763babf65604e",
+          "archived": false
+        }
+      },
+      "synthesis_resources": {
+        "CLB LUTs": {
+          "used": 7943.0,
+          "available": 1303680.0,
+          "percent": 0.6092752822778595
+        },
+        "CLB Registers": {
+          "used": 8471.0,
+          "available": 2607360.0,
+          "percent": 0.32488800932744233
+        },
+        "Block RAM Tile": {
+          "used": 0.0,
+          "available": 2016.0,
+          "percent": 0.0
+        },
+        "DSPs": {
+          "used": 32.0,
+          "available": 9024.0,
+          "percent": 0.3546099290780142
+        }
+      },
+      "native_audit_report_fields_reproduced_locally": true,
+      "local_audit_limitation": "DCP files remain remote; native presence, size and SHA256 are recorded in the collection manifest",
+      "metrics": {
+        "stage": "route",
+        "route_command_completed": "1",
+        "part": "xcvu47p-fsvh2892-2-e",
+        "clock_count": "1",
+        "clock_period_ns": "10.000",
+        "setup_path_count": "1",
+        "setup_slack_ns": "0.449",
+        "hold_path_count": "1",
+        "hold_slack_ns": "0.020",
+        "drc_errors": "0",
+        "drc_critical_warnings": "0",
+        "nets_UNROUTED": "0",
+        "nets_PARTIALLY_ROUTED": "0",
+        "nets_CONFLICTS": "0"
+      },
+      "timing_checks": {
+        "no_clock": 0,
+        "constant_clock": 0,
+        "pulse_width_clock": 0,
+        "unconstrained_internal_endpoints": 0,
+        "no_input_delay": 0,
+        "no_output_delay": 0,
+        "multiple_clock": 0,
+        "generated_clocks": 0,
+        "loops": 0,
+        "partial_input_delay": 0,
+        "partial_output_delay": 0,
+        "latch_loops": 0
+      },
+      "timing_summary_values": [
+        0.449,
+        0.0,
+        0.0,
+        19904.0,
+        0.02,
+        0.0,
+        0.0,
+        19904.0,
+        4.725,
+        0.0,
+        0.0,
+        8480.0
+      ],
+      "problems": []
+    }
+  ],
+  "collection_archive_sha256": "c8fe5de1a839ed73dd7085543a39ed066fa62f44690826c468eac3877e070d18",
+  "full_4096mac_timing_closed": false,
+  "f2_shell_timing_closed": false,
+  "scope": "Small analysis-only registered physical DSP harness; no full4096MAC timing, AWS shell/HBM integration, bitstream or measured inference throughput claim."
+}

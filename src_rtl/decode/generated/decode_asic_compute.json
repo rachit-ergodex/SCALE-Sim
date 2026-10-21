@@ -1,0 +1,81 @@
+{
+  "top": "decode_asic_compute",
+  "scope": "parallel INT8 compute core",
+  "configuration": {
+    "core_hz": 1000000000,
+    "array_rows": 1,
+    "array_cols": 64,
+    "operand_staging_bytes": 2097152,
+    "vector_staging_bytes": 524288,
+    "vector_lanes": 256,
+    "sfu_lanes": 64,
+    "array_partitions": 32,
+    "max_inflight_requests": 2048,
+    "hbm_read_queue": 128,
+    "hbm_write_queue": 64,
+    "hbm_address_mapping": "pc_bankgroup",
+    "intermediate_sram_bytes": 131072,
+    "parallel_head_rows": true,
+    "stream_value_cache": true,
+    "dataflow": "os",
+    "balance_k_tiles": true,
+    "gemm_prefetch": true,
+    "fuse_value_cache": true
+  },
+  "physical_macs": 2048,
+  "core_register_bytes": {
+    "accumulators": 8192,
+    "activation_shift": 2048
+  },
+  "model_memory": {
+    "array": [
+      1,
+      64
+    ],
+    "processing_elements": 2048,
+    "independent_array_partitions": 32,
+    "output_tile_cols": 2048,
+    "dataflow": "OS",
+    "vector_lanes": 256,
+    "FP32_sfu_lanes": 64,
+    "sfu_issue_interval": 1,
+    "sfu_latency_cycles": {
+      "exp": 12,
+      "tanh": 12,
+      "sin_cos": 16,
+      "rsqrt": 16,
+      "reciprocal": 8
+    },
+    "descriptor_cycles": 4,
+    "operand_staging_bytes_each": 2097152,
+    "vector_staging_bytes": 524288,
+    "gemm_k_chunk": 1024,
+    "total_staging_bytes": 4849664,
+    "intermediate_sram_bytes": 131072,
+    "intermediate_sram_bytes_per_cycle": 1024,
+    "parallel_head_rows": true,
+    "stream_value_cache": true,
+    "stream_pipeline_register_bytes": 7168,
+    "operand_banks": "Two ping-pong B banks; A and INT32 partials share vector scratch.",
+    "sram_bytes_per_cycle": 1024,
+    "operand_bank_read_bytes_per_core_cycle": 2048,
+    "operand_bank_write_bytes_per_dram_tick": 512,
+    "balanced_k_tiles": true,
+    "max_inflight_memory_requests": 2048,
+    "max_admissions_per_dram_tick": 16,
+    "hbm_address_mapping": "pc_bankgroup",
+    "hbm_read_queue": 128,
+    "hbm_write_queue": 64,
+    "weight_layout": "Prepacked 2048-output-column tiles; tied embedding gathered from same storage.",
+    "scheduling": "Serial operators; callback-gated ping-pong DMA overlaps array computation; A and C partials retained in scratch.",
+    "traffic": "Two streaming passes fuse V dequant/max/requant and remove FP32/layout HBM intermediates; INT8 V output and scales still stored in HBM.",
+    "compute": "Native WS/OS demand counts with staged operands; vector passes, SRAM bandwidth and reduction/SFU latency are modeled."
+  },
+  "configuration_sha256": "0fd2a95759a2f13551dc23f7edefeee4e225693497f20b3a61f65ee4ac0f5f0d",
+  "required_integration": [
+    "Synchronous SRAM operand/partial-sum adapters and arbitration",
+    "HBM DMA with 2048 outstanding requests and 32 pseudochannel interfaces",
+    "FP32 vector/SFU and two-pass cache conversion with original rounding",
+    "Full operator sequencer, clock-domain crossing and FPGA/ASIC implementation"
+  ]
+}

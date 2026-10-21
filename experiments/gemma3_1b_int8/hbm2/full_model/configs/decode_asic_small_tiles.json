@@ -1,0 +1,21 @@
+{
+  "core_hz": 1000000000,
+  "array_rows": 1,
+  "array_cols": 64,
+  "operand_staging_bytes": 524288,
+  "vector_staging_bytes": 524288,
+  "vector_lanes": 128,
+  "sfu_lanes": 32,
+  "array_partitions": 32,
+  "max_inflight_requests": 2048,
+  "hbm_read_queue": 128,
+  "hbm_write_queue": 64,
+  "hbm_address_mapping": "pc_bankgroup",
+  "dataflow": "os",
+  "balance_k_tiles": true,
+  "gemm_prefetch": true,
+  "fuse_value_cache": true,
+  "intermediate_sram_bytes": 131072,
+  "parallel_head_rows": true,
+  "stream_value_cache": true
+}

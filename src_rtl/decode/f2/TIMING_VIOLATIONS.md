@@ -1,0 +1,239 @@
+# Timing violations and repair — 2026-10-22
+
+Both full 64×64 experiments finished on October 20 and **failed timing**.
+The 100 MHz run finished at 20:47 IST after 3 h 11 min; the 50 MHz run finished
+at 20:57 IST after 3 h 06 min. Neither produced a routed checkpoint or FPGA image.
+
+| Experiment | Last setup WNS | Last hold WHS | Result |
+|---|---:|---:|---|
+| [50 MHz](compute_50_m7a8_result.json) | +0.738 ns | −0.180 ns | Setup met in terminal router summary; hold failed |
+| [100 MHz](compute_100_m7a8_result.json) | −0.147 ns | −0.180 ns | Setup and hold failed |
+
+These are terminal router/physical-optimization log values. The previous flow
+aborted on `Route 35-39` before saving the final timing report and checkpoint.
+The retained placement reports and separately regenerated **post-physical-opt,
+pre-route** path reports identify the causes below, but their path-specific
+slack must not be confused with the terminal routing values above.
+
+Native split-path evidence is retained for [50 MHz](reports/compute_50_m7a8_run001/diagnostics_post_phys_opt/summary.tsv) and [100 MHz](reports/compute_100_m7a8_run002/diagnostics_post_phys_opt/summary.tsv), with full reports and checkpoint hashes beside each summary.
+
+## Where the failures occur
+
+### Row control to distant operand-address outputs: setup
+
+At 100 MHz placement, `core/m_reg_reg[10]` drove the `row_index < m_reg`
+comparison, then validity gating, then `b_address[28660]`. That output is
+partition 13, column 63, address bit 20. The path took 9.770 ns, of which
+**9.248 ns (94.7%) was routing**; it crossed SLR0 → SLR2 → SLR1 and included a
+control net with fanout 1,055. This is primarily global control distribution,
+not the INT8 multiply itself.
+
+After the old run's physical optimization, a similar path remained from an
+`m_reg[10]` replica to `b_address[10555]`, with only +0.008 ns estimated setup
+slack before routing. An internal path from an `m_reg[0]` replica to partition
+4, column 18's accumulator enable had +0.227 ns. These confirm that the row
+comparison affects both output addresses and arithmetic enables.
+
+**Implemented RTL repair:** `partition_used[p]` now stores current-wave row
+activity. It is initialized at command acceptance and updated only when the
+next row wave commits. The running output logic consumes that registered bit
+instead of repeating the row comparison. This removes the global `m_reg` bus
+from the combinational operand/result/valid cones without adding a cycle or
+changing the arithmetic/stall protocol. See [core RTL](../rtl/decode_os_core.sv).
+
+### Command boundary to command registers: hold
+
+The worst identified boundary path is `cmd_accumulate` →
+`core/accumulate_reg/D`, at **−0.180 ns** in both saved implementations.
+`cmd_k` to its command registers is another example. The input minimum delay
+is 0 ns, the standalone input connection contributes only about 11–12 ps,
+and the capture requirement includes 100 ps hold uncertainty plus register
+hold time and clock delay.
+
+The old compute-only top exposes **164,453 input bits and 407,812 output bits**
+without physical interface locations, and its clock has no actual clock buffer.
+Vivado reports unlocated OOC boundary subnets and an unset clock route. Therefore
+these boundary values are useful diagnostics but are not a valid integrated
+F2 clock/memory-interface timing result. Output counters also show −0.050 ns
+boundary hold, and the combinational reset-to-ready path shows −0.066 ns.
+
+**Implemented diagnostic repair:** the separate [physical timing harness](harness/README.md)
+adds a real BUFG and launch/capture registers around all core interface bits.
+Its narrow serial controls use falling-edge registers, creating real half-cycle
+external paths. The same 1/0 ns I/O budgets and 0.250/0.100 ns uncertainties apply.
+No false paths, multicycle paths, relaxed input minimums, or timing waivers are
+introduced. The harness is an analysis tool, not the production SRAM adapter.
+
+### A-data shift pipeline: internal hold
+
+There are also genuine short register-to-register paths in the saved
+pre-route netlist; the boundary issue does not explain every violation.
+
+| Saved checkpoint | Example path | Hold slack | Data delay |
+|---|---|---:|---:|
+| 50 MHz post-physical-opt | Partition 43, A pipeline stage 1 bit 7 → stage 2 bit 7 | −0.081 ns | 0.072 ns |
+| 100 MHz post-physical-opt | Partition 43, A pipeline stage 0 bit 2 → stage 1 bit 2 | −0.079 ns | 0.074 ns |
+
+The source statement is `a_pipe[p][c] <= a_pipe[p][c-1]`. Adjacent flip-flops
+have almost no intervening logic. Hold requires data to remain stable briefly
+**after the same clock edge**, so reducing 100 MHz to 50 MHz does not solve it.
+This needs physical delay/routing repair under a real clock tree, not another
+arithmetic pipeline stage that would change the computation schedule.
+
+The previous `AggressiveExplore` physical-optimization run skipped hold repair
+because its worst hold slack (−0.180 ns) did not cross that directive's −0.250 ns
+trigger. The new harness implementation flow requests `-aggressive_hold_fix`
+explicitly. Closure still requires measured nonnegative post-route hold slack.
+
+The failed 50 MHz router additionally warned about a tight setup/hold window at
+`c_data[102922]_INST_0/I4` (partition 50, column 16, result bit 10), and 213
+result-path pins contributing to hold-repair congestion. These are warnings,
+not a recovered final critical-path report; the old flow did not save that
+failed routed design. Future route failures now preserve that evidence.
+
+## First registered-boundary physical results
+
+The initial 4×8 / 32-MAC harness experiment produced these native audited results:
+
+| Clock | Setup WNS | Hold WHS | Result |
+|---|---:|---:|---|
+| 50 MHz | +5.189 ns | +0.014 ns | Routed component audit passed |
+| 100 MHz | −0.467 ns | +0.018 ns | One serial-output setup endpoint failed; hold passed |
+
+[The combined result record](timing_harness_small_m7a8_result001.json) links the
+native reports and source hashes. These are small component results, not
+full-array or F2 shell closure.
+
+The sole 100 MHz failure was `scan_out_reg/C` → external `scan_out`, in the
+analysis harness. Falling-edge launch gave 5 ns before the next rising-edge
+external reference, but 3.903 ns of clock insertion, 0.079 ns clock-to-Q,
+1 ns output budget and 0.485 ns reported setup uncertainty required 5.467 ns.
+The next internal setup path passed by +0.296 ns. The serial output now launches
+on the rising edge and is read after that edge, providing a real full-cycle
+output path. Inputs still sample on the falling edge. This is a hardware and
+protocol change, with unchanged timing constraints and unchanged compute RTL.
+Eight updated harness tests and all 39 flow/audit tests pass. Both clock targets
+subsequently **passed** on this exact corrected harness source:
+
+| Corrected harness | Setup WNS | Hold WHS |
+|---|---:|---:|
+| 100 MHz | +0.715 ns | +0.017 ns |
+| 50 MHz | +5.284 ns | +0.019 ns |
+
+Both have zero setup/hold/pulse-width failing endpoints, DRC errors or critical
+warnings, coverage gaps, and unrouted/partial/conflicting nets. Both exited
+successfully and retained routed checkpoints. [Final small-run evidence](timing_harness_small_m7a8_result002.json) binds the native reports and exact source. These results establish the 32-MAC harness only.
+
+## F2 DSP mapping to reduce routing pressure
+
+The earlier full-array implementation used zero DSP blocks and over a million
+LUTs. The MAC expression now exposes a separate 32-bit sum for each lane before
+applying the unchanged valid mask. The F2 harness flow defines
+`SCALESIM_F2_USE_DSP`, enabling `use_dsp=yes` on that lane sum. Default/ASIC
+compilation retains the same arithmetic without the FPGA mapping attribute.
+
+In a controlled 4×8 synthesis comparison, this changed **0 DSPs / 10,270 LUTs /
+8,692 FFs** to **32 DSP48E2s / 7,943 LUTs / 8,471 FFs**: one DSP per lane and
+22.7% fewer LUTs. Both sides used the same earlier source-001 harness, so this
+is a mapping/area comparison, not a routed result for the corrected harness.
+[Native mapping evidence](reports/dsp_mapping_probe_run003/) records the source,
+tool, scripts and reports. Full-array savings and fit must be measured.
+
+The flow now rejects missing, extra, duplicate or unrelated DSPs by checking
+the exact partition/column identity set. It records input-register absorption
+and requires CREG/MREG/PREG=0. These properties do not by themselves prove cycle
+behavior: the actual synthesized netlist must also pass comparison using
+Vivado's installed UNISIM models. That comparison **passed**: all 3,496
+observable bits matched before and after each checked edge, with 221,934 vector
+comparisons over 110,991 ticks, 520 legal commands, six invalid commands, four
+mid-command resets and 27,727 stalled cycles, including K=8192 corners.
+
+The first direct-module test exposed 20 address-bit aliases moved into the
+surrounding harness by synthesis. The observation wrapper now reconstructs
+all 3,496 output bits from the actual synthesized capture muxes and registers;
+no comparisons are masked. The original failed extraction attempt, independent
+connectivity proof and successful vendor-model attempt are retained together.
+The compute source and synthesized netlist did not change between attempts.
+Fresh DSP-mapped 4×8 physical runs also **passed**:
+
+| DSP harness | Setup WNS | Hold WHS |
+|---|---:|---:|
+| 100 MHz | +0.449 ns | +0.020 ns |
+| 50 MHz | +5.172 ns | +0.016 ns |
+
+Both terminal audits have zero timing, routing, coverage and DRC failures.
+[Source-bound DSP physical evidence](timing_harness_small_m7a8_result003.json)
+retains the exact DSP mapping, source, native reports and checkpoint hashes.
+The earlier LUT-mapped passes are preserved separately.
+
+Full 64×64 synthesis at 100 MHz was launched on the m7a.8xlarge at 16:46 IST,
+with eight Vivado threads and a 100 GiB memory limit. The instance was
+**terminated at 19:05 IST on October 21**. The last retained observation at
+16:47 IST still showed synthesis running; no final resource-gate report or
+full-size checkpoint was collected. Completion is therefore **unknown**, and
+full-size P&R has not been launched by this flow. The
+[host lifecycle observation](timing_harness_full_m7a8_interruption003.json)
+supersedes the running status in the [launch record](timing_harness_full_m7a8_run003.json).
+A matching synthesis checkpoint and passing resource/DSP checks must be recovered
+or regenerated before P&R.
+
+The authorized M8a run004 started at **21:46 IST on October 21**, then Vivado
+crashed with **SIGSEGV / exit 139 at 22:56:54 IST**. The supervisor recorded
+failure at 23:04:17 IST and correctly stopped before the resource gate or P&R.
+The final log section is preliminary DSP inference after cross-boundary/area
+optimization; it is not final lane mapping or a resource report. No synthesis
+checkpoint exists. Peak resident memory was 53.5 GiB against a 100 GiB cap,
+with 218G free disk afterward and no observed OOM event. The crash report has no
+backtrace and shows only a 136 KiB main stack, so stack exhaustion is unproven.
+[Failed run and exact native evidence](timing_harness_full_m8a8_result004.json).
+
+Fresh **run005 started at 00:00 IST on October 22** on the same `m8a.8xlarge`.
+Only runtime limits changed: the stack soft limit increased from 8 to 256 MiB,
+and the core-dump size limit was raised to unlimited for diagnosis. Both values
+were read back from the actual Vivado process. This is a recovery experiment,
+not a confirmed root-cause fix. Source, constraints, tool version, eight threads
+and the resource gates are unchanged; the existing numerical verification still
+binds the exact RTL. Synthesis has started. The sequential service will start
+100 MHz P&R only after a fresh matching checkpoint, exact 4,096-DSP lane mapping
+and 90% resource checks pass. It stops on any failure. Both runs are retained on
+the encrypted build disk. The previous ETA no longer applies.
+[Retry launch record](timing_harness_full_m8a8_run005.json).
+
+## Verification and remaining physical work
+
+The complete canonical functional suite passed again on the row-control and
+per-lane arithmetic source in 5 min 22 s. It includes nine cocotb tests, 24 Switchboard GEMMs, seven synthesis checks,
+HBM/CDC and four-state checks, and 14 production commands checking **29,584 exact
+integer outputs**. Added regression cases stall before and after partial-row
+wave boundaries and check inactive outputs. A structural test confirms `m_reg`
+no longer reaches the eight running operand/result/valid buses combinationally.
+The previous RTL failed that structural check on all eight buses.
+
+[Core verification](../verification.json) binds core SHA256
+`5083d843fcd001d50044de27650489e1092f1ab09eb081516f83359c79d91aed`.
+The earlier LUT-mapped small results bind their own source hashes; the DSP
+run003 results bind this core revision.
+The [harness verification](harness/verification.json) passed all eight tests,
+including every-bit mapping and edge/commit/capture behavior.
+
+The corrected small harness passed at both clocks, including the DSP revision.
+The interrupted M7a synthesis result is unknown; M8a run004 crashed, and the
+separate runtime retry005 is running. Resource headroom still needs verified
+evidence before full P&R: this analysis harness adds 736,718 wide flip-flops and hundreds
+of thousands of output multiplexers. A small passing experiment is not proof
+that all 4,096 MACs fit or close timing. The eventual production design still
+needs banked SRAM adapters, legal AWS CL-region fit, HBM/shell integration and
+full-system timing verification.
+
+The retarget flow now preserves `failed_route.dcp`, the original route error,
+setup/hold path reports, route/coverage/DRC/utilization reports and metrics after
+routing fails. Its auditor refuses a pass whenever route failure is recorded,
+even if copied reports or a checkpoint otherwise look positive. This prevents
+future loss of the exact failing physical paths.
+
+**Current claim:** the row-control RTL repair and functional verification are
+complete. Small routed setup and hold timing now pass at both frequencies with DSPs.
+Full-size synthesis is being retried on M8a after a Vivado process crash,
+with automatic 100 MHz P&R gated on its resource result. Full-size fit and timing
+remain unverified; P&R has not started at the recorded observation. No new inference TPS or ready-to-load F2
+image is claimed.

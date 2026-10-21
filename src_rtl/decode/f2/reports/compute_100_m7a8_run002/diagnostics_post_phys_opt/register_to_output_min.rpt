@@ -1,0 +1,2368 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Wed Oct 21 10:15:47 2026
+| Host              : ip-172-31-42-250 running 64-bit Ubuntu 24.04.1 LTS
+| Command           : report_timing -delay_type min -from [all_registers] -to [all_outputs] -max_paths 50 -nworst 1 -path_type full_clock_expanded -file ./register_to_output_min.rpt
+| Design            : decode_f2_compute
+| Device            : xcvu47p-fsvh2892
+| Speed File        : -2  PRODUCTION 1.30 05-01-2022
+| Design State      : Physopt postPlace
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.050ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[59]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[59]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.037ns  (logic 0.037ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X104Y486       FDRE                                         r  core/logical_cycles_reg[59]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X104Y486       FDRE (Prop_FFF_SLICEM_C_Q)
+                                                      0.037     0.050 r  core/logical_cycles_reg[59]/Q
+                         net (fo=1, unset)            0.000     0.050    logical_cycles[59]
+                                                                      r  logical_cycles[59] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.050    
+  -------------------------------------------------------------------
+                         slack                                 -0.050    
+
+Slack (VIOLATED) :        -0.050ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[5]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[5]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.037ns  (logic 0.037ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y482       FDRE                                         r  core/logical_cycles_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y482       FDRE (Prop_FFF_SLICEM_C_Q)
+                                                      0.037     0.050 r  core/logical_cycles_reg[5]/Q
+                         net (fo=1, unset)            0.000     0.050    logical_cycles[5]
+                                                                      r  logical_cycles[5] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.050    
+  -------------------------------------------------------------------
+                         slack                                 -0.050    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/busy_reg/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            busy
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X91Y211        FDRE                                         r  core/busy_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X91Y211        FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/busy_reg/Q
+                         net (fo=0)                   0.000     0.051    busy
+                                                                      r  busy (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[13]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[13]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y483       FDRE                                         r  core/logical_cycles_reg[13]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y483       FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[13]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[13]
+                                                                      r  logical_cycles[13] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[21]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[21]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y483       FDRE                                         r  core/logical_cycles_reg[21]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y483       FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[21]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[21]
+                                                                      r  logical_cycles[21] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[29]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[29]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y485       FDRE                                         r  core/logical_cycles_reg[29]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y485       FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[29]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[29]
+                                                                      r  logical_cycles[29] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[37]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[37]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X107Y486       FDRE                                         r  core/logical_cycles_reg[37]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X107Y486       FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[37]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[37]
+                                                                      r  logical_cycles[37] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[3]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y481       FDRE                                         r  core/logical_cycles_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y481       FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[3]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[3]
+                                                                      r  logical_cycles[3] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[41]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[41]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X107Y486       FDRE                                         r  core/logical_cycles_reg[41]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X107Y486       FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[41]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[41]
+                                                                      r  logical_cycles[41] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[43]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[43]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y485       FDRE                                         r  core/logical_cycles_reg[43]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y485       FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[43]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[43]
+                                                                      r  logical_cycles[43] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[47]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[47]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X104Y485       FDRE                                         r  core/logical_cycles_reg[47]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X104Y485       FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[47]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[47]
+                                                                      r  logical_cycles[47] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[51]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[51]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X104Y485       FDRE                                         r  core/logical_cycles_reg[51]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X104Y485       FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[51]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[51]
+                                                                      r  logical_cycles[51] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[53]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[53]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X104Y485       FDRE                                         r  core/logical_cycles_reg[53]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X104Y485       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[53]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[53]
+                                                                      r  logical_cycles[53] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[55]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[55]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y485       FDRE                                         r  core/logical_cycles_reg[55]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y485       FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[55]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[55]
+                                                                      r  logical_cycles[55] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[61]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[61]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X104Y486       FDRE                                         r  core/logical_cycles_reg[61]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X104Y486       FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[61]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[61]
+                                                                      r  logical_cycles[61] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/logical_cycles_reg[7]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            logical_cycles[7]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X106Y482       FDRE                                         r  core/logical_cycles_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X106Y482       FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/logical_cycles_reg[7]/Q
+                         net (fo=1, unset)            0.000     0.051    logical_cycles[7]
+                                                                      r  logical_cycles[7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/stall_cycles_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            stall_cycles[2]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.038ns  (logic 0.038ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.013ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.013     0.013    core/clk
+    SLICE_X179Y8         FDRE                                         r  core/stall_cycles_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X179Y8         FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.038     0.051 r  core/stall_cycles_reg[2]/Q
+                         net (fo=1, unset)            0.000     0.051    stall_cycles[2]
+                                                                      r  stall_cycles[2] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/done_reg/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            done
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X140Y227       FDRE                                         r  core/done_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X140Y227       FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/done_reg/Q
+                         net (fo=0)                   0.000     0.051    done
+                                                                      r  done (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[0]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y52         FDRE                                         r  core/elapsed_cycles_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y52         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[0]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[0]
+                                                                      r  elapsed_cycles[0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[10]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[10]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y53         FDRE                                         r  core/elapsed_cycles_reg[10]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y53         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[10]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[10]
+                                                                      r  elapsed_cycles[10] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[11]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[11]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y53         FDRE                                         r  core/elapsed_cycles_reg[11]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y53         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[11]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[11]
+                                                                      r  elapsed_cycles[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[16]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[16]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y54         FDRE                                         r  core/elapsed_cycles_reg[16]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y54         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[16]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[16]
+                                                                      r  elapsed_cycles[16] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[17]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[17]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y54         FDRE                                         r  core/elapsed_cycles_reg[17]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y54         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[17]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[17]
+                                                                      r  elapsed_cycles[17] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[18]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[18]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y54         FDRE                                         r  core/elapsed_cycles_reg[18]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y54         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[18]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[18]
+                                                                      r  elapsed_cycles[18] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[19]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[19]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y54         FDRE                                         r  core/elapsed_cycles_reg[19]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y54         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[19]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[19]
+                                                                      r  elapsed_cycles[19] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[1]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y52         FDRE                                         r  core/elapsed_cycles_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y52         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[1]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[1]
+                                                                      r  elapsed_cycles[1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[24]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[24]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y55         FDRE                                         r  core/elapsed_cycles_reg[24]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y55         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[24]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[24]
+                                                                      r  elapsed_cycles[24] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[25]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[25]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y55         FDRE                                         r  core/elapsed_cycles_reg[25]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y55         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[25]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[25]
+                                                                      r  elapsed_cycles[25] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[26]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[26]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y55         FDRE                                         r  core/elapsed_cycles_reg[26]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y55         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[26]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[26]
+                                                                      r  elapsed_cycles[26] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[27]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[27]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y55         FDRE                                         r  core/elapsed_cycles_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y55         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[27]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[27]
+                                                                      r  elapsed_cycles[27] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[2]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y52         FDRE                                         r  core/elapsed_cycles_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y52         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[2]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[2]
+                                                                      r  elapsed_cycles[2] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[32]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[32]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y56         FDRE                                         r  core/elapsed_cycles_reg[32]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y56         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[32]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[32]
+                                                                      r  elapsed_cycles[32] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[33]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[33]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y56         FDRE                                         r  core/elapsed_cycles_reg[33]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y56         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[33]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[33]
+                                                                      r  elapsed_cycles[33] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[34]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[34]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y56         FDRE                                         r  core/elapsed_cycles_reg[34]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y56         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[34]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[34]
+                                                                      r  elapsed_cycles[34] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[35]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[35]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y56         FDRE                                         r  core/elapsed_cycles_reg[35]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y56         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[35]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[35]
+                                                                      r  elapsed_cycles[35] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[3]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y52         FDRE                                         r  core/elapsed_cycles_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y52         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[3]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[3]
+                                                                      r  elapsed_cycles[3] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[40]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[40]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y57         FDRE                                         r  core/elapsed_cycles_reg[40]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y57         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[40]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[40]
+                                                                      r  elapsed_cycles[40] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[41]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[41]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y57         FDRE                                         r  core/elapsed_cycles_reg[41]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y57         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[41]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[41]
+                                                                      r  elapsed_cycles[41] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[42]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[42]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y57         FDRE                                         r  core/elapsed_cycles_reg[42]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y57         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[42]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[42]
+                                                                      r  elapsed_cycles[42] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[43]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[43]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y57         FDRE                                         r  core/elapsed_cycles_reg[43]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y57         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[43]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[43]
+                                                                      r  elapsed_cycles[43] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[48]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[48]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y58         FDRE                                         r  core/elapsed_cycles_reg[48]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y58         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[48]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[48]
+                                                                      r  elapsed_cycles[48] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[49]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[49]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y58         FDRE                                         r  core/elapsed_cycles_reg[49]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y58         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[49]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[49]
+                                                                      r  elapsed_cycles[49] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[50]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[50]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y58         FDRE                                         r  core/elapsed_cycles_reg[50]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y58         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[50]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[50]
+                                                                      r  elapsed_cycles[50] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[51]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[51]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y58         FDRE                                         r  core/elapsed_cycles_reg[51]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y58         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[51]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[51]
+                                                                      r  elapsed_cycles[51] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[56]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[56]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y59         FDRE                                         r  core/elapsed_cycles_reg[56]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y59         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[56]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[56]
+                                                                      r  elapsed_cycles[56] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[57]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[57]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y59         FDRE                                         r  core/elapsed_cycles_reg[57]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y59         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[57]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[57]
+                                                                      r  elapsed_cycles[57] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[58]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[58]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y59         FDRE                                         r  core/elapsed_cycles_reg[58]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y59         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[58]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[58]
+                                                                      r  elapsed_cycles[58] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[59]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[59]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y59         FDRE                                         r  core/elapsed_cycles_reg[59]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y59         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[59]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[59]
+                                                                      r  elapsed_cycles[59] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[8]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y53         FDRE                                         r  core/elapsed_cycles_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y53         FDRE (Prop_AFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[8]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[8]
+                                                                      r  elapsed_cycles[8] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+Slack (VIOLATED) :        -0.049ns  (arrival time - required time)
+  Source:                 core/elapsed_cycles_reg[9]/C
+                            (rising edge-triggered cell FDRE clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            elapsed_cycles[9]
+                            (output port clocked by decode_core  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             decode_core
+  Path Type:              Min at Fast Process Corner
+  Requirement:            0.000ns  (decode_core rise@0.000ns - decode_core rise@0.000ns)
+  Data Path Delay:        0.039ns  (logic 0.039ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           0  
+  Output Delay:           0.000ns
+  Clock Path Skew:        -0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.000ns
+    Source Clock Delay      (SCD):    0.012ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.100ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + UU
+    Total System Jitter     (TSJ):    0.000ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    User Uncertainty         (UU):    0.100ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=175795, unset)       0.012     0.012    core/clk
+    SLICE_X90Y53         FDRE                                         r  core/elapsed_cycles_reg[9]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X90Y53         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.039     0.051 r  core/elapsed_cycles_reg[9]/Q
+                         net (fo=1, unset)            0.000     0.051    elapsed_cycles[9]
+                                                                      r  elapsed_cycles[9] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock decode_core rise edge)
+                                                      0.000     0.000 r  
+                         clock pessimism              0.000     0.000    
+                         clock uncertainty            0.100     0.100    
+                         output delay                -0.000     0.100    
+  -------------------------------------------------------------------
+                         required time                         -0.100    
+                         arrival time                           0.051    
+  -------------------------------------------------------------------
+                         slack                                 -0.049    
+
+
+
+

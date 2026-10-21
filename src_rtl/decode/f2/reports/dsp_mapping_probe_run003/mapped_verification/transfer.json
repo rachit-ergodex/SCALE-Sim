@@ -1,0 +1,608 @@
+{
+  "archive": "/private/tmp/scalesim-mapped-equivalence-download/mapped-equivalence-evidence-002.tar.gz",
+  "remote_archive": "/home/ubuntu/rachit/scalesim-harness-20261021/dsp-probe/mapped-equivalence-evidence-002.tar.gz",
+  "sha256": "9801d6f1b525be744ccecc62b21e97b4dacea601ec3eccc00e966ffdb28434d0",
+  "bytes": 1071581,
+  "chunks": [
+    {
+      "chunk": 0,
+      "command": "94d8966c-51fb-4afb-b223-754e17af4342",
+      "bytes": 9000
+    },
+    {
+      "chunk": 1,
+      "command": "4fe2ac6f-050e-493f-96f8-89592b0d5774",
+      "bytes": 9000
+    },
+    {
+      "chunk": 2,
+      "command": "2b5089f4-76ca-4de2-a31c-2b8dd3d22574",
+      "bytes": 9000
+    },
+    {
+      "chunk": 3,
+      "command": "b34a76fe-5691-4c49-82bc-730016eb7133",
+      "bytes": 9000
+    },
+    {
+      "chunk": 4,
+      "command": "b2ebc927-0469-40fa-a8ed-e73cbd81ac4b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 5,
+      "command": "7ca8aa84-0f6b-4240-977b-29b8e26c90c4",
+      "bytes": 9000
+    },
+    {
+      "chunk": 6,
+      "command": "9a9e2731-39b4-4ed7-8218-5e7cd29c20cd",
+      "bytes": 9000
+    },
+    {
+      "chunk": 7,
+      "command": "8fd536ea-9116-4786-8149-0f6a5edd4160",
+      "bytes": 9000
+    },
+    {
+      "chunk": 8,
+      "command": "cf4062b4-1270-4518-a1cd-f35ef2670c9a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 9,
+      "command": "d8e69e77-9348-417a-ae82-ec8525613118",
+      "bytes": 9000
+    },
+    {
+      "chunk": 10,
+      "command": "1489fc3e-88ce-49c0-8b2c-54e8e2136efa",
+      "bytes": 9000
+    },
+    {
+      "chunk": 11,
+      "command": "a7dfe472-c21c-4859-91a4-4a47a635131c",
+      "bytes": 9000
+    },
+    {
+      "chunk": 12,
+      "command": "21696270-3948-4b9b-ac23-18547a3290b1",
+      "bytes": 9000
+    },
+    {
+      "chunk": 13,
+      "command": "2e509a8d-3f06-450a-acc0-6400913420d6",
+      "bytes": 9000
+    },
+    {
+      "chunk": 14,
+      "command": "6c8d1893-447e-4187-9fff-9f21f305b219",
+      "bytes": 9000
+    },
+    {
+      "chunk": 15,
+      "command": "91f6a8fd-16ff-44ec-9645-662eb77d8962",
+      "bytes": 9000
+    },
+    {
+      "chunk": 16,
+      "command": "e1e4d13c-f33a-45b6-bf2a-6292653fdb05",
+      "bytes": 9000
+    },
+    {
+      "chunk": 17,
+      "command": "9fcd80a9-af0f-4e8d-87eb-02f01b36dee6",
+      "bytes": 9000
+    },
+    {
+      "chunk": 18,
+      "command": "611e4113-6887-45fd-83b3-5e3e14ea4bdc",
+      "bytes": 9000
+    },
+    {
+      "chunk": 19,
+      "command": "f829cdba-f8e2-4d71-a86f-93622775f538",
+      "bytes": 9000
+    },
+    {
+      "chunk": 20,
+      "command": "ce9134c1-7fb6-4340-9122-0d8627b5f23e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 21,
+      "command": "573f1d81-603a-4d04-9a51-84c1a58a2d2e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 22,
+      "command": "57595594-838e-46c4-a6fb-d63affa701f2",
+      "bytes": 9000
+    },
+    {
+      "chunk": 23,
+      "command": "a474cc0d-8fdd-4874-89c9-56dc38983101",
+      "bytes": 9000
+    },
+    {
+      "chunk": 24,
+      "command": "73cc6481-6aea-4e24-8174-8db0aa6a4d33",
+      "bytes": 9000
+    },
+    {
+      "chunk": 25,
+      "command": "f3a08f3f-0baf-453f-9e83-af53740682d3",
+      "bytes": 9000
+    },
+    {
+      "chunk": 26,
+      "command": "f2b09dd5-28de-426a-b188-3199d49038f6",
+      "bytes": 9000
+    },
+    {
+      "chunk": 27,
+      "command": "6a4d8901-2231-48e7-abd8-8c32e39d4306",
+      "bytes": 9000
+    },
+    {
+      "chunk": 28,
+      "command": "65d94c84-e99d-4341-977c-74042d97e8a9",
+      "bytes": 9000
+    },
+    {
+      "chunk": 29,
+      "command": "c5a68873-cce4-4136-adbe-a3693a0cf809",
+      "bytes": 9000
+    },
+    {
+      "chunk": 30,
+      "command": "ed0bee7c-9b05-4a69-bd76-059d0b55d329",
+      "bytes": 9000
+    },
+    {
+      "chunk": 31,
+      "command": "4b004f4e-a2e9-4bda-8fce-d2fe160c788d",
+      "bytes": 9000
+    },
+    {
+      "chunk": 32,
+      "command": "af78ec47-aa69-4dc2-ab8d-bc5a43ef14c5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 33,
+      "command": "5102f866-b319-4620-aa52-d0ecc55028f4",
+      "bytes": 9000
+    },
+    {
+      "chunk": 34,
+      "command": "74ae4ef3-7278-4acc-96bf-485f549462a5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 35,
+      "command": "5b08819d-9025-4c0f-86da-4a7ac412eaa2",
+      "bytes": 9000
+    },
+    {
+      "chunk": 36,
+      "command": "4fdc3d6b-e75f-4ca5-bc89-c5997b3645bf",
+      "bytes": 9000
+    },
+    {
+      "chunk": 37,
+      "command": "93f36432-e197-4c06-b6f6-2297061fa040",
+      "bytes": 9000
+    },
+    {
+      "chunk": 38,
+      "command": "384c73ca-c9dd-4529-9db6-4a3b60f3585e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 39,
+      "command": "cbd44c69-6264-4682-ac54-cbcee9ef5384",
+      "bytes": 9000
+    },
+    {
+      "chunk": 40,
+      "command": "c1176f1e-8141-4dc6-ac0c-44d9c0d87d9c",
+      "bytes": 9000
+    },
+    {
+      "chunk": 41,
+      "command": "3d03d781-a276-4728-9c79-cc6704bb974f",
+      "bytes": 9000
+    },
+    {
+      "chunk": 42,
+      "command": "15e29514-1d56-45e3-afa0-bd5da098bc7e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 43,
+      "command": "86df4365-db46-4ca0-b304-478da048d1a5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 44,
+      "command": "b777178e-7c8c-462f-8f5e-e3a34af27392",
+      "bytes": 9000
+    },
+    {
+      "chunk": 45,
+      "command": "fe8f7faf-c44d-428b-aa12-bdf9ea9284d2",
+      "bytes": 9000
+    },
+    {
+      "chunk": 46,
+      "command": "417a2280-c189-43df-9d43-979cc3def467",
+      "bytes": 9000
+    },
+    {
+      "chunk": 47,
+      "command": "52fec2c6-342b-479a-a3cc-574c3d2c2821",
+      "bytes": 9000
+    },
+    {
+      "chunk": 48,
+      "command": "82ebd5cc-6858-4f90-9839-2aac689f3975",
+      "bytes": 9000
+    },
+    {
+      "chunk": 49,
+      "command": "7dfaba97-2df4-457d-b1fd-89dc936801aa",
+      "bytes": 9000
+    },
+    {
+      "chunk": 50,
+      "command": "c718b830-fd1c-43cc-9c8b-2de49ca325f6",
+      "bytes": 9000
+    },
+    {
+      "chunk": 51,
+      "command": "86abca85-2ca1-4487-8abc-14b5e396e4e5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 52,
+      "command": "b0bb9cba-94cc-4e89-809c-e46e2842866c",
+      "bytes": 9000
+    },
+    {
+      "chunk": 53,
+      "command": "61290782-64a0-435e-9f5a-e625056d945b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 54,
+      "command": "38dfa62a-bc02-452b-8a21-6e75924d379a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 55,
+      "command": "11777b5e-453d-4474-a5e2-9526b8af5a49",
+      "bytes": 9000
+    },
+    {
+      "chunk": 56,
+      "command": "6ac6370d-5e5a-4bee-b35f-208bbe51f819",
+      "bytes": 9000
+    },
+    {
+      "chunk": 57,
+      "command": "584bbb78-bebc-4dd3-b231-afd193cd729a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 58,
+      "command": "3276545f-3a4f-410c-9275-ffd8a84acbc4",
+      "bytes": 9000
+    },
+    {
+      "chunk": 59,
+      "command": "d50f6339-f226-43a6-b583-eeb72885dbd6",
+      "bytes": 9000
+    },
+    {
+      "chunk": 60,
+      "command": "3b8d37f2-d53e-4f88-8de1-542749b3ae2a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 61,
+      "command": "76b9562b-7506-47b5-a62c-603dd337dd85",
+      "bytes": 9000
+    },
+    {
+      "chunk": 62,
+      "command": "10b5edfe-bb2f-47f0-8d77-55118c9f2391",
+      "bytes": 9000
+    },
+    {
+      "chunk": 63,
+      "command": "7e958aea-0eb5-46fa-bb40-47927b42932b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 64,
+      "command": "f62684b6-d848-4b38-a353-db7f68571c73",
+      "bytes": 9000
+    },
+    {
+      "chunk": 65,
+      "command": "e776056a-7616-4681-ad95-4674b968195f",
+      "bytes": 9000
+    },
+    {
+      "chunk": 66,
+      "command": "053756c6-5674-4b82-80ff-bd66ad5cba6e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 67,
+      "command": "3e7008c2-4e7a-4ef2-b312-d7cb92566c07",
+      "bytes": 9000
+    },
+    {
+      "chunk": 68,
+      "command": "d060b43c-ca4a-4fd9-86dd-6d7ffaf33964",
+      "bytes": 9000
+    },
+    {
+      "chunk": 69,
+      "command": "40ac8cd6-9494-41cf-930b-aac4478dc40d",
+      "bytes": 9000
+    },
+    {
+      "chunk": 70,
+      "command": "fb53e146-de9f-4a15-85d4-645dea079a50",
+      "bytes": 9000
+    },
+    {
+      "chunk": 71,
+      "command": "808fdfff-f92d-4c19-86b1-ffbe6d7978b9",
+      "bytes": 9000
+    },
+    {
+      "chunk": 72,
+      "command": "176ca366-d5b0-4f66-a12d-e7e56eac971b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 73,
+      "command": "aefb48d4-23f2-4541-8625-ec13e0d209dd",
+      "bytes": 9000
+    },
+    {
+      "chunk": 74,
+      "command": "682bc483-8942-49b4-9c03-07fba145e71c",
+      "bytes": 9000
+    },
+    {
+      "chunk": 75,
+      "command": "7228e67a-afdc-4391-8a04-3c81842c7f3d",
+      "bytes": 9000
+    },
+    {
+      "chunk": 76,
+      "command": "c60cf26d-f20f-4a27-90c2-159e7162e020",
+      "bytes": 9000
+    },
+    {
+      "chunk": 77,
+      "command": "b2e57ff4-bf93-4708-b007-91a0c089aabc",
+      "bytes": 9000
+    },
+    {
+      "chunk": 78,
+      "command": "956bdc21-5b29-46c9-bc1e-7f02a6609485",
+      "bytes": 9000
+    },
+    {
+      "chunk": 79,
+      "command": "937aa97f-d2c3-45d1-b7df-1bac202233c5",
+      "bytes": 9000
+    },
+    {
+      "chunk": 80,
+      "command": "acb8f01d-0baa-4cba-9f63-65050f778e88",
+      "bytes": 9000
+    },
+    {
+      "chunk": 81,
+      "command": "9193df1f-0d9e-4bf7-9368-0dbb8d7fc2ab",
+      "bytes": 9000
+    },
+    {
+      "chunk": 82,
+      "command": "b23cda00-ad15-4f2f-9862-0d8ab59d56fc",
+      "bytes": 9000
+    },
+    {
+      "chunk": 83,
+      "command": "96b206a8-7ddf-48af-aeb3-6e32dbd9e3f3",
+      "bytes": 9000
+    },
+    {
+      "chunk": 84,
+      "command": "0cbeb0d9-02b2-4772-9549-b17a6d01f352",
+      "bytes": 9000
+    },
+    {
+      "chunk": 85,
+      "command": "6a63187e-3f25-4f8f-90a2-9587b2b1bc38",
+      "bytes": 9000
+    },
+    {
+      "chunk": 86,
+      "command": "c02dab1d-a188-41c0-ba23-3d5ae692d2ff",
+      "bytes": 9000
+    },
+    {
+      "chunk": 87,
+      "command": "4c2ea0ab-640d-4463-adf3-f3453af50405",
+      "bytes": 9000
+    },
+    {
+      "chunk": 88,
+      "command": "3f8847ee-c4fd-4e99-b1f1-6b31b0982e4b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 89,
+      "command": "eb284ce2-09fd-463d-a77c-340cdb7f3317",
+      "bytes": 9000
+    },
+    {
+      "chunk": 90,
+      "command": "458dd95d-f7cb-4ce7-8530-79a046c9d8d4",
+      "bytes": 9000
+    },
+    {
+      "chunk": 91,
+      "command": "e303c704-efd7-4dc7-aabf-3c8a6d9b60a8",
+      "bytes": 9000
+    },
+    {
+      "chunk": 92,
+      "command": "dfd65384-538b-4f5a-b2dc-704b2ed15769",
+      "bytes": 9000
+    },
+    {
+      "chunk": 93,
+      "command": "e6cf6435-8999-46d5-9fc7-7cab4d0078cb",
+      "bytes": 9000
+    },
+    {
+      "chunk": 94,
+      "command": "97d1e80b-f850-4e03-b07e-dee6cff6ed6e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 95,
+      "command": "0cd64631-c2ba-4a1e-ace9-a30bf4318d1a",
+      "bytes": 9000
+    },
+    {
+      "chunk": 96,
+      "command": "902c6690-7401-4798-8db0-e73a9412e93b",
+      "bytes": 9000
+    },
+    {
+      "chunk": 97,
+      "command": "6492c1bb-56c0-4499-a182-c54a8c375108",
+      "bytes": 9000
+    },
+    {
+      "chunk": 98,
+      "command": "9f17ef69-ef69-487b-bc50-0a3327e39805",
+      "bytes": 9000
+    },
+    {
+      "chunk": 99,
+      "command": "fbfc8fe6-7917-44fd-ae6d-0cdfeb491a48",
+      "bytes": 9000
+    },
+    {
+      "chunk": 100,
+      "command": "9f13ee6f-1b4b-4360-b28a-9530d29f0454",
+      "bytes": 9000
+    },
+    {
+      "chunk": 101,
+      "command": "1463ac99-44ee-4663-8f04-7d8baa343baf",
+      "bytes": 9000
+    },
+    {
+      "chunk": 102,
+      "command": "8b88b452-200e-4903-b274-d66810c34563",
+      "bytes": 9000
+    },
+    {
+      "chunk": 103,
+      "command": "7a8649fa-0f11-4e2b-9fc5-22463641f812",
+      "bytes": 9000
+    },
+    {
+      "chunk": 104,
+      "command": "2d92e01f-1246-4632-8aa1-f61fc931cf20",
+      "bytes": 9000
+    },
+    {
+      "chunk": 105,
+      "command": "55c47eb8-852b-4011-9d5d-0597ae8313f1",
+      "bytes": 9000
+    },
+    {
+      "chunk": 106,
+      "command": "14c91247-6c9f-4c78-be53-62f0c9cdacde",
+      "bytes": 9000
+    },
+    {
+      "chunk": 107,
+      "command": "f523d4ed-1916-42fb-ac05-99f1711bc74e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 108,
+      "command": "abe2be1e-14ef-4d1d-af17-98f32039b234",
+      "bytes": 9000
+    },
+    {
+      "chunk": 109,
+      "command": "5b2a4f68-4853-49a3-a4b0-3011a1653220",
+      "bytes": 9000
+    },
+    {
+      "chunk": 110,
+      "command": "4a7fa968-52d5-4dd5-8a85-10f837c2781e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 111,
+      "command": "6ea9b524-cfdf-46a0-8f1a-0dd42bb09bb2",
+      "bytes": 9000
+    },
+    {
+      "chunk": 112,
+      "command": "801d8d33-a470-4422-a807-9c50c4d3eb74",
+      "bytes": 9000
+    },
+    {
+      "chunk": 113,
+      "command": "2feb455c-5448-4968-8f5f-63ce3f0b9500",
+      "bytes": 9000
+    },
+    {
+      "chunk": 114,
+      "command": "7b7a6d6d-55e3-4292-b348-253d7d81839e",
+      "bytes": 9000
+    },
+    {
+      "chunk": 115,
+      "command": "f8afac80-7f0c-4ee4-ae72-21eba2a8bb93",
+      "bytes": 9000
+    },
+    {
+      "chunk": 116,
+      "command": "87ce5fca-4aa9-49b3-8158-db770432f5c4",
+      "bytes": 9000
+    },
+    {
+      "chunk": 117,
+      "command": "cb196b3f-c187-4cc0-a712-49bdc1790b8f",
+      "bytes": 9000
+    },
+    {
+      "chunk": 118,
+      "command": "3df11456-d930-478b-8690-a7e231a993c1",
+      "bytes": 9000
+    },
+    {
+      "chunk": 119,
+      "command": "b700575d-bc1e-4881-8da1-8cfa6793340b",
+      "bytes": 581
+    }
+  ]
+}

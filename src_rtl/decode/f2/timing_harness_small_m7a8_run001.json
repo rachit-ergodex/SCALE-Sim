@@ -1,0 +1,73 @@
+{
+  "recorded_utc": "2026-10-21T10:30:20.000833+00:00",
+  "status": "running_at_observation",
+  "instance_id": "i-04fc91f9015037a6c",
+  "instance_type": "m7a.8xlarge",
+  "region": "us-east-1",
+  "source_commit": "94aaec2",
+  "source_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/source-001",
+  "archive_sha256": "614d52f975644d721b3d7fa07ea42701c61c45c477a01745e969b94de6ae5088",
+  "archive_bytes": 29079,
+  "source_hashes": {
+    "src_rtl/decode/rtl/decode_os_core.sv": "2e7d5384f8af62022356847b6bd0554bca932540f1559332a2a4a0539dcbdf9d",
+    "src_rtl/decode/f2/harness/decode_compute_timing_harness.sv": "5706501e5875fccbd811bce8e80f9da2d38a23a7725a2e051f5f790184a0164d",
+    "src_rtl/decode/f2/harness/harness_constraints.tcl": "8367328a195997a34e3995c367d5efaee273ccb4625018da98100d918d3e735d",
+    "src_rtl/decode/f2/harness/bufg_sim.sv": "c28a16d03f7e39c0dece0a772f0c53b6439430443cd0189016531df41917848e",
+    "src_rtl/decode/f2/harness/scan_core_fixture.sv": "0425d020143018169e8213d0f666101e30baa4c5b829c9d551864f63a6d76f6e",
+    "src_rtl/decode/f2/harness/test_timing_harness.py": "acfc81f3d100a13f09d4c90aec6593eaaa68b86e923c92674a1c17e0cdab786b",
+    "src_rtl/decode/f2/harness/run_harness_tests.py": "5a3eb9bf9575f2ac2d34f7fa59177ffddcbb063781749bb768e31ceacaa3aaee",
+    "src_rtl/decode/verification.json": "4c78dc7d8d8185a49fdd39298e7f2f14decf872caf3d960d369dc529e40bc739",
+    "src_rtl/decode/f2/harness/verification.json": "3a5b8b5cc59485a5934bec761a6a640dd10ed0fe502f93c81fae737e01a55d30",
+    "src_rtl/decode/f2/scripts/run_timing_harness.py": "602c196cc338abc807fc0ec32a5e931414760eac1816ab9f37c0016cb09526af",
+    "src_rtl/decode/f2/scripts/timing_harness.tcl": "0e5d7bdeaa38c390553ac5eb8e767b4c08868e711d5a14bc72cfb34c029a0e0f",
+    "src_rtl/decode/f2/scripts/audit_compute_ooc.py": "7ca2f9b9279629229584b8e48699bf5e908270491a298e1fd79864f85da83b6c"
+  },
+  "ssm_launch_command": "35a80259-9fde-4f1b-a370-a133713da4e0",
+  "geometry": {
+    "partitions": 4,
+    "cols": 8,
+    "macs": 32,
+    "max_m": 4,
+    "max_k": 8192
+  },
+  "threads_per_run": 8,
+  "runs": [
+    {
+      "compute_mhz": 50,
+      "period_ns": 20.0,
+      "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/small-50-001",
+      "service": "scalesim-harness-small-50-20261021-001.service",
+      "memory_limit_gib": 24,
+      "swap_limit_gib": 2,
+      "observed_progress": "Synthesis, BUFG connectivity, coverage, DRC and opt_design passed; placement started."
+    },
+    {
+      "compute_mhz": 100,
+      "period_ns": 10.0,
+      "run_directory": "/home/ubuntu/rachit/scalesim-harness-20261021/small-100-001",
+      "service": "scalesim-harness-small-100-20261021-001.service",
+      "memory_limit_gib": 24,
+      "swap_limit_gib": 2,
+      "observed_progress": "Synthesis, BUFG connectivity, coverage, DRC and opt_design passed; placement started."
+    }
+  ],
+  "boundary_budgets_ns": {
+    "input_max": 1,
+    "input_min": 0,
+    "output_max": 1,
+    "output_min": 0,
+    "setup_uncertainty": 0.25,
+    "hold_uncertainty": 0.1
+  },
+  "verification": {
+    "full_core_suite": "passed",
+    "production_output_comparisons": 29584,
+    "harness_functional_tests": 8,
+    "combined_flow_audit_tests": 39
+  },
+  "scope": "Small analysis-only physical clock/boundary/hold repair validation; no full-size timing, AWS shell integration, bitstream or measured TPS claim.",
+  "component_routed_timing_pass": false,
+  "f2_shell_timing_closed": false,
+  "subsequent_status": "50_pass_100_serial_output_setup_failure",
+  "result_record": "timing_harness_small_m7a8_result001.json"
+}
